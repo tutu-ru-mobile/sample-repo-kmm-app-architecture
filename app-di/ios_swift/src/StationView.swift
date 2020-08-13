@@ -2,32 +2,6 @@ import SwiftUI
 import Foundation
 //import app_di
 
-private func doTheThing() {
-    print("doing the thing!")
-}
-
-@objc public
-class XYZ : NSObject {
-    @objc public
-    func doThing(_ x: String) {
-        print("do thing \(x):")
-//        print("use kotlin: \(HelloKotlin().getHello())")
-        doTheThing()
-    }
-
-    @objc public
-    func getDependencyStr() -> String {
-        return "pod depencency"
-    }
-
-}
-
-public struct XYZStruct {
-    public let name: String
-
-    public init(name: String) { self.name = name }
-}
-
 public struct StationView : View {
     var station: String
     var clickAction: () -> Void
