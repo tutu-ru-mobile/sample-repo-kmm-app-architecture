@@ -3,6 +3,7 @@
 Но также можно просто собирать из консоли ./gradlew assembleDebug  
 А потом установить  app/build/outputs/apk/debug/app-debug.apk  
 
+##Build iOS App
 ```bash
 sudo gem install cocoapods
 sudo gem install cocoapods-generate
@@ -12,3 +13,4 @@ pod install
 pod update
 #open [./ios/App/SolutionArchitecture.xcworkspace] in XCode or AppCode and run project on iOS Emulator
 ```
+
