@@ -1,16 +1,21 @@
 PODS:
+  - app_di_swift (0.0.1)
   - solution_ios (1.0)
 
 DEPENDENCIES:
+  - app_di_swift (from `../app-di/ios_swift`)
   - solution_ios (from `../solution_ios`)
 
 EXTERNAL SOURCES:
+  app_di_swift:
+    :path: "../app-di/ios_swift"
   solution_ios:
     :path: "../solution_ios"
 
 SPEC CHECKSUMS:
+  app_di_swift: dd60d2862de9a420759443f717d7cc2b95ad4e91
   solution_ios: 87d67437cf1e4ef97159dfa5461707e74de98fd0
 
-PODFILE CHECKSUM: dad8b4c71b4cca68b97d11cef2ecef6d868468d6
+PODFILE CHECKSUM: 9ef9219cd921f1a1893ddb6dd38a918fbdcbd678
 
 COCOAPODS: 1.9.3

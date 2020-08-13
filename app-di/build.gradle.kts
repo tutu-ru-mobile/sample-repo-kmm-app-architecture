@@ -1,18 +1,48 @@
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
+    kotlin("native.cocoapods")
 }
+
+// CocoaPods requires the podspec to have a version.
+version = "1.0"
 
 android {
     boilerplate()
 }
 
 kotlin {
+
+    targets {
+        val sdkName: String? = System.getenv("SDK_NAME")
+
+        val isiOSDevice = sdkName.orEmpty().startsWith("iphoneos")
+        if (isiOSDevice) {
+            iosArm64("iOS64")
+        } else {
+            iosX64("iOS")
+        }
+
+        macosX64("macOS")
+    }
+
+    cocoapods {
+        summary = "app-di module"
+        homepage = "homepage placeholder"
+    }
+
     js {
         browser { }
     }
     android()
     sourceSets {
+
+        val iOSMain by getting {
+            dependencies {
+//                implementation("io.ktor:ktor-client-ios:${Versions.ktor}")
+            }
+        }
+
         val commonMain by getting {
             dependencies {
                 implementation(project(":solution-settings-impl"))

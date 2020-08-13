@@ -8,12 +8,14 @@
 
 import SwiftUI
 import solution_ios
+import app_di_swift
 
 struct ContentView: View {
     var body: some View {
         VStack() {
             Text("Hello, World!")
             Text(UseKotlin().getStr())
+            StationView(station: "station1") {}
         }
     }
 }
