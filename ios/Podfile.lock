@@ -2,15 +2,15 @@ PODS:
   - solution_ios (1.0)
 
 DEPENDENCIES:
-  - solution_ios (from `../../solution_ios`)
+  - solution_ios (from `../solution_ios`)
 
 EXTERNAL SOURCES:
   solution_ios:
-    :path: "../../solution_ios"
+    :path: "../solution_ios"
 
 SPEC CHECKSUMS:
   solution_ios: 87d67437cf1e4ef97159dfa5461707e74de98fd0
 
-PODFILE CHECKSUM: 1ed370464db14d8248f81c6db81da7500b858ff7
+PODFILE CHECKSUM: dad8b4c71b4cca68b97d11cef2ecef6d868468d6
 
 COCOAPODS: 1.9.3
