@@ -8,7 +8,8 @@ const val KOTLIN_VERSION = "1.4.0-rc"
 //const val KOTLIN_VERSION = "1.4.255-SNAPSHOT"
 const val COROUTINES_VERSION = "1.3.8-1.4.0-rc"
 
-const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha06"
+//const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha06"
+const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha07"
 
 //https://developer.android.com/jetpack/androidx/releases/compose
 const val ANDROID_COMPOSE_VERSION = "0.1.0-dev15"
