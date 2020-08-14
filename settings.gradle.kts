@@ -4,8 +4,9 @@ pluginManagement {
         gradlePluginPortal()
         jcenter()
         mavenCentral()
-        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
         maven { setUrl("https://dl.bintray.com/kotlin/kotlinx") }
+        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
+        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-dev") }
     }
 
 //  resolutionStrategy {
@@ -19,7 +20,7 @@ pluginManagement {
 //  }
 }
 
-rootProject.name = "Solition architecture"
+rootProject.name = "solution_architecture"
 include("app")
 include("app-di")
 include("lib-basic")
@@ -48,5 +49,4 @@ include("solution-weather-api")
 include("solution-weather-impl")
 include("solution-ab-api")
 include("solution-ab-impl")
-include("solution_ios")
 

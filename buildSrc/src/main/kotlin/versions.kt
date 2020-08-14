@@ -4,6 +4,7 @@ import java.util.*
 //const val KOTLIN_VERSION = "1.4-M3"
 //const val COROUTINES_VERSION = "1.3.7-1.4-M3"
 const val KOTLIN_VERSION = "1.4.0-rc"
+//const val KOTLIN_VERSION = "1.4.0-release-324"
 //const val KOTLIN_VERSION = "1.4.20-SNAPSHOT"
 //const val KOTLIN_VERSION = "1.4.255-SNAPSHOT"
 const val COROUTINES_VERSION = "1.3.8-1.4.0-rc"

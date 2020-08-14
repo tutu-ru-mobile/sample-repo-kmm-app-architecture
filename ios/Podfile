@@ -4,9 +4,8 @@
 target 'SolutionArchitecture' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'solution_ios', :path => '../solution_ios'
-  # pod 'app_di', :path => '../app-di'
-  pod 'app_di_swift', :path => '../app-di/ios_swift'
+  pod 'app_di', :path => '../app-di'
+  pod 'app_di_swift', :path => '../app-di/swift'
 
   # Pods for SolutionArchitecture
 

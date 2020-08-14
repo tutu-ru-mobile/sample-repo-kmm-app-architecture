@@ -1,6 +1,6 @@
 import SwiftUI
 import Foundation
-//import app_di
+import app_di
 
 public struct StationView : View {
     var station: String
@@ -27,5 +27,15 @@ public struct StationView : View {
                 Text("Click")
             }
         }
+    }
+}
+
+func todo() {
+    AppDi().auth.login
+}
+
+struct StationView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

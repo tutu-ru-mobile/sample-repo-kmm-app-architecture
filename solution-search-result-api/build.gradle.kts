@@ -8,6 +8,8 @@ android {
 }
 
 kotlin {
+    iosX64("iOS")
+
     js {
         browser { }
     }

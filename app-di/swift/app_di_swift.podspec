@@ -12,5 +12,6 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '13.0'
   s.macos.deployment_target = '10.10'
-  #s.dependency 'app_di'
+  s.dependency 'app_di'
+  s.static_framework = true
 end

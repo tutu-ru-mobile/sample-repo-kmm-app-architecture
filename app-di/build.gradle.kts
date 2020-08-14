@@ -12,23 +12,12 @@ android {
 }
 
 kotlin {
-
-    targets {
-        val sdkName: String? = System.getenv("SDK_NAME")
-
-        val isiOSDevice = sdkName.orEmpty().startsWith("iphoneos")
-        if (isiOSDevice) {
-            iosArm64("iOS64")
-        } else {
-            iosX64("iOS")
-        }
-
-        macosX64("macOS")
-    }
-
+    iosX64("iOS")
     cocoapods {
+        ios.deploymentTarget = "13.0"
         summary = "app-di module"
         homepage = "homepage placeholder"
+//        pod("app_di_swift", podspec = rootProject.file("app-di/swift/app_di_swift.podspec"))
     }
 
     js {

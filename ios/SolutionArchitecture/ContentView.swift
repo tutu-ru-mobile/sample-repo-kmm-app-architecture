@@ -7,14 +7,15 @@
 //
 
 import SwiftUI
-import solution_ios
+//import solution_ios
 import app_di_swift
+import app_di
 
 struct ContentView: View {
     var body: some View {
         VStack() {
             Text("Hello, World!")
-            Text(UseKotlin().getStr())
+            Text(UseKotlin2().getStr())
             StationView(station: "station1") {}
         }
     }
@@ -24,5 +25,9 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+func todo2() {
+    AppDi().auth.login
 }
 
