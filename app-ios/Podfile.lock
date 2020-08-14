@@ -5,18 +5,18 @@ PODS:
 
 DEPENDENCIES:
   - app_di (from `../app-di`)
-  - app_di_swift (from `../app-di/swift`)
+  - app_di_swift (from `../app-di/src/iOSMain/swift`)
 
 EXTERNAL SOURCES:
   app_di:
     :path: "../app-di"
   app_di_swift:
-    :path: "../app-di/swift"
+    :path: "../app-di/src/iOSMain/swift"
 
 SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
   app_di_swift: 2fddd96b663ef6d68efec6cde52caaa65c2a6e95
 
-PODFILE CHECKSUM: bb0b039d70b0a4a57dc95735fa5d67381d786c26
+PODFILE CHECKSUM: 1fa5eca85242c3a3940b3e0e86588f1545c959ab
 
 COCOAPODS: 1.9.3
