@@ -21,7 +21,7 @@ pluginManagement {
 }
 
 rootProject.name = "solution_architecture"
-include("app")
+include("app-android")
 include("app-di")
 include("lib-basic")
 include("solution-auth-api")
