@@ -2,6 +2,7 @@ PODS:
   - app_di (1.0)
   - app_di_swift (0.0.1):
     - app_di
+    - solution_tabs_impl_swift
   - solution_ab_api_swift (0.0.1):
     - app_di
   - solution_ab_impl_swift (0.0.1):
@@ -42,6 +43,7 @@ PODS:
     - app_di
   - solution_tabs_impl_swift (0.0.1):
     - app_di
+    - solution_tabs_api_swift
   - solution_wallet_api_swift (0.0.1):
     - app_di
   - solution_wallet_impl_swift (0.0.1):
@@ -135,7 +137,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
-  app_di_swift: 2fddd96b663ef6d68efec6cde52caaa65c2a6e95
+  app_di_swift: e95bde70562f29f7ed5319b48186037631c492d2
   solution_ab_api_swift: 65be803074180f7353144c18386880f8081410aa
   solution_ab_impl_swift: a63ac05d529329d9df4d1c2242583c73969ae56d
   solution_attention_api_swift: bc87137967202ef362ada0ba6749ba0eee2db61a
@@ -155,12 +157,12 @@ SPEC CHECKSUMS:
   solution_tab_search_api_swift: 63d3d3a1988a9f0b5bfbcdbfce96cfec8e43355d
   solution_tab_search_impl_swift: 2bb7ed9538694b39fe22b2d878ce91abca39584f
   solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
-  solution_tabs_impl_swift: e783c69da2f02dd97cf09d98c8045de01647347c
+  solution_tabs_impl_swift: ad6211caf6205571d004d09bd3ab2cffe6c45fab
   solution_wallet_api_swift: ef221ee22043811364ca5bf8c33ecf47f34ddaf1
   solution_wallet_impl_swift: e0b486e53fd58661995fc6c64b3399e15c0f5c7a
   solution_weather_api_swift: 6d85e17551a638cb8764ef4e2b3a91534817db33
   solution_weather_impl_swift: faf657715d8955490c69f1d98b371e7cd62cb313
 
-PODFILE CHECKSUM: c62086baa88e9edb0a606cbf8431626c8dabb1d1
+PODFILE CHECKSUM: fab32557ecb29bf2748b320aad49bf8e5aba2f11
 
 COCOAPODS: 1.9.3

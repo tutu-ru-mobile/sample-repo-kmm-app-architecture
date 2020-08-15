@@ -1,12 +1,13 @@
 import SwiftUI
-import app_di_swift
 import app_di
+import app_di_swift
 import Foundation
 
 struct MyContentView: View {
     @ObservedObject var myViewModel = MyViewModel()
 
     var body: some View {
+//        AppDiIos().tabs.renderScaffold()
         TabView {
             MyListView(myViewModel: myViewModel, param1: "val1")
                     .tabItem {
