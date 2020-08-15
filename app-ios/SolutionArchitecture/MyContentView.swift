@@ -45,9 +45,6 @@ public struct MyItemView<S1:SolutionAApi>: View {
     var item: MyItem
     var clickAction: () -> Void
     var solutionA:S1
-    let myBuilder: MyBuilderView<Text> = MyBuilderView {
-        Text("content")
-    }
 
     public init(item: MyItem, solutionA: S1, clickAction: @escaping () -> ()) {
         self.item = item
@@ -73,11 +70,9 @@ public struct MyItemView<S1:SolutionAApi>: View {
                 HStack {
                     Text("Slots:").font(.subheadline).frame(width: 80, alignment: .leading)
                     Text("\(item.counter2)").font(.subheadline)
-                    simpleFun()
-                    myBuilder.content()
-                    solutionA.render1
-                    solutionA.render2
                 }
+                solutionA.render1()
+                solutionA.render2()
             }
             Button(action: { self.clickAction() }) {
                 Text("Click")
@@ -86,25 +81,24 @@ public struct MyItemView<S1:SolutionAApi>: View {
     }
 }
 
-func simpleFun() -> some View {
-    Text("todoFun")
-}
-
 public protocol SolutionAApi {
     associatedtype V1:View
     associatedtype V2:View
-    var render1: V1 { get }
-    var render2: V2 { get }
+    func render1() -> V1
+    func render2() -> V2
 }
 
 struct SolutionAImpl : SolutionAApi {
-//    var body: some View {
-    var render1: some View {
-        Text("render 1 impl")
+
+    func render1() -> some View {
+        HStack{
+            Text("render1")
+            Text("render1")
+        }
     }
 
-    var render2: some View {
-        Text("render 2 impl")
+    func render2() -> some View {
+        Text("render2")
     }
 }
 
@@ -124,13 +118,6 @@ class MyViewModel: ObservableObject {
         kotlinModel.doAction(action: action)
     }
 
-}
-
-struct MyBuilderView<Content:View> {
-    var content: () -> Content
-    init(@ViewBuilder content: @escaping () -> Content) {
-        self.content = content
-    }
 }
 
 //func buildUi<Content>(@ViewBuilder content: @escaping () -> Content)
