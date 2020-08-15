@@ -33,22 +33,26 @@ struct MyListView: View {
     var body: some View {
         NavigationView {
             List(myViewModel.myState.list, id: \.id) { item in
-                MyItemView(item: item) {
+                MyItemView(item: item, solutionA: SolutionAImpl()) {
                     self.myViewModel.doAction(action: MyAction.Click(item: item))
                 }
-            }
-                    .navigationBarTitle("nav bar title")
+            }.navigationBarTitle("nav bar title")
         }
     }
 }
 
-public struct MyItemView: View {
+public struct MyItemView<S1:SolutionAApi>: View {
     var item: MyItem
     var clickAction: () -> Void
+    var solutionA:S1
+    let myBuilder: MyBuilderView<Text> = MyBuilderView {
+        Text("content")
+    }
 
-    public init(item: MyItem, clickAction: @escaping () -> ()) {
+    public init(item: MyItem, solutionA: S1, clickAction: @escaping () -> ()) {
         self.item = item
         self.clickAction = clickAction
+        self.solutionA = solutionA
     }
 
     public var body: some View {
@@ -69,12 +73,38 @@ public struct MyItemView: View {
                 HStack {
                     Text("Slots:").font(.subheadline).frame(width: 80, alignment: .leading)
                     Text("\(item.counter2)").font(.subheadline)
+                    simpleFun()
+                    myBuilder.content()
+                    solutionA.render1
+                    solutionA.render2
                 }
             }
             Button(action: { self.clickAction() }) {
                 Text("Click")
             }
         }
+    }
+}
+
+func simpleFun() -> some View {
+    Text("todoFun")
+}
+
+public protocol SolutionAApi {
+    associatedtype V1:View
+    associatedtype V2:View
+    var render1: V1 { get }
+    var render2: V2 { get }
+}
+
+struct SolutionAImpl : SolutionAApi {
+//    var body: some View {
+    var render1: some View {
+        Text("render 1 impl")
+    }
+
+    var render2: some View {
+        Text("render 2 impl")
     }
 }
 
@@ -95,3 +125,24 @@ class MyViewModel: ObservableObject {
     }
 
 }
+
+struct MyBuilderView<Content:View> {
+    var content: () -> Content
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+}
+
+//func buildUi<Content>(@ViewBuilder content: @escaping () -> Content)
+//        where Content : View
+//{
+//    func f1() {
+//        let content2: () -> Content = content
+//    }
+//}
+//
+//func useBuilder() {
+//    buildUi {
+//        Text("txt")
+//    }
+//}
