@@ -2,21 +2,165 @@ PODS:
   - app_di (1.0)
   - app_di_swift (0.0.1):
     - app_di
+  - solution_ab_api_swift (0.0.1):
+    - app_di
+  - solution_ab_impl_swift (0.0.1):
+    - app_di
+  - solution_attention_api_swift (0.0.1):
+    - app_di
+  - solution_attention_impl_swift (0.0.1):
+    - app_di
+  - solution_auth_api_swift (0.0.1):
+    - app_di
+  - solution_auth_impl_swift (0.0.1):
+    - app_di
+  - solution_order_api_swift (0.0.1):
+    - app_di
+  - solution_order_impl_swift (0.0.1):
+    - app_di
+  - solution_search_form_api_swift (0.0.1):
+    - app_di
+  - solution_search_form_impl_swift (0.0.1):
+    - app_di
+  - solution_search_result_api_swift (0.0.1):
+    - app_di
+  - solution_search_result_impl_swift (0.0.1):
+    - app_di
+  - solution_search_start_api_swift (0.0.1):
+    - app_di
+  - solution_search_start_impl_swift (0.0.1):
+    - app_di
+  - solution_settings_api_swift (0.0.1):
+    - app_di
+  - solution_settings_impl_swift (0.0.1):
+    - app_di
+  - solution_tab_search_api_swift (0.0.1):
+    - app_di
+  - solution_tab_search_impl_swift (0.0.1):
+    - app_di
+  - solution_tabs_api_swift (0.0.1):
+    - app_di
+  - solution_tabs_impl_swift (0.0.1):
+    - app_di
+  - solution_wallet_api_swift (0.0.1):
+    - app_di
+  - solution_wallet_impl_swift (0.0.1):
+    - app_di
+  - solution_weather_api_swift (0.0.1):
+    - app_di
+  - solution_weather_impl_swift (0.0.1):
+    - app_di
 
 DEPENDENCIES:
   - app_di (from `../app-di`)
   - app_di_swift (from `../app-di/src/iOSMain/swift`)
+  - solution_ab_api_swift (from `../solution-ab-api/src/iOSMain/swift`)
+  - solution_ab_impl_swift (from `../solution-ab-impl/src/iOSMain/swift`)
+  - solution_attention_api_swift (from `../solution-attention-api/src/iOSMain/swift`)
+  - solution_attention_impl_swift (from `../solution-attention-impl/src/iOSMain/swift`)
+  - solution_auth_api_swift (from `../solution-auth-api/src/iOSMain/swift`)
+  - solution_auth_impl_swift (from `../solution-auth-impl/src/iOSMain/swift`)
+  - solution_order_api_swift (from `../solution-order-api/src/iOSMain/swift`)
+  - solution_order_impl_swift (from `../solution-order-impl/src/iOSMain/swift`)
+  - solution_search_form_api_swift (from `../solution-search-form-api/src/iOSMain/swift`)
+  - solution_search_form_impl_swift (from `../solution-search-form-impl/src/iOSMain/swift`)
+  - solution_search_result_api_swift (from `../solution-search-result-api/src/iOSMain/swift`)
+  - solution_search_result_impl_swift (from `../solution-search-result-impl/src/iOSMain/swift`)
+  - solution_search_start_api_swift (from `../solution-search-start-api/src/iOSMain/swift`)
+  - solution_search_start_impl_swift (from `../solution-search-start-impl/src/iOSMain/swift`)
+  - solution_settings_api_swift (from `../solution-settings-api/src/iOSMain/swift`)
+  - solution_settings_impl_swift (from `../solution-settings-impl/src/iOSMain/swift`)
+  - solution_tab_search_api_swift (from `../solution-tab-search-api/src/iOSMain/swift`)
+  - solution_tab_search_impl_swift (from `../solution-tab-search-impl/src/iOSMain/swift`)
+  - solution_tabs_api_swift (from `../solution-tabs-api/src/iOSMain/swift`)
+  - solution_tabs_impl_swift (from `../solution-tabs-impl/src/iOSMain/swift`)
+  - solution_wallet_api_swift (from `../solution-wallet-api/src/iOSMain/swift`)
+  - solution_wallet_impl_swift (from `../solution-wallet-impl/src/iOSMain/swift`)
+  - solution_weather_api_swift (from `../solution-weather-api/src/iOSMain/swift`)
+  - solution_weather_impl_swift (from `../solution-weather-impl/src/iOSMain/swift`)
 
 EXTERNAL SOURCES:
   app_di:
     :path: "../app-di"
   app_di_swift:
     :path: "../app-di/src/iOSMain/swift"
+  solution_ab_api_swift:
+    :path: "../solution-ab-api/src/iOSMain/swift"
+  solution_ab_impl_swift:
+    :path: "../solution-ab-impl/src/iOSMain/swift"
+  solution_attention_api_swift:
+    :path: "../solution-attention-api/src/iOSMain/swift"
+  solution_attention_impl_swift:
+    :path: "../solution-attention-impl/src/iOSMain/swift"
+  solution_auth_api_swift:
+    :path: "../solution-auth-api/src/iOSMain/swift"
+  solution_auth_impl_swift:
+    :path: "../solution-auth-impl/src/iOSMain/swift"
+  solution_order_api_swift:
+    :path: "../solution-order-api/src/iOSMain/swift"
+  solution_order_impl_swift:
+    :path: "../solution-order-impl/src/iOSMain/swift"
+  solution_search_form_api_swift:
+    :path: "../solution-search-form-api/src/iOSMain/swift"
+  solution_search_form_impl_swift:
+    :path: "../solution-search-form-impl/src/iOSMain/swift"
+  solution_search_result_api_swift:
+    :path: "../solution-search-result-api/src/iOSMain/swift"
+  solution_search_result_impl_swift:
+    :path: "../solution-search-result-impl/src/iOSMain/swift"
+  solution_search_start_api_swift:
+    :path: "../solution-search-start-api/src/iOSMain/swift"
+  solution_search_start_impl_swift:
+    :path: "../solution-search-start-impl/src/iOSMain/swift"
+  solution_settings_api_swift:
+    :path: "../solution-settings-api/src/iOSMain/swift"
+  solution_settings_impl_swift:
+    :path: "../solution-settings-impl/src/iOSMain/swift"
+  solution_tab_search_api_swift:
+    :path: "../solution-tab-search-api/src/iOSMain/swift"
+  solution_tab_search_impl_swift:
+    :path: "../solution-tab-search-impl/src/iOSMain/swift"
+  solution_tabs_api_swift:
+    :path: "../solution-tabs-api/src/iOSMain/swift"
+  solution_tabs_impl_swift:
+    :path: "../solution-tabs-impl/src/iOSMain/swift"
+  solution_wallet_api_swift:
+    :path: "../solution-wallet-api/src/iOSMain/swift"
+  solution_wallet_impl_swift:
+    :path: "../solution-wallet-impl/src/iOSMain/swift"
+  solution_weather_api_swift:
+    :path: "../solution-weather-api/src/iOSMain/swift"
+  solution_weather_impl_swift:
+    :path: "../solution-weather-impl/src/iOSMain/swift"
 
 SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
   app_di_swift: 2fddd96b663ef6d68efec6cde52caaa65c2a6e95
+  solution_ab_api_swift: 65be803074180f7353144c18386880f8081410aa
+  solution_ab_impl_swift: a63ac05d529329d9df4d1c2242583c73969ae56d
+  solution_attention_api_swift: bc87137967202ef362ada0ba6749ba0eee2db61a
+  solution_attention_impl_swift: d914cd85c7be7d67885d87d4272b4da3701f9686
+  solution_auth_api_swift: 941159ecfb6219cf4f76559c0e24fdeb8b02ab8f
+  solution_auth_impl_swift: ffa2a5658fff5ffd70483ea3408b8a149049956f
+  solution_order_api_swift: 8269fea6222baa1d93a17678ca2325a8d340ffc3
+  solution_order_impl_swift: a38dae0eae8e13e1431a70549bb3f36f0c8cf28c
+  solution_search_form_api_swift: 47faa92606de385499e85980b581dce3ec505dd4
+  solution_search_form_impl_swift: 87ec8bc03dd2188936c0ff09b2c40f1834d682f1
+  solution_search_result_api_swift: e3ec0564adec584150b03dde3ac742115d6e69b8
+  solution_search_result_impl_swift: b513024bade9fbe4af22cffd9ea343dfcb41b28f
+  solution_search_start_api_swift: 96f7aa2e0c5595e42c4da12bdb58e07bffbea8d7
+  solution_search_start_impl_swift: d70c6942411270817fe6aa2d9f535f6d09435a32
+  solution_settings_api_swift: 4131f21fbee3c2ce7d273b34298285d8ba5dae99
+  solution_settings_impl_swift: 5d4c5d7f42c2f99909440110cba9bf99378ee4a0
+  solution_tab_search_api_swift: 63d3d3a1988a9f0b5bfbcdbfce96cfec8e43355d
+  solution_tab_search_impl_swift: 2bb7ed9538694b39fe22b2d878ce91abca39584f
+  solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
+  solution_tabs_impl_swift: e783c69da2f02dd97cf09d98c8045de01647347c
+  solution_wallet_api_swift: ef221ee22043811364ca5bf8c33ecf47f34ddaf1
+  solution_wallet_impl_swift: e0b486e53fd58661995fc6c64b3399e15c0f5c7a
+  solution_weather_api_swift: 6d85e17551a638cb8764ef4e2b3a91534817db33
+  solution_weather_impl_swift: faf657715d8955490c69f1d98b371e7cd62cb313
 
-PODFILE CHECKSUM: 1fa5eca85242c3a3940b3e0e86588f1545c959ab
+PODFILE CHECKSUM: c62086baa88e9edb0a606cbf8431626c8dabb1d1
 
 COCOAPODS: 1.9.3
