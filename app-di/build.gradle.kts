@@ -25,13 +25,6 @@ kotlin {
     }
     android()
     sourceSets {
-
-        val iOSMain by getting {
-            dependencies {
-//                implementation("io.ktor:ktor-client-ios:${Versions.ktor}")
-            }
-        }
-
         val commonMain by getting {
             dependencies {
                 implementation(project(":solution-settings-impl"))
@@ -49,7 +42,15 @@ kotlin {
                 implementation(project(":solution-ab-impl"))
                 implementation(project(":solution-navigation-api"))
                 implementation(project(":lib-basic"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION") {
+//                    isForce = true
+                }
+//                implementation("io.ktor:ktor-client-core:$KTOR_VERSION")
+            }
+        }
+        val iOSMain by getting {
+            dependencies {
+//                implementation("io.ktor:ktor-client-ios:$KTOR_VERSION")
             }
         }
         val androidMain by getting {

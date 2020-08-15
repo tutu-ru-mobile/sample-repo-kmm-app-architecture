@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184884F057EADB72AFAD47E3 /* MyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18488E0E94983C9E6AA1DBC3 /* MyContentView.swift */; };
 		326BD77024E48AB3003C9F4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326BD76F24E48AB3003C9F4E /* AppDelegate.swift */; };
 		326BD77224E48AB3003C9F4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326BD77124E48AB3003C9F4E /* SceneDelegate.swift */; };
 		326BD77424E48AB3003C9F4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326BD77324E48AB3003C9F4E /* ContentView.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		0D05791C752B6CF00CEEDF4E /* Pods-SolutionArchitecture-SolutionArchitectureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SolutionArchitecture-SolutionArchitectureUITests.release.xcconfig"; path = "Target Support Files/Pods-SolutionArchitecture-SolutionArchitectureUITests/Pods-SolutionArchitecture-SolutionArchitectureUITests.release.xcconfig"; sourceTree = "<group>"; };
+		18488E0E94983C9E6AA1DBC3 /* MyContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyContentView.swift; sourceTree = "<group>"; };
 		2AA6F18806312C3DFC57E7A4 /* Pods-SolutionArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SolutionArchitecture.release.xcconfig"; path = "Target Support Files/Pods-SolutionArchitecture/Pods-SolutionArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		3167BA9337D04E1BB674DDA1 /* Pods_SolutionArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SolutionArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		326BD76C24E48AB3003C9F4E /* SolutionArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolutionArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 				326BD77A24E48AB6003C9F4E /* LaunchScreen.storyboard */,
 				326BD77D24E48AB6003C9F4E /* Info.plist */,
 				326BD77724E48AB6003C9F4E /* Preview Content */,
+				18488E0E94983C9E6AA1DBC3 /* MyContentView.swift */,
 			);
 			path = SolutionArchitecture;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				326BD77024E48AB3003C9F4E /* AppDelegate.swift in Sources */,
 				326BD77224E48AB3003C9F4E /* SceneDelegate.swift in Sources */,
 				326BD77424E48AB3003C9F4E /* ContentView.swift in Sources */,
+				184884F057EADB72AFAD47E3 /* MyContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
