@@ -9,7 +9,6 @@ import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Typography
 import androidx.ui.text.TextStyle
 import androidx.ui.unit.sp
-import com.sample.AppDi
 import com.sample.AppDiAndroid
 
 class MainActivity : AppCompatActivity() {
@@ -19,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         val di = AppDi()
         val diAndroid = AppDiAndroid(di)
         setContent {
-            val fonteStyle = TextStyle(fontSize = 20.sp)
-            MaterialTheme(typography = Typography(body1 = fonteStyle, button = fonteStyle)
+            val fontStyle = TextStyle(fontSize = 20.sp)
+            MaterialTheme(typography = Typography(body1 = fontStyle, button = fontStyle)
             ) {
                 val state by di.globalStateFlow.collectAsState()
                 println("actionCount: $state")

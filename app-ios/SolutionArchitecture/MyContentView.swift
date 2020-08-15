@@ -102,34 +102,3 @@ struct SolutionAImpl : SolutionAApi {
     }
 }
 
-class MyViewModel: ObservableObject {
-    @Published var myState: MyState
-    private let kotlinModel: MyKotlinModel
-
-    init() {
-        self.kotlinModel = MyKotlinModel()
-        myState = kotlinModel.getLastState()
-        kotlinModel.addListener(listener: {state in
-            self.myState = state
-        })
-    }
-
-    func doAction(action: MyAction) {
-        kotlinModel.doAction(action: action)
-    }
-
-}
-
-//func buildUi<Content>(@ViewBuilder content: @escaping () -> Content)
-//        where Content : View
-//{
-//    func f1() {
-//        let content2: () -> Content = content
-//    }
-//}
-//
-//func useBuilder() {
-//    buildUi {
-//        Text("txt")
-//    }
-//}
