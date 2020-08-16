@@ -1,9 +1,11 @@
 package com.sample
 
 import com.sample.app.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 
 class AppDi {
     data class GlobalState(val updateCount: Int)
@@ -34,6 +36,7 @@ class AppDi {
     }
 
     val globalStateFlow = MutableStateFlow(GlobalState(updateCount = 0))
+
     fun update() {
         val state = globalStateFlow.value
         globalStateFlow.value = state.copy(
@@ -59,6 +62,28 @@ class AppDi {
         addUpdate(searchResult.update)
         addUpdate(weather.update)
         addUpdate(ab.update)
+
+        if (false) {
+            todoScope {
+                while (true) {
+                    delay(2000)
+                    update()
+                }
+            }
+        }
+
+    }
+
+    //iOS:
+    fun getLastState() = globalStateFlow.value
+
+    fun addListener(listener: (GlobalState) -> Unit) {
+        println("my addListener AppDi")
+        todoScope {
+            globalStateFlow.collectLatest {
+                listener(it)
+            }
+        }
     }
 
 }

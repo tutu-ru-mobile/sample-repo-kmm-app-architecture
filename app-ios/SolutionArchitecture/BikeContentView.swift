@@ -4,7 +4,7 @@ import app_di_swift
 import Foundation
 
 struct BikeContentView: View {
-    @ObservedObject var myViewModel = MyViewModel()
+    @ObservedObject var myViewModel = BikeViewModel()
 
     var body: some View {
         TabView {
@@ -27,7 +27,7 @@ struct BikeContentView: View {
 }
 
 struct MyListView: View {
-    @ObservedObject var myViewModel: MyViewModel
+    @ObservedObject var myViewModel: BikeViewModel
     var param1: String//Можно параметризировать View
 
     var body: some View {

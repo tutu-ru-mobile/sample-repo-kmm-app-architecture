@@ -4,10 +4,19 @@ import app_di_swift
 import Foundation
 
 struct SolutionContentView: View {
-    @ObservedObject var myViewModel = MyViewModel()
+
+    let appDiIos = AppDiIos()
+    @ObservedObject var myViewModel:SolutionViewModel
+
+    init() {
+        self.myViewModel = SolutionViewModel(di: appDiIos.common)
+    }
 
     var body: some View {
-        AppDiIos().tabs.renderScaffold()
+        VStack {
+            Text("updateCount: \(myViewModel.myState.updateCount)")
+            appDiIos.tabs.renderScaffold()
+        }
     }
 }
 

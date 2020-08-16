@@ -57,7 +57,6 @@ class MyKotlinModel {
     }
 
     fun addListener(listener: (MyState) -> Unit) {
-        println("my addListener")
         todoScope {
             stateFlow.collectLatest {
                 listener(it)

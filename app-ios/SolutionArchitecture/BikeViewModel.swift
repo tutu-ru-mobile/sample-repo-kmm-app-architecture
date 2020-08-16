@@ -2,7 +2,7 @@ import app_di_swift
 import app_di
 import Foundation
 
-public class MyViewModel: ObservableObject {
+public class BikeViewModel: ObservableObject {
     @Published public var myState: MyState
     public let kotlinModel: MyKotlinModel
 
