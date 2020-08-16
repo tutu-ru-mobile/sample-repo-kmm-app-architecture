@@ -23,7 +23,7 @@ public struct SolutionTabsIOSImpl:SolutionTabsIOSApi {
                 common.store.state as! Solution_tabs_implSolutionTabsImpl.State
         let screen: Solution_tabs_implSolutionTabsImpl.Screen = state.screen
 
-        return VStack {
+        return VStack(alignment: .center) {
             if(screen is Solution_tabs_implSolutionTabsImpl.ScreenMain) {
                 Text("Main")
             } else if(screen is Solution_tabs_implSolutionTabsImpl.ScreenOrders) {
@@ -31,24 +31,25 @@ public struct SolutionTabsIOSImpl:SolutionTabsIOSApi {
             } else if(screen is Solution_tabs_implSolutionTabsImpl.ScreenSettings) {
                 Text("Settings")
             }
-            HStack {
+            Spacer()
+            HStack() {
                 Button(action: {
                     self.common.store.send(action: Solution_tabs_implSolutionTabsImpl.ActionSelectMain())
                 }) {
                     Text("Main")
-                }
+                }.padding()
                 Button(action: {
                     self.common.store.send(action: Solution_tabs_implSolutionTabsImpl.ActionSelectOrders())
                 }) {
                     Text("Orders")
-                }
+                }.padding()
                 Button(action: {
                     self.common.store.send(action: Solution_tabs_implSolutionTabsImpl.ActionSelectSettings())
                 }) {
                     Text("Settings")
-                }
+                }.padding()
             }
-        }
+        }.padding()
 
     }
 
