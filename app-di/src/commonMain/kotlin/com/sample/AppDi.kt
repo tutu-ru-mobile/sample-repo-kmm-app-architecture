@@ -1,11 +1,9 @@
 package com.sample
 
 import com.sample.app.*
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class AppDi {
     data class GlobalState(val updateCount: Int)
@@ -44,7 +42,7 @@ class AppDi {
     }
 
     fun addUpdate(f: Flow<*>) {
-        GlobalScope.launch {
+        todoScope {
             f.collect { update() }
         }
     }

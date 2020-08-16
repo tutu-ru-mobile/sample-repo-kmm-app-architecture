@@ -7,23 +7,23 @@ struct MyContentView: View {
     @ObservedObject var myViewModel = MyViewModel()
 
     var body: some View {
-//        AppDiIos().tabs.renderScaffold()
-        TabView {
-            MyListView(myViewModel: myViewModel, param1: "val1")
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "1.circle")
-                            Text("Tab1")
-                        }
-                    }
-            MyListView(myViewModel: myViewModel, param1: "val2")
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "2.circle")
-                            Text("Tab2")
-                        }
-                    }
-        }
+        AppDiIos().tabs.renderScaffold()
+//        TabView {
+//            MyListView(myViewModel: myViewModel, param1: "val1")
+//                    .tabItem {
+//                        VStack {
+//                            Image(systemName: "1.circle")
+//                            Text("Tab1")
+//                        }
+//                    }
+//            MyListView(myViewModel: myViewModel, param1: "val2")
+//                    .tabItem {
+//                        VStack {
+//                            Image(systemName: "2.circle")
+//                            Text("Tab2")
+//                        }
+//                    }
+//        }
     }
 }
 

@@ -5,10 +5,10 @@ import solution_tabs_impl_swift
 
 public class AppDiIos {
     let common = AppDi()
-    public let tabs = SolutionTabsIOSImpl()
+    public var tabs:SolutionTabsIOSImpl
 
     public init() {
-
+        tabs = SolutionTabsIOSImpl(common: common.mainNav)
     }
 
 }

@@ -4,6 +4,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-fun ktorScope(block: suspend () -> Unit) {
-    GlobalScope.launch(Dispatchers.Main) { block() }
+actual fun todoScope(block: suspend () -> Unit) {
+    GlobalScope.launch(/*Dispatchers.Main*/) { block() }
 }

@@ -17,7 +17,7 @@ class MyKotlinModel {
     fun getLastState() = stateFlow.value
 
     init {
-        ktorScope {
+        todoScope {
             while (true) {
                 delay(2000)
                 doAction(MyAction.Update())
@@ -58,7 +58,7 @@ class MyKotlinModel {
 
     fun addListener(listener: (MyState) -> Unit) {
         println("my addListener")
-        ktorScope {
+        todoScope {
             stateFlow.collectLatest {
                 listener(it)
             }

@@ -1,9 +1,7 @@
 package com.sample
 
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 class SolutionSearchStartImpl(val nav: SolutionNavigationApi) : SolutionSearchStartApi {
     data class State(
@@ -32,7 +30,7 @@ class SolutionSearchStartImpl(val nav: SolutionNavigationApi) : SolutionSearchSt
     override fun startSearch(query: String) {
         store.send(Action.StartSearch(query))
 
-        GlobalScope.launch {
+        todoScope {
             //todo SideEffect
             delay(1000)
             completeSearch()
