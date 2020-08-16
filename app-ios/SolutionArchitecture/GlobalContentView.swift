@@ -3,13 +3,13 @@ import app_di
 import app_di_swift
 import Foundation
 
-struct SolutionContentView: View {
+struct GlobalContentView: View {
 
     let appDiIos = AppDiIos()
-    @ObservedObject var myViewModel:SolutionViewModel
+    @ObservedObject var myViewModel:GlobalViewModel
 
     init() {
-        self.myViewModel = SolutionViewModel(di: appDiIos.common)
+        self.myViewModel = GlobalViewModel(di: appDiIos.common)
     }
 
     var body: some View {

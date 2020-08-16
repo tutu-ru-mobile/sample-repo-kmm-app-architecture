@@ -2,7 +2,7 @@ import app_di_swift
 import app_di
 import Foundation
 
-public class SolutionViewModel: ObservableObject {
+public class GlobalViewModel: ObservableObject {
     @Published public var myState: AppDi.GlobalState
 
     public init(di:AppDi) {
