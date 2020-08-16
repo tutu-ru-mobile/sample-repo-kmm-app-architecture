@@ -33,7 +33,7 @@ struct MyListView: View {
     var body: some View {
         NavigationView {
             List(myViewModel.myState.list, id: \.id) { item in
-                MyItemView(item: item, solutionA: SolutionAImpl()) {
+                MyItemView(item: item) {
                     self.myViewModel.doAction(action: MyAction.Click(item: item))
                 }
             }.navigationBarTitle("nav bar title")
@@ -41,15 +41,13 @@ struct MyListView: View {
     }
 }
 
-public struct MyItemView<S1:SolutionAApi>: View {
+public struct MyItemView: View {
     var item: MyItem
     var clickAction: () -> Void
-    var solutionA:S1
 
-    public init(item: MyItem, solutionA: S1, clickAction: @escaping () -> ()) {
+    public init(item: MyItem, clickAction: @escaping () -> ()) {
         self.item = item
         self.clickAction = clickAction
-        self.solutionA = solutionA
     }
 
     public var body: some View {
@@ -71,8 +69,6 @@ public struct MyItemView<S1:SolutionAApi>: View {
                     Text("Slots:").font(.subheadline).frame(width: 80, alignment: .leading)
                     Text("\(item.counter2)").font(.subheadline)
                 }
-                solutionA.render1()
-                solutionA.render2()
             }
             Button(action: { self.clickAction() }) {
                 Text("Click")
