@@ -3,27 +3,26 @@ import app_di
 import app_di_swift
 import Foundation
 
-struct MyContentView: View {
+struct BikeContentView: View {
     @ObservedObject var myViewModel = MyViewModel()
 
     var body: some View {
-        AppDiIos().tabs.renderScaffold()
-//        TabView {
-//            MyListView(myViewModel: myViewModel, param1: "val1")
-//                    .tabItem {
-//                        VStack {
-//                            Image(systemName: "1.circle")
-//                            Text("Tab1")
-//                        }
-//                    }
-//            MyListView(myViewModel: myViewModel, param1: "val2")
-//                    .tabItem {
-//                        VStack {
-//                            Image(systemName: "2.circle")
-//                            Text("Tab2")
-//                        }
-//                    }
-//        }
+        TabView {
+            MyListView(myViewModel: myViewModel, param1: "val1")
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "1.circle")
+                            Text("Tab1")
+                        }
+                    }
+            MyListView(myViewModel: myViewModel, param1: "val2")
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "2.circle")
+                            Text("Tab2")
+                        }
+                    }
+        }
     }
 }
 
@@ -81,25 +80,3 @@ public struct MyItemView<S1:SolutionAApi>: View {
         }
     }
 }
-
-public protocol SolutionAApi {
-    associatedtype V1:View
-    associatedtype V2:View
-    func render1() -> V1
-    func render2() -> V2
-}
-
-struct SolutionAImpl : SolutionAApi {
-
-    func render1() -> some View {
-        HStack{
-            Text("render1")
-            Text("render1")
-        }
-    }
-
-    func render2() -> some View {
-        Text("render2")
-    }
-}
-

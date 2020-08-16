@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1848896E621DDEBED2AD5167 /* MyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184880FB9DDD88F1908F16B3 /* MyContentView.swift */; };
+		1848852150318B7F652DA366 /* SolutionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184880366F87E288C6C88C03 /* SolutionContentView.swift */; };
+		1848896E621DDEBED2AD5167 /* BikeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184880FB9DDD88F1908F16B3 /* BikeContentView.swift */; };
 		18488F73525E2B873D2146BB /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184883D5757ABE4B6A66430F /* MyViewModel.swift */; };
 		326BD77024E48AB3003C9F4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326BD76F24E48AB3003C9F4E /* AppDelegate.swift */; };
 		326BD77224E48AB3003C9F4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326BD77124E48AB3003C9F4E /* SceneDelegate.swift */; };
@@ -40,7 +41,8 @@
 
 /* Begin PBXFileReference section */
 		0D05791C752B6CF00CEEDF4E /* Pods-SolutionArchitecture-SolutionArchitectureUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SolutionArchitecture-SolutionArchitectureUITests.release.xcconfig"; path = "Target Support Files/Pods-SolutionArchitecture-SolutionArchitectureUITests/Pods-SolutionArchitecture-SolutionArchitectureUITests.release.xcconfig"; sourceTree = "<group>"; };
-		184880FB9DDD88F1908F16B3 /* MyContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyContentView.swift; sourceTree = "<group>"; };
+		184880366F87E288C6C88C03 /* SolutionContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolutionContentView.swift; sourceTree = "<group>"; };
+		184880FB9DDD88F1908F16B3 /* BikeContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeContentView.swift; sourceTree = "<group>"; };
 		184883D5757ABE4B6A66430F /* MyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 		2AA6F18806312C3DFC57E7A4 /* Pods-SolutionArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SolutionArchitecture.release.xcconfig"; path = "Target Support Files/Pods-SolutionArchitecture/Pods-SolutionArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		3167BA9337D04E1BB674DDA1 /* Pods_SolutionArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SolutionArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,8 +126,9 @@
 				326BD77A24E48AB6003C9F4E /* LaunchScreen.storyboard */,
 				326BD77D24E48AB6003C9F4E /* Info.plist */,
 				326BD77724E48AB6003C9F4E /* Preview Content */,
-				184880FB9DDD88F1908F16B3 /* MyContentView.swift */,
+				184880FB9DDD88F1908F16B3 /* BikeContentView.swift */,
 				184883D5757ABE4B6A66430F /* MyViewModel.swift */,
+				184880366F87E288C6C88C03 /* SolutionContentView.swift */,
 			);
 			path = SolutionArchitecture;
 			sourceTree = "<group>";
@@ -385,8 +388,9 @@
 			files = (
 				326BD77024E48AB3003C9F4E /* AppDelegate.swift in Sources */,
 				326BD77224E48AB3003C9F4E /* SceneDelegate.swift in Sources */,
-				1848896E621DDEBED2AD5167 /* MyContentView.swift in Sources */,
+				1848896E621DDEBED2AD5167 /* BikeContentView.swift in Sources */,
 				18488F73525E2B873D2146BB /* MyViewModel.swift in Sources */,
+				1848852150318B7F652DA366 /* SolutionContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
