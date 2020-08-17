@@ -9,29 +9,29 @@ import kotlinx.coroutines.flow.collectLatest
 
 class AppDi {
     data class GlobalState(val updateCount: Int)
-    val wallet by lazy { SolutionWalletImpl() }
-    val auth by lazy { SolutionAuthImpl() }
-    val order by lazy { SolutionOrderImpl(auth, wallet) }
-    val settingsScreen by lazy { SolutionSettingsImpl() }
-    val attention by lazy { SolutionAttentionImpl() }
-    val searchFormSolution by lazy { SolutionSearchFormImpl(mainTabNav) }
-    val startSearch by lazy { SolutionSearchStartImpl(mainTabNav) }
-    val searchResult by lazy { SolutionSearchResultImpl(mainTabNav, order, wallet) }
-    val mainTab by lazy { SolutionTabSearchImpl(startSearch, searchResult) }
-    val mainNav by lazy { SolutionTabsImpl() }
-    val weather by lazy {SolutionWeatherImpl()}
-    val ab by lazy { SolutionAbImpl() }
+    val solutionWallet by lazy { SolutionWalletImpl() }
+    val solutionAuth by lazy { SolutionAuthImpl() }
+    val solutionOrder by lazy { SolutionOrderImpl(solutionAuth, solutionWallet) }
+    val solutionSettings by lazy { SolutionSettingsImpl() }
+    val solutionAttention by lazy { SolutionAttentionImpl() }
+    val solutionSearchForm by lazy { SolutionSearchFormImpl(mainTabNav) }
+    val solutionSearchStart by lazy { SolutionSearchStartImpl(mainTabNav) }
+    val solutionSearchResult by lazy { SolutionSearchResultImpl(mainTabNav, solutionOrder, solutionWallet) }
+    val solutionTabSearch by lazy { SolutionTabSearchImpl(solutionSearchStart, solutionSearchResult) }
+    val solutionTabs by lazy { SolutionTabsImpl() }
+    val solutionWeather by lazy {SolutionWeatherImpl()}
+    val solutionAb by lazy { SolutionAbImpl() }
 
     val mainTabNav: SolutionNavigationApi by lazy {
         object : SolutionNavigationApi {
             override fun navigateSearchForm() =
-                mainTab.navigateSearchForm()
+                solutionTabSearch.navigateSearchForm()
 
             override fun navigateStartSearch(query: String) =
-                mainTab.navigateStartSearch(query)
+                solutionTabSearch.navigateStartSearch(query)
 
             override fun navigateSearchResult(tickets: List<Ticket>) =
-                mainTab.navigateSearchResult(tickets)
+                solutionTabSearch.navigateSearchResult(tickets)
         }
     }
 
@@ -51,17 +51,17 @@ class AppDi {
     }
 
     init {
-        addUpdate(wallet.update)
-        addUpdate(auth.update)
-        addUpdate(order.update)
-        addUpdate(settingsScreen.update)
-        addUpdate(mainTab.update)
-        addUpdate(mainNav.update)
-        addUpdate(searchFormSolution.update)
-        addUpdate(startSearch.update)
-        addUpdate(searchResult.update)
-        addUpdate(weather.update)
-        addUpdate(ab.update)
+        addUpdate(solutionWallet.update)
+        addUpdate(solutionAuth.update)
+        addUpdate(solutionOrder.update)
+        addUpdate(solutionSettings.update)
+        addUpdate(solutionTabSearch.update)
+        addUpdate(solutionTabs.update)
+        addUpdate(solutionSearchForm.update)
+        addUpdate(solutionSearchStart.update)
+        addUpdate(solutionSearchResult.update)
+        addUpdate(solutionWeather.update)
+        addUpdate(solutionAb.update)
 
         if (false) {
             todoScope {

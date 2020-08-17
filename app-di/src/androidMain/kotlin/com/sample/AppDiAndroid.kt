@@ -1,55 +1,55 @@
 package com.sample
 
 class AppDiAndroid(val common: AppDi) {
-    val authAndroid by lazy { SolutionAuthAndroidImpl(common.auth) }
-    val walletAndroid by lazy { SolutionWalletAndroidImpl(common.wallet) }
-    val orderAndroid by lazy { SolutionOrderAndroidImpl(common.order, authAndroid) }
-    val startSearchAndroid by lazy { SolutionSearchStartAndroidImpl(common.startSearch) }
-    val searchResultAndroid by lazy {
+    val solutionAuthAndroid by lazy { SolutionAuthAndroidImpl(common.solutionAuth) }
+    val solutionWalletAndroid by lazy { SolutionWalletAndroidImpl(common.solutionWallet) }
+    val solutionOrderAndroid by lazy { SolutionOrderAndroidImpl(common.solutionOrder, solutionAuthAndroid) }
+    val solutionStartSearchAndroid by lazy { SolutionSearchStartAndroidImpl(common.solutionSearchStart) }
+    val solutionSearchResultAndroid by lazy {
         SolutionSearchResultAndroidImpl(
-            common.searchResult,
-            common.startSearch
+            common.solutionSearchResult,
+            common.solutionSearchStart
         )
     }
-    val weatherAndroid by lazy {
-        SolutionWeatherAndroidImpl(common.weather)
+    val solutionWeatherAndroid by lazy {
+        SolutionWeatherAndroidImpl(common.solutionWeather)
     }
-    val attentionAndroid by lazy {
+    val solutionAttentionAndroid by lazy {
         SolutionAttentionAndroidImpl(
-            common.attention,
-            common.auth,
-            weatherAndroid,
-            orderAndroid,
-            walletAndroid,
-            common.ab
+            common.solutionAttention,
+            common.solutionAuth,
+            solutionWeatherAndroid,
+            solutionOrderAndroid,
+            solutionWalletAndroid,
+            common.solutionAb
         )
     }
-    val searchFormSolutionAndroid by lazy {
+    val solutionSearchFormAndroid by lazy {
         SolutionSearchFormAndroidImpl(
-            common.searchFormSolution,
-            attentionAndroid
+            common.solutionSearchForm,
+            solutionAttentionAndroid
         )
     }
-    val mainTabAndroid by lazy {
+    val solutionTabSearchAndroid by lazy {
         SolutionTabSearchAndroidImpl(
-            common.mainTab,
-            searchFormSolutionAndroid,
-            startSearchAndroid,
-            searchResultAndroid
+            common.solutionTabSearch,
+            solutionSearchFormAndroid,
+            solutionStartSearchAndroid,
+            solutionSearchResultAndroid
         )
     }
-    val abAndroid by lazy {
-        SolutionAbAndroidImpl(common.ab)
+    val solutionAbAndroid by lazy {
+        SolutionAbAndroidImpl(common.solutionAb)
     }
-    val settingsAndroid by lazy {
-        SolutionSettingsAndroidImpl(common.settingsScreen, authAndroid, walletAndroid, abAndroid)
+    val solutionSettingsAndroid by lazy {
+        SolutionSettingsAndroidImpl(common.solutionSettings, solutionAuthAndroid, solutionWalletAndroid, solutionAbAndroid)
     }
-    val mainNavAndroid by lazy {
+    val solutionTabsAndroid by lazy {
         SolutionTabsAndroidImpl(
-            common.mainNav,
-            mainTabAndroid,
-            orderAndroid,
-            settingsAndroid
+            common.solutionTabs,
+            solutionTabSearchAndroid,
+            solutionOrderAndroid,
+            solutionSettingsAndroid
         )
     }
 }

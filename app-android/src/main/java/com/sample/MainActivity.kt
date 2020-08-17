@@ -9,7 +9,6 @@ import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Typography
 import androidx.ui.text.TextStyle
 import androidx.ui.unit.sp
-import com.sample.AppDiAndroid
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val state by di.globalStateFlow.collectAsState()
                 println("actionCount: $state")
-                diAndroid.mainNavAndroid.renderScaffold()
+                diAndroid.solutionTabsAndroid.renderScaffold()
             }
         }
     }
