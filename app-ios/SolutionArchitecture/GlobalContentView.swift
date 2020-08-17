@@ -15,7 +15,7 @@ struct GlobalContentView: View {
     var body: some View {
         VStack {
             Text("updateCount: \(myViewModel.myState.updateCount)")
-            appDiIos.tabs.renderScaffold()
+            appDiIos.solutionTabs.renderScaffold()
         }
     }
 

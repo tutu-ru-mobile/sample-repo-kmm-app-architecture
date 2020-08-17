@@ -28,19 +28,21 @@ import solution_weather_impl_swift
 
 public class AppDiIos {
     public let common = AppDi()
-    lazy public var searchForm = SolutionSearchFormIosImpl()
-    lazy public var searchStart = SolutionSearchStartIosImpl()
-    lazy public var searchResult = SolutionSearchResultIosImpl()
-    lazy public var searchTab = SolutionTabSearchIosImpl(
+    lazy public var solutionSearchFormIos = SolutionSearchFormIosImpl()
+    lazy public var solutionSearchStartIos = SolutionSearchStartIosImpl()
+    lazy public var solutionSearchResultIos = SolutionSearchResultIosImpl()
+    lazy public var solutionTabSearch = SolutionTabSearchIosImpl(
             common: common.solutionTabSearch,
-            searchForm: searchForm,
-            searchStart: searchStart,
-            searchResult: searchResult
+            searchForm: solutionSearchFormIos,
+            searchStart: solutionSearchStartIos,
+            searchResult: solutionSearchResultIos
     )
-    lazy public var tabs = SolutionTabsIOSImpl(
+    lazy public var solutionTabs = SolutionTabsIOSImpl(
             common: common.solutionTabs,
-            searchTabIos: searchTab
+            searchTabIos: solutionTabSearch
     )
+    lazy public var solutionWeatherIos = SolutionWeatherIosImpl()
+    lazy public var solutionWalletIos = SolutionWalletIosImpl()
 
     public init() {
 
