@@ -3,14 +3,17 @@ import java.util.*
 
 //const val KOTLIN_VERSION = "1.4-M3"
 //const val COROUTINES_VERSION = "1.3.7-1.4-M3"
-const val KOTLIN_VERSION = "1.4.0-rc"
+const val KOTLIN_VERSION = "1.4.0"
 //const val KOTLIN_VERSION = "1.4.0-release-324"
 //const val KOTLIN_VERSION = "1.4.20-SNAPSHOT"
 //const val KOTLIN_VERSION = "1.4.255-SNAPSHOT"
 //const val COROUTINES_VERSION = "1.3.8-1.4.0-rc"
-const val COROUTINES_VERSION = "1.3.8-native-mt-1.4.0-rc"
-const val COROUTINES_NATIVE_VERSION = "1.3.8-native-mt-1.4.0-rc"
-const val KTOR_VERSION = "1.3.2-1.4.0-rc"
+//const val COROUTINES_VERSION = "1.3.8-native-mt-1.4.0-rc"
+//const val COROUTINES_VERSION = "1.3.9"
+const val COROUTINES_NATIVE_VERSION = "1.3.8-native-mt-1.4.0-rc"//todo https://bintray.com/kotlin/kotlinx/kotlinx.coroutines
+const val COROUTINES_VERSION = COROUTINES_NATIVE_VERSION
+//const val KTOR_VERSION = "1.3.2-1.4.0-rc"
+const val KTOR_VERSION = "1.4.0"
 
 //const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha06"
 const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha07"
