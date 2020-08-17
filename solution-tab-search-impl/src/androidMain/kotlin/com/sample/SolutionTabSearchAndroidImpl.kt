@@ -15,7 +15,7 @@ class SolutionTabSearchAndroidImpl(
             is SolutionTabSearchImpl.Screen.SearchForm -> {
                 searchForm.renderSearchForm()
             }
-            is SolutionTabSearchImpl.Screen.StartSearch -> {
+            is SolutionTabSearchImpl.Screen.SearchStart -> {
                 searchStart.renderSearching()
             }
             is SolutionTabSearchImpl.Screen.SearchResult -> {

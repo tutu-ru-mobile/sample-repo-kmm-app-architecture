@@ -9,7 +9,7 @@ class SolutionTabSearchImpl(
 
     sealed class Screen {
         object SearchForm : Screen()
-        object StartSearch : Screen()
+        object SearchStart : Screen()
         object SearchResult : Screen()
     }
 
@@ -37,7 +37,7 @@ class SolutionTabSearchImpl(
 
     override fun navigateStartSearch(query: String) {
         startSearch.startSearch(query)
-        store.send(Action.SetScreen(Screen.StartSearch))
+        store.send(Action.SetScreen(Screen.SearchStart))
     }
 
     override fun navigateSearchResult(tickets: List<Ticket>) {
@@ -46,4 +46,22 @@ class SolutionTabSearchImpl(
     }
 
     val update: Flow<*> = store.stateFlow
+
+    //for iOS:
+    fun isSearchForm():Boolean {
+        return store.state.screen is Screen.SearchForm
+    }
+
+    fun isSearchStart():Boolean {
+        return store.state.screen is Screen.SearchStart
+    }
+
+    fun isSearchResult():Boolean {
+        return store.state.screen is Screen.SearchResult
+    }
+
+    fun getState():State {
+        return store.state
+    }
+
 }

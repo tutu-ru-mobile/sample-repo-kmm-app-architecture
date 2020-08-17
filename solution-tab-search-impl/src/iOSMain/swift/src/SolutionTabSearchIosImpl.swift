@@ -15,7 +15,7 @@ public struct SolutionTabSearchIosImpl
 
     private var common: Solution_tab_search_implSolutionTabSearchImpl
     private var searchForm: TSolutionSearchFormIosApi
-    private var startSearch: TSolutionSearchStartIosApi
+    private var searchStart: TSolutionSearchStartIosApi
     private var searchResult: TSolutionSearchResultIosApi
 
     public init(
@@ -26,13 +26,21 @@ public struct SolutionTabSearchIosImpl
     ) {
         self.common = common
         self.searchForm = searchForm
-        self.startSearch = searchStart
+        self.searchStart = searchStart
         self.searchResult = searchResult
     }
 
     public func renderMainScreen() -> some View {
         HStack {
-            Text("todo renderMainScreen")
+            if(common.isSearchForm()) {
+                searchForm.todoRender()
+            }
+            if(common.isSearchStart()) {
+                searchStart.todoRender()
+            }
+            if(common.isSearchResult()) {
+                searchResult.todoRender()
+            }
         }
     }
 

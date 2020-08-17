@@ -11,7 +11,7 @@ public struct SolutionSearchFormIosImpl
     }
 
     public func todoRender() -> some View {
-        Text("todoRender")
+        Text("SolutionSearchFormIosImpl")
     }
 
 }
