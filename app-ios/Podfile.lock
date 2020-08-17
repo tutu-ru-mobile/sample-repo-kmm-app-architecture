@@ -30,14 +30,17 @@ PODS:
     - app_di
   - solution_ab_impl_swift (0.0.1):
     - app_di
+    - solution_ab_api_swift
   - solution_attention_api_swift (0.0.1):
     - app_di
   - solution_attention_impl_swift (0.0.1):
     - app_di
+    - solution_attention_api_swift
   - solution_auth_api_swift (0.0.1):
     - app_di
   - solution_auth_impl_swift (0.0.1):
     - app_di
+    - solution_auth_api_swift
   - solution_order_api_swift (0.0.1):
     - app_di
   - solution_order_impl_swift (0.0.1):
@@ -174,11 +177,11 @@ SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
   app_di_swift: 21c82a335e1151e8ebf2a90a4177804af855e7e8
   solution_ab_api_swift: 65be803074180f7353144c18386880f8081410aa
-  solution_ab_impl_swift: a63ac05d529329d9df4d1c2242583c73969ae56d
+  solution_ab_impl_swift: 310913614513ba4c15080080f884930e40fd6eef
   solution_attention_api_swift: bc87137967202ef362ada0ba6749ba0eee2db61a
-  solution_attention_impl_swift: d914cd85c7be7d67885d87d4272b4da3701f9686
+  solution_attention_impl_swift: 666edfd2a9823af10809e4eb6666caf1773b3360
   solution_auth_api_swift: 941159ecfb6219cf4f76559c0e24fdeb8b02ab8f
-  solution_auth_impl_swift: ffa2a5658fff5ffd70483ea3408b8a149049956f
+  solution_auth_impl_swift: 79973585c26d360985f74be3a611e62b4f2c4a62
   solution_order_api_swift: 8269fea6222baa1d93a17678ca2325a8d340ffc3
   solution_order_impl_swift: 1ff41ff4d63d6ac43c37866c110b5ddcefed9728
   solution_search_form_api_swift: 47faa92606de385499e85980b581dce3ec505dd4
