@@ -44,6 +44,7 @@ public class AppDiIos {
     lazy public var solutionWeatherIos = SolutionWeatherIosImpl()
     lazy public var solutionWalletIos = SolutionWalletIosImpl()
     lazy public var solutionSettingsIos = SolutionSettingsIosImpl()
+    lazy public var solutionOrderIos = SolutionOrderIosImpl()
 
     public init() {
 
