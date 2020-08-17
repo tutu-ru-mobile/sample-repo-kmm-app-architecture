@@ -2,12 +2,16 @@ import SwiftUI
 import Foundation
 import app_di
 import solution_tabs_api_swift
+import solution_tab_search_api_swift
 
 public struct SolutionTabsIOSImpl:SolutionTabsIOSApi {
 
     var common:Solution_tabs_implSolutionTabsImpl
 
-    public init(common: Solution_tabs_implSolutionTabsImpl) {
+    public init(
+            common: Solution_tabs_implSolutionTabsImpl,
+            searchTabIos: SolutionTabSearchIosApi
+                ) {
         self.common = common
     }
 

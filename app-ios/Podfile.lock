@@ -2,6 +2,7 @@ PODS:
   - app_di (1.0)
   - app_di_swift (0.0.1):
     - app_di
+    - solution_tab_search_impl_swift
     - solution_tabs_impl_swift
   - solution_ab_api_swift (0.0.1):
     - app_di
@@ -39,10 +40,12 @@ PODS:
     - app_di
   - solution_tab_search_impl_swift (0.0.1):
     - app_di
+    - solution_tab_search_api_swift
   - solution_tabs_api_swift (0.0.1):
     - app_di
   - solution_tabs_impl_swift (0.0.1):
     - app_di
+    - solution_tab_search_api_swift
     - solution_tabs_api_swift
   - solution_wallet_api_swift (0.0.1):
     - app_di
@@ -137,7 +140,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
-  app_di_swift: e95bde70562f29f7ed5319b48186037631c492d2
+  app_di_swift: 3d17125043eea2617bb2452bdd66ae3137fd44a6
   solution_ab_api_swift: 65be803074180f7353144c18386880f8081410aa
   solution_ab_impl_swift: a63ac05d529329d9df4d1c2242583c73969ae56d
   solution_attention_api_swift: bc87137967202ef362ada0ba6749ba0eee2db61a
@@ -155,9 +158,9 @@ SPEC CHECKSUMS:
   solution_settings_api_swift: 4131f21fbee3c2ce7d273b34298285d8ba5dae99
   solution_settings_impl_swift: 5d4c5d7f42c2f99909440110cba9bf99378ee4a0
   solution_tab_search_api_swift: 63d3d3a1988a9f0b5bfbcdbfce96cfec8e43355d
-  solution_tab_search_impl_swift: 2bb7ed9538694b39fe22b2d878ce91abca39584f
+  solution_tab_search_impl_swift: 19604fc2a30aec7e47f4336621663dae3ca98776
   solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
-  solution_tabs_impl_swift: ad6211caf6205571d004d09bd3ab2cffe6c45fab
+  solution_tabs_impl_swift: 06fcdb1bb0c4f2ba407908e89539b4da00057285
   solution_wallet_api_swift: ef221ee22043811364ca5bf8c33ecf47f34ddaf1
   solution_wallet_impl_swift: e0b486e53fd58661995fc6c64b3399e15c0f5c7a
   solution_weather_api_swift: 6d85e17551a638cb8764ef4e2b3a91534817db33

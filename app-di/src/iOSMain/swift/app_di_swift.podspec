@@ -14,5 +14,6 @@ Pod::Spec.new do |s|
   s.macos.deployment_target = '10.10'
   s.dependency 'app_di'
   s.dependency 'solution_tabs_impl_swift'
+  s.dependency 'solution_tab_search_impl_swift'
   s.static_framework = true
 end
