@@ -39,9 +39,11 @@ public class AppDiIos {
             searchStart: solutionSearchStartIos,
             searchResult: solutionSearchResultIos
     )
-    lazy public var solutionTabs = SolutionTabsIOSImpl(
+    lazy public var solutionTabs = SolutionTabsIosImpl(
             common: common.solutionTabs,
-            searchTabIos: solutionTabSearch
+            tabSearchIos: solutionTabSearch,
+            orderIos: solutionOrderIos,
+            settingsIos: solutionSettingsIos
     )
     lazy public var solutionWeatherIos = SolutionWeatherIosImpl()
     lazy public var solutionWalletIos = SolutionWalletIosImpl()

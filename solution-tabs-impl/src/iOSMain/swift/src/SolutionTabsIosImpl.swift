@@ -3,22 +3,32 @@ import Foundation
 import app_di
 import solution_tabs_api_swift
 import solution_tab_search_api_swift
+import solution_order_api_swift
+import solution_settings_api_swift
 
-public struct SolutionTabsIOSImpl
+public struct SolutionTabsIosImpl
         <
-        TSolutionTabSearchIosApi: SolutionTabSearchIosApi
+        TSolutionTabSearchIosApi: SolutionTabSearchIosApi,
+        TSolutionOrderIosApi: SolutionOrderIosApi,
+        TSolutionSettingsIosApi: SolutionSettingsIosApi
         >
         : SolutionTabsIOSApi {
 
     var common: Solution_tabs_implSolutionTabsImpl
     var searchTabIos: TSolutionTabSearchIosApi
+    var orderIos: TSolutionOrderIosApi
+    var settingsIos: TSolutionSettingsIosApi
 
     public init(
             common: Solution_tabs_implSolutionTabsImpl,
-            searchTabIos: TSolutionTabSearchIosApi
+            tabSearchIos: TSolutionTabSearchIosApi,
+            orderIos: TSolutionOrderIosApi,
+            settingsIos: TSolutionSettingsIosApi
     ) {
         self.common = common
-        self.searchTabIos = searchTabIos
+        self.searchTabIos = tabSearchIos
+        self.orderIos = orderIos
+        self.settingsIos = settingsIos
     }
 
     public func renderBottomNavigation() -> some View {
@@ -51,9 +61,9 @@ public struct SolutionTabsIOSImpl
                     searchTabIos.renderMainScreen()
                 }
             } else if (screen is Solution_tabs_implSolutionTabsImpl.ScreenOrders) {
-                Text("Orders")
+                orderIos.renderAllOrders()
             } else if (screen is Solution_tabs_implSolutionTabsImpl.ScreenSettings) {
-                Text("Settings")
+                settingsIos.renderSettings()
             }
             Spacer()
             renderBottomNavigation()

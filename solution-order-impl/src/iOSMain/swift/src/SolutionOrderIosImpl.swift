@@ -10,8 +10,8 @@ public struct SolutionOrderIosImpl
 
     }
 
-    public func todoRender() -> some View {
-        Text("todoRender")
+    public func renderAllOrders() -> some View {
+        Text("SolutionOrderIosImpl renderAllOrders")
     }
 
 }

@@ -11,9 +11,9 @@ public struct SolutionSettingsIosImpl: SolutionSettingsIosApi {
 
     }
 
-    public func todoRender() -> some View {
+    public func renderSettings() -> some View {
         HStack {
-            Text("todoRender")
+            Text("SolutionSettingsIosImpl renderSettings")
         }
     }
 

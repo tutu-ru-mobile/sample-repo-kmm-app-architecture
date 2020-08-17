@@ -4,5 +4,5 @@ import app_di
 
 public protocol SolutionOrderIosApi {
     associatedtype V1: View
-    func todoRender() -> V1
+    func renderAllOrders() -> V1
 }

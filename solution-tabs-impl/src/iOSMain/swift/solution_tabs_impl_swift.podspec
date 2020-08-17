@@ -15,5 +15,7 @@ Pod::Spec.new do |s|
   s.dependency 'app_di'
   s.dependency 'solution_tabs_api_swift'
   s.dependency 'solution_tab_search_api_swift'
+  s.dependency 'solution_order_api_swift'
+  s.dependency 'solution_settings_api_swift'
   s.static_framework = true
 end

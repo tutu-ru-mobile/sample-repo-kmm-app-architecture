@@ -78,6 +78,8 @@ PODS:
     - app_di
   - solution_tabs_impl_swift (0.0.1):
     - app_di
+    - solution_order_api_swift
+    - solution_settings_api_swift
     - solution_tab_search_api_swift
     - solution_tabs_api_swift
   - solution_wallet_api_swift (0.0.1):
@@ -195,7 +197,7 @@ SPEC CHECKSUMS:
   solution_tab_search_api_swift: 63d3d3a1988a9f0b5bfbcdbfce96cfec8e43355d
   solution_tab_search_impl_swift: 3e55a905a08a1dce52f9b2986360edc8b6eb263d
   solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
-  solution_tabs_impl_swift: 06fcdb1bb0c4f2ba407908e89539b4da00057285
+  solution_tabs_impl_swift: 0aec37c351a8249f7b15c5ba0dd2ba7855d4299b
   solution_wallet_api_swift: ef221ee22043811364ca5bf8c33ecf47f34ddaf1
   solution_wallet_impl_swift: 1626f675a7a17ad71d9a114e73f3977374972de9
   solution_weather_api_swift: 6d85e17551a638cb8764ef4e2b3a91534817db33
