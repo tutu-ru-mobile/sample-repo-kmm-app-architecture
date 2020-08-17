@@ -2,8 +2,30 @@ PODS:
   - app_di (1.0)
   - app_di_swift (0.0.1):
     - app_di
+    - solution_ab_api_swift
+    - solution_ab_impl_swift
+    - solution_attention_api_swift
+    - solution_attention_impl_swift
+    - solution_auth_api_swift
+    - solution_auth_impl_swift
+    - solution_order_api_swift
+    - solution_order_impl_swift
+    - solution_search_form_api_swift
+    - solution_search_form_impl_swift
+    - solution_search_result_api_swift
+    - solution_search_result_impl_swift
+    - solution_search_start_api_swift
+    - solution_search_start_impl_swift
+    - solution_settings_api_swift
+    - solution_settings_impl_swift
+    - solution_tab_search_api_swift
     - solution_tab_search_impl_swift
+    - solution_tabs_api_swift
     - solution_tabs_impl_swift
+    - solution_wallet_api_swift
+    - solution_wallet_impl_swift
+    - solution_weather_api_swift
+    - solution_weather_impl_swift
   - solution_ab_api_swift (0.0.1):
     - app_di
   - solution_ab_impl_swift (0.0.1):
@@ -140,7 +162,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
-  app_di_swift: 3d17125043eea2617bb2452bdd66ae3137fd44a6
+  app_di_swift: 21c82a335e1151e8ebf2a90a4177804af855e7e8
   solution_ab_api_swift: 65be803074180f7353144c18386880f8081410aa
   solution_ab_impl_swift: a63ac05d529329d9df4d1c2242583c73969ae56d
   solution_attention_api_swift: bc87137967202ef362ada0ba6749ba0eee2db61a

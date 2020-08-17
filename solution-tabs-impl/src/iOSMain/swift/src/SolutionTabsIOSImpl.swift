@@ -4,21 +4,22 @@ import app_di
 import solution_tabs_api_swift
 import solution_tab_search_api_swift
 
-public struct SolutionTabsIOSImpl:SolutionTabsIOSApi {
+public struct SolutionTabsIOSImpl<S1: SolutionTabSearchIosApi>: SolutionTabsIOSApi {
 
-    var common:Solution_tabs_implSolutionTabsImpl
+    var common: Solution_tabs_implSolutionTabsImpl
+    var searchTabIos: S1
 
     public init(
             common: Solution_tabs_implSolutionTabsImpl,
-            searchTabIos: SolutionTabSearchIosApi
-                ) {
+            searchTabIos: S1
+    ) {
         self.common = common
+        self.searchTabIos = searchTabIos
     }
 
     public func renderBottomNavigation() -> some View {
-        HStack{
-            Text("render1")
-            Text("render1")
+        HStack {
+            Text("todo renderBottomNavigation")
         }
     }
 
@@ -28,11 +29,13 @@ public struct SolutionTabsIOSImpl:SolutionTabsIOSApi {
         let screen: Solution_tabs_implSolutionTabsImpl.Screen = state.screen
 
         return VStack(alignment: .center) {
-            if(screen is Solution_tabs_implSolutionTabsImpl.ScreenMain) {
-                Text("Main")
-            } else if(screen is Solution_tabs_implSolutionTabsImpl.ScreenOrders) {
+            if (screen is Solution_tabs_implSolutionTabsImpl.ScreenMain) {
+                HStack {
+                    searchTabIos.renderMainScreen()
+                }
+            } else if (screen is Solution_tabs_implSolutionTabsImpl.ScreenOrders) {
                 Text("Orders")
-            } else if(screen is Solution_tabs_implSolutionTabsImpl.ScreenSettings) {
+            } else if (screen is Solution_tabs_implSolutionTabsImpl.ScreenSettings) {
                 Text("Settings")
             }
             Spacer()

@@ -6,7 +6,7 @@ import solution_tab_search_impl_swift
 
 public class AppDiIos {
     public let common = AppDi()
-    public var tabs:SolutionTabsIOSImpl
+    public var tabs:SolutionTabsIOSImpl<SolutionTabSearchIosImpl>
     public var searchTab:SolutionTabSearchIosImpl
 
     public init() {
