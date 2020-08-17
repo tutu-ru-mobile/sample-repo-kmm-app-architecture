@@ -33,7 +33,7 @@ public struct SolutionTabSearchIosImpl
     public func renderMainScreen() -> some View {
         HStack {
             if(common.isSearchForm()) {
-                searchForm.todoRender()
+                searchForm.renderSearchForm()
             }
             if(common.isSearchStart()) {
                 searchStart.todoRender()

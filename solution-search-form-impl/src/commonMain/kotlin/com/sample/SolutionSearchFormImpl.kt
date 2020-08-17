@@ -37,4 +37,15 @@ class SolutionSearchFormImpl(
     }
 
     val update: Flow<*> = store.stateFlow
+
+    //iOS:
+    fun getState() = store.state
+    fun send(action: Action) {
+        store.send(action)
+    }
+
+    fun getActionSearch(str:String) = Action.From(str)
+    fun getActionTo(str:String) = Action.To(str)
+    fun getActionSearch()  = Action.Search
+
 }
