@@ -6,15 +6,13 @@ import solution_tab_search_impl_swift
 
 public class AppDiIos {
     public let common = AppDi()
-    public var tabs:SolutionTabsIOSImpl<SolutionTabSearchIosImpl>
-    public var searchTab:SolutionTabSearchIosImpl
+    lazy public var searchTab = SolutionTabSearchIosImpl()
+    lazy public var tabs = SolutionTabsIOSImpl(
+            common: common.mainNav,
+            searchTabIos: searchTab
+    )
 
     public init() {
-        searchTab = SolutionTabSearchIosImpl()
-        tabs = SolutionTabsIOSImpl(
-                common: common.mainNav,
-                searchTabIos: searchTab
-                )
-    }
 
+    }
 }
