@@ -46,14 +46,17 @@ PODS:
     - app_di
   - solution_search_form_impl_swift (0.0.1):
     - app_di
+    - solution_search_form_api_swift
   - solution_search_result_api_swift (0.0.1):
     - app_di
   - solution_search_result_impl_swift (0.0.1):
     - app_di
+    - solution_search_result_api_swift
   - solution_search_start_api_swift (0.0.1):
     - app_di
   - solution_search_start_impl_swift (0.0.1):
     - app_di
+    - solution_search_start_api_swift
   - solution_settings_api_swift (0.0.1):
     - app_di
   - solution_settings_impl_swift (0.0.1):
@@ -62,6 +65,9 @@ PODS:
     - app_di
   - solution_tab_search_impl_swift (0.0.1):
     - app_di
+    - solution_search_form_api_swift
+    - solution_search_result_api_swift
+    - solution_search_start_api_swift
     - solution_tab_search_api_swift
   - solution_tabs_api_swift (0.0.1):
     - app_di
@@ -172,15 +178,15 @@ SPEC CHECKSUMS:
   solution_order_api_swift: 8269fea6222baa1d93a17678ca2325a8d340ffc3
   solution_order_impl_swift: a38dae0eae8e13e1431a70549bb3f36f0c8cf28c
   solution_search_form_api_swift: 47faa92606de385499e85980b581dce3ec505dd4
-  solution_search_form_impl_swift: 87ec8bc03dd2188936c0ff09b2c40f1834d682f1
+  solution_search_form_impl_swift: 3cae8e65f373ccec63a29a8c1b51598e280ca937
   solution_search_result_api_swift: e3ec0564adec584150b03dde3ac742115d6e69b8
-  solution_search_result_impl_swift: b513024bade9fbe4af22cffd9ea343dfcb41b28f
+  solution_search_result_impl_swift: 37beed81dc8f3347a1356129a50060941a90739f
   solution_search_start_api_swift: 96f7aa2e0c5595e42c4da12bdb58e07bffbea8d7
-  solution_search_start_impl_swift: d70c6942411270817fe6aa2d9f535f6d09435a32
+  solution_search_start_impl_swift: 74fd4c8e7749c0c29f9badbd07aec4af19ca23ca
   solution_settings_api_swift: 4131f21fbee3c2ce7d273b34298285d8ba5dae99
   solution_settings_impl_swift: 5d4c5d7f42c2f99909440110cba9bf99378ee4a0
   solution_tab_search_api_swift: 63d3d3a1988a9f0b5bfbcdbfce96cfec8e43355d
-  solution_tab_search_impl_swift: 19604fc2a30aec7e47f4336621663dae3ca98776
+  solution_tab_search_impl_swift: 3e55a905a08a1dce52f9b2986360edc8b6eb263d
   solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
   solution_tabs_impl_swift: 06fcdb1bb0c4f2ba407908e89539b4da00057285
   solution_wallet_api_swift: ef221ee22043811364ca5bf8c33ecf47f34ddaf1

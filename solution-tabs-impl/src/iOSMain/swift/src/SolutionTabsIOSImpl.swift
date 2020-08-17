@@ -4,7 +4,11 @@ import app_di
 import solution_tabs_api_swift
 import solution_tab_search_api_swift
 
-public struct SolutionTabsIOSImpl<TSolutionTabSearchIosApi: SolutionTabSearchIosApi>: SolutionTabsIOSApi {
+public struct SolutionTabsIOSImpl
+        <
+        TSolutionTabSearchIosApi: SolutionTabSearchIosApi
+        >
+        : SolutionTabsIOSApi {
 
     var common: Solution_tabs_implSolutionTabsImpl
     var searchTabIos: TSolutionTabSearchIosApi

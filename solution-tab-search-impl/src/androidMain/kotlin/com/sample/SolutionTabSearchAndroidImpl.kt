@@ -5,7 +5,7 @@ import androidx.compose.Composable
 class SolutionTabSearchAndroidImpl(
     val common: SolutionTabSearchImpl,
     val searchForm: SolutionSearchFormAndroidApi,
-    val startSearch: SolutionSearchStartAndroidApi,
+    val searchStart: SolutionSearchStartAndroidApi,
     val searchResult: SolutionSearchResultAndroidApi
 ) : SolutionTabSearchAndroidApi {
 
@@ -16,7 +16,7 @@ class SolutionTabSearchAndroidImpl(
                 searchForm.renderSearchForm()
             }
             is SolutionTabSearchImpl.Screen.StartSearch -> {
-                startSearch.renderSearching()
+                searchStart.renderSearching()
             }
             is SolutionTabSearchImpl.Screen.SearchResult -> {
                 searchResult.renderSearchResult()

@@ -19,7 +19,6 @@ Pod::Spec.new do |s|
   s.dependency 'solution_attention_impl_swift'
   s.dependency 'solution_auth_api_swift'
   s.dependency 'solution_auth_impl_swift'
-#   s.dependency 'solution_navigation_api_swift'
   s.dependency 'solution_order_api_swift'
   s.dependency 'solution_order_impl_swift'
   s.dependency 'solution_search_form_api_swift'
@@ -38,5 +37,6 @@ Pod::Spec.new do |s|
   s.dependency 'solution_wallet_impl_swift'
   s.dependency 'solution_weather_api_swift'
   s.dependency 'solution_weather_impl_swift'
+#   s.dependency 'solution_navigation_api_swift'
   s.static_framework = true
 end
