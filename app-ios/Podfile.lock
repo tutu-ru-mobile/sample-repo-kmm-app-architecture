@@ -79,10 +79,12 @@ PODS:
     - app_di
   - solution_wallet_impl_swift (0.0.1):
     - app_di
+    - solution_wallet_api_swift
   - solution_weather_api_swift (0.0.1):
     - app_di
   - solution_weather_impl_swift (0.0.1):
     - app_di
+    - solution_weather_api_swift
 
 DEPENDENCIES:
   - app_di (from `../app-di`)
@@ -190,9 +192,9 @@ SPEC CHECKSUMS:
   solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
   solution_tabs_impl_swift: 06fcdb1bb0c4f2ba407908e89539b4da00057285
   solution_wallet_api_swift: ef221ee22043811364ca5bf8c33ecf47f34ddaf1
-  solution_wallet_impl_swift: e0b486e53fd58661995fc6c64b3399e15c0f5c7a
+  solution_wallet_impl_swift: 1626f675a7a17ad71d9a114e73f3977374972de9
   solution_weather_api_swift: 6d85e17551a638cb8764ef4e2b3a91534817db33
-  solution_weather_impl_swift: faf657715d8955490c69f1d98b371e7cd62cb313
+  solution_weather_impl_swift: bc33d88bea394cd3003037bb48f0619c62b80526
 
 PODFILE CHECKSUM: fab32557ecb29bf2748b320aad49bf8e5aba2f11
 

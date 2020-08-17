@@ -32,13 +32,13 @@ public class AppDiIos {
     lazy public var searchStart = SolutionSearchStartIosImpl()
     lazy public var searchResult = SolutionSearchResultIosImpl()
     lazy public var searchTab = SolutionTabSearchIosImpl(
-            common: common.mainTab,
+            common: common.solutionTabSearch,
             searchForm: searchForm,
             searchStart: searchStart,
             searchResult: searchResult
     )
     lazy public var tabs = SolutionTabsIOSImpl(
-            common: common.mainNav,
+            common: common.solutionTabs,
             searchTabIos: searchTab
     )
 
