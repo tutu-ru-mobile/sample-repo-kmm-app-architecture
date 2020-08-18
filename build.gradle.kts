@@ -24,6 +24,9 @@ allprojects {
         google()
         jcenter()
         maven {
+            setUrl("https://dl.bintray.com/kotlin/kotlinx")
+        }
+        maven {
             setUrl("https://dl.bintray.com/kotlin/kotlin-eap")
         }
     }
