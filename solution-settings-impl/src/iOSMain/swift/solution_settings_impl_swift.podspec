@@ -14,5 +14,8 @@ Pod::Spec.new do |s|
   s.macos.deployment_target = '10.10'
   s.dependency 'app_di'
   s.dependency 'solution_settings_api_swift'
+  s.dependency 'solution_auth_api_swift'
+  s.dependency 'solution_wallet_api_swift'
+  s.dependency 'solution_ab_api_swift'
   s.static_framework = true
 end

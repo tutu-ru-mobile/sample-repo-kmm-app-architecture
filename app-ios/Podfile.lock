@@ -66,7 +66,10 @@ PODS:
     - app_di
   - solution_settings_impl_swift (0.0.1):
     - app_di
+    - solution_ab_api_swift
+    - solution_auth_api_swift
     - solution_settings_api_swift
+    - solution_wallet_api_swift
   - solution_tab_search_api_swift (0.0.1):
     - app_di
   - solution_tab_search_impl_swift (0.0.1):
@@ -194,7 +197,7 @@ SPEC CHECKSUMS:
   solution_search_start_api_swift: 96f7aa2e0c5595e42c4da12bdb58e07bffbea8d7
   solution_search_start_impl_swift: 74fd4c8e7749c0c29f9badbd07aec4af19ca23ca
   solution_settings_api_swift: 4131f21fbee3c2ce7d273b34298285d8ba5dae99
-  solution_settings_impl_swift: 66afeb6578e88a8c02ca3fe9f1138ad946589c59
+  solution_settings_impl_swift: 1b191b8c14cef57d7a141d457fcc6413eae9fbe3
   solution_tab_search_api_swift: 63d3d3a1988a9f0b5bfbcdbfce96cfec8e43355d
   solution_tab_search_impl_swift: 3e55a905a08a1dce52f9b2986360edc8b6eb263d
   solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
