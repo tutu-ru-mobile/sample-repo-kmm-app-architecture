@@ -16,7 +16,10 @@ public struct SolutionAuthIosImpl
         VStack {
             Text("renderLoginForm")
             if (self.common.isAuthorized()) {
-
+                Text("Вы авторизованы: \(self.common.getState().login)")
+                Button("Выйти") {
+                    self.common.send(action: self.common.getActionLogOut())
+                }
             } else if (self.common.getState().enterLogin) {
                 LoginInputTextView(label: "login", value: self.common.getState().login) { loginStr in
                     self.common.send(action: self.common.getActionEditLogin(str: loginStr))
@@ -24,13 +27,18 @@ public struct SolutionAuthIosImpl
                 LoginInputTextView(label: "password", value: self.common.getState().pass) { passwordStr in
                     self.common.send(action: self.common.getActionEditPassword(str: passwordStr))
                 }
+                Button("Войти") {
+                    self.common.send(action: self.common.getActionSubmitLogin())
+                }
             } else {
                 Text("Вы не авторизованы")
                 Button("авторизоваться") {
                     self.common.send(action: self.common.getActionShowLogin())
                 }
             }
-        }.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+        }
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
                 .padding()
     }
 
