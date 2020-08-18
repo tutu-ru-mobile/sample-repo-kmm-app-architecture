@@ -41,4 +41,6 @@ class SolutionSearchResultImpl(
 
     //iOS:
     fun getState() = store.state
+    fun send(action: Action) = store.send(action)
+    fun getActionBuyTicket(ticket: Ticket) = Action.BuyTicket(ticket)
 }

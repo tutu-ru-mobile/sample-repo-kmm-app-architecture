@@ -6,27 +6,26 @@ import solution_search_start_api_swift
 
 public struct SolutionSearchResultIosImpl: SolutionSearchResultIosApi {
 
-    var commonImpl: Solution_search_result_implSolutionSearchResultImpl
+    var common: Solution_search_result_implSolutionSearchResultImpl
     var searchStart: Solution_search_start_apiSolutionSearchStartApi
 
     public init(
-            commonImpl: Solution_search_result_implSolutionSearchResultImpl,
+            common: Solution_search_result_implSolutionSearchResultImpl,
             searchStart: Solution_search_start_apiSolutionSearchStartApi
     ) {
-        self.commonImpl = commonImpl
+        self.common = common
         self.searchStart = searchStart
     }
 
     public func renderSearchResult() -> some View {
-        List(self.commonImpl.getState().tickets, id: \.id) { item in
-            MyItemView(item: item) {
-//                    self.myViewModel.doAction(action: MyAction.Click(item: item))
-            }
-        }.navigationBarTitle("nav bar title")
-
-//        VStack {
-//            Text("renderSearchResult")
-//        }
+        VStack {
+            Text(searchStart.getSearchQuery())
+            List(self.common.getState().tickets, id: \.id) { item in
+                MyItemView(item: item) {
+                    self.common.send(action: self.common.getActionBuyTicket(ticket: item))
+                }
+            }.navigationBarTitle("nav bar title")
+        }
     }
 
 }
