@@ -14,7 +14,6 @@ public struct SolutionAuthIosImpl
 
     public func renderLoginForm() -> some View {
         VStack {
-            Text("renderLoginForm")
             if (self.common.isAuthorized()) {
                 Text("Вы авторизованы: \(self.common.getState().login)")
                 Button("Выйти") {
@@ -24,7 +23,7 @@ public struct SolutionAuthIosImpl
                 LoginInputTextView(label: "login", value: self.common.getState().login) { loginStr in
                     self.common.send(action: self.common.getActionEditLogin(str: loginStr))
                 }
-                LoginInputTextView(label: "password", value: self.common.getState().pass) { passwordStr in
+                PasswordInputTextView(label: "password", value: self.common.getState().pass) { passwordStr in
                     self.common.send(action: self.common.getActionEditPassword(str: passwordStr))
                 }
                 Button("Войти") {
@@ -66,7 +65,37 @@ struct LoginInputTextView: View {
     public var body: some View {
         HStack {
             Text(label)
-            TextField("Город, населённый пункт", text: getBoundValue())
+            TextField("почта", text: getBoundValue())
+                    .font(Font.system(size: 15, weight: .medium, design: .serif))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+        }
+                .padding()
+    }
+}
+
+struct PasswordInputTextView: View {
+    var label: String
+    var onEdit: (String) -> Void
+    var value: String
+
+    public init(label: String, value: String, onEdit: @escaping (String) -> ()) {
+        self.label = label
+        self.onEdit = onEdit
+        self.value = value
+    }
+
+    func getBoundValue() -> Binding<String> {
+        Binding<String>(get: { () -> String in
+            self.value
+        }, set: { s in
+            self.onEdit(s)
+        })
+    }
+
+    public var body: some View {
+        HStack {
+            Text(label)
+            SecureField("", text: getBoundValue())
                     .font(Font.system(size: 15, weight: .medium, design: .serif))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
         }
