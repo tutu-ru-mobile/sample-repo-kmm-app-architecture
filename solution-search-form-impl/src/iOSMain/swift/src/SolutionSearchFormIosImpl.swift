@@ -13,8 +13,12 @@ public struct SolutionSearchFormIosImpl
     }
 
     public func renderSearchForm() -> some View {
-        return VStack {
-            Text("SolutionSearchFormIosImpl")
+        VStack {
+            Group {
+                Text("SolutionSearchFormIosImpl")
+            }.padding()
+                    .background(Color.yellow)
+
             MyInputTextView(label: "Откуда", value: self.common.getState().searchFrom) { s in
                 self.common.send(action: self.common.getActionFrom(str: s))
             }
@@ -26,7 +30,6 @@ public struct SolutionSearchFormIosImpl
             }) {
                 Text("Начать поиск")
             }.padding()
-
         }
     }
 
