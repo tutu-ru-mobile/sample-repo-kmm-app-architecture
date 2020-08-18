@@ -44,7 +44,7 @@ class SolutionSearchFormImpl(
         store.send(action)
     }
 
-    fun getActionSearch(str:String) = Action.From(str)
+    fun getActionFrom(str:String) = Action.From(str)
     fun getActionTo(str:String) = Action.To(str)
     fun getActionSearch()  = Action.Search
 
