@@ -39,7 +39,7 @@ public struct SolutionTabSearchIosImpl
                 searchStart.todoRender()
             }
             if(common.isSearchResult()) {
-                searchResult.todoRender()
+                searchResult.renderSearchResult()
             }
         }
     }

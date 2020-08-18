@@ -38,4 +38,7 @@ class SolutionSearchResultImpl(
     }
 
     val update: Flow<*> = store.stateFlow
+
+    //iOS:
+    fun getState() = store.state
 }
