@@ -36,4 +36,7 @@ class SolutionWalletImpl() : SolutionWalletApi {
         store.send(Action.Add(amount))
     }
 
+    //iOS:
+    fun getState() = store.state
+
 }
