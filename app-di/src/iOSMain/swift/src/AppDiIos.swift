@@ -61,7 +61,9 @@ public class AppDiIos {
     )
     lazy public var solutionAbIos = SolutionAbIosImpl()
     lazy public var solutionAttentionIos = SolutionAttentionIosImpl()
-    lazy public var solutionAuthIos = SolutionAuthIosImpl()
+    lazy public var solutionAuthIos = SolutionAuthIosImpl(
+            common: common.solutionAuth
+    )
 
     public init() {
 

@@ -2,12 +2,12 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
-class SolutionAuthImpl(): SolutionAuthApi {
+class SolutionAuthImpl() : SolutionAuthApi {
     data class State(
-        val login: String = "",
-        val pass: String = "",
-        val enterLogin: Boolean = false,
-        val token: String? = null
+            val login: String = "",
+            val pass: String = "",
+            val enterLogin: Boolean = false,
+            val token: String? = null
     )
 
     sealed class Action {
@@ -22,29 +22,29 @@ class SolutionAuthImpl(): SolutionAuthApi {
         when (a) {
             is Action.ShowLogin -> {
                 s.copy(
-                    enterLogin = true
+                        enterLogin = true
                 )
             }
             is Action.EditLogin -> {
                 s.copy(
-                    login = a.str
+                        login = a.str
                 )
             }
             is Action.EditPassword -> {
                 s.copy(
-                    pass = a.str
+                        pass = a.str
                 )
             }
             is Action.SubmitLogin -> {
                 s.copy(
-                    token = "bearer_secret_token_..."
+                        token = "bearer_secret_token_..."
                 )
             }
             is Action.LogOut -> {
                 s.copy(
-                    token = null,
-                    pass = "",
-                    enterLogin = false
+                        token = null,
+                        pass = "",
+                        enterLogin = false
                 )
             }
         }
@@ -54,5 +54,14 @@ class SolutionAuthImpl(): SolutionAuthApi {
     override val login: String? get() = if (isAuthorized()) store.state.login else null
 
     val update: Flow<*> = store.stateFlow
+
+    //iOS:
+    fun getState() = store.state
+    fun send(action: Action) = store.send(action)
+    fun getActionShowLogin() = Action.ShowLogin
+    fun getActionEditLogin(str: String) = Action.EditLogin(str)
+    fun getActionEditPassword(str: String) = Action.EditPassword(str)
+    fun getActionSubmitLogin() = Action.SubmitLogin
+    fun getActionLogOut() = Action.LogOut
 
 }
