@@ -41,7 +41,6 @@ public struct SolutionAttentionIosImpl
 
     public func renderMainScreenAttention() -> some View {
         VStack {
-            Text("renderMainScreenAttention")
             if (self.ab.isWalletAvailable()) {
                 self.walletIos.renderWallet()
             } else {

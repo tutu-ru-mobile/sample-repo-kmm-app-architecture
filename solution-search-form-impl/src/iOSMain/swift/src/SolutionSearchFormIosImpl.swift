@@ -2,22 +2,30 @@ import SwiftUI
 import Foundation
 import app_di
 import solution_search_form_api_swift
+import solution_attention_api_swift
 
 public struct SolutionSearchFormIosImpl
+        <
+        TSolutionAttentionIosApi: SolutionAttentionIosApi
+        >
         : SolutionSearchFormIosApi {
 
-    public var common: Solution_search_form_implSolutionSearchFormImpl
+    var common: Solution_search_form_implSolutionSearchFormImpl
+    var attentionIos: TSolutionAttentionIosApi
 
-    public init(common: Solution_search_form_implSolutionSearchFormImpl) {
+    public init(
+            common: Solution_search_form_implSolutionSearchFormImpl,
+            attentionIos: TSolutionAttentionIosApi
+    ) {
         self.common = common
+        self.attentionIos = attentionIos
     }
 
     public func renderSearchForm() -> some View {
         VStack {
             Group {
-                Text("SolutionSearchFormIosImpl")
-            }.padding()
-                    .background(Color.yellow)
+                self.attentionIos.renderMainScreenAttention()
+            }.padding().background(Color.yellow)
 
             MyInputTextView(label: "Откуда", value: self.common.getState().searchFrom) { s in
                 self.common.send(action: self.common.getActionFrom(str: s))

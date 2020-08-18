@@ -29,7 +29,8 @@ import solution_weather_impl_swift
 public class AppDiIos {
     public let common = AppDi()
     lazy public var solutionSearchFormIos = SolutionSearchFormIosImpl(
-            common: common.solutionSearchForm
+            common: common.solutionSearchForm,
+            attentionIos: solutionAttentionIos
     )
     lazy public var solutionSearchStartIos = SolutionSearchStartIosImpl()
     lazy public var solutionSearchResultIos = SolutionSearchResultIosImpl(

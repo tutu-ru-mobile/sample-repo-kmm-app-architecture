@@ -55,6 +55,7 @@ PODS:
     - app_di
   - solution_search_form_impl_swift (0.0.1):
     - app_di
+    - solution_attention_api_swift
     - solution_search_form_api_swift
   - solution_search_result_api_swift (0.0.1):
     - app_di
@@ -196,7 +197,7 @@ SPEC CHECKSUMS:
   solution_order_api_swift: 8269fea6222baa1d93a17678ca2325a8d340ffc3
   solution_order_impl_swift: 1ff41ff4d63d6ac43c37866c110b5ddcefed9728
   solution_search_form_api_swift: 47faa92606de385499e85980b581dce3ec505dd4
-  solution_search_form_impl_swift: 3cae8e65f373ccec63a29a8c1b51598e280ca937
+  solution_search_form_impl_swift: 549efd8ea3de9509932f2fd25d9948eb093b0ed6
   solution_search_result_api_swift: e3ec0564adec584150b03dde3ac742115d6e69b8
   solution_search_result_impl_swift: 1fb15aeda764d2e2e7d5de4f4f0c169a401997d2
   solution_search_start_api_swift: 96f7aa2e0c5595e42c4da12bdb58e07bffbea8d7
