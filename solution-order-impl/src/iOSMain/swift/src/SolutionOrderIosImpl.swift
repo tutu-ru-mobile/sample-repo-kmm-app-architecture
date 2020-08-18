@@ -23,6 +23,10 @@ public struct SolutionOrderIosImpl
         }
     }
 
+    public func renderNearestOrder() -> some View {
+        Text("todo renderNearestOrder")
+    }
+
 }
 
 struct TicketView: View {

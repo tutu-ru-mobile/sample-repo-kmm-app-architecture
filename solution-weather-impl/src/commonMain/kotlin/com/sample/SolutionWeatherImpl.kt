@@ -18,4 +18,6 @@ class SolutionWeatherImpl() : SolutionWeatherApi {
 
     val update: Flow<*> = store.stateFlow
 
+    fun getWeatherString() = "Погода +25, Облачно"
+
 }

@@ -4,5 +4,5 @@ import app_di
 
 public protocol SolutionAbIosApi {
     associatedtype V1: View
-    func todoRender() -> V1
+    func renderAbSettings() -> V1
 }

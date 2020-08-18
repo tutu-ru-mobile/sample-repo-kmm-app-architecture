@@ -4,5 +4,7 @@ import app_di
 
 public protocol SolutionOrderIosApi {
     associatedtype V1: View
+    associatedtype V2: View
     func renderAllOrders() -> V1
+    func renderNearestOrder() -> V2
 }

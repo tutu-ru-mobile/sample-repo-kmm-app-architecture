@@ -35,7 +35,12 @@ PODS:
     - app_di
   - solution_attention_impl_swift (0.0.1):
     - app_di
+    - solution_ab_api_swift
     - solution_attention_api_swift
+    - solution_auth_api_swift
+    - solution_order_api_swift
+    - solution_wallet_api_swift
+    - solution_weather_api_swift
   - solution_auth_api_swift (0.0.1):
     - app_di
   - solution_auth_impl_swift (0.0.1):
@@ -185,7 +190,7 @@ SPEC CHECKSUMS:
   solution_ab_api_swift: 65be803074180f7353144c18386880f8081410aa
   solution_ab_impl_swift: 310913614513ba4c15080080f884930e40fd6eef
   solution_attention_api_swift: bc87137967202ef362ada0ba6749ba0eee2db61a
-  solution_attention_impl_swift: 666edfd2a9823af10809e4eb6666caf1773b3360
+  solution_attention_impl_swift: 0b4da7a4cdc55a67c5d78255ceef6f3afad66534
   solution_auth_api_swift: 941159ecfb6219cf4f76559c0e24fdeb8b02ab8f
   solution_auth_impl_swift: 79973585c26d360985f74be3a611e62b4f2c4a62
   solution_order_api_swift: 8269fea6222baa1d93a17678ca2325a8d340ffc3

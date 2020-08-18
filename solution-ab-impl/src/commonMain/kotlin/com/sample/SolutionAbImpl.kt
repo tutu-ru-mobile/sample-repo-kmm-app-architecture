@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SolutionAbImpl() : SolutionAbApi {
     data class State(
-        val walletFeature: Boolean = false
+            val walletFeature: Boolean = false
     )
 
     sealed class Action {
@@ -12,12 +12,12 @@ class SolutionAbImpl() : SolutionAbApi {
     }
 
     val store = createStore(
-        State()
+            State()
     ) { s, a: Action ->
         when (a) {
             is Action.SwitchWalletAb -> {
                 s.copy(
-                    walletFeature = !s.walletFeature
+                        walletFeature = !s.walletFeature
                 )
             }
         }
@@ -29,5 +29,9 @@ class SolutionAbImpl() : SolutionAbApi {
         return store.state.walletFeature
     }
 
+    //iOS:
+    fun getState() = store.state
+    fun send(action: Action) = store.send(action)
+    fun getActionSwitchWalletAb() = Action.SwitchWalletAb
 
 }

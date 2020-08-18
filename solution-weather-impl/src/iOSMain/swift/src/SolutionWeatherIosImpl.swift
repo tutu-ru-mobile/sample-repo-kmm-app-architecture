@@ -5,15 +5,17 @@ import solution_weather_api_swift
 
 public struct SolutionWeatherIosImpl : SolutionWeatherIosApi {
 
+    var common: Solution_weather_implSolutionWeatherImpl
+
     public init(
-
+        common: Solution_weather_implSolutionWeatherImpl
     ) {
-
+        self.common = common
     }
 
-    public func todoRender() -> some View {
+    public func renderWeather() -> some View {
         HStack {
-            Text("todoRender")
+            Text(self.common.getWeatherString())
         }
     }
 

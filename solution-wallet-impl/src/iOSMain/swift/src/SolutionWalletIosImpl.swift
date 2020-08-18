@@ -11,9 +11,9 @@ public struct SolutionWalletIosImpl : SolutionWalletIosApi {
 
     }
 
-    public func todoRender() -> some View {
+    public func renderWallet() -> some View {
         HStack {
-            Text("todoRender")
+            Text("todo renderWallet")
         }
     }
 

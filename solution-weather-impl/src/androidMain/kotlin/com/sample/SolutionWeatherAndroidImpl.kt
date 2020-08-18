@@ -9,7 +9,7 @@ class SolutionWeatherAndroidImpl(
 
     @Composable
     override fun renderWeather() {
-        Text("Погода +25, Облачно")
+        Text(common.getWeatherString())
     }
 
 
