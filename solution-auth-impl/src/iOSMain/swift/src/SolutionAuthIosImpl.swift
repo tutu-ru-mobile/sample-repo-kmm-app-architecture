@@ -18,10 +18,10 @@ public struct SolutionAuthIosImpl
             if (self.common.isAuthorized()) {
 
             } else if (self.common.getState().enterLogin) {
-                MyInputTextView(label: "login", value: self.common.getState().login) { loginStr in
+                LoginInputTextView(label: "login", value: self.common.getState().login) { loginStr in
                     self.common.send(action: self.common.getActionEditLogin(str: loginStr))
                 }
-                MyInputTextView(label: "password", value: self.common.getState().pass) { passwordStr in
+                LoginInputTextView(label: "password", value: self.common.getState().pass) { passwordStr in
                     self.common.send(action: self.common.getActionEditPassword(str: passwordStr))
                 }
             } else {
@@ -30,12 +30,13 @@ public struct SolutionAuthIosImpl
                     self.common.send(action: self.common.getActionShowLogin())
                 }
             }
-        }
+        }.overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                .padding()
     }
 
 }
 
-struct MyInputTextView: View {
+struct LoginInputTextView: View {
     var label: String
     var onEdit: (String) -> Void
     var value: String
@@ -62,6 +63,5 @@ struct MyInputTextView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
         }
                 .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
     }
 }
