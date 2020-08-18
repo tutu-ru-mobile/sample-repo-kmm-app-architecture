@@ -20,31 +20,31 @@ public struct SolutionSearchResultIosImpl: SolutionSearchResultIosApi {
     public func renderSearchResult() -> some View {
         VStack {
             Text(searchStart.getSearchQuery())
-            List(self.common.getState().tickets, id: \.id) { item in
-                MyItemView(item: item) {
-                    self.common.send(action: self.common.getActionBuyTicket(ticket: item))
+            List(self.common.getState().tickets, id: \.id) { ticket in
+                TicketView(item: ticket) {
+                    self.common.send(action: self.common.getActionBuyTicket(ticket: ticket))
                 }
-            }.navigationBarTitle("nav bar title")
+            }
         }
     }
 
 }
 
-struct MyItemView: View {
-    var item: Solution_order_apiTicket
+struct TicketView: View {
+    var ticket: Solution_order_apiTicket
     var clickAction: () -> Void
 
     public init(item: Solution_order_apiTicket, clickAction: @escaping () -> ()) {
-        self.item = item
+        self.ticket = item
         self.clickAction = clickAction
     }
 
     public var body: some View {
         HStack {
-            Text(item.txt).font(.headline)
+            Text(ticket.txt).font(.headline)
             Spacer().frame(width: 16)
             Button(action: { self.clickAction() }) {
-                Text("Купить за \(item.price) р.")
+                Text("Купить за \(ticket.price) р.")
             }
         }
     }

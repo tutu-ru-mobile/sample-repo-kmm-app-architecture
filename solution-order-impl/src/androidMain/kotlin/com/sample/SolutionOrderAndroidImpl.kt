@@ -60,7 +60,7 @@ class SolutionOrderAndroidImpl(
             Button(onClick = {
                 common.refund(ticket)
             }) {
-                Text("Вернуть за ${ticket.price / 2}")
+                Text("Вернуть за ${ticket.getRefundMoneyAmount()}")
             }
         }
     }

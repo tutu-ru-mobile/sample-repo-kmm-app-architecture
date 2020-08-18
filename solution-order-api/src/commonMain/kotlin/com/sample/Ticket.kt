@@ -8,4 +8,5 @@ data class Ticket(
      * Уникальный id для SwiftUI
      */
     val id: String get() = hashCode().toString()
+    fun getRefundMoneyAmount() = (price * 0.9).toInt() // 10 % комиссия за возврат билета
 }

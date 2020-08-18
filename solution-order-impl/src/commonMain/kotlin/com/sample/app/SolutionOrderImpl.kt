@@ -4,12 +4,12 @@ import com.sample.*
 import kotlinx.coroutines.flow.Flow
 
 class SolutionOrderImpl(val auth: SolutionAuthApi, val wallet: SolutionWalletApi) :
-    SolutionOrderApi {
+        SolutionOrderApi {
 
     data class State(
-        val tickets: List<Ticket> = List(3) {
-            Ticket(1000, "Поездка $it")
-        }
+            val tickets: List<Ticket> = List(3) {
+                Ticket(1000, "Поездка $it")
+            }
     )
 
     sealed class Action {
@@ -19,23 +19,23 @@ class SolutionOrderImpl(val auth: SolutionAuthApi, val wallet: SolutionWalletApi
     }
 
     val store: Store<State, Action> = createStore(State()) { s, a: Action ->
-            when (a) {
-                is Action.LoadOrders -> {
-                    s
-                }
-                is Action.RefundTicket -> {
-                    wallet.addMoney(a.ticket.price/2)
-                    s.copy(
+        when (a) {
+            is Action.LoadOrders -> {
+                s
+            }
+            is Action.RefundTicket -> {
+                wallet.addMoney(a.ticket.getRefundMoneyAmount())
+                s.copy(
                         tickets = s.tickets - a.ticket
-                    )
-                }
-                is Action.AddTicket -> {
-                    s.copy(
+                )
+            }
+            is Action.AddTicket -> {
+                s.copy(
                         tickets = s.tickets + a.ticket
-                    )
-                }
+                )
             }
         }
+    }
 
     override fun refund(ticket: Ticket) {
         store.send(Action.RefundTicket(ticket))
@@ -52,4 +52,10 @@ class SolutionOrderImpl(val auth: SolutionAuthApi, val wallet: SolutionWalletApi
     }
 
     val update: Flow<*> = store.stateFlow
+
+    //iOS:
+    fun getState() = store.state
+    fun send(action: Action) = store.send(action)
+    fun getActionRefundTicket(ticket: Ticket) = Action.RefundTicket(ticket)
+
 }
