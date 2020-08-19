@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
-//    kotlin("native.cocoapods")
+    kotlin("native.cocoapods")
 }
 
 // CocoaPods requires the podspec to have a version.
@@ -13,12 +13,12 @@ android {
 
 kotlin {
     iosX64("iOS")
-//    cocoapods {
-//        ios.deploymentTarget = "13.0"
-//        summary = "app-di module"
-//        homepage = "homepage placeholder"
-////        pod("app_di_swift", podspec = rootProject.file("app-di/swift/app_di_swift.podspec"))
-//    }
+    cocoapods {
+        ios.deploymentTarget = "13.0"
+        summary = "app-di module"
+        homepage = "homepage placeholder"
+//        pod("app_di_swift", podspec = rootProject.file("app-di/swift/app_di_swift.podspec"))
+    }
 
     js {
         browser { }
