@@ -11,3 +11,9 @@ public func hexColorToSwiftUI(color: Lib_basicHexColor) -> Color {
     ))
 }
 
+public extension Lib_basicHexColor {
+    func toSwiftUI() -> Color {
+        return hexColorToSwiftUI(color: self)
+    }
+}
+
