@@ -53,7 +53,7 @@ public class AppDiIos {
             common: common.solutionWeather
     )
     lazy public var solutionBonusIos = SolutionBonusIosImpl(
-            common: common.solutionWallet
+            common: common.solutionBonus
     )
     lazy public var solutionSettingsIos = SolutionSettingsIosImpl(
             common: common.solutionSettings,

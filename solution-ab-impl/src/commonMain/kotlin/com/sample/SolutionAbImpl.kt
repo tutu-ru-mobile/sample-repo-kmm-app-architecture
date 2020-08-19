@@ -49,7 +49,7 @@ class SolutionAbImpl() : SolutionAbApi {
     //iOS:
     fun getState() = store.state
     fun send(action: Action) = store.send(action)
-    fun getActionSwitchWalletAb(key: String) = Action.SwitchBooleanAb(key)
+    fun getActionSwitchBooleanToggle(key: String) = Action.SwitchBooleanAb(key)
     fun getToggles(): List<BooleanToggle> = store.state.booleanToggles.entries
         .map { BooleanToggle(it.key, it.value) }
 

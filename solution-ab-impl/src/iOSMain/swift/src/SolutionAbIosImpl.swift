@@ -20,7 +20,7 @@ public struct SolutionAbIosImpl
 
             List(self.common.getToggles(), id: \.key) { toggle in
                 MyToggleView(label: toggle.key, value: toggle.value) { checked in
-                    self.common.send(action: self.common.getActionSwitchWalletAb(key: toggle.key))
+                    self.common.send(action: self.common.getActionSwitchBooleanToggle(key: toggle.key))
                 }
             }
 

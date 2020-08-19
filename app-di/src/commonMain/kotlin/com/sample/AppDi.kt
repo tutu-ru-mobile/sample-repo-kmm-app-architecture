@@ -9,14 +9,14 @@ import kotlinx.coroutines.flow.collectLatest
 
 class AppDi {
     data class GlobalState(val updateCount: Int)
-    val solutionWallet by lazy { SolutionBonusImpl(solutionAb) }
+    val solutionBonus by lazy { SolutionBonusImpl(solutionAb) }
     val solutionAuth by lazy { SolutionAuthImpl() }
-    val solutionOrder by lazy { SolutionOrderImpl(solutionAuth, solutionWallet) }
+    val solutionOrder by lazy { SolutionOrderImpl(solutionAuth, solutionBonus) }
     val solutionSettings by lazy { SolutionSettingsImpl() }
     val solutionAttention by lazy { SolutionAttentionImpl() }
     val solutionSearchForm by lazy { SolutionSearchFormImpl(mainTabNav) }
     val solutionSearchStart by lazy { SolutionSearchStartImpl(mainTabNav) }
-    val solutionSearchResult by lazy { SolutionSearchResultImpl(mainTabNav, solutionOrder, solutionWallet) }
+    val solutionSearchResult by lazy { SolutionSearchResultImpl(mainTabNav, solutionOrder, solutionBonus) }
     val solutionTabSearch by lazy { SolutionTabSearchImpl(solutionSearchStart, solutionSearchResult) }
     val solutionTabs by lazy { SolutionTabsImpl() }
     val solutionWeather by lazy {SolutionWeatherImpl()}
@@ -51,7 +51,7 @@ class AppDi {
     }
 
     init {
-        addUpdate(solutionWallet.update)
+        addUpdate(solutionBonus.update)
         addUpdate(solutionAuth.update)
         addUpdate(solutionOrder.update)
         addUpdate(solutionSettings.update)
