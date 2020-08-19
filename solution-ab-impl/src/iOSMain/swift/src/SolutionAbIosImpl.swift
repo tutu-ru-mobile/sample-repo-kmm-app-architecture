@@ -24,8 +24,7 @@ public struct SolutionAbIosImpl
                     self.common.send(action: self.common.getActionSwitchBooleanToggle(key: toggle.key))
                 }
             }
-
-        }.padding().overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.green, lineWidth: 1))
+        }.colorRect(color: Color.green)
     }
 
 }

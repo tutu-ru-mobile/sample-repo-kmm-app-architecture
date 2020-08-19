@@ -18,11 +18,16 @@ public extension Lib_basicHexColor {
 }
 
 extension View {
-    @inlinable public func colorRect(color: Lib_basicHexColor) -> some View {
-        self.padding()
+    @inlinable public func colorRect(color: Lib_basicHexColor, available:Bool = true) -> some View {
+        self.colorRect(color: color.toSwiftUI(), available: available)
+    }
+
+    @inlinable public func colorRect(color: Color, available:Bool = true) -> some View {
+        self.padding(5)
             .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                            .stroke(color.toSwiftUI(), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 0)
+                            .stroke(color, lineWidth: available ? 2 : 0)
             )
+            .padding(5)
     }
 }

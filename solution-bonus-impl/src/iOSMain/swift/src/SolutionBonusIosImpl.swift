@@ -23,19 +23,14 @@ public struct SolutionBonusIosImpl: SolutionBonusIosApi {
                     Button("Добавить бонусы") {
                         self.common.addBonuses(amount: 1000)
                     }
-                }.padding()
-                        .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                        .stroke(common.color.toSwiftUI(), lineWidth: 1)
-                        )
-                        .padding()
+                }.colorRect(color: common.color, available: common.isAvailable())
             }
         }
     }
 
     public func renderBonusCount() -> some View {
         _renderBonusCount()
-                .colorRect(color: common.color)
+                .colorRect(color: common.color, available: common.isAvailable())
     }
 
     func _renderBonusCount() -> some View {
