@@ -8,6 +8,8 @@ PODS:
     - solution_attention_impl_swift
     - solution_auth_api_swift
     - solution_auth_impl_swift
+    - solution_bonus_api_swift
+    - solution_bonus_impl_swift
     - solution_order_api_swift
     - solution_order_impl_swift
     - solution_search_form_api_swift
@@ -22,8 +24,6 @@ PODS:
     - solution_tab_search_impl_swift
     - solution_tabs_api_swift
     - solution_tabs_impl_swift
-    - solution_bonus_api_swift
-    - solution_bonus_impl_swift
     - solution_weather_api_swift
     - solution_weather_impl_swift
   - solution_ab_api_swift (0.0.1):
@@ -38,14 +38,19 @@ PODS:
     - solution_ab_api_swift
     - solution_attention_api_swift
     - solution_auth_api_swift
-    - solution_order_api_swift
     - solution_bonus_api_swift
+    - solution_order_api_swift
     - solution_weather_api_swift
   - solution_auth_api_swift (0.0.1):
     - app_di
   - solution_auth_impl_swift (0.0.1):
     - app_di
     - solution_auth_api_swift
+  - solution_bonus_api_swift (0.0.1):
+    - app_di
+  - solution_bonus_impl_swift (0.0.1):
+    - app_di
+    - solution_bonus_api_swift
   - solution_order_api_swift (0.0.1):
     - app_di
   - solution_order_impl_swift (0.0.1):
@@ -75,8 +80,8 @@ PODS:
     - app_di
     - solution_ab_api_swift
     - solution_auth_api_swift
-    - solution_settings_api_swift
     - solution_bonus_api_swift
+    - solution_settings_api_swift
   - solution_tab_search_api_swift (0.0.1):
     - app_di
   - solution_tab_search_impl_swift (0.0.1):
@@ -93,11 +98,6 @@ PODS:
     - solution_settings_api_swift
     - solution_tab_search_api_swift
     - solution_tabs_api_swift
-  - solution_bonus_api_swift (0.0.1):
-    - app_di
-  - solution_bonus_impl_swift (0.0.1):
-    - app_di
-    - solution_bonus_api_swift
   - solution_weather_api_swift (0.0.1):
     - app_di
   - solution_weather_impl_swift (0.0.1):
@@ -113,6 +113,8 @@ DEPENDENCIES:
   - solution_attention_impl_swift (from `../solution-attention-impl/src/iOSMain/swift`)
   - solution_auth_api_swift (from `../solution-auth-api/src/iOSMain/swift`)
   - solution_auth_impl_swift (from `../solution-auth-impl/src/iOSMain/swift`)
+  - solution_bonus_api_swift (from `../solution-bonus-api/src/iOSMain/swift`)
+  - solution_bonus_impl_swift (from `../solution-bonus-impl/src/iOSMain/swift`)
   - solution_order_api_swift (from `../solution-order-api/src/iOSMain/swift`)
   - solution_order_impl_swift (from `../solution-order-impl/src/iOSMain/swift`)
   - solution_search_form_api_swift (from `../solution-search-form-api/src/iOSMain/swift`)
@@ -127,8 +129,6 @@ DEPENDENCIES:
   - solution_tab_search_impl_swift (from `../solution-tab-search-impl/src/iOSMain/swift`)
   - solution_tabs_api_swift (from `../solution-tabs-api/src/iOSMain/swift`)
   - solution_tabs_impl_swift (from `../solution-tabs-impl/src/iOSMain/swift`)
-  - solution_bonus_api_swift (from `../solution-bonus-api/src/iOSMain/swift`)
-  - solution_bonus_impl_swift (from `../solution-bonus-impl/src/iOSMain/swift`)
   - solution_weather_api_swift (from `../solution-weather-api/src/iOSMain/swift`)
   - solution_weather_impl_swift (from `../solution-weather-impl/src/iOSMain/swift`)
 
@@ -149,6 +149,10 @@ EXTERNAL SOURCES:
     :path: "../solution-auth-api/src/iOSMain/swift"
   solution_auth_impl_swift:
     :path: "../solution-auth-impl/src/iOSMain/swift"
+  solution_bonus_api_swift:
+    :path: "../solution-bonus-api/src/iOSMain/swift"
+  solution_bonus_impl_swift:
+    :path: "../solution-bonus-impl/src/iOSMain/swift"
   solution_order_api_swift:
     :path: "../solution-order-api/src/iOSMain/swift"
   solution_order_impl_swift:
@@ -177,10 +181,6 @@ EXTERNAL SOURCES:
     :path: "../solution-tabs-api/src/iOSMain/swift"
   solution_tabs_impl_swift:
     :path: "../solution-tabs-impl/src/iOSMain/swift"
-  solution_bonus_api_swift:
-    :path: "../solution-bonus-api/src/iOSMain/swift"
-  solution_bonus_impl_swift:
-    :path: "../solution-bonus-impl/src/iOSMain/swift"
   solution_weather_api_swift:
     :path: "../solution-weather-api/src/iOSMain/swift"
   solution_weather_impl_swift:
@@ -188,13 +188,15 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
-  app_di_swift: 21c82a335e1151e8ebf2a90a4177804af855e7e8
+  app_di_swift: 4161b1000ea3bd429605d884f048687a425350d5
   solution_ab_api_swift: 65be803074180f7353144c18386880f8081410aa
   solution_ab_impl_swift: 310913614513ba4c15080080f884930e40fd6eef
   solution_attention_api_swift: bc87137967202ef362ada0ba6749ba0eee2db61a
-  solution_attention_impl_swift: 0b4da7a4cdc55a67c5d78255ceef6f3afad66534
+  solution_attention_impl_swift: c4335ab13b499cf9e54e22432e5f894b885e841c
   solution_auth_api_swift: 941159ecfb6219cf4f76559c0e24fdeb8b02ab8f
   solution_auth_impl_swift: 79973585c26d360985f74be3a611e62b4f2c4a62
+  solution_bonus_api_swift: 61def646fea2045bffb4fa2e1bd091f705768e6b
+  solution_bonus_impl_swift: 3310093af397df4568e3251854ac898bc10d4260
   solution_order_api_swift: 8269fea6222baa1d93a17678ca2325a8d340ffc3
   solution_order_impl_swift: 2f5c368c961c55d65f87ef8e11fd64434520de0d
   solution_search_form_api_swift: 47faa92606de385499e85980b581dce3ec505dd4
@@ -204,16 +206,14 @@ SPEC CHECKSUMS:
   solution_search_start_api_swift: 96f7aa2e0c5595e42c4da12bdb58e07bffbea8d7
   solution_search_start_impl_swift: 74fd4c8e7749c0c29f9badbd07aec4af19ca23ca
   solution_settings_api_swift: 4131f21fbee3c2ce7d273b34298285d8ba5dae99
-  solution_settings_impl_swift: 1b191b8c14cef57d7a141d457fcc6413eae9fbe3
+  solution_settings_impl_swift: 2f4ba96a507a012d5fd263d388346bc4dc00c689
   solution_tab_search_api_swift: 63d3d3a1988a9f0b5bfbcdbfce96cfec8e43355d
   solution_tab_search_impl_swift: 3e55a905a08a1dce52f9b2986360edc8b6eb263d
   solution_tabs_api_swift: 6bce78fda95ef619dbcc27594b5dc666c010d76b
   solution_tabs_impl_swift: 0aec37c351a8249f7b15c5ba0dd2ba7855d4299b
-  solution_bonus_api_swift: ef221ee22043811364ca5bf8c33ecf47f34ddaf1
-  solution_bonus_impl_swift: 1626f675a7a17ad71d9a114e73f3977374972de9
   solution_weather_api_swift: 6d85e17551a638cb8764ef4e2b3a91534817db33
   solution_weather_impl_swift: bc33d88bea394cd3003037bb48f0619c62b80526
 
-PODFILE CHECKSUM: fab32557ecb29bf2748b320aad49bf8e5aba2f11
+PODFILE CHECKSUM: 4c412f4b03fb3ae0e6fb413ab88461060f47be50
 
 COCOAPODS: 1.9.3

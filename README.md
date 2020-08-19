@@ -8,21 +8,10 @@
 ```bash
 sudo gem install cocoapods
 sudo gem install cocoapods-generate
-#open [project root] in AndroidStudio and update gradle (Sync Project with Gradle Files)
+./gradlew app-di:podImport
 cd ios/App
 pod install
 pod update
 #open [./ios/App/SolutionArchitecture.xcworkspace] in XCode or AppCode and run project on iOS Emulator
 ```
-
-## todo Gradle
-```
-app-di:podBuildDependenciesIOS - Calls `xcodebuild` on xcworkspace for the pod scheme
-3)app-di:podImport - Called on Gradle sync, depends on Cinterop tasks for every used pod
-2)app-di:podInstall - Invokes `pod install` call within Podfile location directory
-app-di:podSetupBuildIOS - Collect environment variables from .xcworkspace file
-1)app-di:podspec - Generates a podspec file for CocoaPods import
-app-di:podGenIOS - Сreates a synthetic Xcode project to retrieve CocoaPods dependencies
-```
-./gradlew app-di:podImport
 

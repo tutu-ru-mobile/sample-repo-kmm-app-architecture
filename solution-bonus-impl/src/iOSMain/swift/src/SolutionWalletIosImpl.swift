@@ -5,10 +5,10 @@ import solution_bonus_api_swift
 
 public struct SolutionWalletIosImpl: SolutionWalletIosApi {
 
-    var common: solution_bonus_implSolutionBonusImpl
+    var common: Solution_bonus_implSolutionBonusImpl
 
     public init(
-            common: solution_bonus_implSolutionBonusImpl
+            common: Solution_bonus_implSolutionBonusImpl
     ) {
         self.common = common
     }

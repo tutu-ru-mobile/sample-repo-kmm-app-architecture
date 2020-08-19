@@ -47,7 +47,6 @@ public struct SolutionAttentionIosImpl
         VStack {
             self.walletIos.renderBonusCount()
             if(self.auth.isAuthorized()) {
-                self.authIos.renderLoginInfo()
                 self.orderIos.renderNearestOrder()
             } else {
                 self.weatherIos.renderWeather()
