@@ -12,7 +12,7 @@ public struct SolutionAttentionIosImpl
         <
         TSolutionWeatherIosApi: SolutionWeatherIosApi,
         TSolutionOrderIosApi: SolutionOrderIosApi,
-        TSolutionWalletIosApi: SolutionWalletIosApi,
+        TSolutionBonusIosApi: SolutionBonusIosApi,
         TSolutionAuthIosApi: SolutionAuthIosApi
         >
         : SolutionAttentionIosApi {
@@ -22,7 +22,7 @@ public struct SolutionAttentionIosImpl
     var ab: Solution_ab_apiSolutionAbApi
     var weatherIos: TSolutionWeatherIosApi
     var orderIos: TSolutionOrderIosApi
-    var walletIos: TSolutionWalletIosApi
+    var bonusIos: TSolutionBonusIosApi
     var authIos: TSolutionAuthIosApi
 
     public init(
@@ -31,7 +31,7 @@ public struct SolutionAttentionIosImpl
             ab: Solution_ab_apiSolutionAbApi,
             weatherIos: TSolutionWeatherIosApi,
             orderIos: TSolutionOrderIosApi,
-            walletIos: TSolutionWalletIosApi,
+            bonusIos: TSolutionBonusIosApi,
             authIos: TSolutionAuthIosApi
     ) {
         self.common = common
@@ -39,13 +39,13 @@ public struct SolutionAttentionIosImpl
         self.ab = ab
         self.weatherIos = weatherIos
         self.orderIos = orderIos
-        self.walletIos = walletIos
+        self.bonusIos = bonusIos
         self.authIos = authIos
     }
 
     public func renderMainScreenAttention() -> some View {
         VStack {
-            self.walletIos.renderBonusCount()
+            self.bonusIos.renderBonusCount()
             if(self.auth.isAuthorized()) {
                 self.orderIos.renderNearestOrder()
             } else {

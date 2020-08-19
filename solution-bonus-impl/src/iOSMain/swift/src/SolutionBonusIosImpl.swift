@@ -4,7 +4,7 @@ import app_di
 import solution_bonus_api_swift
 import lib_basic_swift
 
-public struct SolutionWalletIosImpl: SolutionWalletIosApi {
+public struct SolutionBonusIosImpl: SolutionBonusIosApi {
 
     var common: Solution_bonus_implSolutionBonusImpl
 

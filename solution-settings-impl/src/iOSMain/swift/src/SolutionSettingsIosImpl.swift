@@ -9,25 +9,25 @@ import solution_ab_api_swift
 public struct SolutionSettingsIosImpl
         <
         TSolutionAuthIosApi: SolutionAuthIosApi,
-        TSolutionWalletIosApi: SolutionWalletIosApi,
+        TSolutionBonusIosApi: SolutionBonusIosApi,
         TSolutionAbIosApi: SolutionAbIosApi
         >
         : SolutionSettingsIosApi {
 
     var common: Solution_settings_apiSolutionSettingsApi
     var authIos: TSolutionAuthIosApi
-    var walletIos: TSolutionWalletIosApi
+    var bonusIos: TSolutionBonusIosApi
     var abIos: TSolutionAbIosApi
 
     public init(
             common: Solution_settings_apiSolutionSettingsApi,
             authIos: TSolutionAuthIosApi,
-            walletIos: TSolutionWalletIosApi,
+            bonusIos: TSolutionBonusIosApi,
             abIos: TSolutionAbIosApi
     ) {
         self.common = common
         self.authIos = authIos
-        self.walletIos = walletIos
+        self.bonusIos = bonusIos
         self.abIos = abIos
     }
 
@@ -35,7 +35,7 @@ public struct SolutionSettingsIosImpl
         VStack {
             Text("SolutionSettingsIosImpl renderSettings")
             authIos.renderLoginForm()
-            walletIos.renderBonusesAndRefillButton()
+            bonusIos.renderBonusesAndRefillButton()
             abIos.renderAbSettings()
         }
     }
