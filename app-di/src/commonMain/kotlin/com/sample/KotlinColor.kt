@@ -6,10 +6,10 @@ class KotlinColor(val hexColor: Int) {
     val green get() = (hexColor ushr 8) and 0xFF
     val blue get() = (hexColor ushr 0) and 0xFF
 
-    val floatAlpha get() = alpha
-    val floatRed get() = red
-    val floatGreen get() = green
-    val floatBlue get() = blue
+    val floatAlpha get() = alpha / 255.0f
+    val floatRed get() = red / 255.0f
+    val floatGreen get() = green / 255.0f
+    val floatBlue get() = blue / 255.0f
 }
 
 object KotlinColorsSingleton {
