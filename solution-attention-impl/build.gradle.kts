@@ -30,7 +30,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementationCompose()
-                implementation(project(":solution-wallet-api"))
+                implementation(project(":solution-bonus-api"))
             }
         }
     }

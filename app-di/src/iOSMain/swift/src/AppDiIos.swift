@@ -21,8 +21,8 @@ import solution_tab_search_api_swift
 import solution_tab_search_impl_swift
 import solution_tabs_api_swift
 import solution_tabs_impl_swift
-import solution_wallet_api_swift
-import solution_wallet_impl_swift
+import solution_bonus_api_swift
+import solution_bonus_impl_swift
 import solution_weather_api_swift
 import solution_weather_impl_swift
 

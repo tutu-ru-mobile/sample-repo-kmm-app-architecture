@@ -27,8 +27,8 @@ target 'SolutionArchitecture' do
   pod 'solution_tab_search_impl_swift', :path => '../solution-tab-search-impl/src/iOSMain/swift'
   pod 'solution_tabs_api_swift', :path => '../solution-tabs-api/src/iOSMain/swift'
   pod 'solution_tabs_impl_swift', :path => '../solution-tabs-impl/src/iOSMain/swift'
-  pod 'solution_wallet_api_swift', :path => '../solution-wallet-api/src/iOSMain/swift'
-  pod 'solution_wallet_impl_swift', :path => '../solution-wallet-impl/src/iOSMain/swift'
+  pod 'solution_bonus_api_swift', :path => '../solution-bonus-api/src/iOSMain/swift'
+  pod 'solution_bonus_impl_swift', :path => '../solution-bonus-impl/src/iOSMain/swift'
   pod 'solution_weather_api_swift', :path => '../solution-weather-api/src/iOSMain/swift'
   pod 'solution_weather_impl_swift', :path => '../solution-weather-impl/src/iOSMain/swift'
 

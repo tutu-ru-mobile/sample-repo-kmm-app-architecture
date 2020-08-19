@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.dependency 'solution_auth_api_swift'
   s.dependency 'solution_weather_api_swift'
   s.dependency 'solution_order_api_swift'
-  s.dependency 'solution_wallet_api_swift'
+  s.dependency 'solution_bonus_api_swift'
   s.dependency 'solution_ab_api_swift'
   s.static_framework = true
 end

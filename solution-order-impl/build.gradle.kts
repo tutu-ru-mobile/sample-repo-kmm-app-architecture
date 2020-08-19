@@ -19,7 +19,7 @@ kotlin {
             dependencies {
                 api(project(":solution-order-api"))
                 implementation(project(":solution-auth-api"))
-                implementation(project(":solution-wallet-api"))
+                implementation(project(":solution-bonus-api"))
                 implementation(project(":lib-basic"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }

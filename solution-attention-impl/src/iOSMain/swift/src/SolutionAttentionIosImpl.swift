@@ -5,7 +5,7 @@ import solution_attention_api_swift
 import solution_auth_api_swift
 import solution_weather_api_swift
 import solution_order_api_swift
-import solution_wallet_api_swift
+import solution_bonus_api_swift
 import solution_ab_api_swift
 
 public struct SolutionAttentionIosImpl

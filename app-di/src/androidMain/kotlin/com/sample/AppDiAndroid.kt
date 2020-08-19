@@ -2,7 +2,7 @@ package com.sample
 
 class AppDiAndroid(val common: AppDi) {
     val solutionAuthAndroid by lazy { SolutionAuthAndroidImpl(common.solutionAuth) }
-    val solutionWalletAndroid by lazy { SolutionBonusAndroidImpl(common.solutionWallet) }
+    val solutionBonusAndroid by lazy { SolutionBonusAndroidImpl(common.solutionWallet) }
     val solutionOrderAndroid by lazy { SolutionOrderAndroidImpl(common.solutionOrder, solutionAuthAndroid) }
     val solutionSearchStartAndroid by lazy { SolutionSearchStartAndroidImpl(common.solutionSearchStart) }
     val solutionSearchResultAndroid by lazy {
@@ -20,7 +20,7 @@ class AppDiAndroid(val common: AppDi) {
             common.solutionAuth,
             solutionWeatherAndroid,
             solutionOrderAndroid,
-            solutionWalletAndroid,
+            solutionBonusAndroid,
             common.solutionAb
         )
     }
@@ -42,7 +42,7 @@ class AppDiAndroid(val common: AppDi) {
         SolutionAbAndroidImpl(common.solutionAb)
     }
     val solutionSettingsAndroid by lazy {
-        SolutionSettingsAndroidImpl(common.solutionSettings, solutionAuthAndroid, solutionWalletAndroid, solutionAbAndroid)
+        SolutionSettingsAndroidImpl(common.solutionSettings, solutionAuthAndroid, solutionBonusAndroid, solutionAbAndroid)
     }
     val solutionTabsAndroid by lazy {
         SolutionTabsAndroidImpl(

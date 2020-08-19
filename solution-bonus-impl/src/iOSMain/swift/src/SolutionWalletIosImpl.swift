@@ -1,14 +1,14 @@
 import SwiftUI
 import Foundation
 import app_di
-import solution_wallet_api_swift
+import solution_bonus_api_swift
 
 public struct SolutionWalletIosImpl: SolutionWalletIosApi {
 
-    var common: Solution_wallet_implSolutionBonusImpl
+    var common: solution_bonus_implSolutionBonusImpl
 
     public init(
-            common: Solution_wallet_implSolutionBonusImpl
+            common: solution_bonus_implSolutionBonusImpl
     ) {
         self.common = common
     }

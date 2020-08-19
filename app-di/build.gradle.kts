@@ -30,7 +30,7 @@ kotlin {
                 implementation(project(":solution-settings-impl"))
                 implementation(project(":solution-settings-api"))
                 implementation(project(":solution-auth-impl"))
-                implementation(project(":solution-wallet-impl"))
+                implementation(project(":solution-bonus-impl"))
                 implementation(project(":solution-order-impl"))
                 implementation(project(":solution-search-form-impl"))
                 implementation(project(":solution-search-result-impl"))

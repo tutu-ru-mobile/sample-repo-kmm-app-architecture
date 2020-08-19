@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "solution_wallet_impl_swift"
+  s.name         = "solution_bonus_api_swift"
   s.version      = "0.0.1"
   s.summary      = "A long description of objc."
   s.source       = { :git => "http://foo/objc.git", :tag => "#{s.version}" } #todo
@@ -13,6 +13,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '13.0'
   s.macos.deployment_target = '10.10'
   s.dependency 'app_di'
-  s.dependency 'solution_wallet_api_swift'
   s.static_framework = true
 end

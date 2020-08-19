@@ -3,7 +3,7 @@ import Foundation
 import app_di
 import solution_settings_api_swift
 import solution_auth_api_swift
-import solution_wallet_api_swift
+import solution_bonus_api_swift
 import solution_ab_api_swift
 
 public struct SolutionSettingsIosImpl
