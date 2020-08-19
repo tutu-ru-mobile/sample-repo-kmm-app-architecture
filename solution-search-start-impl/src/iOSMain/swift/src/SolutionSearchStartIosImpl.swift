@@ -11,6 +11,6 @@ public struct SolutionSearchStartIosImpl: SolutionSearchStartIosApi {
     }
 
     public func todoRender() -> some View {
-        Text("SolutionSearchStartIosImpl")
+        Text("Выполняем поиск билетов")
     }
 }

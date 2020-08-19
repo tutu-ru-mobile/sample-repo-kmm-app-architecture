@@ -36,10 +36,7 @@ public struct SolutionAuthIosImpl
                     self.common.send(action: self.common.getActionShowLogin())
                 }
             }
-        }
-                .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(common.color.toSwiftUI(), lineWidth: 1))
-                .padding()
+        }.colorRect(color: common.color)
     }
 
     public func renderLoginInfo() -> some View {
@@ -49,10 +46,7 @@ public struct SolutionAuthIosImpl
             } else {
                 Text("Вы не авторизованы")
             }
-        }
-                .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(common.color.toSwiftUI(), lineWidth: 1))
-                .padding()
+        }.colorRect(color: common.color)
     }
 
 }

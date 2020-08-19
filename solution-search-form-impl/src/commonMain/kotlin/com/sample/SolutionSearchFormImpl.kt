@@ -38,6 +38,9 @@ class SolutionSearchFormImpl(
 
     val update: Flow<*> = store.stateFlow
 
+    val color:HexColor get() = MyColors.SOLUTION_SEARCH_FORM
+    val attentionBackgroundColor = HexColor(0x22_FF_FF_00)
+
     //iOS:
     fun getState() = store.state
     fun send(action: Action) {

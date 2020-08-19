@@ -46,6 +46,8 @@ class SolutionAbImpl() : SolutionAbApi {
 
     val update: Flow<*> = store.stateFlow
 
+    val color:HexColor get() = MyColors.SOLUTION_AB
+
     //iOS:
     fun getState() = store.state
     fun send(action: Action) = store.send(action)

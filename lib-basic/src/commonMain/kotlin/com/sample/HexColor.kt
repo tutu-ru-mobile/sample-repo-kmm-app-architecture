@@ -18,7 +18,12 @@ object MyColors {
     val BLUE = HexColor(0xFF_00_00_FF.toInt())
     val YELLOW = HexColor(0xFF_FF_FF_00.toInt())
     val VIOLET = HexColor(0xFF_EE_82_EE.toInt())
+    val RANDOM1 = HexColor(0xFF_18_82_48.toInt())
+    val RANDOM2 = HexColor(0xFF_94_45_73.toInt())
 
     val SOLUTION_BONUS = YELLOW
     val SOLUTION_AUTH = VIOLET
+    val SOLUTION_AB = GREEN
+    val SOLUTION_SEARCH_FORM = RANDOM1
+    val SOLUTION_ATTENTION = RANDOM2
 }

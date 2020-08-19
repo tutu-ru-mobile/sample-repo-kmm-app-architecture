@@ -52,7 +52,7 @@ public struct SolutionAttentionIosImpl
             } else {
                 self.weatherIos.renderWeather()
             }
-        }
+        }.padding(10).colorRect(color: common.color)
     }
 
 }

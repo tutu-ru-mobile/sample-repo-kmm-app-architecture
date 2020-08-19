@@ -26,7 +26,7 @@ public struct SolutionSearchFormIosImpl
         VStack {
             Group {
                 self.attentionIos.renderMainScreenAttention()
-            }.padding().background(Color.yellow)
+            }.background(self.common.attentionBackgroundColor.toSwiftUI())
 
             MyInputTextView(label: "Откуда", value: self.common.getState().searchFrom) { s in
                 self.common.send(action: self.common.getActionFrom(str: s))
@@ -39,7 +39,7 @@ public struct SolutionSearchFormIosImpl
             }) {
                 Text("Начать поиск")
             }.padding()
-        }
+        }.colorRect(color: common.color)
     }
 
 }
@@ -71,6 +71,6 @@ struct MyInputTextView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
         }
                 .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+//                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 1))
     }
 }

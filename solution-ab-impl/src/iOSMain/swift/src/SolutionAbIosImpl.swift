@@ -24,7 +24,7 @@ public struct SolutionAbIosImpl
                     self.common.send(action: self.common.getActionSwitchBooleanToggle(key: toggle.key))
                 }
             }
-        }.colorRect(color: Color.green)
+        }.colorRect(color: common.color)
     }
 
 }
