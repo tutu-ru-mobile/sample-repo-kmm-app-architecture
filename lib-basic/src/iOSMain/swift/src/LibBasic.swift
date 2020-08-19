@@ -7,7 +7,7 @@ public protocol SolutionAbIosApi {
     func renderAbSettings() -> V1
 }
 
-public func kotlinColorToSwiftUI(color: KotlinColor) -> Color {
+public func hexColorToSwiftUI(color: Lib_basicHexColor) -> Color {
     Color(UIColor(
             red: CGFloat(color.floatRed),
             green: CGFloat(color.floatGreen),
@@ -15,3 +15,4 @@ public func kotlinColorToSwiftUI(color: KotlinColor) -> Color {
             alpha: CGFloat(color.floatAlpha)
     ))
 }
+

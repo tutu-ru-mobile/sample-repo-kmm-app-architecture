@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '13.0'
   s.macos.deployment_target = '10.10'
   s.dependency 'app_di'
+  s.dependency 'lib_basic_swift'
   s.dependency 'solution_ab_api_swift'
   s.dependency 'solution_ab_impl_swift'
   s.dependency 'solution_attention_api_swift'

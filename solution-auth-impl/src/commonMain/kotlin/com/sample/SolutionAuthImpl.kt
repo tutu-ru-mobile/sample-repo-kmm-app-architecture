@@ -52,6 +52,7 @@ class SolutionAuthImpl() : SolutionAuthApi {
 
     override fun isAuthorized(): Boolean = store.state.token != null
     override val login: String? get() = if (isAuthorized()) store.state.login else null
+    val color:HexColor get() = MyColors.SOLUTION_AUTH
 
     val update: Flow<*> = store.stateFlow
 

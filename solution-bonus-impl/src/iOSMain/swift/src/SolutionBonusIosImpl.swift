@@ -23,7 +23,7 @@ public struct SolutionBonusIosImpl: SolutionBonusIosApi {
                         self.common.addBonuses(amount: 1000)
                     }
                 }.padding()
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(kotlinColorToSwiftUI(color: KotlinColors().GREEN), lineWidth: 1))
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 1))
                         .padding()
             }
         }

@@ -1,6 +1,7 @@
 import SwiftUI
 import Foundation
 import app_di
+import lib_basic_swift
 import solution_auth_api_swift
 
 public struct SolutionAuthIosImpl
@@ -37,20 +38,20 @@ public struct SolutionAuthIosImpl
             }
         }
                 .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(hexColorToSwiftUI(color: common.color), lineWidth: 1))
                 .padding()
     }
 
     public func renderLoginInfo() -> some View {
         VStack {
-            if (self.common.isAuthorized()) {
-                Text("Вы авторизованы: \(self.common.getState().login)")
+            if (common.isAuthorized()) {
+                Text("Вы авторизованы: \(common.getState().login)")
             } else {
                 Text("Вы не авторизованы")
             }
         }
                 .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(hexColorToSwiftUI(color: common.color), lineWidth: 1))
                 .padding()
     }
 

@@ -1,6 +1,6 @@
 package com.sample
 
-class KotlinColor(val hexColor: Int) {
+class HexColor(val hexColor: Int) {
     val alpha get() = (hexColor ushr 24) and 0xFF
     val red get() = (hexColor ushr 16) and 0xFF
     val green get() = (hexColor ushr 8) and 0xFF
@@ -12,12 +12,11 @@ class KotlinColor(val hexColor: Int) {
     val floatBlue get() = blue / 255.0f
 }
 
-object KotlinColorsSingleton {
-    val RED = KotlinColor(0xFF_FF_00_00.toInt())
-    val GREEN = KotlinColor(0xFF_00_FF_00.toInt())
-}
+object MyColors {
+    val RED = HexColor(0xFF_FF_00_00.toInt())
+    val GREEN = HexColor(0xFF_00_FF_00.toInt())
+    val BLUE = HexColor(0xFF_00_00_FF.toInt())
 
-class KotlinColors {
-    val RED = KotlinColor(0xFF_FF_00_00.toInt())
-    val GREEN = KotlinColor(0xFF_00_FF_00.toInt())
+    val SOLUTION_BONUS = RED
+    val SOLUTION_AUTH = BLUE
 }
