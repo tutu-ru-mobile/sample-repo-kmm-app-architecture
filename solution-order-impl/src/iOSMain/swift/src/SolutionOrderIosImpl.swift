@@ -23,7 +23,7 @@ public struct SolutionOrderIosImpl
 
     public func renderAllOrders() -> some View {
         VStack {
-            if(common.auth.isAuthorized()) {
+            if(common.solutionAuth.isAuthorized()) {
                 Text("Мои заказы:")
                 List(self.common.getState().tickets, id: \.id) { ticket in
                     TicketView(item: ticket) {

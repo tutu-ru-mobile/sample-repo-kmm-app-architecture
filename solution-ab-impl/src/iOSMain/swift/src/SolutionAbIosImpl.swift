@@ -17,9 +17,13 @@ public struct SolutionAbIosImpl
     public func renderAbSettings() -> some View {
         VStack {
             Text("A/B features:")
-            MyToggleView(label: "Wallet", value: self.common.getState().walletFeature) { checked in
-                self.common.send(action: self.common.getActionSwitchWalletAb())
+
+            List(self.common.getToggles(), id: \.key) { toggle in
+                MyToggleView(label: toggle.key, value: toggle.value) { checked in
+                    self.common.send(action: self.common.getActionSwitchWalletAb(key: toggle.key))
+                }
             }
+
         }.padding().overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.green, lineWidth: 1))
     }
 

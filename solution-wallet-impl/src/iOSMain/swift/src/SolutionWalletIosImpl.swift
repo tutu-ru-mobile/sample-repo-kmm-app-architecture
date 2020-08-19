@@ -5,27 +5,35 @@ import solution_wallet_api_swift
 
 public struct SolutionWalletIosImpl: SolutionWalletIosApi {
 
-    var common: Solution_wallet_implSolutionWalletImpl
+    var common: Solution_wallet_implSolutionBonusImpl
 
     public init(
-            common: Solution_wallet_implSolutionWalletImpl
+            common: Solution_wallet_implSolutionBonusImpl
     ) {
         self.common = common
     }
 
-    public func renderWalletAndRefillButton() -> some View {
+    public func renderBonusesAndRefillButton() -> some View {
         VStack {
-            renderWallet()
-            Button("Пополнить счёт") {
-                self.common.addMoney(amount: 1000)
+            if (self.common.isAvailable()) {
+                VStack {
+                    renderBonusCount()
+                    Button("Добавить бонусы") {
+                        self.common.addBonuses(amount: 1000)
+                    }
+                }.padding()
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                        .padding()
             }
-        }.padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
-                .padding()
+        }
     }
 
-    public func renderWallet() -> some View {
-        Text("Ваш счёт: \(self.common.getState().moneyAmount)")
+    public func renderBonusCount() -> some View {
+        VStack {
+            if (self.common.isAvailable()) {
+                Text("У вас \(self.common.getState().bonusAmount) бонусов")
+            }
+        }
     }
 
 }

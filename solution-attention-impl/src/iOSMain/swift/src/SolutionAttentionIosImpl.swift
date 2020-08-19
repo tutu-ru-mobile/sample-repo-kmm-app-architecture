@@ -45,15 +45,12 @@ public struct SolutionAttentionIosImpl
 
     public func renderMainScreenAttention() -> some View {
         VStack {
-            if (self.ab.isWalletAvailable()) {
-                self.walletIos.renderWallet()
+            self.walletIos.renderBonusCount()
+            if(self.auth.isAuthorized()) {
+                self.authIos.renderLoginInfo()
+                self.orderIos.renderNearestOrder()
             } else {
-                if(self.auth.isAuthorized()) {
-                    self.authIos.renderLoginInfo()
-                    self.orderIos.renderNearestOrder()
-                } else {
-                    self.weatherIos.renderWeather()
-                }
+                self.weatherIos.renderWeather()
             }
         }
     }

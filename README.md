@@ -24,4 +24,5 @@ app-di:podSetupBuildIOS - Collect environment variables from .xcworkspace file
 1)app-di:podspec - Generates a podspec file for CocoaPods import
 app-di:podGenIOS - Сreates a synthetic Xcode project to retrieve CocoaPods dependencies
 ```
+./gradlew app-di:podImport
 

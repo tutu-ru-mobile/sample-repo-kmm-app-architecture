@@ -35,7 +35,7 @@ public struct SolutionSettingsIosImpl
         VStack {
             Text("SolutionSettingsIosImpl renderSettings")
             authIos.renderLoginForm()
-            walletIos.renderWalletAndRefillButton()
+            walletIos.renderBonusesAndRefillButton()
             abIos.renderAbSettings()
         }
     }

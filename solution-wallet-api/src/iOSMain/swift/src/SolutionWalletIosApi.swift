@@ -5,6 +5,6 @@ import app_di
 public protocol SolutionWalletIosApi {
     associatedtype V1: View
     associatedtype V2: View
-    func renderWalletAndRefillButton() -> V1
-    func renderWallet() -> V2
+    func renderBonusesAndRefillButton() -> V1
+    func renderBonusCount() -> V2
 }
