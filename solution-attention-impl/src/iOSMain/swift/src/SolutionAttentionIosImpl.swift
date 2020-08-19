@@ -42,7 +42,7 @@ public struct SolutionAttentionIosImpl
     public func renderMainScreenAttention() -> some View {
         VStack {
             if (self.ab.isWalletAvailable()) {
-                self.walletIos.renderWalletAndRefillButton()
+                self.walletIos.renderWallet()
             } else {
                 if(self.auth.isAuthorized()) {
                     self.orderIos.renderNearestOrder()

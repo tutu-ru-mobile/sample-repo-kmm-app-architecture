@@ -57,5 +57,6 @@ class SolutionOrderImpl(val auth: SolutionAuthApi, val wallet: SolutionWalletApi
     fun getState() = store.state
     fun send(action: Action) = store.send(action)
     fun getActionRefundTicket(ticket: Ticket) = Action.RefundTicket(ticket)
+    fun getRecentOrder() = store.state.tickets.lastOrNull()
 
 }

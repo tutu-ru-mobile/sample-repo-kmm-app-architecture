@@ -24,7 +24,17 @@ public struct SolutionOrderIosImpl
     }
 
     public func renderNearestOrder() -> some View {
-        Text("todo renderNearestOrder")
+            if let recentOrder = self.common.getRecentOrder() {
+                return VStack {
+                    Text("Ближайшая поездка:")
+                    Text("\(recentOrder.txt)")
+                }
+            } else {
+                return VStack {
+                    Text("")
+                    Text("У вас нет билетов")
+                }
+            }
     }
 
 }
