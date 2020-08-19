@@ -51,7 +51,7 @@ public struct SolutionAuthIosImpl
             }
         }
                 .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(hexColorToSwiftUI(color: common.color), lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(common.color.toSwiftUI(), lineWidth: 1))
                 .padding()
     }
 

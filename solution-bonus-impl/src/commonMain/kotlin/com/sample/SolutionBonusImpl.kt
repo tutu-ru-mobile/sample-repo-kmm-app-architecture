@@ -52,6 +52,8 @@ class SolutionBonusImpl(
         return solutionAb.getBooleanToggleState(BONUSES_AB_KEY)
     }
 
+    val color get() = MyColors.SOLUTION_BONUS
+
     //iOS:
     fun getState() = store.state
 

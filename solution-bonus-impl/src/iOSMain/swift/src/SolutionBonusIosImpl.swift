@@ -19,18 +19,29 @@ public struct SolutionBonusIosImpl: SolutionBonusIosApi {
         VStack {
             if (self.common.isAvailable()) {
                 VStack {
-                    renderBonusCount()
+                    _renderBonusCount()
                     Button("Добавить бонусы") {
                         self.common.addBonuses(amount: 1000)
                     }
                 }.padding()
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 1))
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                        .stroke(common.color.toSwiftUI(), lineWidth: 1)
+                        )
                         .padding()
             }
         }
     }
 
     public func renderBonusCount() -> some View {
+        _renderBonusCount()
+                .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                                .stroke(common.color.toSwiftUI(), lineWidth: 1)
+                )
+    }
+
+    func _renderBonusCount() -> some View {
         VStack {
             if (self.common.isAvailable()) {
                 Text("У вас \(self.common.getState().bonusAmount) бонусов")

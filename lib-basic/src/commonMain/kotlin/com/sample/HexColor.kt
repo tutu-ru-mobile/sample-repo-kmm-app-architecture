@@ -16,7 +16,9 @@ object MyColors {
     val RED = HexColor(0xFF_FF_00_00.toInt())
     val GREEN = HexColor(0xFF_00_FF_00.toInt())
     val BLUE = HexColor(0xFF_00_00_FF.toInt())
+    val YELLOW = HexColor(0xFF_FF_FF_00.toInt())
+    val VIOLET = HexColor(0xFF_EE_82_EE.toInt())
 
-    val SOLUTION_BONUS = RED
-    val SOLUTION_AUTH = BLUE
+    val SOLUTION_BONUS = YELLOW
+    val SOLUTION_AUTH = VIOLET
 }
