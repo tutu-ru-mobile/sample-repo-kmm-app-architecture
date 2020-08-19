@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 class SolutionSearchResultImpl(
     navigationApi: SolutionNavigationApi,
     orderApi: SolutionOrderApi,
-    val wallet: SolutionWalletApi
+    val bonus: SolutionBonusApi
 ) : SolutionSearchResultApi {
     data class State(
         val tickets: List<Ticket> = emptyList(),
@@ -25,7 +25,7 @@ class SolutionSearchResultImpl(
                 )
             }
             is Action.BuyTicket -> {
-                wallet.spendMoney(a.ticket.price)
+                bonus.spendBonuses(a.ticket.price)
                 orderApi.addTicket(a.ticket)
                 navigationApi.navigateSearchForm()
                 s

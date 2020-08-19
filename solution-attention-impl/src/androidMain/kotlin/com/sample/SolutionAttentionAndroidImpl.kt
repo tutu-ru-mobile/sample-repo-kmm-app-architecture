@@ -9,10 +9,10 @@ import androidx.ui.unit.dp
 
 class SolutionAttentionAndroidImpl(
     val common: SolutionAttentionImpl,
-    val auth: SolutionAuthApi,
+    val solutionAuth: SolutionAuthApi,
     val weatherAndroid: SolutionWeatherAndroidApi,
     val orderAndroid: SolutionOrderAndroidApi,
-    val walletAndroid: SolutionWalletApiAndroid,
+    val solutionBonusAndroid: SolutionBonusApiAndroid,
     val ab: SolutionAbApi
 ) : SolutionAttentionAndroidApi {
 
@@ -20,14 +20,11 @@ class SolutionAttentionAndroidImpl(
     override fun renderMainScreenAttention() {
         Box(modifier = Modifier.padding(16.dp)) {
             Column {
-                if (ab.isWalletAvailable()) {
-                    walletAndroid.renderWallet()
+                solutionBonusAndroid.renderBonusCount()
+                if (solutionAuth.isAuthorized()) {
+                    orderAndroid.renderNearestOrder()
                 } else {
-                    if (auth.isAuthorized()) {
-                        orderAndroid.renderNearestOrder()
-                    } else {
-                        weatherAndroid.renderWeather()
-                    }
+                    weatherAndroid.renderWeather()
                 }
             }
         }

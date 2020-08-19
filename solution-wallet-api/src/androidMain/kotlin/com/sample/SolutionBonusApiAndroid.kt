@@ -2,12 +2,12 @@ package com.sample
 
 import androidx.compose.Composable
 
-interface SolutionWalletApiAndroid {
+interface SolutionBonusApiAndroid {
     @Composable
-    fun renderWalletAndRefillButton()
+    fun renderBonusesAndRefillButton()
 
     @Composable
-    fun renderWallet()
+    fun renderBonusCount()
 
     @Composable
     fun renderRefillButton()

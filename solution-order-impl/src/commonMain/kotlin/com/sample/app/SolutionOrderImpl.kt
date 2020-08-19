@@ -3,7 +3,10 @@ package com.sample.app
 import com.sample.*
 import kotlinx.coroutines.flow.Flow
 
-class SolutionOrderImpl(val auth: SolutionAuthApi, val wallet: SolutionWalletApi) :
+class SolutionOrderImpl(
+    val solutionAuth: SolutionAuthApi,
+    val solutionBonus: SolutionBonusApi
+) :
         SolutionOrderApi {
 
     data class State(
@@ -24,7 +27,7 @@ class SolutionOrderImpl(val auth: SolutionAuthApi, val wallet: SolutionWalletApi
                 s
             }
             is Action.RefundTicket -> {
-                wallet.addMoney(a.ticket.getRefundMoneyAmount())
+                solutionBonus.addBonuses(a.ticket.getRefundMoneyAmount())
                 s.copy(
                         tickets = s.tickets - a.ticket
                 )
@@ -46,7 +49,7 @@ class SolutionOrderImpl(val auth: SolutionAuthApi, val wallet: SolutionWalletApi
     }
 
     init {
-        wait({ auth.isAuthorized() }) {
+        wait({ solutionAuth.isAuthorized() }) {
             store.send(Action.LoadOrders)
         }
     }

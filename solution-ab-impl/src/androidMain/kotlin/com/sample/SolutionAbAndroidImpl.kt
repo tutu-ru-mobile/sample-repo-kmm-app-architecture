@@ -15,13 +15,18 @@ class SolutionAbAndroidImpl(
         val state = common.store.state
         Column() {
             Text("A/B features:")
-            Row() {
-                Checkbox(checked = state.walletFeature,
-                    onCheckedChange = {
-                        common.store.send(SolutionAbImpl.Action.SwitchWalletAb)
-                    }
-                )
-                Text("Wallet")
+            state.booleanToggles.forEach { toggle->
+
+                Row() {
+                    Checkbox(checked = toggle.value,
+                        onCheckedChange = {
+                            common.store.send(
+                                SolutionAbImpl.Action.SwitchBooleanAb(toggle.key)
+                            )
+                        }
+                    )
+                    Text(toggle.key)
+                }
             }
         }
     }

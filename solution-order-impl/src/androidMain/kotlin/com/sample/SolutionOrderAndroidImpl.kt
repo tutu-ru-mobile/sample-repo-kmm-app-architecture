@@ -33,7 +33,7 @@ class SolutionOrderAndroidImpl(
     @Composable
     override fun renderAllOrders() {
         Column {
-            if (common.auth.isAuthorized()) {
+            if (common.solutionAuth.isAuthorized()) {
                 Text("Мои заказы:")
                 common.store.state.tickets.forEach {
                     renderOrder(it)

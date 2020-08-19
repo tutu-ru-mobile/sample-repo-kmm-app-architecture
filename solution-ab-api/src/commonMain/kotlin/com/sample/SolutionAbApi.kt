@@ -1,5 +1,6 @@
 package com.sample
 
 interface SolutionAbApi {
-    fun isWalletAvailable():Boolean
+    fun registerBooleanToggle(key: String, defaultValue: Boolean)
+    fun getBooleanToggleState(key: String): Boolean
 }

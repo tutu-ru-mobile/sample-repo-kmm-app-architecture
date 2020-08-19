@@ -16,8 +16,8 @@ const val COROUTINES_VERSION = COROUTINES_NATIVE_VERSION
 //const val KTOR_VERSION = "1.3.2-1.4.0-rc"
 const val KTOR_VERSION = "1.4.0"
 
-//const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha06"
-const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha07"
+const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha06"
+//const val ANDROID_GRADLE_PLUGIN = "4.2.0-alpha07"
 
 //https://developer.android.com/jetpack/androidx/releases/compose
 const val ANDROID_COMPOSE_VERSION = "0.1.0-dev15"

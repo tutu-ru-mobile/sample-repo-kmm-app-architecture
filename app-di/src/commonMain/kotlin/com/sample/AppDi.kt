@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.collectLatest
 
 class AppDi {
     data class GlobalState(val updateCount: Int)
-    val solutionWallet by lazy { SolutionWalletImpl() }
+    val solutionWallet by lazy { SolutionBonusImpl(solutionAb) }
     val solutionAuth by lazy { SolutionAuthImpl() }
     val solutionOrder by lazy { SolutionOrderImpl(solutionAuth, solutionWallet) }
     val solutionSettings by lazy { SolutionSettingsImpl() }
