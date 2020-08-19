@@ -1,5 +1,6 @@
 import SwiftUI
 import app_di
+import lib_basic_swift
 import app_di_swift
 import Foundation
 

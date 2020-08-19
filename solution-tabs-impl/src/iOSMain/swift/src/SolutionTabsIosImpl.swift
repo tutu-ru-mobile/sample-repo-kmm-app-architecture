@@ -1,6 +1,7 @@
 import SwiftUI
 import Foundation
 import app_di
+import lib_basic_swift
 import solution_tabs_api_swift
 import solution_tab_search_api_swift
 import solution_order_api_swift

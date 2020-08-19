@@ -1,6 +1,7 @@
 import SwiftUI
 import Foundation
 import app_di
+import lib_basic_swift
 import solution_ab_api_swift
 
 public struct SolutionAbIosImpl
