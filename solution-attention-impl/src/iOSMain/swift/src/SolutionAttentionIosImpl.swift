@@ -12,7 +12,8 @@ public struct SolutionAttentionIosImpl
         <
         TSolutionWeatherIosApi: SolutionWeatherIosApi,
         TSolutionOrderIosApi: SolutionOrderIosApi,
-        TSolutionWalletIosApi: SolutionWalletIosApi
+        TSolutionWalletIosApi: SolutionWalletIosApi,
+        TSolutionAuthIosApi: SolutionAuthIosApi
         >
         : SolutionAttentionIosApi {
 
@@ -22,6 +23,7 @@ public struct SolutionAttentionIosImpl
     var weatherIos: TSolutionWeatherIosApi
     var orderIos: TSolutionOrderIosApi
     var walletIos: TSolutionWalletIosApi
+    var authIos: TSolutionAuthIosApi
 
     public init(
             common: Solution_attention_implSolutionAttentionImpl,
@@ -29,7 +31,8 @@ public struct SolutionAttentionIosImpl
             ab: Solution_ab_apiSolutionAbApi,
             weatherIos: TSolutionWeatherIosApi,
             orderIos: TSolutionOrderIosApi,
-            walletIos: TSolutionWalletIosApi
+            walletIos: TSolutionWalletIosApi,
+            authIos: TSolutionAuthIosApi
     ) {
         self.common = common
         self.auth = auth
@@ -37,6 +40,7 @@ public struct SolutionAttentionIosImpl
         self.weatherIos = weatherIos
         self.orderIos = orderIos
         self.walletIos = walletIos
+        self.authIos = authIos
     }
 
     public func renderMainScreenAttention() -> some View {
@@ -45,6 +49,7 @@ public struct SolutionAttentionIosImpl
                 self.walletIos.renderWallet()
             } else {
                 if(self.auth.isAuthorized()) {
+                    self.authIos.renderLoginInfo()
                     self.orderIos.renderNearestOrder()
                 } else {
                     self.weatherIos.renderWeather()

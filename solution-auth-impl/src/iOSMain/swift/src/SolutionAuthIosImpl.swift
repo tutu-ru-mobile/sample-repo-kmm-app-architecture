@@ -37,7 +37,20 @@ public struct SolutionAuthIosImpl
             }
         }
                 .padding()
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 1))
+                .padding()
+    }
+
+    public func renderLoginInfo() -> some View {
+        VStack {
+            if (self.common.isAuthorized()) {
+                Text("Вы авторизованы: \(self.common.getState().login)")
+            } else {
+                Text("Вы не авторизованы")
+            }
+        }
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 1))
                 .padding()
     }
 
@@ -95,7 +108,7 @@ struct PasswordInputTextView: View {
     public var body: some View {
         HStack {
             Text(label)
-            SecureField("", text: getBoundValue())
+            SecureField("пароль", text: getBoundValue())
                     .font(Font.system(size: 15, weight: .medium, design: .serif))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
         }

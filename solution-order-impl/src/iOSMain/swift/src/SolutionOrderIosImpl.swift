@@ -2,23 +2,38 @@ import SwiftUI
 import Foundation
 import app_di
 import solution_order_api_swift
+import solution_auth_api_swift
 
 public struct SolutionOrderIosImpl
+        <
+        TSolutionAuthIosApi:SolutionAuthIosApi
+        >
         : SolutionOrderIosApi {
 
     var common:Solution_order_implSolutionOrderImpl
+    var authIos:TSolutionAuthIosApi
 
-    public init(common:Solution_order_implSolutionOrderImpl) {
+    public init(
+            common: Solution_order_implSolutionOrderImpl,
+            authIos: TSolutionAuthIosApi
+    ) {
         self.common = common
+        self.authIos = authIos
     }
 
     public func renderAllOrders() -> some View {
         VStack {
-            Text("SolutionOrderIosImpl renderAllOrders")
-            List(self.common.getState().tickets, id: \.id) { ticket in
-                TicketView(item: ticket) {
-                    self.common.send(action: self.common.getActionRefundTicket(ticket: ticket))
+            if(common.auth.isAuthorized()) {
+                Text("Мои заказы:")
+                List(self.common.getState().tickets, id: \.id) { ticket in
+                    TicketView(item: ticket) {
+                        self.common.send(action: self.common.getActionRefundTicket(ticket: ticket))
+                    }
                 }
+            } else {
+                Text("Для просмотра заказов")
+                Text("Нужно авторизоваться:")
+                self.authIos.renderLoginForm()
             }
         }
     }

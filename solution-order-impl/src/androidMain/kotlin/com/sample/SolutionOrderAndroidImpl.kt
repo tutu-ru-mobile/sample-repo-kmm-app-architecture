@@ -34,7 +34,7 @@ class SolutionOrderAndroidImpl(
     override fun renderAllOrders() {
         Column {
             if (common.auth.isAuthorized()) {
-                Text("Мои заказы")
+                Text("Мои заказы:")
                 common.store.state.tickets.forEach {
                     renderOrder(it)
                 }

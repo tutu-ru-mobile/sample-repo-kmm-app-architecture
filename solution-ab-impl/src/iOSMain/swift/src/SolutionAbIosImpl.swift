@@ -20,7 +20,7 @@ public struct SolutionAbIosImpl
             MyToggleView(label: "Wallet", value: self.common.getState().walletFeature) { checked in
                 self.common.send(action: self.common.getActionSwitchWalletAb())
             }
-        }
+        }.padding().overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.green, lineWidth: 1))
     }
 
 }
@@ -45,10 +45,8 @@ struct MyToggleView: View {
     }
 
     public var body: some View {
-        HStack {
-            Toggle(isOn: getBoundValue()) {
-                Text(label)
-            }
-        }.padding()
+        Toggle(isOn: getBoundValue()) {
+            Text(label)
+        }
     }
 }

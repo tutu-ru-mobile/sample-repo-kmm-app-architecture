@@ -62,7 +62,8 @@ public class AppDiIos {
             abIos: solutionAbIos
     )
     lazy public var solutionOrderIos = SolutionOrderIosImpl(
-            common: common.solutionOrder
+            common: common.solutionOrder,
+            authIos: solutionAuthIos
     )
     lazy public var solutionAbIos = SolutionAbIosImpl(
             common: common.solutionAb
@@ -73,7 +74,8 @@ public class AppDiIos {
             ab: common.solutionAb,
             weatherIos: solutionWeatherIos,
             orderIos: solutionOrderIos,
-            walletIos: solutionWalletIos
+            walletIos: solutionWalletIos,
+            authIos: solutionAuthIos
     )
     lazy public var solutionAuthIos = SolutionAuthIosImpl(
             common: common.solutionAuth
