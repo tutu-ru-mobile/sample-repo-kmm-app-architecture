@@ -2,6 +2,7 @@ import SwiftUI
 import Foundation
 import app_di
 import solution_bonus_api_swift
+import lib_basic_swift
 
 public struct SolutionWalletIosImpl: SolutionWalletIosApi {
 
@@ -22,7 +23,7 @@ public struct SolutionWalletIosImpl: SolutionWalletIosApi {
                         self.common.addBonuses(amount: 1000)
                     }
                 }.padding()
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(kotlinColorToSwiftUI(color: KotlinColors().GREEN), lineWidth: 1))
                         .padding()
             }
         }
@@ -37,3 +38,4 @@ public struct SolutionWalletIosImpl: SolutionWalletIosApi {
     }
 
 }
+
