@@ -35,10 +35,7 @@ public struct SolutionBonusIosImpl: SolutionBonusIosApi {
 
     public func renderBonusCount() -> some View {
         _renderBonusCount()
-                .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                                .stroke(common.color.toSwiftUI(), lineWidth: 1)
-                )
+                .colorRect(color: common.color)
     }
 
     func _renderBonusCount() -> some View {

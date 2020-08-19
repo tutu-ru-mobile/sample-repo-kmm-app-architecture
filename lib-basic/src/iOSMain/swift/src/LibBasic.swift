@@ -17,3 +17,12 @@ public extension Lib_basicHexColor {
     }
 }
 
+extension View {
+    @inlinable public func colorRect(color: Lib_basicHexColor) -> some View {
+        self.padding()
+            .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                            .stroke(color.toSwiftUI(), lineWidth: 1)
+            )
+    }
+}
