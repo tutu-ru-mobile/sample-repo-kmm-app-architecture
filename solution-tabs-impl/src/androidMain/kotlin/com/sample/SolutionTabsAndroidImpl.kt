@@ -14,6 +14,7 @@ import androidx.ui.material.icons.filled.AccountBalanceWallet
 import androidx.ui.material.icons.filled.Menu
 import androidx.ui.material.icons.filled.Search
 import androidx.ui.unit.dp
+import com.sample.compose.DefaultPadding
 
 class SolutionTabsAndroidImpl(
     val common: SolutionTabsImpl,
@@ -29,18 +30,20 @@ class SolutionTabsAndroidImpl(
                 renderBottomNavigation()
             }
         ) {
-            when (common.store.state.screen) {
-                is SolutionTabsImpl.Screen.Main -> {
-                    searchTabAndroid.renderMainScreen()
-                }
-                is SolutionTabsImpl.Screen.Orders -> {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        ordersTabAndroid.renderAllOrders()
+            DefaultPadding {
+                when (common.store.state.screen) {
+                    is SolutionTabsImpl.Screen.Main -> {
+                        searchTabAndroid.renderMainScreen()
                     }
-                }
-                is SolutionTabsImpl.Screen.Settings -> {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        settingsTabAndroid.renderSettings()
+                    is SolutionTabsImpl.Screen.Orders -> {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            ordersTabAndroid.renderAllOrders()
+                        }
+                    }
+                    is SolutionTabsImpl.Screen.Settings -> {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            settingsTabAndroid.renderSettings()
+                        }
                     }
                 }
             }
