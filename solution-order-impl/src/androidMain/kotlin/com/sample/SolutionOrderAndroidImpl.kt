@@ -2,8 +2,6 @@ package com.sample
 
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.ContentGravity
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.drawBorder
 import androidx.ui.graphics.Color
@@ -12,6 +10,7 @@ import androidx.ui.material.Button
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.sample.app.SolutionOrderImpl
+import com.sample.compose.Central
 
 
 class SolutionOrderAndroidImpl(
@@ -34,7 +33,7 @@ class SolutionOrderAndroidImpl(
 
     @Composable
     override fun renderAllOrders() {
-        central {
+        Central {
             Column {
                 if (common.solutionAuth.isAuthorized()) {
                     Text("Мои заказы:")

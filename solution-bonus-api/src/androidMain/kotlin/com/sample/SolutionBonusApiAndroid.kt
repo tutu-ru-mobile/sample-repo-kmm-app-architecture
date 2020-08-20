@@ -9,4 +9,7 @@ interface SolutionBonusApiAndroid {
     @Composable
     fun renderBonusCount()
 
+    @Composable
+    fun renderBonusToggle()
+
 }

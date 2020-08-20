@@ -10,6 +10,7 @@ import androidx.ui.layout.padding
 import androidx.ui.material.Button
 import androidx.ui.material.FilledTextField
 import androidx.ui.unit.dp
+import com.sample.compose.WrapColorBox
 
 
 class SolutionAuthAndroidImpl(val common: SolutionAuthImpl) : SolutionAuthAndroidApi {
@@ -17,7 +18,7 @@ class SolutionAuthAndroidImpl(val common: SolutionAuthImpl) : SolutionAuthAndroi
     @Composable
     override fun renderLoginForm() {
         val state = common.store.state
-        wrapColorBox(color = common.color) {
+        WrapColorBox(color = common.color) {
             if (common.isAuthorized()) {
                 Column() {
                     Text("Вы авторизованы: ${state.login}")

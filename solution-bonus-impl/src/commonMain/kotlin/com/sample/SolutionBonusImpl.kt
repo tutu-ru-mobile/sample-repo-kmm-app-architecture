@@ -1,6 +1,7 @@
 package com.sample
 
 import kotlinx.coroutines.flow.Flow
+import kotlin.math.min
 
 class SolutionBonusImpl(
     val solutionAb: SolutionAbApi
@@ -11,20 +12,22 @@ class SolutionBonusImpl(
     }
 
     init {
-        solutionAb.registerBooleanToggle(BONUSES_AB_KEY, false)
+        solutionAb.registerBooleanToggle(BONUSES_AB_KEY, true)
     }
 
     data class State(
-        val bonusAmount: Int
+        val bonusAmount: Int,
+        val buyWithBonus: Boolean
     )
 
     sealed class Action {
         class Add(val add: Int) : Action()
         class Spend(val amount: Int) : Action()
+        class SwitchBuyToggle() : Action()
     }
 
     val store = createStore(
-        State(1000)
+        State(1000, false)
     ) { s, a: Action ->
         when (a) {
             is Action.Add -> {
@@ -33,12 +36,15 @@ class SolutionBonusImpl(
             is Action.Spend -> {
                 s.copy(bonusAmount = s.bonusAmount - a.amount)
             }
+            is Action.SwitchBuyToggle -> {
+                s.copy(
+                    buyWithBonus = !s.buyWithBonus
+                )
+            }
         }
     }
 
     val update: Flow<*> = store.stateFlow
-
-    override val availableMoneyAmount: Int get() = store.state.bonusAmount
 
     override fun spendBonuses(amount: Int) {
         store.send(Action.Spend(amount))
@@ -51,6 +57,19 @@ class SolutionBonusImpl(
     override fun isAvailable(): Boolean {
         return solutionAb.getBooleanToggleState(BONUSES_AB_KEY)
     }
+
+    override fun calcDiscount(fullPrice: Int): Int =
+        if (store.state.buyWithBonus) {
+            min(fullPrice * 40 / 100, getState().bonusAmount)
+        } else {
+            0
+        }
+
+    override fun buyWithBonus(): Boolean {
+        return getState().buyWithBonus
+    }
+
+    fun getBonusRules(): String = "Бонусами можно оплатить не более 40% стоимости билета"
 
     val color get() = MyColors.SOLUTION_BONUS
 

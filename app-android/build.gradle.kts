@@ -8,7 +8,7 @@ android {
     buildToolsVersion(ANDROID_BUILD_TOOLS_VERSION)
 
     defaultConfig {
-        applicationId("com.example.jetpackcomposeplayground")
+        applicationId("com.sample.app")
         minSdkVersion(ANDROID_MIN_SDK)
         targetSdkVersion(ANDROID_TARGET_SDK)
         versionCode(1)

@@ -4,8 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchResultImpl(
     navigationApi: SolutionNavigationApi,
-    orderApi: SolutionOrderApi,
-    val bonus: SolutionBonusApi
+    orderApi: SolutionOrderApi
 ) : SolutionSearchResultApi {
     data class State(
         val tickets: List<Ticket> = emptyList(),
@@ -26,8 +25,7 @@ class SolutionSearchResultImpl(
                 )
             }
             is Action.BuyTicket -> {
-                bonus.spendBonuses(a.ticket.price)
-                orderApi.addTicket(a.ticket)
+                navigationApi.navigateBuy(a.ticket)
                 s
             }
             is Action.Back -> {

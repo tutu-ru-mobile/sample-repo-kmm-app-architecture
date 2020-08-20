@@ -23,7 +23,7 @@ class SolutionTabSearchAndroidImpl(
                 searchResult.renderSearchResult()
             }
             is SolutionTabSearchImpl.Screen.Buy -> {
-                searchResult.renderSearchResult()
+                solutionBuy.renderBuy()
             }
         }
     }

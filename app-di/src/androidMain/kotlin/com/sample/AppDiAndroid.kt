@@ -35,7 +35,8 @@ class AppDiAndroid(val common: AppDi) {
             common.solutionTabSearch,
             solutionSearchFormAndroid,
             solutionSearchStartAndroid,
-            solutionSearchResultAndroid
+            solutionSearchResultAndroid,
+            solutionBuySolutionSettingsApiAndroid
         )
     }
     val solutionAbAndroid by lazy {
@@ -52,5 +53,7 @@ class AppDiAndroid(val common: AppDi) {
             solutionSettingsAndroid
         )
     }
+    val solutionBuySolutionSettingsApiAndroid by lazy {
+        SolutionBuyAndroidImpl(common.solutionBuy, solutionBonusAndroid)
+    }
 }
-

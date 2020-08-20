@@ -14,15 +14,16 @@ class AppDi {
     val solutionOrder by lazy { SolutionOrderImpl(solutionAuth, solutionBonus) }
     val solutionSettings by lazy { SolutionSettingsImpl() }
     val solutionAttention by lazy { SolutionAttentionImpl() }
-    val solutionSearchForm by lazy { SolutionSearchFormImpl(mainTabNav) }
-    val solutionSearchStart by lazy { SolutionSearchStartImpl(mainTabNav) }
-    val solutionSearchResult by lazy { SolutionSearchResultImpl(mainTabNav, solutionOrder, solutionBonus) }
-    val solutionTabSearch by lazy { SolutionTabSearchImpl(solutionSearchStart, solutionSearchResult) }
+    val solutionSearchForm by lazy { SolutionSearchFormImpl(solutionNavigation) }
+    val solutionSearchStart by lazy { SolutionSearchStartImpl(solutionNavigation) }
+    val solutionSearchResult by lazy { SolutionSearchResultImpl(solutionNavigation, solutionOrder) }
+    val solutionTabSearch by lazy { SolutionTabSearchImpl(solutionSearchStart, solutionSearchResult, solutionBuy) }
     val solutionTabs by lazy { SolutionTabsImpl() }
     val solutionWeather by lazy {SolutionWeatherImpl()}
     val solutionAb by lazy { SolutionAbImpl() }
+    val solutionBuy by lazy { SolutionBuyImpl(solutionNavigation, solutionOrder, solutionBonus) }
 
-    val mainTabNav: SolutionNavigationApi by lazy {
+    val solutionNavigation: SolutionNavigationApi by lazy {
         object : SolutionNavigationApi {
             override fun navigateSearchForm() =
                 solutionTabSearch.navigateSearchForm()

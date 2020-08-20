@@ -3,15 +3,14 @@ package com.sample
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
-import androidx.ui.foundation.ContentGravity
 import androidx.ui.foundation.Text
-import androidx.ui.graphics.Color
 import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
 import androidx.ui.material.Button
 import androidx.ui.material.FilledTextField
 import androidx.ui.unit.dp
+import com.sample.compose.Central
 
 
 class SolutionSearchFormAndroidImpl(
@@ -22,7 +21,7 @@ class SolutionSearchFormAndroidImpl(
     @Composable
     override fun renderSearchForm() {
         Column {
-            central {
+            Central {
                 Box(
                     modifier = Modifier.padding(16.dp),
                     backgroundColor = common.attentionBackgroundColor.toComposeColor()
