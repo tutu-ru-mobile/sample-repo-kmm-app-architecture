@@ -49,4 +49,6 @@ include("solution-weather-api")
 include("solution-weather-impl")
 include("solution-ab-api")
 include("solution-ab-impl")
+include("solution-buy-api")
+include("solution-buy-impl")
 

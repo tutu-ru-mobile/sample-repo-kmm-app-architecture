@@ -3,14 +3,16 @@ package com.sample
 import kotlinx.coroutines.flow.Flow
 
 class SolutionTabSearchImpl(
-    val startSearch: SolutionSearchStartApi,
-    val searchResult: SolutionSearchResultApi
+    val solutionStartSearch: SolutionSearchStartApi,
+    val solutionSearchResult: SolutionSearchResultApi,
+    val solutionBuy: SolutionBuyApi
 ): SolutionTabSearchApi {
 
     sealed class Screen {
         object SearchForm : Screen()
         object SearchStart : Screen()
         object SearchResult : Screen()
+        object Buy : Screen()
     }
 
     data class State(
@@ -36,13 +38,18 @@ class SolutionTabSearchImpl(
     }
 
     override fun navigateStartSearch(query: String) {
-        startSearch.startSearch(query)
+        solutionStartSearch.startSearch(query)
         store.send(Action.SetScreen(Screen.SearchStart))
     }
 
     override fun navigateSearchResult(tickets: List<Ticket>) {
-        searchResult.setSearchResult(tickets)
+        solutionSearchResult.setSearchResult(tickets)
         store.send(Action.SetScreen(Screen.SearchResult))
+    }
+
+    override fun navigateBuy(ticket: Ticket) {
+        solutionBuy.buy(ticket)
+        store.send(Action.SetScreen(Screen.Buy))
     }
 
     val update: Flow<*> = store.stateFlow

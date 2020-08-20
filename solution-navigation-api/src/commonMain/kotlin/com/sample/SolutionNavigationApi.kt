@@ -4,4 +4,5 @@ interface SolutionNavigationApi {
     fun navigateSearchForm()
     fun navigateStartSearch(query: String)
     fun navigateSearchResult(tickets: List<Ticket>)
+    fun navigateBuy(ticket:Ticket)
 }

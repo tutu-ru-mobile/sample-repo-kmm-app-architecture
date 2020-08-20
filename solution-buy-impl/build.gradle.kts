@@ -17,9 +17,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":solution-search-result-api"))
-                implementation(project(":solution-search-start-api"))
+                api(project(":solution-buy-api"))
                 implementation(project(":solution-navigation-api"))
+                implementation(project(":solution-bonus-api"))
                 implementation(project(":lib-basic"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }

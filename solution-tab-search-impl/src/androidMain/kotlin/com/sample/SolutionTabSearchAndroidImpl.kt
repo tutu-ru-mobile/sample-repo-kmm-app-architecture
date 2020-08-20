@@ -6,7 +6,8 @@ class SolutionTabSearchAndroidImpl(
     val common: SolutionTabSearchImpl,
     val searchForm: SolutionSearchFormAndroidApi,
     val searchStart: SolutionSearchStartAndroidApi,
-    val searchResult: SolutionSearchResultAndroidApi
+    val searchResult: SolutionSearchResultAndroidApi,
+    val solutionBuy: SolutionBuyAndroidApi
 ) : SolutionTabSearchAndroidApi {
 
     @Composable
@@ -19,6 +20,9 @@ class SolutionTabSearchAndroidImpl(
                 searchStart.renderSearching()
             }
             is SolutionTabSearchImpl.Screen.SearchResult -> {
+                searchResult.renderSearchResult()
+            }
+            is SolutionTabSearchImpl.Screen.Buy -> {
                 searchResult.renderSearchResult()
             }
         }

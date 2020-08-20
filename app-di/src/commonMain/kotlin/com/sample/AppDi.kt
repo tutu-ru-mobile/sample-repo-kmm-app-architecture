@@ -32,6 +32,10 @@ class AppDi {
 
             override fun navigateSearchResult(tickets: List<Ticket>) =
                 solutionTabSearch.navigateSearchResult(tickets)
+
+            override fun navigateBuy(ticket: Ticket) =
+                solutionTabSearch.navigateBuy(ticket)
+
         }
     }
 
