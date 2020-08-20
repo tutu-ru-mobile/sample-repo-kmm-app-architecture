@@ -33,6 +33,10 @@ public struct SolutionBonusIosImpl: SolutionBonusIosApi {
                 .colorRect(color: common.color, available: common.isAvailable())
     }
 
+    public func renderBonusToggle() -> some View {
+        Text("todo renderBonusToggle")
+    }
+
     func _renderBonusCount() -> some View {
         VStack {
             if (self.common.isAvailable()) {

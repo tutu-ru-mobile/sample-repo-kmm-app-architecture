@@ -25,6 +25,9 @@ public struct SolutionBuyIosImpl
     public func renderBuy() -> some View {
         VStack {
             Text("todo renderBuy()")
+            TicketView(ticket: self.common.getState().ticket) {
+//                self.common.send(action: self.common)
+            }
 //            Text(searchStart.getSearchQuery())
 //            List(self.common.getState().tickets, id: \.id) { ticket in
 //                TicketView(item: ticket) {
@@ -40,8 +43,8 @@ struct TicketView: View {
     var ticket: Solution_order_apiTicket
     var clickAction: () -> Void
 
-    public init(item: Solution_order_apiTicket, clickAction: @escaping () -> ()) {
-        self.ticket = item
+    public init(ticket: Solution_order_apiTicket, clickAction: @escaping () -> ()) {
+        self.ticket = ticket
         self.clickAction = clickAction
     }
 
