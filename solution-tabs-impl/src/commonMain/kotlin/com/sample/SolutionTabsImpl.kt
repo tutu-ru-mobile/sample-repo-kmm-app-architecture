@@ -2,7 +2,7 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
-class SolutionTabsImpl(): SolutionTabsApi {
+class SolutionTabsImpl() : SolutionTabsApi {
     sealed class Screen {
         object Main : Screen()
         object Orders : Screen()
@@ -40,4 +40,16 @@ class SolutionTabsImpl(): SolutionTabsApi {
     }
 
     val update: Flow<*> = store.stateFlow
+
+    val color get() = MyColors.SOLUTION_TABS
+
+    //iOS
+    fun isSelectedMain() = store.state.screen == Screen.Main
+    fun isSelectedOrders() = store.state.screen == Screen.Orders
+    fun isSelectedSettings() = store.state.screen == Screen.Settings
+
+    fun actionSelectMain() = store.send(Action.SelectMain)
+    fun actionSelectOrders() = store.send(Action.SelectOrders)
+    fun actionSelectSettings() = store.send(Action.SelectSettings)
+
 }

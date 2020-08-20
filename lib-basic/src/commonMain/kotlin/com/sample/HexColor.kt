@@ -20,10 +20,12 @@ object MyColors {
     val VIOLET = HexColor(0xFF_EE_82_EE.toInt())
     val RANDOM1 = HexColor(0xFF_18_82_48.toInt())
     val RANDOM2 = HexColor(0xFF_94_45_73.toInt())
+    val RANDOM3 = HexColor(0xFF_44_99_77.toInt())
 
     val SOLUTION_BONUS = YELLOW
     val SOLUTION_AUTH = VIOLET
     val SOLUTION_AB = GREEN
     val SOLUTION_SEARCH_FORM = RANDOM1
     val SOLUTION_ATTENTION = RANDOM2
+    val SOLUTION_TABS = RANDOM3
 }

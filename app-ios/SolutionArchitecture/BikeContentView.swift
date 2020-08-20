@@ -32,7 +32,7 @@ struct MyListView: View {
     var param1: String//Можно параметризировать View
 
     var body: some View {
-        NavigationView {
+        NavigationView() {
             List(myViewModel.myState.list, id: \.id) { item in
                 MyItemView(item: item) {
                     self.myViewModel.doAction(action: MyAction.Click(item: item))

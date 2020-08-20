@@ -34,7 +34,6 @@ public struct SolutionSettingsIosImpl
 
     public func renderSettings() -> some View {
         VStack {
-            Text("SolutionSettingsIosImpl renderSettings")
             authIos.renderLoginForm()
             bonusIos.renderBonusesAndRefillButton()
             abIos.renderAbSettings()

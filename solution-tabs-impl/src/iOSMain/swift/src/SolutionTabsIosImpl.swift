@@ -35,19 +35,25 @@ public struct SolutionTabsIosImpl
     public func renderBottomNavigation() -> some View {
         HStack() {
             Button(action: {
-                self.common.store.send(action: Solution_tabs_implSolutionTabsImpl.ActionSelectMain())
+                self.common.actionSelectMain()
             }) {
                 Text("Main")
+                        .foregroundColor(self.common.isSelectedMain() ? Color.black : Color.blue)
+                        .colorRect(color: self.common.color)
             }.padding()
             Button(action: {
-                self.common.store.send(action: Solution_tabs_implSolutionTabsImpl.ActionSelectOrders())
+                self.common.actionSelectOrders()
             }) {
                 Text("Orders")
+                        .foregroundColor(self.common.isSelectedOrders() ? Color.black : Color.blue)
+                        .colorRect(color: self.common.color)
             }.padding()
             Button(action: {
-                self.common.store.send(action: Solution_tabs_implSolutionTabsImpl.ActionSelectSettings())
+                self.common.actionSelectSettings()
             }) {
                 Text("Settings")
+                        .foregroundColor(self.common.isSelectedSettings() ? Color.black : Color.blue)
+                        .colorRect(color: self.common.color)
             }.padding()
         }
     }
