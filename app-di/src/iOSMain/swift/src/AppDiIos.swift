@@ -38,6 +38,7 @@ public class AppDiIos {
     lazy public var solutionSearchStartIos = SolutionSearchStartIosImpl()
     lazy public var solutionBuyIos = SolutionBuyIosImpl(
             common: common.solutionBuy,
+            solutionBonus: common.solutionBonus,
             solutionBonusIos: solutionBonusIos
     )
     lazy public var solutionSearchResultIos = SolutionSearchResultIosImpl(

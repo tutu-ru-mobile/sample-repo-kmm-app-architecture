@@ -51,5 +51,7 @@ class SolutionBuyImpl(
     //iOS:
     fun getState() = store.state
     fun send(action: Action) = store.send(action)
+    fun actionBuy() = store.send(Action.BuyTicket())
+    fun actionCancel() = store.send(Action.Back())
 
 }

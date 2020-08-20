@@ -31,3 +31,29 @@ extension View {
             .padding(5)
     }
 }
+
+public struct MyToggleView: View {
+    var label: String
+    var onChange: (Bool) -> Void
+    var value: Bool
+
+    public init(label: String, value: Bool, onChange: @escaping (Bool) -> ()) {
+        self.label = label
+        self.onChange = onChange
+        self.value = value
+    }
+
+    func getBoundValue() -> Binding<Bool> {
+        Binding<Bool>(get: { () -> Bool in
+            self.value
+        }, set: { s in
+            self.onChange(s)
+        })
+    }
+
+    public var body: some View {
+        Toggle(isOn: getBoundValue()) {
+            Text(label)
+        }
+    }
+}

@@ -34,7 +34,20 @@ public struct SolutionBonusIosImpl: SolutionBonusIosApi {
     }
 
     public func renderBonusToggle() -> some View {
-        Text("todo renderBonusToggle")
+        VStack {
+            if(self.common.isAvailable()) {
+                MyToggleView(
+                        label: "Использовать бонусы",
+                        value: self.common.canBuyWithBonus()
+                ) { checked in
+                    self.common.actionSwitchBuyToggle()
+                }
+                if(self.common.canBuyWithBonus()) {
+                    _renderBonusCount()
+                    Text(self.common.getBonusRules())
+                }
+            }
+        }.colorRect(color: common.color, available: common.isAvailable())
     }
 
     func _renderBonusCount() -> some View {

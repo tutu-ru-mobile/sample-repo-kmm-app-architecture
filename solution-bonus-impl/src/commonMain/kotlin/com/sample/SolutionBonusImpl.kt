@@ -59,14 +59,14 @@ class SolutionBonusImpl(
     }
 
     override fun calcDiscount(fullPrice: Int): Int =
-        if (store.state.buyWithBonus) {
+        if (canBuyWithBonus()) {
             min(fullPrice * 40 / 100, getState().bonusAmount)
         } else {
             0
         }
 
-    override fun buyWithBonus(): Boolean {
-        return getState().buyWithBonus
+    override fun canBuyWithBonus(): Boolean {
+        return getState().buyWithBonus && isAvailable()
     }
 
     fun getBonusRules(): String = "Бонусами можно оплатить не более 40% стоимости билета"
@@ -75,5 +75,6 @@ class SolutionBonusImpl(
 
     //iOS:
     fun getState() = store.state
+    fun actionSwitchBuyToggle() = store.send(Action.SwitchBuyToggle())
 
 }

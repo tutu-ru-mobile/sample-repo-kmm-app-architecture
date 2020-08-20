@@ -5,5 +5,5 @@ interface SolutionBonusApi {
     fun addBonuses(amount: Int)
     fun isAvailable(): Boolean
     fun calcDiscount(fullPrice: Int): Int
-    fun buyWithBonus():Boolean
+    fun canBuyWithBonus():Boolean
 }

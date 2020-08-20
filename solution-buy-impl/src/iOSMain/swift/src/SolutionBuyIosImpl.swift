@@ -13,27 +13,33 @@ public struct SolutionBuyIosImpl
 
     var common: Solution_buy_implSolutionBuyImpl
     var solutionBonusIos: TSolutionBonusIosApi
+    var solutionBonus: Solution_bonus_apiSolutionBonusApi
 
     public init(
             common: Solution_buy_implSolutionBuyImpl,
+            solutionBonus: Solution_bonus_apiSolutionBonusApi,
             solutionBonusIos: TSolutionBonusIosApi
     ) {
         self.common = common
+        self.solutionBonus = solutionBonus
         self.solutionBonusIos = solutionBonusIos
     }
 
     public func renderBuy() -> some View {
         VStack {
-            Text("todo renderBuy()")
-            TicketView(ticket: self.common.getState().ticket) {
-//                self.common.send(action: self.common)
-            }
-//            Text(searchStart.getSearchQuery())
-//            List(self.common.getState().tickets, id: \.id) { ticket in
-//                TicketView(item: ticket) {
-//                    self.common.send(action: self.common.getActionBuyTicket(ticket: ticket))
-//                }
-//            }
+            Text("Билет \(self.common.getState().ticket.txt)")
+            solutionBonusIos.renderBonusToggle().padding()
+            Button(action: { self.common.actionBuy() }) {
+                VStack {
+                    if(solutionBonus.canBuyWithBonus()) {
+                        Text("\(common.getState().ticket.price) р.").strikethrough(color: Color.red)
+                    }
+                    Text("Купить за \(common.getPrice()) р.")
+                }
+            }.padding()
+            Button(action: { self.common.actionCancel() }) {
+                Text("Отмена")
+            }.padding().foregroundColor(Color.red)
         }
     }
 

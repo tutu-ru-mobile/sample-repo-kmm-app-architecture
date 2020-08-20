@@ -33,7 +33,7 @@ class SolutionBonusAndroidImpl(
         WrapColorBox(common.color, common.isAvailable()) {
             Column {
                 _renderBonusCheckbox()
-                if(common.buyWithBonus()) {
+                if(common.canBuyWithBonus()) {
                     _renderBonusCount()
                     _renderBonusRules()
                 }
@@ -58,7 +58,7 @@ class SolutionBonusAndroidImpl(
     @Composable
     private fun _renderBonusCheckbox() {
         if (common.isAvailable()) {
-            CheckBoxWithLabel("использовать бонусы", common.buyWithBonus()) {
+            CheckBoxWithLabel("использовать бонусы", common.canBuyWithBonus()) {
                 common.store.send(SolutionBonusImpl.Action.SwitchBuyToggle())
             }
         }
