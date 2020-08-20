@@ -26,8 +26,10 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-
+                implementationComposeApi()
             }
         }
     }
 }
+
+fixComposeWithWorkaround()
