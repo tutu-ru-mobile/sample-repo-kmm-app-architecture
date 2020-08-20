@@ -32,7 +32,7 @@ class SolutionSearchStartImpl(val nav: SolutionNavigationApi) : SolutionSearchSt
 
         todoScope {
             //todo SideEffect
-            delay(1000)
+            delay(1000)//Эмитатия сетевой задержки
             completeSearch()
         }
     }

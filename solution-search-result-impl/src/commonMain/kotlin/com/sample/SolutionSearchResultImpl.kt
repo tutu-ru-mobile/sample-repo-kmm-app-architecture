@@ -15,6 +15,7 @@ class SolutionSearchResultImpl(
     sealed class Action {
         class SetResult(val tickets: List<Ticket>) : Action()
         class BuyTicket(val ticket: Ticket) : Action()
+        class Back() : Action()
     }
 
     val store: Store<State, Action> = createStore(State()) { s, a: Action ->
@@ -27,6 +28,9 @@ class SolutionSearchResultImpl(
             is Action.BuyTicket -> {
                 bonus.spendBonuses(a.ticket.price)
                 orderApi.addTicket(a.ticket)
+                s
+            }
+            is Action.Back -> {
                 navigationApi.navigateSearchForm()
                 s
             }

@@ -56,6 +56,12 @@ class SolutionSearchResultAndroidImpl(
             if(common.store.state.notEnoughMoney) {
                 Text("Не достаточно денег")
             }
+            Spacer(Modifier.preferredHeight(16.dp))
+            Button(onClick = {
+                common.store.send(SolutionSearchResultImpl.Action.Back())
+            }) {
+                Text("Назад")
+            }
         }
     }
 
