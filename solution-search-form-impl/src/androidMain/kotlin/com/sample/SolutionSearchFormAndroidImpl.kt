@@ -22,12 +22,13 @@ class SolutionSearchFormAndroidImpl(
     @Composable
     override fun renderSearchForm() {
         Column {
-            Box(
-                modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth(),
-                backgroundColor = common.attentionBackgroundColor.toComposeColor(),
-                gravity = ContentGravity.Center
-            ) {
-                attentionAndroid.renderMainScreenAttention()
+            central {
+                Box(
+                    modifier = Modifier.padding(16.dp),
+                    backgroundColor = common.attentionBackgroundColor.toComposeColor()
+                ) {
+                    attentionAndroid.renderMainScreenAttention()
+                }
             }
 
             FilledTextField(

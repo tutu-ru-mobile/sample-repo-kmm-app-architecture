@@ -2,6 +2,8 @@ package com.sample
 
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
+import androidx.ui.foundation.Box
+import androidx.ui.foundation.ContentGravity
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.drawBorder
 import androidx.ui.graphics.Color
@@ -32,17 +34,19 @@ class SolutionOrderAndroidImpl(
 
     @Composable
     override fun renderAllOrders() {
-        Column {
-            if (common.solutionAuth.isAuthorized()) {
-                Text("Мои заказы:")
-                common.store.state.tickets.forEach {
-                    renderOrder(it)
+        central {
+            Column {
+                if (common.solutionAuth.isAuthorized()) {
+                    Text("Мои заказы:")
+                    common.store.state.tickets.forEach {
+                        renderOrder(it)
+                    }
+                } else {
+                    Text("Для просмотра заказов")
+                    Text("Нужно авторизоваться:")
+                    Spacer(Modifier.preferredHeight(16.dp))
+                    androidAuth.renderLoginForm()
                 }
-            } else {
-                Text("Для просмотра заказов")
-                Text("Нужно авторизоваться:")
-                Spacer(Modifier.preferredHeight(16.dp))
-                androidAuth.renderLoginForm()
             }
         }
     }

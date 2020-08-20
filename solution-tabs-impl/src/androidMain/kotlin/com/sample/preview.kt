@@ -31,8 +31,7 @@ fun tabsPreview() {
             override fun renderAllOrders() {
 
             }
-        }
-        ,
+        },
         object : SolutionSettingsApiAndroid {
             @Composable
             override fun renderSettings() {

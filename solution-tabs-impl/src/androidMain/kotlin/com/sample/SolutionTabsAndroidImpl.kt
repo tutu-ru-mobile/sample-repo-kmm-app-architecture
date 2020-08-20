@@ -1,9 +1,11 @@
 package com.sample
 
 import androidx.compose.Composable
+import androidx.ui.core.Modifier
 import androidx.ui.foundation.Icon
 import androidx.ui.foundation.Text
 import androidx.ui.layout.Column
+import androidx.ui.layout.padding
 import androidx.ui.material.BottomNavigation
 import androidx.ui.material.BottomNavigationItem
 import androidx.ui.material.Scaffold
@@ -11,6 +13,7 @@ import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.AccountBalanceWallet
 import androidx.ui.material.icons.filled.Menu
 import androidx.ui.material.icons.filled.Search
+import androidx.ui.unit.dp
 
 class SolutionTabsAndroidImpl(
     val common: SolutionTabsImpl,
@@ -31,10 +34,12 @@ class SolutionTabsAndroidImpl(
                     searchTabAndroid.renderMainScreen()
                 }
                 is SolutionTabsImpl.Screen.Orders -> {
-                    ordersTabAndroid.renderAllOrders()
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        ordersTabAndroid.renderAllOrders()
+                    }
                 }
                 is SolutionTabsImpl.Screen.Settings -> {
-                    Column {
+                    Column(modifier = Modifier.padding(16.dp)) {
                         settingsTabAndroid.renderSettings()
                     }
                 }
