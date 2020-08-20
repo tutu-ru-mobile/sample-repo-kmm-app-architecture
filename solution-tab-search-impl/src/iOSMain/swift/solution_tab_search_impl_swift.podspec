@@ -18,5 +18,6 @@ Pod::Spec.new do |s|
   s.dependency 'solution_search_form_api_swift'
   s.dependency 'solution_search_start_api_swift'
   s.dependency 'solution_search_result_api_swift'
+  s.dependency 'solution_buy_api_swift'
   s.static_framework = true
 end

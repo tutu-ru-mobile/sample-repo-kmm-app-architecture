@@ -62,6 +62,14 @@ PODS:
     - app_di
     - lib_basic_swift
     - solution_bonus_api_swift
+  - solution_buy_api_swift (0.0.1):
+    - app_di
+    - lib_basic_swift
+  - solution_buy_impl_swift (0.0.1):
+    - app_di
+    - lib_basic_swift
+    - solution_search_result_api_swift
+    - solution_search_start_api_swift
   - solution_order_api_swift (0.0.1):
     - app_di
     - lib_basic_swift
@@ -109,6 +117,7 @@ PODS:
   - solution_tab_search_impl_swift (0.0.1):
     - app_di
     - lib_basic_swift
+    - solution_buy_api_swift
     - solution_search_form_api_swift
     - solution_search_result_api_swift
     - solution_search_start_api_swift
@@ -143,6 +152,8 @@ DEPENDENCIES:
   - solution_auth_impl_swift (from `../solution-auth-impl/src/iOSMain/swift`)
   - solution_bonus_api_swift (from `../solution-bonus-api/src/iOSMain/swift`)
   - solution_bonus_impl_swift (from `../solution-bonus-impl/src/iOSMain/swift`)
+  - solution_buy_api_swift (from `../solution-buy-api/src/iOSMain/swift`)
+  - solution_buy_impl_swift (from `../solution-buy-impl/src/iOSMain/swift`)
   - solution_order_api_swift (from `../solution-order-api/src/iOSMain/swift`)
   - solution_order_impl_swift (from `../solution-order-impl/src/iOSMain/swift`)
   - solution_search_form_api_swift (from `../solution-search-form-api/src/iOSMain/swift`)
@@ -183,6 +194,10 @@ EXTERNAL SOURCES:
     :path: "../solution-bonus-api/src/iOSMain/swift"
   solution_bonus_impl_swift:
     :path: "../solution-bonus-impl/src/iOSMain/swift"
+  solution_buy_api_swift:
+    :path: "../solution-buy-api/src/iOSMain/swift"
+  solution_buy_impl_swift:
+    :path: "../solution-buy-impl/src/iOSMain/swift"
   solution_order_api_swift:
     :path: "../solution-order-api/src/iOSMain/swift"
   solution_order_impl_swift:
@@ -228,6 +243,8 @@ SPEC CHECKSUMS:
   solution_auth_impl_swift: 49e2acb59936fedd997ebc9819572f5b4f8ab40e
   solution_bonus_api_swift: 1d288f84ceb5ec2d300bbaf07478891bd96ce668
   solution_bonus_impl_swift: 797e365f5c2c2651f6ea6a0442d2fc4d150f4a82
+  solution_buy_api_swift: 7ca3bdefb112e7b94cc2acb50da07b76b3eb98e2
+  solution_buy_impl_swift: 6f8dc0fbdb6e190e66a81112548df5984527e3da
   solution_order_api_swift: 0a99099cc95f9021bd41f1d3dbc40dc47908a928
   solution_order_impl_swift: 594012a379714b6ec850f7752b09069bead423f7
   solution_search_form_api_swift: 2e6db9bd847fcb82f771d9034edcd6bf41f43aaf
@@ -239,12 +256,12 @@ SPEC CHECKSUMS:
   solution_settings_api_swift: c7273b263c8bcd429520edf551ff11185d4e4cf3
   solution_settings_impl_swift: dd25bfefbeb628186f07341921943206c96a3af6
   solution_tab_search_api_swift: 66b9b66e5658eb4daf3102fad584bea5481f2b8c
-  solution_tab_search_impl_swift: b9f9f7641cf04872f1059ae0f5b0f2d30d64914e
+  solution_tab_search_impl_swift: 6e5236bf137ca6153938054c4d276763849c5a9a
   solution_tabs_api_swift: 4d368f3802a1a8a592b6d02afbdd1b9ca5545f19
   solution_tabs_impl_swift: ed6538a87bf4fed68c93733ffdbc15cb1d798f53
   solution_weather_api_swift: 27ef2626c3b5cd186a7fd3ed6e78638b7e2283aa
   solution_weather_impl_swift: a6d89f40fe1457e9f314f61adfea9d234f7b9b7e
 
-PODFILE CHECKSUM: 5e0fd54fc079ba321ec78a0c37a282d66001a805
+PODFILE CHECKSUM: 8637c53c6e592826c93c469275c77a31ca445f80
 
 COCOAPODS: 1.9.3
