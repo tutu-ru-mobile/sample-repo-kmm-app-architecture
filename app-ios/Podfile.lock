@@ -11,6 +11,8 @@ PODS:
     - solution_auth_impl_swift
     - solution_bonus_api_swift
     - solution_bonus_impl_swift
+    - solution_buy_api_swift
+    - solution_buy_impl_swift
     - solution_order_api_swift
     - solution_order_impl_swift
     - solution_search_form_api_swift
@@ -233,7 +235,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
-  app_di_swift: 12b7c04209ff0deb5d634d92a4d3ca866fe69089
+  app_di_swift: a2789801945a5e9e790c3d046c4a492bc24fe937
   lib_basic_swift: 32bb76bed6f6b3ad71e3f686e315f8ca16f229f5
   solution_ab_api_swift: dfa15a8597441bb7fd18b80b94fea8ca234abf10
   solution_ab_impl_swift: 930bfe3ba5a68b513604a76704fbc75db912cdf8

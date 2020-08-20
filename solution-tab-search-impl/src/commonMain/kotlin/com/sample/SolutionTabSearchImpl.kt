@@ -67,6 +67,10 @@ class SolutionTabSearchImpl(
         return store.state.screen is Screen.SearchResult
     }
 
+    fun isBuy():Boolean {
+        return store.state.screen is Screen.Buy
+    }
+
     fun getState():State {
         return store.state
     }

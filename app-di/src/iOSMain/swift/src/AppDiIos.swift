@@ -24,6 +24,8 @@ import solution_tabs_api_swift
 import solution_tabs_impl_swift
 import solution_bonus_api_swift
 import solution_bonus_impl_swift
+import solution_buy_api_swift
+import solution_buy_impl_swift
 import solution_weather_api_swift
 import solution_weather_impl_swift
 
@@ -34,6 +36,10 @@ public class AppDiIos {
             attentionIos: solutionAttentionIos
     )
     lazy public var solutionSearchStartIos = SolutionSearchStartIosImpl()
+    lazy public var solutionBuyIos = SolutionBuyIosImpl(
+            common: common.solutionBuy,
+            solutionBonusIos: solutionBonusIos
+    )
     lazy public var solutionSearchResultIos = SolutionSearchResultIosImpl(
             common: common.solutionSearchResult,
             searchStart: common.solutionSearchStart
@@ -42,7 +48,8 @@ public class AppDiIos {
             common: common.solutionTabSearch,
             searchForm: solutionSearchFormIos,
             searchStart: solutionSearchStartIos,
-            searchResult: solutionSearchResultIos
+            searchResult: solutionSearchResultIos,
+            solutionBuyIos: solutionBuyIos
     )
     lazy public var solutionTabs = SolutionTabsIosImpl(
             common: common.solutionTabs,

@@ -36,6 +36,8 @@ Pod::Spec.new do |s|
   s.dependency 'solution_tabs_impl_swift'
   s.dependency 'solution_bonus_api_swift'
   s.dependency 'solution_bonus_impl_swift'
+  s.dependency 'solution_buy_api_swift'
+  s.dependency 'solution_buy_impl_swift'
   s.dependency 'solution_weather_api_swift'
   s.dependency 'solution_weather_impl_swift'
 #   s.dependency 'solution_navigation_api_swift'
