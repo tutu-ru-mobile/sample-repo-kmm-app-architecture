@@ -3,9 +3,12 @@ package com.sample
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 
-class SolutionSearchStartImpl(val nav: SolutionNavigationApi) : SolutionSearchStartApi {
+class SolutionSearchStartImpl(
+    val solutionNavigation: SolutionNavigationApi
+) : SolutionSearchStartApi {
+
     data class State(
-        val searchQuery: String = ""
+        val searchQuery: String = ""//Запрос поиска, например Москва -> Санкт-Петербург
     )
 
     sealed class Action {
@@ -21,7 +24,7 @@ class SolutionSearchStartImpl(val nav: SolutionNavigationApi) : SolutionSearchSt
                 )
             }
             is Action.SearchResult -> {
-                nav.navigateSearchResult(a.result)
+                solutionNavigation.navigateSearchResult(a.result)
                 s
             }
         }
@@ -29,10 +32,9 @@ class SolutionSearchStartImpl(val nav: SolutionNavigationApi) : SolutionSearchSt
 
     override fun startSearch(query: String) {
         store.send(Action.StartSearch(query))
-
-        todoScope {
-            //todo SideEffect
-            delay(1000)//Эмитатия сетевой задержки
+        launchCoroutineDirty {
+            //Тут доджен быть запрос в сеть, но для простоты сделал эмитацию сетевой задержки
+            delay(500)
             completeSearch()
         }
     }
@@ -40,6 +42,7 @@ class SolutionSearchStartImpl(val nav: SolutionNavigationApi) : SolutionSearchSt
     override fun getSearchQuery(): String = store.state.searchQuery
 
     fun completeSearch() {
+        //Фальшивый ответ от сервера для простоты
         store.send(
             Action.SearchResult(
                 listOf(

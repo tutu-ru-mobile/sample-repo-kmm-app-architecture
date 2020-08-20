@@ -1,7 +1,6 @@
 package com.sample
 
 import com.sample.app.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
@@ -50,12 +49,13 @@ class AppDi {
     }
 
     fun addUpdate(f: Flow<*>) {
-        todoScope {
+        launchCoroutineDirty {
             f.collect { update() }
         }
     }
 
     init {
+        //Связываем все солюшены в единый поток обновления состояний
         addUpdate(solutionBonus.update)
         addUpdate(solutionAuth.update)
         addUpdate(solutionOrder.update)
@@ -67,24 +67,14 @@ class AppDi {
         addUpdate(solutionSearchResult.update)
         addUpdate(solutionWeather.update)
         addUpdate(solutionAb.update)
-
-        if (false) {
-            todoScope {
-                while (true) {
-                    delay(2000)
-                    update()
-                }
-            }
-        }
-
+        addUpdate(solutionBuy.update)
     }
 
     //iOS:
     fun getLastState() = globalStateFlow.value
 
     fun addListener(listener: (GlobalState) -> Unit) {
-        println("my addListener AppDi")
-        todoScope {
+        launchCoroutineDirty {
             globalStateFlow.collectLatest {
                 listener(it)
             }

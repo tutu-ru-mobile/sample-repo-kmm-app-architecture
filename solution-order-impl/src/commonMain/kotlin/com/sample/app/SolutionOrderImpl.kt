@@ -16,16 +16,12 @@ class SolutionOrderImpl(
     )
 
     sealed class Action {
-        object LoadOrders : Action()
         class RefundTicket(val ticket: Ticket) : Action()
         class AddTicket(val ticket: Ticket) : Action()
     }
 
     val store: Store<State, Action> = createStore(State()) { s, a: Action ->
         when (a) {
-            is Action.LoadOrders -> {
-                s
-            }
             is Action.RefundTicket -> {
                 solutionBonus.addBonuses(a.ticket.getRefundMoneyAmount())
                 s.copy(
@@ -46,12 +42,6 @@ class SolutionOrderImpl(
 
     override fun addTicket(ticket: Ticket) {
         store.send(Action.AddTicket(ticket))
-    }
-
-    init {
-        wait({ solutionAuth.isAuthorized() }) {
-            store.send(Action.LoadOrders)
-        }
     }
 
     val update: Flow<*> = store.stateFlow
