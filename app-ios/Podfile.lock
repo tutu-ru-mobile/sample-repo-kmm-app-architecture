@@ -68,8 +68,8 @@ PODS:
   - solution_buy_impl_swift (0.0.1):
     - app_di
     - lib_basic_swift
-    - solution_search_result_api_swift
-    - solution_search_start_api_swift
+    - solution_bonus_api_swift
+    - solution_buy_api_swift
   - solution_order_api_swift (0.0.1):
     - app_di
     - lib_basic_swift
@@ -244,7 +244,7 @@ SPEC CHECKSUMS:
   solution_bonus_api_swift: 1d288f84ceb5ec2d300bbaf07478891bd96ce668
   solution_bonus_impl_swift: 797e365f5c2c2651f6ea6a0442d2fc4d150f4a82
   solution_buy_api_swift: 7ca3bdefb112e7b94cc2acb50da07b76b3eb98e2
-  solution_buy_impl_swift: 6f8dc0fbdb6e190e66a81112548df5984527e3da
+  solution_buy_impl_swift: 47be51c6eaa5f85d00b21651ca302359663a36f7
   solution_order_api_swift: 0a99099cc95f9021bd41f1d3dbc40dc47908a928
   solution_order_impl_swift: 594012a379714b6ec850f7752b09069bead423f7
   solution_search_form_api_swift: 2e6db9bd847fcb82f771d9034edcd6bf41f43aaf

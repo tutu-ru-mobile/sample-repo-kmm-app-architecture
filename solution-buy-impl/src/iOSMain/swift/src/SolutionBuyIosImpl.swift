@@ -2,10 +2,9 @@ import SwiftUI
 import Foundation
 import app_di
 import lib_basic_swift
-import solution_search_result_api_swift
-import solution_search_start_api_swift
+import solution_buy_api_swift
 
-public struct SolutionSearchResultIosImpl: SolutionSearchResultIosApi {
+public struct SolutionBuyIosImpl: SolutionBuyIosApi {
 
     var common: Solution_search_result_implSolutionSearchResultImpl
     var searchStart: Solution_search_start_apiSolutionSearchStartApi
@@ -18,7 +17,7 @@ public struct SolutionSearchResultIosImpl: SolutionSearchResultIosApi {
         self.searchStart = searchStart
     }
 
-    public func renderSearchResult() -> some View {
+    public func renderBuy() -> some View {
         VStack {
             Text(searchStart.getSearchQuery())
             List(self.common.getState().tickets, id: \.id) { ticket in

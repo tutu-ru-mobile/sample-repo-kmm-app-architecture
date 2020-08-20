@@ -10,7 +10,7 @@ public struct SolutionSearchStartIosImpl: SolutionSearchStartIosApi {
 
     }
 
-    public func todoRender() -> some View {
+    public func renderSearchStart() -> some View {
         Text("Выполняем поиск билетов")
     }
 }

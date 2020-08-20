@@ -2,7 +2,8 @@ import SwiftUI
 import Foundation
 import app_di
 import lib_basic_swift
-public protocol SolutionSearchStartIosApi {
+
+public protocol SolutionBuyIosApi {
     associatedtype V1: View
-    func todoRender() -> V1
+    func renderBuy() -> V1
 }

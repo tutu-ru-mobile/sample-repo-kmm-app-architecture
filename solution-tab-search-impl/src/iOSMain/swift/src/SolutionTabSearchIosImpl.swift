@@ -37,7 +37,7 @@ public struct SolutionTabSearchIosImpl
                 searchForm.renderSearchForm()
             }
             if(common.isSearchStart()) {
-                searchStart.todoRender()
+                searchStart.renderSearchStart()
             }
             if(common.isSearchResult()) {
                 searchResult.renderSearchResult()
