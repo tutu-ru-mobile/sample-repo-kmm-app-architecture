@@ -6,7 +6,6 @@ class SolutionAbImpl() : SolutionAbApi {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
-     *
      */
     fun getColor(): HexColor = MyColors.SOLUTION_AB
 

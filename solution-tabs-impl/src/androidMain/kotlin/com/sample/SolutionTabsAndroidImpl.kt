@@ -17,7 +17,7 @@ import androidx.ui.unit.dp
 import com.sample.compose.DefaultPadding
 
 class SolutionTabsAndroidImpl(
-    val common: SolutionTabsImpl,
+    val commonImpl: SolutionTabsImpl,
     val searchTabAndroid: SolutionTabSearchAndroidApi,
     val ordersTabAndroid: SolutionOrderAndroidApi,
     val settingsTabAndroid: SolutionSettingsApiAndroid
@@ -31,7 +31,7 @@ class SolutionTabsAndroidImpl(
             }
         ) {
             DefaultPadding {
-                when (common.store.state.screen) {
+                when (commonImpl.store.state.screen) {
                     is SolutionTabsImpl.Screen.Main -> {
                         searchTabAndroid.renderMainScreen()
                     }
@@ -57,13 +57,13 @@ class SolutionTabsAndroidImpl(
                 icon = {
                     Icon(asset = Icons.Filled.Search)
                 },
-                selected = common.store.state.screen == SolutionTabsImpl.Screen.Main,
+                selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main,
                 text = {
                     Text("Поиск")
                 },
                 alwaysShowLabels = true,
                 onSelected = {
-                    common.store.send(SolutionTabsImpl.Action.SelectMain)
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
                 }
             )
             BottomNavigationItem(
@@ -74,9 +74,9 @@ class SolutionTabsAndroidImpl(
                     Text("Мои билеты")
                 },
                 alwaysShowLabels = true,
-                selected = common.store.state.screen == SolutionTabsImpl.Screen.Orders,
+                selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Orders,
                 onSelected = {
-                    common.store.send(SolutionTabsImpl.Action.SelectOrders)
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
                 }
             )
             BottomNavigationItem(
@@ -87,9 +87,9 @@ class SolutionTabsAndroidImpl(
                     Text("Настройки")
                 },
                 alwaysShowLabels = true,
-                selected = common.store.state.screen == SolutionTabsImpl.Screen.Settings,
+                selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Settings,
                 onSelected = {
-                    common.store.send(SolutionTabsImpl.Action.SelectSettings)
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
                 }
             )
         }

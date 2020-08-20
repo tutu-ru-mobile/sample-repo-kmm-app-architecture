@@ -4,21 +4,24 @@ import androidx.compose.Composable
 import androidx.ui.foundation.Text
 import androidx.ui.layout.Column
 import com.sample.compose.CheckBoxWithLabel
+import com.sample.compose.WrapColorBox
 
 class SolutionAbAndroidImpl(
-    val common: SolutionAbImpl
+    val commonImpl: SolutionAbImpl
 ) : SolutionAbAndroidApi {
 
     @Composable
     override fun renderAbSettings() {
-        val state = common.store.state
-        Column() {
-            Text("A/B features:")
-            state.booleanToggles.forEach { toggle ->
-                CheckBoxWithLabel(toggle.key, toggle.value) {
-                    common.store.send(
-                        SolutionAbImpl.Action.SwitchBooleanAb(toggle.key)
-                    )
+        val state = commonImpl.store.state
+        WrapColorBox(color = commonImpl.getColor()) {
+            Column() {
+                Text("A/B features:")
+                state.booleanToggles.forEach { toggle ->
+                    CheckBoxWithLabel(toggle.key, toggle.value) {
+                        commonImpl.store.send(
+                            SolutionAbImpl.Action.SwitchBooleanAb(toggle.key)
+                        )
+                    }
                 }
             }
         }

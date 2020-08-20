@@ -10,10 +10,8 @@ class SolutionOrderImpl(
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
-     *
      */
     fun getColor() = MyColors.SOLUTION_ORDER
-
 
     data class State(
         val tickets: List<Ticket> = List(3) {

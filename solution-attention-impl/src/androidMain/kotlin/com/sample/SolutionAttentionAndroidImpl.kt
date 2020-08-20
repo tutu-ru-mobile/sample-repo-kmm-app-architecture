@@ -6,9 +6,10 @@ import androidx.ui.foundation.Box
 import androidx.ui.layout.Column
 import androidx.ui.layout.padding
 import androidx.ui.unit.dp
+import com.sample.compose.WrapColorBox
 
 class SolutionAttentionAndroidImpl(
-    val common: SolutionAttentionImpl,
+    val commonImpl: SolutionAttentionImpl,
     val solutionAuth: SolutionAuthApi,
     val weatherAndroid: SolutionWeatherAndroidApi,
     val orderAndroid: SolutionOrderAndroidApi,
@@ -18,7 +19,7 @@ class SolutionAttentionAndroidImpl(
 
     @Composable
     override fun renderMainScreenAttention() {
-        Box(modifier = Modifier.padding(16.dp)) {
+        WrapColorBox(color = commonImpl.getColor()) {
             Column {
                 solutionBonusAndroid.renderBonusCount()
                 if (solutionAuth.isAuthorized()) {
