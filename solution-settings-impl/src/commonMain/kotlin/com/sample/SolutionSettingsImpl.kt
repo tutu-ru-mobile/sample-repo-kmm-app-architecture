@@ -22,7 +22,7 @@ class SolutionSettingsImpl : SolutionSettingsApi {
 
     val update: Flow<*> = store.stateFlow
 
-    //Helpers:
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun isDeveloperSettingsAvailable() = store.state.developerSettings
     fun actionOpenDeveloperSettings() = store.send(Action.OpenDeveloperSettings)
 

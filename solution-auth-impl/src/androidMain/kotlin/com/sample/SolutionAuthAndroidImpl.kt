@@ -18,7 +18,7 @@ class SolutionAuthAndroidImpl(val common: SolutionAuthImpl) : SolutionAuthAndroi
     @Composable
     override fun renderLoginForm() {
         val state = common.store.state
-        WrapColorBox(color = common.color) {
+        WrapColorBox(color = common.getColor()) {
             if (common.isAuthorized()) {
                 Column() {
                     Text("Вы авторизованы: ${state.login}")

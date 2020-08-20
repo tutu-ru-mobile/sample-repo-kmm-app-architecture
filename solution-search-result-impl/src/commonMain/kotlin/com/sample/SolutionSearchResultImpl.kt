@@ -3,12 +3,12 @@ package com.sample
 import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchResultImpl(
-    navigationApi: SolutionNavigationApi,
-    orderApi: SolutionOrderApi
+    navigationApi: SolutionNavigationApi
 ) : SolutionSearchResultApi {
+
     data class State(
         val tickets: List<Ticket> = emptyList(),
-        val notEnoughMoney:Boolean = false
+        val notEnoughMoney: Boolean = false
     )
 
     sealed class Action {
@@ -41,8 +41,9 @@ class SolutionSearchResultImpl(
 
     val update: Flow<*> = store.stateFlow
 
-    //iOS:
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getState() = store.state
     fun send(action: Action) = store.send(action)
     fun getActionBuyTicket(ticket: Ticket) = Action.BuyTicket(ticket)
+
 }

@@ -2,11 +2,14 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * Реализация навигации для первой вкладки  [поисковая форма] -> [поиск] -> [результат поиска (выдача)] -> [покупка]
+ */
 class SolutionTabSearchImpl(
     val solutionStartSearch: SolutionSearchStartApi,
     val solutionSearchResult: SolutionSearchResultApi,
     val solutionBuy: SolutionBuyApi
-): SolutionTabSearchApi {
+) : SolutionTabSearchApi {
 
     sealed class Screen {
         object SearchForm : Screen()
@@ -20,7 +23,7 @@ class SolutionTabSearchImpl(
     )
 
     sealed class Action {
-        class SetScreen(val screen: Screen): Action()
+        class SetScreen(val screen: Screen) : Action()
     }
 
     val store = createStore(State()) { s, a: Action ->
@@ -54,24 +57,24 @@ class SolutionTabSearchImpl(
 
     val update: Flow<*> = store.stateFlow
 
-    //for iOS:
-    fun isSearchForm():Boolean {
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
+    fun isSearchForm(): Boolean {
         return store.state.screen is Screen.SearchForm
     }
 
-    fun isSearchStart():Boolean {
+    fun isSearchStart(): Boolean {
         return store.state.screen is Screen.SearchStart
     }
 
-    fun isSearchResult():Boolean {
+    fun isSearchResult(): Boolean {
         return store.state.screen is Screen.SearchResult
     }
 
-    fun isBuy():Boolean {
+    fun isBuy(): Boolean {
         return store.state.screen is Screen.Buy
     }
 
-    fun getState():State {
+    fun getState(): State {
         return store.state
     }
 

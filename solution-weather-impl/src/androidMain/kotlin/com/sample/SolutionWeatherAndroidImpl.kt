@@ -2,16 +2,17 @@ package com.sample
 
 import androidx.compose.Composable
 import androidx.ui.foundation.Text
+import com.sample.compose.WrapColorBox
 
 class SolutionWeatherAndroidImpl(
-    val common: SolutionWeatherImpl
+    val commonImpl: SolutionWeatherImpl
 ) : SolutionWeatherAndroidApi {
 
     @Composable
     override fun renderWeather() {
-        Text(common.getWeatherString())
+        WrapColorBox(color = commonImpl.getColor()) {
+            Text(commonImpl.getWeatherString())
+        }
     }
 
-
 }
-

@@ -21,6 +21,8 @@ object MyColors {
     val RANDOM1 = HexColor(0xFF_18_82_48.toInt())
     val RANDOM2 = HexColor(0xFF_94_45_73.toInt())
     val RANDOM3 = HexColor(0xFF_44_99_77.toInt())
+    val RANDOM4 = HexColor(0xFF_65_11_33.toInt())
+    val RANDOM5 = HexColor(0xFF_65_11_33.toInt())
 
     val SOLUTION_BONUS = YELLOW
     val SOLUTION_AUTH = VIOLET
@@ -28,4 +30,8 @@ object MyColors {
     val SOLUTION_SEARCH_FORM = RANDOM1
     val SOLUTION_ATTENTION = RANDOM2
     val SOLUTION_TABS = RANDOM3
+    val SOLUTION_WEATHER = RANDOM4
+    val SOLUTION_ORDER = RANDOM5
+    val SOLUTION_BUY = RANDOM5
+
 }

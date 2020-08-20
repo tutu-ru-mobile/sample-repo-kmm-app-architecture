@@ -4,7 +4,14 @@ import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchFormImpl(
     val nav: SolutionNavigationApi
-): SolutionSearchFormApi {
+) : SolutionSearchFormApi {
+
+    /**
+     * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
+     *
+     */
+    fun getColor() = MyColors.SOLUTION_SEARCH_FORM
+
     data class State(
         val searchFrom: String = "Москва",
         val searchTo: String = "Санкт-Петербург"
@@ -38,17 +45,16 @@ class SolutionSearchFormImpl(
 
     val update: Flow<*> = store.stateFlow
 
-    val color:HexColor get() = MyColors.SOLUTION_SEARCH_FORM
     val attentionBackgroundColor = HexColor(0x22_FF_FF_00)
 
-    //iOS:
-    fun getState() = store.state
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
+    fun getState() = store.state //todo iOS
     fun send(action: Action) {
         store.send(action)
     }
 
-    fun getActionFrom(str:String) = Action.From(str)
-    fun getActionTo(str:String) = Action.To(str)
-    fun getActionSearch()  = Action.Search
+    fun getActionFrom(str: String) = Action.From(str)
+    fun getActionTo(str: String) = Action.To(str)
+    fun getActionSearch() = Action.Search
 
 }

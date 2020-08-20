@@ -15,7 +15,7 @@ class AppDi {
     val solutionAttention by lazy { SolutionAttentionImpl() }
     val solutionSearchForm by lazy { SolutionSearchFormImpl(solutionNavigation) }
     val solutionSearchStart by lazy { SolutionSearchStartImpl(solutionNavigation) }
-    val solutionSearchResult by lazy { SolutionSearchResultImpl(solutionNavigation, solutionOrder) }
+    val solutionSearchResult by lazy { SolutionSearchResultImpl(solutionNavigation) }
     val solutionTabSearch by lazy { SolutionTabSearchImpl(solutionSearchStart, solutionSearchResult, solutionBuy) }
     val solutionTabs by lazy { SolutionTabsImpl() }
     val solutionWeather by lazy {SolutionWeatherImpl()}

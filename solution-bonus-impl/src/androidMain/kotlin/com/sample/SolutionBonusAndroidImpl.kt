@@ -13,7 +13,7 @@ class SolutionBonusAndroidImpl(
 
     @Composable
     override fun renderBonusesAndRefillButton() {
-        WrapColorBox(common.color, common.isAvailable()) {
+        WrapColorBox(common.getColor(), common.isAvailable()) {
             Column {
                 _renderBonusCount()
                 renderRefillButton()
@@ -23,14 +23,14 @@ class SolutionBonusAndroidImpl(
 
     @Composable
     override fun renderBonusCount() {
-        WrapColorBox(common.color, common.isAvailable()) {
+        WrapColorBox(common.getColor(), common.isAvailable()) {
             _renderBonusCount()
         }
     }
 
     @Composable
     override fun renderBonusToggle() {
-        WrapColorBox(common.color, common.isAvailable()) {
+        WrapColorBox(common.getColor(), common.isAvailable()) {
             Column {
                 _renderBonusCheckbox()
                 if(common.canBuyWithBonus()) {

@@ -3,6 +3,14 @@ package com.sample
 import kotlinx.coroutines.flow.Flow
 
 class SolutionTabsImpl() : SolutionTabsApi {
+
+    /**
+     * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
+     *
+     */
+    fun getColor() = MyColors.SOLUTION_TABS
+
+
     sealed class Screen {
         object Main : Screen()
         object Orders : Screen()
@@ -41,9 +49,7 @@ class SolutionTabsImpl() : SolutionTabsApi {
 
     val update: Flow<*> = store.stateFlow
 
-    val color get() = MyColors.SOLUTION_TABS
-
-    //iOS
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun isSelectedMain() = store.state.screen == Screen.Main
     fun isSelectedOrders() = store.state.screen == Screen.Orders
     fun isSelectedSettings() = store.state.screen == Screen.Settings

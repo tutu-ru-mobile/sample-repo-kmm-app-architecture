@@ -7,6 +7,12 @@ class SolutionBonusImpl(
     val solutionAb: SolutionAbApi
 ) : SolutionBonusApi {
 
+    /**
+     * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
+     *
+     */
+    fun getColor() = MyColors.SOLUTION_BONUS
+
     companion object {
         const val BONUSES_AB_KEY = "bonuses_toggle"
     }
@@ -69,12 +75,9 @@ class SolutionBonusImpl(
         return getState().buyWithBonus && isAvailable()
     }
 
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getBonusRules(): String = "Бонусами можно оплатить не более 40% стоимости билета"
-
-    val color get() = MyColors.SOLUTION_BONUS
-
-    //iOS:
-    fun getState() = store.state
+    fun getState() = store.state//todo
     fun actionSwitchBuyToggle() = store.send(Action.SwitchBuyToggle())
 
 }

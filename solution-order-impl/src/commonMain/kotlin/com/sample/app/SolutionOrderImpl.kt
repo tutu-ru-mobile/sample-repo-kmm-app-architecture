@@ -6,13 +6,19 @@ import kotlinx.coroutines.flow.Flow
 class SolutionOrderImpl(
     val solutionAuth: SolutionAuthApi,
     val solutionBonus: SolutionBonusApi
-) :
-        SolutionOrderApi {
+) : SolutionOrderApi {
+
+    /**
+     * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
+     *
+     */
+    fun getColor() = MyColors.SOLUTION_ORDER
+
 
     data class State(
-            val tickets: List<Ticket> = List(3) {
-                Ticket(1000, "Поездка $it")
-            }
+        val tickets: List<Ticket> = List(3) {
+            Ticket(1000, "Поездка $it")
+        }
     )
 
     sealed class Action {
@@ -25,12 +31,12 @@ class SolutionOrderImpl(
             is Action.RefundTicket -> {
                 solutionBonus.addBonuses(a.ticket.getRefundMoneyAmount())
                 s.copy(
-                        tickets = s.tickets - a.ticket
+                    tickets = s.tickets - a.ticket
                 )
             }
             is Action.AddTicket -> {
                 s.copy(
-                        tickets = s.tickets + a.ticket
+                    tickets = s.tickets + a.ticket
                 )
             }
         }
@@ -46,8 +52,8 @@ class SolutionOrderImpl(
 
     val update: Flow<*> = store.stateFlow
 
-    //iOS:
-    fun getState() = store.state
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
+    fun getState() = store.state //todo
     fun send(action: Action) = store.send(action)
     fun getActionRefundTicket(ticket: Ticket) = Action.RefundTicket(ticket)
     fun getRecentOrder() = store.state.tickets.lastOrNull()

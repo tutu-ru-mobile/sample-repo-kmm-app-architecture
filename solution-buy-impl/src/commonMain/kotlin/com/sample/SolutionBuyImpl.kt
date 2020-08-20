@@ -8,6 +8,12 @@ class SolutionBuyImpl(
     val solutionBonus: SolutionBonusApi
 ) : SolutionBuyApi {
 
+    /**
+     * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
+     *
+     */
+    fun getColor() = MyColors.SOLUTION_BUY
+
     data class State(
         val ticket: Ticket = Ticket(0, "заглушка")
     )
@@ -42,14 +48,14 @@ class SolutionBuyImpl(
         store.send(Action.SetTicket(ticket))
     }
 
-    fun getPrice():Int {
+    fun getPrice(): Int {
         return store.state.ticket.price - solutionBonus.calcDiscount(store.state.ticket.price)
     }
 
     val update: Flow<*> = store.stateFlow
 
-    //iOS:
-    fun getState() = store.state
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
+    fun getState() = store.state//todo
     fun send(action: Action) = store.send(action)
     fun actionBuy() = store.send(Action.BuyTicket())
     fun actionCancel() = store.send(Action.Back())

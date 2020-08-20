@@ -4,6 +4,12 @@ import kotlinx.coroutines.flow.Flow
 
 class SolutionAbImpl() : SolutionAbApi {
 
+    /**
+     * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
+     *
+     */
+    fun getColor(): HexColor = MyColors.SOLUTION_AB
+
     data class State(
         val booleanToggles: Map<String, Boolean>
     )
@@ -45,10 +51,7 @@ class SolutionAbImpl() : SolutionAbApi {
     }
 
     val update: Flow<*> = store.stateFlow
-
-    val color:HexColor get() = MyColors.SOLUTION_AB
-
-    //iOS:
+    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getState() = store.state
     fun send(action: Action) = store.send(action)
     fun getActionSwitchBooleanToggle(key: String) = Action.SwitchBooleanAb(key)

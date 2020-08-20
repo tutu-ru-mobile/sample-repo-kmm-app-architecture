@@ -11,6 +11,10 @@ interface Store<S, A> {
     val state get() = stateFlow.value
 }
 
+/**
+ * Самая простая реализация MVI архитектуры для слоя представления.
+ * В реальном проекте также нужно добавить обработку SideEffect-ов
+ */
 fun <S, A> createStore(init: S, reducer: Reducer<S, A>): Store<S, A> {
     val mutableStateFlow = MutableStateFlow(init)
 
