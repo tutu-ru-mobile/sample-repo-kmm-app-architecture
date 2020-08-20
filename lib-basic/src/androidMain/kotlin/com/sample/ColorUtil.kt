@@ -17,10 +17,11 @@ fun wrapColorBox(
     lambda: @Composable Any.() -> Unit
 ) {
     Box(
-        modifier = Modifier.drawBorder(
-            if(availabe) 2.dp else 0.dp,
-            color.toComposeColor()
-        ) + Modifier.padding(16.dp)
+        Modifier.drawBorder(
+            2.dp,
+            (if (availabe) color else HexColor(0x00_00_00_00)).toComposeColor()
+        ) +
+                Modifier.padding(16.dp)
     ) {
         Unit.lambda()
     }

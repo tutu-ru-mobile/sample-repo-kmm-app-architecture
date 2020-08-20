@@ -11,9 +11,9 @@ class SolutionBonusAndroidImpl(
 
     @Composable
     override fun renderBonusesAndRefillButton() {
-        if (common.isAvailable()) {
+        wrapColorBox(common.color, common.isAvailable()) {
             Column {
-                renderBonusCount()
+                _renderBonusCount()
                 renderRefillButton()
             }
         }
@@ -21,13 +21,20 @@ class SolutionBonusAndroidImpl(
 
     @Composable
     override fun renderBonusCount() {
+        wrapColorBox(common.color, common.isAvailable()) {
+            _renderBonusCount()
+        }
+    }
+
+    @Composable
+    private fun _renderBonusCount() {
         if (common.isAvailable()) {
             Text("У вас ${common.store.stateFlow.value.bonusAmount} бонусов")
         }
     }
 
     @Composable
-    override fun renderRefillButton() {
+    fun renderRefillButton() {
         if (common.isAvailable()) {
             Button(onClick = {
                 common.store.send(SolutionBonusImpl.Action.Add(1000))

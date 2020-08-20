@@ -24,7 +24,7 @@ class SolutionSearchFormAndroidImpl(
         Column {
             Box(
                 modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth(),
-                backgroundColor = Color(0xFFFFE976),
+                backgroundColor = common.attentionBackgroundColor.toComposeColor(),
                 gravity = ContentGravity.Center
             ) {
                 attentionAndroid.renderMainScreenAttention()
