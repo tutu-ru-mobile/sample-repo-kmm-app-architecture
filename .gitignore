@@ -87,3 +87,10 @@ lint/tmp/
 apikey.properties
 
 .DS_Store
+
+sample_kmpp_solution_bonus
+sample_kmpp_solution_bonus_api
+sample_kmpp_solution_bonus_impl
+solution-bonus
+solution-bonus-api
+solution-bonus-impl
