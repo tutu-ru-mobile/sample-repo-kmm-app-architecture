@@ -4,6 +4,7 @@ import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Icon
 import androidx.ui.foundation.Text
+import androidx.ui.graphics.Color
 import androidx.ui.layout.Column
 import androidx.ui.layout.padding
 import androidx.ui.material.BottomNavigation
@@ -15,6 +16,7 @@ import androidx.ui.material.icons.filled.Menu
 import androidx.ui.material.icons.filled.Search
 import androidx.ui.unit.dp
 import com.sample.compose.DefaultPadding
+import com.sample.compose.WrapColorBox
 
 class SolutionTabsAndroidImpl(
     val commonImpl: SolutionTabsImpl,
@@ -52,47 +54,53 @@ class SolutionTabsAndroidImpl(
 
     @Composable
     override fun renderBottomNavigation() {
-        BottomNavigation() {
-            BottomNavigationItem(
-                icon = {
-                    Icon(asset = Icons.Filled.Search)
-                },
-                selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main,
-                text = {
-                    Text("Поиск")
-                },
-                alwaysShowLabels = true,
-                onSelected = {
-                    commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
-                }
-            )
-            BottomNavigationItem(
-                icon = {
-                    Icon(asset = Icons.Filled.AccountBalanceWallet)
-                },
-                text = {
-                    Text("Мои билеты")
-                },
-                alwaysShowLabels = true,
-                selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Orders,
-                onSelected = {
-                    commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
-                }
-            )
-            BottomNavigationItem(
-                icon = {
-                    Icon(asset = Icons.Filled.Menu)
-                },
-                text = {
-                    Text("Настройки")
-                },
-                alwaysShowLabels = true,
-                selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Settings,
-                onSelected = {
-                    commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
-                }
-            )
+        WrapColorBox(color = commonImpl.getColor()) {
+            BottomNavigation() {
+                BottomNavigationItem(
+                    icon = {
+                        Icon(asset = Icons.Filled.Search)
+                    },
+                    selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main,
+                    text = {
+                        Text("Поиск")
+                    },
+                    alwaysShowLabels = true,
+                    onSelected = {
+                        commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
+                    }
+                )
+                BottomNavigationItem(
+                    icon = {
+                        Icon(asset = Icons.Filled.AccountBalanceWallet)
+                    },
+                    text = {
+                        Text("Мои билеты")
+                    },
+                    alwaysShowLabels = true,
+                    selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Orders,
+                    onSelected = {
+                        commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
+                    }
+                )
+                BottomNavigationItem(
+                    icon = {
+                        Icon(asset = Icons.Filled.Menu)
+                    },
+                    text = {
+                        Text("Настройки")
+                    },
+                    alwaysShowLabels = true,
+                    selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Settings,
+                    onSelected = {
+                        commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
+                    }
+                )
+            }
         }
     }
 
+}
+
+fun tempColorPicket() {
+    val c1 = Color(0xFFB5F071)
 }

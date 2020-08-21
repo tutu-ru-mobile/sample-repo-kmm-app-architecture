@@ -17,7 +17,7 @@ fun WrapColorBox(
 ) {
     Box(
         Modifier.drawBorder(
-            2.dp,
+            4.dp,
             (if (availabe) color else HexColor(0x00_00_00_00)).toComposeColor()
         ) +
                 Modifier.padding(16.dp)

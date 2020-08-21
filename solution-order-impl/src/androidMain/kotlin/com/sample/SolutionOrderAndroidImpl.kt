@@ -73,7 +73,7 @@ class SolutionOrderAndroidImpl(
             Button(onClick = {
                 commonImpl.refund(ticket)
             }) {
-                Text("Вернуть за ${ticket.getRefundMoneyAmount()}")
+                Text("Вернуть")
             }
         }
     }

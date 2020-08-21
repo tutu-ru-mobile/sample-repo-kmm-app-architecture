@@ -15,7 +15,7 @@ class SolutionAbAndroidImpl(
         val state = commonImpl.store.state
         WrapColorBox(color = commonImpl.getColor()) {
             Column() {
-                Text("A/B features:")
+                Text("feature toggles:")
                 state.booleanToggles.forEach { toggle ->
                     CheckBoxWithLabel(toggle.key, toggle.value) {
                         commonImpl.store.send(

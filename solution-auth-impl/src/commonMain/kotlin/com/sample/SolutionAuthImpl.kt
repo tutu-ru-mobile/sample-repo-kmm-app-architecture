@@ -11,7 +11,7 @@ class SolutionAuthImpl() : SolutionAuthApi {
 
     data class State(
         val login: String = "some@mail.com",
-        val pass: String = "123",
+        val pass: String = "123456789",
         val enterLogin: Boolean = false,
         val token: String? = null
     )

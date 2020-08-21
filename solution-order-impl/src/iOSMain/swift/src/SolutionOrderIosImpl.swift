@@ -69,7 +69,7 @@ struct TicketView: View {
             Text(order.txt).font(.headline)
             Spacer().frame(width: 16)
             Button(action: { self.clickAction() }) {
-                Text("Вернуть за \(order.getRefundMoneyAmount()) р.")
+                Text("Вернуть")
             }
         }
     }

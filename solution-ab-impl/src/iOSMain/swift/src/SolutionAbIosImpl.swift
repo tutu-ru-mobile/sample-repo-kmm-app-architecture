@@ -17,7 +17,7 @@ public struct SolutionAbIosImpl
 
     public func renderAbSettings() -> some View {
         VStack {
-            Text("A/B features:")
+            Text("features toggles:")
 
             List(self.common.getToggles(), id: \.key) { toggle in
                 MyToggleView(label: toggle.key, value: toggle.value) { checked in
