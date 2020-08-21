@@ -26,7 +26,7 @@ extension View {
         self.padding(5)
             .overlay(
                     RoundedRectangle(cornerRadius: 0)
-                            .stroke(color, lineWidth: available ? 2 : 0)
+                            .stroke(color, lineWidth: available ? 4 : 0)
             )
             .padding(5)
     }
