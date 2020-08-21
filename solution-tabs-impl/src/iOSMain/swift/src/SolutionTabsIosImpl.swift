@@ -40,21 +40,21 @@ public struct SolutionTabsIosImpl
                 Text("Поиск")
                         .foregroundColor(self.common.isSelectedMain() ? Color.black : Color.blue)
                         .colorRect(color: self.common.getColor())
-            }//.padding()
+            }
             Button(action: {
                 self.common.actionSelectOrders()
             }) {
                 Text("Мои билеты")
                         .foregroundColor(self.common.isSelectedOrders() ? Color.black : Color.blue)
                         .colorRect(color: self.common.getColor())
-            }//.padding()
+            }
             Button(action: {
                 self.common.actionSelectSettings()
             }) {
                 Text("Настройки")
                         .foregroundColor(self.common.isSelectedSettings() ? Color.black : Color.blue)
                         .colorRect(color: self.common.getColor())
-            }//.padding()
+            }
         }
     }
 
