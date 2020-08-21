@@ -39,7 +39,7 @@ public struct SolutionSearchFormIosImpl
             }) {
                 Text("Начать поиск")
             }.padding()
-        }.colorRect(color: common.color)
+        }.colorRect(color: common.getColor())
     }
 
 }

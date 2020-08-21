@@ -37,24 +37,24 @@ public struct SolutionTabsIosImpl
             Button(action: {
                 self.common.actionSelectMain()
             }) {
-                Text("Main")
+                Text("Поиск")
                         .foregroundColor(self.common.isSelectedMain() ? Color.black : Color.blue)
-                        .colorRect(color: self.common.color)
-            }.padding()
+                        .colorRect(color: self.common.getColor())
+            }//.padding()
             Button(action: {
                 self.common.actionSelectOrders()
             }) {
-                Text("Orders")
+                Text("Мои билеты")
                         .foregroundColor(self.common.isSelectedOrders() ? Color.black : Color.blue)
-                        .colorRect(color: self.common.color)
-            }.padding()
+                        .colorRect(color: self.common.getColor())
+            }//.padding()
             Button(action: {
                 self.common.actionSelectSettings()
             }) {
-                Text("Settings")
+                Text("Настройки")
                         .foregroundColor(self.common.isSelectedSettings() ? Color.black : Color.blue)
-                        .colorRect(color: self.common.color)
-            }.padding()
+                        .colorRect(color: self.common.getColor())
+            }//.padding()
         }
     }
 
@@ -78,9 +78,4 @@ public struct SolutionTabsIosImpl
 
     }
 
-}
-
-func todoState(state: Solution_tabs_implSolutionTabsImpl.State) {
-    let ut = TypeSolutionTabs()
-    let v = ut.actionSelectOrders
 }

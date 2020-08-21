@@ -36,7 +36,7 @@ public struct SolutionAuthIosImpl
                     self.common.send(action: self.common.getActionShowLogin())
                 }
             }
-        }.colorRect(color: common.color)
+        }.colorRect(color: common.getColor())
     }
 
     public func renderLoginInfo() -> some View {
@@ -46,7 +46,7 @@ public struct SolutionAuthIosImpl
             } else {
                 Text("Вы не авторизованы")
             }
-        }.colorRect(color: common.color)
+        }.colorRect(color: common.getColor())
     }
 
 }
