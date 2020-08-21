@@ -17,7 +17,7 @@ public struct SolutionWeatherIosImpl : SolutionWeatherIosApi {
     public func renderWeather() -> some View {
         HStack {
             Text(self.common.getWeatherString())
-        }
+        }.colorRect(color: common.getColor())
     }
 
 }

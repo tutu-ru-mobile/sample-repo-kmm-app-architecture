@@ -36,7 +36,7 @@ public struct SolutionOrderIosImpl
                 Text("Нужно авторизоваться:")
                 self.authIos.renderLoginForm()
             }
-        }
+        }.colorRect(color: self.common.getColor())
     }
 
     public func renderNearestOrder() -> some View {

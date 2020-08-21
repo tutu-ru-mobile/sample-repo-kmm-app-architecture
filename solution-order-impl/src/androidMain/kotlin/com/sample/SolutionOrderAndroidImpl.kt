@@ -57,9 +57,7 @@ class SolutionOrderAndroidImpl(
 
     @Composable
     fun renderOrder(ticket: Ticket) {
-        WrapColorBox(color = commonImpl.getColor()) {
-            _renderOrder(ticket)
-        }
+        _renderOrder(ticket)
     }
 
     @Composable
