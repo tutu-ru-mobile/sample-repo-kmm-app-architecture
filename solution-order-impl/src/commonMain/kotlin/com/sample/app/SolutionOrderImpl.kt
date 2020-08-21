@@ -27,7 +27,7 @@ class SolutionOrderImpl(
     val store: Store<State, Action> = createStore(State()) { s, a: Action ->
         when (a) {
             is Action.RefundTicket -> {
-                solutionBonus.addBonuses(a.ticket.getRefundMoneyAmount())
+                solutionBonus.refundTicket(a.ticket.price)
                 s.copy(
                     tickets = s.tickets - a.ticket
                 )

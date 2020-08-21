@@ -26,6 +26,7 @@ class SolutionBonusImpl(
     )
 
     sealed class Action {
+        class RefundTicket(val fullPrice: Int) : Action()
         class Add(val add: Int) : Action()
         class Spend(val amount: Int) : Action()
         class SwitchBuyToggle() : Action()
@@ -46,6 +47,11 @@ class SolutionBonusImpl(
                     buyWithBonus = !s.buyWithBonus
                 )
             }
+            is Action.RefundTicket -> {
+                s.copy(
+                    bonusAmount = s.bonusAmount + a.fullPrice * 9 / 10
+                )
+            }
         }
     }
 
@@ -55,11 +61,13 @@ class SolutionBonusImpl(
         store.send(Action.Spend(amount))
     }
 
-    override fun addBonuses(amount: Int) {
-        store.send(Action.Add(amount))
+    override fun refundTicket(fullPrice: Int) {
+        if (isAvailable()) {
+            store.send(Action.RefundTicket(fullPrice))
+        }
     }
 
-    override fun isAvailable(): Boolean {
+    fun isAvailable(): Boolean {
         return solutionAb.getBooleanToggleState(BONUSES_AB_KEY)
     }
 

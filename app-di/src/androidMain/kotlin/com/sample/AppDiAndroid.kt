@@ -54,6 +54,6 @@ class AppDiAndroid(val common: AppDi) {
         )
     }
     val solutionBuySolutionSettingsApiAndroid by lazy {
-        SolutionBuyAndroidImpl(common.solutionBuy, solutionBonusAndroid)
+        SolutionBuyAndroidImpl(common.solutionBuy, solutionBonusAndroid, common.solutionBonus)
     }
 }
