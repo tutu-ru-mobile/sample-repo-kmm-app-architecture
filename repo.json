@@ -2,6 +2,7 @@
   "remote": "origin",
   "dirs": [
     {
+      "dir": "sample_kmpp_solution_bonus_api_2",
       "path": "sample_kmpp_solution_bonus_api_2",
       "gitUri": "git@github.com:tutu-ru-mobile/sample_kmpp_solution_bonus_api.git",
       "ref": "master"
