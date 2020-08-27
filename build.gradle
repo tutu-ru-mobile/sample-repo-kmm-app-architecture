@@ -11,14 +11,14 @@ buildscript {
 
 plugins {
 //    kotlin("multiplatform") version "1.4.0" apply false
-//    id("com.gradleup.auto.manifest") version "1.0.2"
+    id("com.gradleup.auto.manifest") version "1.0.2"
 }
 
 
-//autoManifest {
-//    packageName.set("com.sample")
-//    replaceDashesWithDot.set(true)
-//}
+autoManifest {
+    packageName.set("com.sample")
+    replaceDashesWithDot.set(true)
+}
 
 allprojects {
     repositories {
