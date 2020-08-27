@@ -1,11 +1,16 @@
 package com.sample
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.layout.Column
-import androidx.ui.layout.padding
-import androidx.ui.unit.dp
+import androidx.compose.foundation.*
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Checkbox
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
+import com.sample.compose.CheckBoxWithLabel
 import com.sample.compose.WrapColorBox
 
 class SolutionAttentionAndroidImpl(

@@ -1,6 +1,5 @@
-package com.sample.app
+package com.sample
 
-import com.sample.*
 import kotlinx.coroutines.flow.Flow
 
 class SolutionOrderImpl(

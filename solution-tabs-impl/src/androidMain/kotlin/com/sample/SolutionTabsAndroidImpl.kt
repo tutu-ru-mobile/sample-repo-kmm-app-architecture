@@ -1,22 +1,25 @@
 package com.sample
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Text
-import androidx.ui.graphics.Color
-import androidx.ui.layout.Column
-import androidx.ui.layout.padding
-import androidx.ui.material.BottomNavigation
-import androidx.ui.material.BottomNavigationItem
-import androidx.ui.material.Scaffold
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.AccountBalanceWallet
-import androidx.ui.material.icons.filled.Menu
-import androidx.ui.material.icons.filled.Search
-import androidx.ui.unit.dp
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalanceWallet
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.ui.unit.dp
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.sp
+import com.sample.compose.Central
+import com.sample.compose.CheckBoxWithLabel
 import com.sample.compose.DefaultPadding
 import com.sample.compose.WrapColorBox
+
 
 class SolutionTabsAndroidImpl(
     val commonImpl: SolutionTabsImpl,
@@ -61,11 +64,11 @@ class SolutionTabsAndroidImpl(
                         Icon(asset = Icons.Filled.Search)
                     },
                     selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main,
-                    text = {
+                    label = {
                         Text("Поиск")
                     },
                     alwaysShowLabels = true,
-                    onSelected = {
+                    onSelect = {
                         commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
                     }
                 )
@@ -73,12 +76,12 @@ class SolutionTabsAndroidImpl(
                     icon = {
                         Icon(asset = Icons.Filled.AccountBalanceWallet)
                     },
-                    text = {
+                    label = {
                         Text("Мои билеты")
                     },
                     alwaysShowLabels = true,
                     selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Orders,
-                    onSelected = {
+                    onSelect = {
                         commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
                     }
                 )
@@ -86,12 +89,12 @@ class SolutionTabsAndroidImpl(
                     icon = {
                         Icon(asset = Icons.Filled.Menu)
                     },
-                    text = {
+                    label = {
                         Text("Настройки")
                     },
                     alwaysShowLabels = true,
                     selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Settings,
-                    onSelected = {
+                    onSelect = {
                         commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
                     }
                 )

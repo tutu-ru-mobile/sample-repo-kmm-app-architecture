@@ -1,10 +1,10 @@
 package com.sample.compose
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.ContentGravity
-import androidx.ui.layout.fillMaxWidth
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.ContentGravity
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 
 @Composable
 fun Central(modifier: Modifier = Modifier, lambda: @Composable Any.() -> Unit) {

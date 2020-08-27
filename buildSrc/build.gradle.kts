@@ -12,8 +12,8 @@ repositories {
 
 dependencies {
   implementation(gradleApi())
-  compileOnly("com.android.tools.build:gradle:4.2.0-alpha06")
-//  compileOnly("com.android.tools.build:gradle-api:4.2.0-alpha06")
+  compileOnly("com.android.tools.build:gradle:4.2.0-alpha08")
+  compileOnly("com.android.tools.build:gradle-api:4.2.0-alpha08")
   compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin-api:$embeddedKotlinVersion")
   compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:$embeddedKotlinVersion")
   compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:$embeddedKotlinVersion")

@@ -1,24 +1,24 @@
-pluginManagement {
-    repositories {
-        mavenLocal()
-        gradlePluginPortal()
-        jcenter()
-        mavenCentral()
-        maven { setUrl("https://dl.bintray.com/kotlin/kotlinx") }
-        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
-        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-dev") }
-    }
-
-//  resolutionStrategy {
-//    eachPlugin {
-//      when (requested.id.id) {
-////        "kotlin-dce-js" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
-////        "kotlinx-serialization" -> useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")
-////        "org.jetbrains.kotlin.multiplatform" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${target.version}")
-//      }
+//pluginManagement {
+//    repositories {
+//        mavenLocal()
+//        gradlePluginPortal()
+//        jcenter()
+//        mavenCentral()
+//        maven { setUrl("https://dl.bintray.com/kotlin/kotlinx") }
+//        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
+//        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-dev") }
 //    }
-//  }
-}
+//
+////  resolutionStrategy {
+////    eachPlugin {
+////      when (requested.id.id) {
+//////        "kotlin-dce-js" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+//////        "kotlinx-serialization" -> useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")
+//////        "org.jetbrains.kotlin.multiplatform" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${target.version}")
+////      }
+////    }
+////  }
+//}
 
 rootProject.name = "solution_architecture"
 include("app-android")
@@ -26,10 +26,12 @@ include("app-di")
 include("lib-basic")
 include("solution-auth-api")
 include("solution-auth-impl")
+
 include("solution-bonus-api")
-project(":solution-bonus-api").projectDir = file("sample_kmpp_solution_bonus_api")
+//project(":solution-bonus-api").projectDir = file("sample_kmpp_solution_bonus_api")
 include("solution-bonus-impl")
-project(":solution-bonus-impl").projectDir = file("sample_kmpp_solution_bonus_impl")
+//project(":solution-bonus-impl").projectDir = file("sample_kmpp_solution_bonus_impl")
+
 include("solution-order-api")
 include("solution-order-impl")
 include("solution-search-form-api")

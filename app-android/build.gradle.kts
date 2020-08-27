@@ -4,7 +4,14 @@ plugins {
 }
 
 android {
-    boilerplate()
+    boilerplate(true)
+    if (false) {
+        kotlinOptions {
+            jvmTarget = "1.8"
+            useIR = true
+            freeCompilerArgs += listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check")
+        }
+    }
     buildToolsVersion(ANDROID_BUILD_TOOLS_VERSION)
 
     defaultConfig {

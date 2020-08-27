@@ -1,15 +1,13 @@
 package com.sample
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.drawBorder
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Button
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
-import com.sample.app.SolutionOrderImpl
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.unit.dp
+import androidx.compose.material.Button
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 import com.sample.compose.Central
 import com.sample.compose.WrapColorBox
 

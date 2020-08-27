@@ -1,6 +1,6 @@
 package com.sample
 
-import androidx.ui.graphics.Color
+import androidx.compose.ui.graphics.Color
 
 fun HexColor.toComposeColor() = Color(hexColor)
 

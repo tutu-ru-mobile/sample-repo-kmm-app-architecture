@@ -1,18 +1,17 @@
 package com.sample
 
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.core.Modifier
-import androidx.ui.core.gesture.scrollorientationlocking.Orientation
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.drawBorder
-import androidx.ui.foundation.gestures.rememberScrollableController
-import androidx.ui.foundation.gestures.scrollable
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Button
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
+import androidx.compose.foundation.*
+import androidx.compose.foundation.gestures.rememberScrollableController
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.unit.dp
+import androidx.compose.material.Button
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 
 class SolutionSearchResultAndroidImpl(
     val common: SolutionSearchResultImpl,

@@ -1,15 +1,18 @@
 package com.sample
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Text
-import androidx.ui.input.PasswordVisualTransformation
-import androidx.ui.layout.Column
-import androidx.ui.layout.fillMaxWidth
-import androidx.ui.layout.padding
-import androidx.ui.material.Button
-import androidx.ui.material.FilledTextField
-import androidx.ui.unit.dp
+import androidx.compose.foundation.*
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.Checkbox
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import com.sample.compose.CheckBoxWithLabel
 import com.sample.compose.WrapColorBox
 
 
@@ -30,24 +33,26 @@ class SolutionAuthAndroidImpl(val common: SolutionAuthImpl) : SolutionAuthAndroi
                 }
             } else if (state.enterLogin) {
                 Column() {
-                    FilledTextField(
-                        value = state.login,
-                        onValueChange = {
-                            common.store.send(SolutionAuthImpl.Action.EditLogin(it))
-                        },
-                        label = { Text("Enter Your Login") },
-                        placeholder = { Text(text = "your@mail.com") },
-                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
-                    )
-                    FilledTextField(
-                        value = state.pass,
-                        onValueChange = {
-                            common.store.send(SolutionAuthImpl.Action.EditPassword(it))
-                        },
-                        label = { Text("Enter password") },
-                        visualTransformation = PasswordVisualTransformation(),
-                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
-                    )
+//TODO
+//                    FilledTextField(
+//                        value = state.login,
+//                        onValueChange = {
+//                            common.store.send(SolutionAuthImpl.Action.EditLogin(it))
+//                        },
+//                        label = { Text("Enter Your Login") },
+//                        placeholder = { Text(text = "your@mail.com") },
+//                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
+//                    )
+//                    FilledTextField(
+//                        value = state.pass,
+//                        onValueChange = {
+//                            common.store.send(SolutionAuthImpl.Action.EditPassword(it))
+//                        },
+//                        label = { Text("Enter password") },
+//                        visualTransformation = PasswordVisualTransformation(),
+//                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
+//                    )
+
                     Button(onClick = {
                         common.store.send(SolutionAuthImpl.Action.SubmitLogin)
                     }) {

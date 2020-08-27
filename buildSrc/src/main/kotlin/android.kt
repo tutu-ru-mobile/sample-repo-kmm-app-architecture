@@ -1,7 +1,7 @@
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
 
-inline fun BaseExtension.boilerplate() {
+inline fun BaseExtension.boilerplate(app:Boolean = false) {
     compileSdkVersion(ANDROID_COMPILE_SDK)
     defaultConfig {
         minSdkVersion(ANDROID_MIN_SDK)
@@ -20,6 +20,13 @@ inline fun BaseExtension.boilerplate() {
     composeOptions {
         kotlinCompilerVersion = ANDROID_KOTLIN_COMPILER_VERSION
         kotlinCompilerExtensionVersion = ANDROID_COMPOSE_VERSION
+    }
+    if(!app) {
+        sourceSets.configureEach {
+            val root = "src/android${name.capitalize()}"
+            setRoot(root)
+            java.srcDirs("$root/kotlin")
+        }
     }
 }
 

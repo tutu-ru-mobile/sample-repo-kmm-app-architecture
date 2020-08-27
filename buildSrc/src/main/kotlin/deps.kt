@@ -47,10 +47,11 @@ fun DependencyHandler.implementationCompose() {
 inline fun KotlinDependencyHandler.implementationComposeApi() = implementationCompose()
 
 inline fun Project.fixComposeWithWorkaround() {
-    tasks.withType <org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         //todo Workaround here:
+        //https://mvnrepository.com/artifact/androidx.compose/compose-compiler/1.0.0-alpha01
         val composeCompilerJar =
-            rootProject.file("compose-compiler-0.1.0-dev15.jar").absolutePath //need download jar
+            rootProject.file("compose-compiler-1.0.0-alpha01.jar").absolutePath //need download jar
         kotlinOptions.freeCompilerArgs += listOf("-Xuse-ir", "-Xplugin=$composeCompilerJar")
     }
 }
