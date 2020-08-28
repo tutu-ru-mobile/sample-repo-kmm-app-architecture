@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Checkbox
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
@@ -33,25 +34,27 @@ class SolutionAuthAndroidImpl(val common: SolutionAuthImpl) : SolutionAuthAndroi
                 }
             } else if (state.enterLogin) {
                 Column() {
-//TODO
-//                    FilledTextField(
-//                        value = state.login,
-//                        onValueChange = {
-//                            common.store.send(SolutionAuthImpl.Action.EditLogin(it))
-//                        },
-//                        label = { Text("Enter Your Login") },
-//                        placeholder = { Text(text = "your@mail.com") },
-//                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
-//                    )
-//                    FilledTextField(
-//                        value = state.pass,
-//                        onValueChange = {
-//                            common.store.send(SolutionAuthImpl.Action.EditPassword(it))
-//                        },
-//                        label = { Text("Enter password") },
-//                        visualTransformation = PasswordVisualTransformation(),
-//                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
-//                    )
+                    TextField(
+                        value = state.login,
+                        onValueChange = {
+                            common.store.send(SolutionAuthImpl.Action.EditLogin(it))
+                        },
+                        label = {
+                            Text("Enter Your Login")
+                        },
+                        placeholder = { Text(text = "your@mail.com") },
+                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
+                    )
+
+                    TextField(
+                        value = state.pass,
+                        onValueChange = {
+                            common.store.send(SolutionAuthImpl.Action.EditPassword(it))
+                        },
+                        label = { Text("Enter password") },
+                        visualTransformation = PasswordVisualTransformation(),
+                        modifier = Modifier.padding(16.dp) + Modifier.fillMaxWidth()
+                    )
 
                     Button(onClick = {
                         common.store.send(SolutionAuthImpl.Action.SubmitLogin)
