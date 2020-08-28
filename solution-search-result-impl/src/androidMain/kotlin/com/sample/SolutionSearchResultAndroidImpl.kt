@@ -1,16 +1,17 @@
 package com.sample
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.state
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.drawBorder
 import androidx.compose.foundation.gestures.rememberScrollableController
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
-import androidx.compose.ui.unit.dp
 import androidx.compose.material.Button
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.state
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.gesture.scrollorientationlocking.Orientation
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 class SolutionSearchResultAndroidImpl(

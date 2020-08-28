@@ -1,20 +1,13 @@
 package com.sample
 
-import androidx.compose.foundation.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.material.Button
-import androidx.compose.material.Checkbox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
 import com.sample.compose.Central
-import com.sample.compose.CheckBoxWithLabel
-import com.sample.compose.WrapColorBox
 
 class SolutionSettingsAndroidImpl(
     val commonImpl: SolutionSettingsImpl,
