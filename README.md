@@ -1,8 +1,11 @@
 
 # Solutions architecture sample
-Нужна Android Studio 4.2 Canary-6 (на Canary-7 плохо работает)  
-Но также можно просто собирать из консоли ./gradlew assembleDebug  
-А потом установить  app-android/build/outputs/apk/debug/app-android-debug.apk
+Для запуска Android выбираем run конфигурацию android_jetpack_compose  
+![image_run_config]
+(android_run_configuration.png)
+  
+Но также можно просто собирать из консоли ./android_install.sh
+А потом установить app-android/build/outputs/apk/debug/app-android-debug.apk  
 
 ##Build iOS App
 ```bash
