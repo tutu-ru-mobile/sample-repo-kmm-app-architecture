@@ -6,7 +6,7 @@ buildscript {
 //        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-dev") }
     }
     dependencies {
-        def buildJetPackCompose = System.getenv("BUILD_JETPACK_COMPOSE")
+        String buildJetPackCompose = System.properties["buildJetPackCompose"]
         if (buildJetPackCompose == "true") {
             println("buildJetPackCompose: ${buildJetPackCompose}")
             classpath("com.android.tools.build:gradle:4.2.0-alpha08")

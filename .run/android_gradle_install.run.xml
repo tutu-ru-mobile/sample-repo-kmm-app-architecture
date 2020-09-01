@@ -53,7 +53,7 @@
     <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
     <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
     <method v="2">
-      <option name="Gradle.BeforeRunTask" enabled="true" tasks="installDebug" externalProjectPath="$PROJECT_DIR$/app-android" vmOptions="" scriptParameters="" />
+      <option name="Gradle.BeforeRunTask" enabled="false" tasks="installDebug" externalProjectPath="$PROJECT_DIR$/app-android" vmOptions="" scriptParameters="-PbuildJetpackCompose=true" />
     </method>
   </configuration>
 </component>
