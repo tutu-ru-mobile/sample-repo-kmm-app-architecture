@@ -4,10 +4,6 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.plugin.*
 
-fun todo() {
-    DependencyHandler::class.java
-}
-
 val fullComposeLibs = listOf(
     "androidx.compose.runtime:runtime-dispatch:$ANDROID_COMPOSE_VERSION",
     "androidx.compose.runtime:runtime:$ANDROID_COMPOSE_VERSION",
