@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         val diAndroid = AppDiAndroid(di)
         setContent {
             val state by di.globalStateFlow.collectAsState()
-            println("actionCount: $state")//todo не удалять, это костыль чтобы обновлось View при изменениие State
+            println("actionCount: $state")//не удалять, это костыль чтобы обновлось View при изменениие State
 
             val fontStyle = TextStyle(fontSize = 20.sp)
             MaterialTheme(

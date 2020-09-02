@@ -28,8 +28,6 @@ dependencies {
     implementationCompose()
     implementation(project(":lib-basic"))
     implementation(project(":app-di"))
-    implementation(project(":solution-settings-api"))//todo remove
-    implementation(project(":solution-settings-impl"))//todo remove
     implementation(project(":solution-tabs-impl"))//todo redundant?
     implementation("androidx.appcompat:appcompat:$ANDROID_APP_COMPAT")
 }
