@@ -59,17 +59,17 @@ public struct SolutionTabsIosImpl
     }
 
     public func renderScaffold() -> some View {
-        let state = common.store.state as! Solution_tabs_implSolutionTabsImpl.State
-        let screen = state.screen
+//        let state = common.store.state as! Solution_tabs_implSolutionTabsImpl.State
+//        let screen = state.screen
 
         return VStack(alignment: .center) {
-            if (screen is Solution_tabs_implSolutionTabsImpl.ScreenMain) {
+            if (common.isSelectedMain()) {
                 HStack {
                     searchTabIos.renderMainScreen()
                 }
-            } else if (screen is Solution_tabs_implSolutionTabsImpl.ScreenOrders) {
+            } else if (common.isSelectedOrders()) {
                 orderIos.renderAllOrders()
-            } else if (screen is Solution_tabs_implSolutionTabsImpl.ScreenSettings) {
+            } else if (common.isSelectedSettings()) {
                 settingsIos.renderSettings()
             }
             Spacer()
