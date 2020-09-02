@@ -17,17 +17,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":lib-basic"))
-                api(project(":entity-ticket"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
+
             }
         }
         val androidMain by getting {
             dependencies {
-                implementationComposeApi()
+
             }
         }
     }
 }
 
-fixComposeWithWorkaround()

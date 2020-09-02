@@ -32,10 +32,10 @@ public struct SolutionSearchResultIosImpl: SolutionSearchResultIosApi {
 }
 
 struct TicketView: View {
-    var ticket: Solution_order_apiTicket
+    var ticket: Entity_ticketTicket
     var clickAction: () -> Void
 
-    public init(item: Solution_order_apiTicket, clickAction: @escaping () -> ()) {
+    public init(item: Entity_ticketTicket, clickAction: @escaping () -> ()) {
         self.ticket = item
         self.clickAction = clickAction
     }

@@ -56,10 +56,10 @@ public struct SolutionOrderIosImpl
 }
 
 struct TicketView: View {
-    var order: Solution_order_apiTicket
+    var order: Entity_ticketTicket
     var clickAction: () -> Void
 
-    public init(item: Solution_order_apiTicket, clickAction: @escaping () -> ()) {
+    public init(item: Entity_ticketTicket, clickAction: @escaping () -> ()) {
         self.order = item
         self.clickAction = clickAction
     }

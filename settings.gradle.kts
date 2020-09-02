@@ -24,6 +24,7 @@ rootProject.name = "solution_architecture"
 include("app-android")
 include("app-di")
 include("lib-basic")
+include("entity-ticket")
 include("solution-auth-api")
 include("solution-auth-impl")
 
