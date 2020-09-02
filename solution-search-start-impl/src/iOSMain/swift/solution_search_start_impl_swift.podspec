@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name         = "solution_search_start_impl_swift"
   s.version      = "0.0.1"
   s.summary      = "A long description of objc."
-  s.source       = { :git => "http://foo/objc.git", :tag => "#{s.version}" } #todo
+  s.source       = { :git => "http://foo/objc.git", :tag => "#{s.version}" }
   s.authors = ['me']
   s.homepage = 'http://example.com'
   s.license = 'proprietary'
