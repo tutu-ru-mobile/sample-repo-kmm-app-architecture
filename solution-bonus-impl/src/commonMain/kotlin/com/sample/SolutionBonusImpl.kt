@@ -61,9 +61,9 @@ class SolutionBonusImpl(
         store.send(Action.Spend(amount))
     }
 
-    override fun refundTicket(fullPrice: Int) {
+    override fun refundTicket(ticket: Ticket) {
         if (isAvailable()) {
-            store.send(Action.RefundTicket(fullPrice))
+            store.send(Action.RefundTicket(ticket.price))
         }
     }
 

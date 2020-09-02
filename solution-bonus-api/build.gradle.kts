@@ -17,6 +17,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                api(project(":entity-ticket"))
                 implementation(project(":lib-basic"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
