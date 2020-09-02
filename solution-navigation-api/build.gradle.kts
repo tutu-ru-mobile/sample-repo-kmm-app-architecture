@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.library")//todo redundant android
+    id("com.android.library")
     kotlin("multiplatform")
 }
 
