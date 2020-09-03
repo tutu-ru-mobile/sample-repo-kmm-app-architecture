@@ -553,9 +553,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SolutionArchitecture/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"app-ios/SolutionArchitecture/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SolutionArchitecture/Info.plist;
+				INFOPLIST_FILE = app-ios/SolutionArchitecture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,9 +573,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"SolutionArchitecture/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"app-ios/SolutionArchitecture/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SolutionArchitecture/Info.plist;
+				INFOPLIST_FILE = app-ios/SolutionArchitecture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
