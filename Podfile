@@ -50,8 +50,8 @@ target 'SolutionArchitecture' do
 
 end
 
-if false #todo
-
+# solution bonus sample app
+if true #todo
     target 'BonusSolutionSampleIos' do
       # Comment the next line if you don't want to use dynamic frameworks
       use_frameworks!
@@ -98,5 +98,5 @@ if false #todo
       end
 
     end
-
 end
+

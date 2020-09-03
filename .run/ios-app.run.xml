@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ios-app" type="KmmRunConfiguration" factoryName="iOS Application" XCODE_SCHEME="SolutionArchitecture" EXEC_TARGET_ID="870B0863-9081-4852-841A-56CFEE73A61D">
+    <method v="2">
+      <option name="com.jetbrains.kmm.ios.BuildIOSAppTask" enabled="true" />
+    </method>
+  </configuration>
+</component>
