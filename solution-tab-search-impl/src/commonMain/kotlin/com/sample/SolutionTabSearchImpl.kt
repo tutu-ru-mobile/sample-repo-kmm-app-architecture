@@ -9,7 +9,7 @@ class SolutionTabSearchImpl(
     val solutionStartSearch: SolutionSearchStartApi,
     val solutionSearchResult: SolutionSearchResultApi,
     val solutionBuy: SolutionBuyApi
-) : SolutionTabSearchApi {
+) : SolutionTabSearchApi, SolutionWithState {
 
     sealed class Screen {
         object SearchForm : Screen()
@@ -55,7 +55,7 @@ class SolutionTabSearchImpl(
         store.send(Action.SetScreen(Screen.Buy))
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun isSearchForm(): Boolean {

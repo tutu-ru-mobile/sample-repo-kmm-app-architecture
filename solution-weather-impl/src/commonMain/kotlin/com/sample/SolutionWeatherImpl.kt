@@ -2,7 +2,7 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
-class SolutionWeatherImpl() : SolutionWeatherApi {
+class SolutionWeatherImpl() : SolutionWeatherApi, SolutionWithState {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
@@ -22,7 +22,7 @@ class SolutionWeatherImpl() : SolutionWeatherApi {
     ) { state, action: Action ->
         state.copy()
     }
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getWeatherString() = "Погода +25, Облачно"

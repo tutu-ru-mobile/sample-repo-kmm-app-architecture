@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchStartImpl(
     val solutionNavigation: SolutionNavigationApi
-) : SolutionSearchStartApi {
+) : SolutionSearchStartApi, SolutionWithState {
 
     data class State(
         val searchQuery: String = ""//Запрос поиска, например Москва -> Санкт-Петербург
@@ -41,7 +41,7 @@ class SolutionSearchStartImpl(
 
     override fun getSearchQuery(): String = store.state.searchQuery
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
 

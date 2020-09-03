@@ -6,7 +6,7 @@ import kotlin.math.min
 class SolutionBonusImpl(
     private val solutionAb: SolutionAbApi,
     val initState: State = State(1000, false)
-) : SolutionBonusApi {
+) : SolutionBonusApi, SolutionWithState {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
@@ -56,7 +56,8 @@ class SolutionBonusImpl(
         }
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> =
+        store.stateFlow
 
     fun isAvailable(): Boolean {
         return solutionAb.getBooleanToggleState(BONUSES_AB_KEY)

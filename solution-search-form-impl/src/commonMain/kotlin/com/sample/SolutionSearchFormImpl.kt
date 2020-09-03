@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchFormImpl(
     val nav: SolutionNavigationApi
-) : SolutionSearchFormApi {
+) : SolutionSearchFormApi, SolutionWithState {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
@@ -42,7 +42,7 @@ class SolutionSearchFormImpl(
         }
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     val attentionBackgroundColor = HexColor(0x22_FF_FF_00)
 

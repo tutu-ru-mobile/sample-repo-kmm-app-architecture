@@ -2,7 +2,7 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
-class SolutionAbImpl() : SolutionAbApi {
+class SolutionAbImpl() : SolutionAbApi, SolutionWithState {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
@@ -56,7 +56,7 @@ class SolutionAbImpl() : SolutionAbApi {
         return store.state.booleanToggles.any { it.key == key && it.value }
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getState() = store.state
     fun send(action: Action) = store.send(action)

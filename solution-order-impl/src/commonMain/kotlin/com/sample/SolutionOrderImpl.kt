@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 class SolutionOrderImpl(
     val solutionAuth: SolutionAuthApi,
     val solutionBonus: SolutionBonusApi
-) : SolutionOrderApi {
+) : SolutionOrderApi, SolutionWithState {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
@@ -47,7 +47,7 @@ class SolutionOrderImpl(
         store.send(Action.AddTicket(ticket))
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getState() = store.state

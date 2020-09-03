@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchResultImpl(
     navigationApi: SolutionNavigationApi
-) : SolutionSearchResultApi {
+) : SolutionSearchResultApi, SolutionWithState {
 
     data class State(
         val tickets: List<Ticket> = emptyList(),
@@ -39,7 +39,7 @@ class SolutionSearchResultImpl(
         store.send(Action.SetResult(tickets))
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getState() = store.state

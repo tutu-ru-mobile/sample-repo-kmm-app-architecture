@@ -2,7 +2,7 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
-class SolutionSettingsImpl : SolutionSettingsApi {
+class SolutionSettingsImpl : SolutionSettingsApi, SolutionWithState {
 
     data class State(
         val developerSettings: Boolean = false
@@ -20,7 +20,7 @@ class SolutionSettingsImpl : SolutionSettingsApi {
         }
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun isDeveloperSettingsAvailable() = store.state.developerSettings

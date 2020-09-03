@@ -2,7 +2,7 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
-class SolutionAuthImpl() : SolutionAuthApi {
+class SolutionAuthImpl() : SolutionAuthApi, SolutionWithState {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
@@ -59,7 +59,7 @@ class SolutionAuthImpl() : SolutionAuthApi {
     override fun isAuthorized(): Boolean = store.state.token != null
     override fun getLogin(): String? = if (isAuthorized()) store.state.login else null
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getState() = store.state

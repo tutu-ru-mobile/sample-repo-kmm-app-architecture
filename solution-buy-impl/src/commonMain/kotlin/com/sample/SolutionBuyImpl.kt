@@ -6,7 +6,7 @@ class SolutionBuyImpl(
     val solutionNavigation: SolutionNavigationApi,
     val solutionOrder: SolutionOrderApi,
     val solutionBonus: SolutionBonusApi
-) : SolutionBuyApi {
+) : SolutionBuyApi, SolutionWithState {
 
     /**
      * Цвет обводки для простоты понимая архитектуры и разбиения по Solution-ам.
@@ -51,7 +51,7 @@ class SolutionBuyImpl(
         return store.state.ticket.price - solutionBonus.calcDiscount(store.state.ticket)
     }
 
-    val update: Flow<*> = store.stateFlow
+    override fun onStateUpdate(): Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getState() = store.state
