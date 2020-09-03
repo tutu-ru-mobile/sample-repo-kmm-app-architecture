@@ -2,7 +2,12 @@
   "remote": "origin",
   "dirs": [
     {
-      "dir": "solution-bonus-api",
+      "dir": "buildSrc",
+      "gitUri": "git@github.com:tutu-ru-mobile/",//TODO
+      "ref": "master"//TODO tag
+    },
+    {
+      "dir": "lib-basic",
       "gitUri": "git@github.com:tutu-ru-mobile/",//TODO
       "ref": "master"//TODO tag
     },
