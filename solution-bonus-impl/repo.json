@@ -1,0 +1,20 @@
+{
+  "remote": "origin",
+  "dirs": [
+    {
+      "dir": "solution-bonus-api",
+      "gitUri": "git@github.com:tutu-ru-mobile/",//TODO
+      "ref": "master"//TODO tag
+    },
+    {
+      "dir": "solution-bonus-api",
+      "gitUri": "git@github.com:tutu-ru-mobile/",//TODO
+      "ref": "master"//TODO tag
+    },
+    {
+      "dir": "solution-ab-api",
+      "gitUri": "git@github.com:tutu-ru-mobile/",//TODO
+      "ref": "master"//TODO tag
+    }
+  ]
+}
