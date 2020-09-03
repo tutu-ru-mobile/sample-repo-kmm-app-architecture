@@ -28,6 +28,6 @@ dependencies {
     implementationCompose()
     implementation(project(":lib-basic"))
     implementation(project(":app-di"))
-    implementation(project(":solution-tabs-api"))
+    implementation(project(":solution-tabs-impl"))
     implementation("androidx.appcompat:appcompat:$ANDROID_APP_COMPAT")
 }

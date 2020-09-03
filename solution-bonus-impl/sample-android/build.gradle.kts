@@ -15,7 +15,7 @@ android {
     buildToolsVersion(ANDROID_BUILD_TOOLS_VERSION)
 
     defaultConfig {
-        applicationId("com.sample.app")
+        applicationId("com.sample.solution_bonus")
         minSdkVersion(ANDROID_MIN_SDK)
         targetSdkVersion(ANDROID_TARGET_SDK)
         versionCode(1)
@@ -27,7 +27,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
     implementationCompose()
     implementation(project(":lib-basic"))
-    implementation(project(":app-di"))
-    implementation(project(":solution-tabs-api"))
+    implementation(project(":solution-bonus-impl"))
+    api(project(":solution-ab-api"))
     implementation("androidx.appcompat:appcompat:$ANDROID_APP_COMPAT")
 }

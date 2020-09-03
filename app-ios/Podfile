@@ -13,7 +13,6 @@ target 'SolutionArchitecture' do
   pod 'solution_attention_impl_swift', :path => '../solution-attention-impl/src/iOSMain/swift'
   pod 'solution_auth_api_swift', :path => '../solution-auth-api/src/iOSMain/swift'
   pod 'solution_auth_impl_swift', :path => '../solution-auth-impl/src/iOSMain/swift'
-  #  pod 'solution_navigation_api_swift', :path => '../solution-navigation-api/src/iOSMain/swift'
   pod 'solution_order_api_swift', :path => '../solution-order-api/src/iOSMain/swift'
   pod 'solution_order_impl_swift', :path => '../solution-order-impl/src/iOSMain/swift'
   pod 'solution_search_form_api_swift', :path => '../solution-search-form-api/src/iOSMain/swift'

@@ -264,6 +264,6 @@ SPEC CHECKSUMS:
   solution_weather_api_swift: 27ef2626c3b5cd186a7fd3ed6e78638b7e2283aa
   solution_weather_impl_swift: a6d89f40fe1457e9f314f61adfea9d234f7b9b7e
 
-PODFILE CHECKSUM: e3fb4a0010eae1862513b1e4eec63f9f0a275fd6
+PODFILE CHECKSUM: 2444375f0d8ace74e56b72325407d82a871372ac
 
 COCOAPODS: 1.9.3

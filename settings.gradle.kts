@@ -32,6 +32,8 @@ include("solution-bonus-api")
 //project(":solution-bonus-api").projectDir = file("sample_kmpp_solution_bonus_api")
 include("solution-bonus-impl")
 project(":solution-bonus-impl").projectDir = file("solution-bonus-impl/solution")
+include("solution-bonus-impl-sample-android")
+project(":solution-bonus-impl-sample-android").projectDir = file("solution-bonus-impl/sample-android")
 
 include("solution-order-api")
 include("solution-order-impl")
