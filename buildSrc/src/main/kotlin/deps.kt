@@ -44,7 +44,7 @@ inline fun KotlinDependencyHandler.implementationComposeApi() = implementationCo
 
 inline fun Project.fixComposeWithWorkaround() {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        //todo Workaround here:
+        //todo JetPack Workaround here (more info at https://github.com/avdim/compose_mpp_workaround)
         //https://mvnrepository.com/artifact/androidx.compose/compose-compiler/1.0.0-alpha01
         val composeCompilerJar =
             rootProject.file("compose-compiler-1.0.0-alpha01.jar").absolutePath //need download jar

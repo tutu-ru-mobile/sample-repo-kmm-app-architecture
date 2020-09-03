@@ -50,7 +50,7 @@ class SolutionOrderImpl(
     val update: Flow<*> = store.stateFlow
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
-    fun getState() = store.state //todo
+    fun getState() = store.state
     fun send(action: Action) = store.send(action)
     fun getActionRefundTicket(ticket: Ticket) = Action.RefundTicket(ticket)
     fun getRecentOrder() = store.state.tickets.lastOrNull()

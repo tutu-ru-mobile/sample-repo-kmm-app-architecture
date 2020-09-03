@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlin.math.min
 
 class SolutionBonusImpl(
-    val solutionAb: SolutionAbApi
+    private val solutionAb: SolutionAbApi
 ) : SolutionBonusApi {
 
     /**

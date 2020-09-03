@@ -47,7 +47,7 @@ class SolutionSearchFormImpl(
     val attentionBackgroundColor = HexColor(0x22_FF_FF_00)
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
-    fun getState() = store.state //todo iOS
+    fun getState() = store.state
     fun send(action: Action) {
         store.send(action)
     }
