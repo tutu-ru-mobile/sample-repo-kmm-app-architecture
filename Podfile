@@ -3,6 +3,7 @@
 
 target 'SolutionArchitecture' do
   # Comment the next line if you don't want to use dynamic frameworks
+  project 'app-ios/SolutionArchitecture.xcodeproj'
   use_frameworks!
   pod 'app_di', :path => 'app-di'
   pod 'lib_basic_swift', :path => 'lib-basic/src/iOSMain/swift'
