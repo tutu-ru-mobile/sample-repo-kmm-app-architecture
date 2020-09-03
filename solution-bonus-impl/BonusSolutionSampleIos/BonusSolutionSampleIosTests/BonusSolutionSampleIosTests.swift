@@ -1,15 +1,15 @@
 //
-//  SolutionArchitectureTests.swift
-//  SolutionArchitectureTests
+//  BonusSolutionSampleIosTests.swift
+//  BonusSolutionSampleIosTests
 //
 //  Created by Dim on 12.08.2020.
 //  Copyright © 2020 sample. All rights reserved.
 //
 
 import XCTest
-@testable import SolutionArchitecture
+@testable import BonusSolutionSampleIos
 
-class SolutionArchitectureTests: XCTestCase {
+class BonusSolutionSampleIosTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

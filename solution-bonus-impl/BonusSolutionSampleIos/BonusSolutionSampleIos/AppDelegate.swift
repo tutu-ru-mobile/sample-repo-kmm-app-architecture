@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  SolutionArchitecture
+//  BonusSolutionSampleIos
 //
 //  Created by Dim on 12.08.2020.
 //  Copyright © 2020 sample. All rights reserved.

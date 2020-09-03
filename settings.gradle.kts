@@ -20,7 +20,7 @@
 ////  }
 //}
 
-rootProject.name = "solution_architecture"
+rootProject.name = "solution_architecture" //todo rename
 include("app-android")
 include("app-di")
 include("lib-basic")

@@ -8,9 +8,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "326BD76B24E48AB3003C9F4E"
-               BuildableName = "SolutionArchitecture.app"
-               BlueprintName = "SolutionArchitecture"
-               ReferencedContainer = "container:SolutionArchitecture.xcodeproj">
+               BuildableName = "BonusSolutionSampleIos.app"
+               BlueprintName = "BonusSolutionSampleIos"
+               ReferencedContainer = "container:BonusSolutionSampleIos.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -23,9 +23,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "326BD76B24E48AB3003C9F4E"
-            BuildableName = "SolutionArchitecture.app"
-            BlueprintName = "SolutionArchitecture"
-            ReferencedContainer = "container:SolutionArchitecture.xcodeproj">
+            BuildableName = "BonusSolutionSampleIos.app"
+            BlueprintName = "BonusSolutionSampleIos"
+            ReferencedContainer = "container:BonusSolutionSampleIos.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
