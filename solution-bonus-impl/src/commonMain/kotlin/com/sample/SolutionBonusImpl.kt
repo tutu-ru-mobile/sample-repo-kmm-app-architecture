@@ -34,22 +34,22 @@ class SolutionBonusImpl(
 
     val store = createStore(
         State(1000, false)
-    ) { s, a: Action ->
-        when (a) {
+    ) { state, action: Action ->
+        when (action) {
             is Action.Add -> {
-                s.copy(bonusAmount = s.bonusAmount + a.add)
+                state.copy(bonusAmount = state.bonusAmount + action.add)
             }
             is Action.Spend -> {
-                s.copy(bonusAmount = s.bonusAmount - a.amount)
+                state.copy(bonusAmount = state.bonusAmount - action.amount)
             }
             is Action.SwitchBuyToggle -> {
-                s.copy(
-                    buyWithBonus = !s.buyWithBonus
+                state.copy(
+                    buyWithBonus = !state.buyWithBonus
                 )
             }
             is Action.RefundTicket -> {
-                s.copy(
-                    bonusAmount = s.bonusAmount + a.fullPrice * 9 / 10
+                state.copy(
+                    bonusAmount = state.bonusAmount + action.fullPrice * 9 / 10
                 )
             }
         }
@@ -57,23 +57,27 @@ class SolutionBonusImpl(
 
     val update: Flow<*> = store.stateFlow
 
-    override fun spendBonuses(amount: Int) {
-        store.send(Action.Spend(amount))
-    }
-
-    override fun refundTicket(ticket: Ticket) {
-        if (isAvailable()) {
-            store.send(Action.RefundTicket(ticket.price))
-        }
-    }
-
     fun isAvailable(): Boolean {
         return solutionAb.getBooleanToggleState(BONUSES_AB_KEY)
     }
 
-    override fun calcDiscount(fullPrice: Int): Int =
+    override fun spendBonuses(ticket: Ticket) {
+        store.send(Action.Spend(calcDiscount(ticket)))
+    }
+
+    override fun refundTicket(ticket: Ticket) {//todo test
+        if (isAvailable()) {
+            store.send(
+                Action.RefundTicket(
+                    calcDiscount(ticket)
+                )
+            )
+        }
+    }
+
+    override fun calcDiscount(ticket: Ticket): Int =
         if (canBuyWithBonus()) {
-            min(fullPrice * 40 / 100, getState().bonusAmount)
+            min(ticket.price * 40 / 100, getState().bonusAmount)
         } else {
             0
         }
@@ -84,7 +88,7 @@ class SolutionBonusImpl(
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
     fun getBonusRules(): String = "Бонусами можно оплатить не более 40% стоимости билета"
-    fun getState() = store.state//todo
+    fun getState() = store.state
     fun actionSwitchBuyToggle() = store.send(Action.SwitchBuyToggle())
     fun addBonuses(amount: Int) = store.send(Action.Add(amount))
 

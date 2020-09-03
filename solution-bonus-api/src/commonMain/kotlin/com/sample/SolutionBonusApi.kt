@@ -1,8 +1,8 @@
 package com.sample
 
 interface SolutionBonusApi {
-    fun spendBonuses(amount: Int)
+    fun spendBonuses(ticket:Ticket)
     fun refundTicket(ticket:Ticket)
-    fun calcDiscount(fullPrice: Int): Int
+    fun calcDiscount(ticket: Ticket): Int
     fun canBuyWithBonus():Boolean
 }

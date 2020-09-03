@@ -31,7 +31,7 @@ class SolutionBuyImpl(
                 )
             }
             is Action.BuyTicket -> {
-                solutionBonus.spendBonuses(solutionBonus.calcDiscount(s.ticket.price))
+                solutionBonus.spendBonuses(s.ticket)
                 solutionOrder.addTicket(s.ticket)
                 solutionNavigation.navigateSearchForm()
                 s
@@ -48,7 +48,7 @@ class SolutionBuyImpl(
     }
 
     fun getPrice(): Int {
-        return store.state.ticket.price - solutionBonus.calcDiscount(store.state.ticket.price)
+        return store.state.ticket.price - solutionBonus.calcDiscount(store.state.ticket)
     }
 
     val update: Flow<*> = store.stateFlow
