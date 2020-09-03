@@ -31,7 +31,7 @@ include("solution-auth-impl")
 include("solution-bonus-api")
 //project(":solution-bonus-api").projectDir = file("sample_kmpp_solution_bonus_api")
 include("solution-bonus-impl")
-//project(":solution-bonus-impl").projectDir = file("sample_kmpp_solution_bonus_impl")
+project(":solution-bonus-impl").projectDir = file("solution-bonus-impl/solution")
 
 include("solution-order-api")
 include("solution-order-impl")

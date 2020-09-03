@@ -153,7 +153,7 @@ DEPENDENCIES:
   - solution_auth_api_swift (from `../solution-auth-api/src/iOSMain/swift`)
   - solution_auth_impl_swift (from `../solution-auth-impl/src/iOSMain/swift`)
   - solution_bonus_api_swift (from `../solution-bonus-api/src/iOSMain/swift`)
-  - solution_bonus_impl_swift (from `../solution-bonus-impl/src/iOSMain/swift`)
+  - solution_bonus_impl_swift (from `../solution-bonus-impl/solution/src/iOSMain/swift`)
   - solution_buy_api_swift (from `../solution-buy-api/src/iOSMain/swift`)
   - solution_buy_impl_swift (from `../solution-buy-impl/src/iOSMain/swift`)
   - solution_order_api_swift (from `../solution-order-api/src/iOSMain/swift`)
@@ -195,7 +195,7 @@ EXTERNAL SOURCES:
   solution_bonus_api_swift:
     :path: "../solution-bonus-api/src/iOSMain/swift"
   solution_bonus_impl_swift:
-    :path: "../solution-bonus-impl/src/iOSMain/swift"
+    :path: "../solution-bonus-impl/solution/src/iOSMain/swift"
   solution_buy_api_swift:
     :path: "../solution-buy-api/src/iOSMain/swift"
   solution_buy_impl_swift:
@@ -264,6 +264,6 @@ SPEC CHECKSUMS:
   solution_weather_api_swift: 27ef2626c3b5cd186a7fd3ed6e78638b7e2283aa
   solution_weather_impl_swift: a6d89f40fe1457e9f314f61adfea9d234f7b9b7e
 
-PODFILE CHECKSUM: 8637c53c6e592826c93c469275c77a31ca445f80
+PODFILE CHECKSUM: e3fb4a0010eae1862513b1e4eec63f9f0a275fd6
 
 COCOAPODS: 1.9.3
