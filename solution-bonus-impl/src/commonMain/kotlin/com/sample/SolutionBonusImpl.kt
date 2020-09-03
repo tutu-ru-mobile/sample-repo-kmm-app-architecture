@@ -4,7 +4,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlin.math.min
 
 class SolutionBonusImpl(
-    private val solutionAb: SolutionAbApi
+    private val solutionAb: SolutionAbApi,
+    val initState: State = State(1000, false)
 ) : SolutionBonusApi {
 
     /**
@@ -33,7 +34,7 @@ class SolutionBonusImpl(
     }
 
     val store = createStore(
-        State(1000, false)
+        initState
     ) { state, action: Action ->
         when (action) {
             is Action.Add -> {
@@ -65,11 +66,11 @@ class SolutionBonusImpl(
         store.send(Action.Spend(calcDiscount(ticket)))
     }
 
-    override fun refundTicket(ticket: Ticket) {//todo test
+    override fun refundTicket(ticket: Ticket) {
         if (isAvailable()) {
             store.send(
                 Action.RefundTicket(
-                    calcDiscount(ticket)
+                    ticket.price
                 )
             )
         }
@@ -84,6 +85,10 @@ class SolutionBonusImpl(
 
     override fun canBuyWithBonus(): Boolean {
         return getState().buyWithBonus && isAvailable()
+    }
+
+    override fun getBonusesAmount(): Int {
+        return getState().bonusAmount
     }
 
     // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий

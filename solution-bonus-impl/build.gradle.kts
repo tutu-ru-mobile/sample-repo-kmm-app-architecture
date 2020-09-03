@@ -23,11 +23,25 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+            }
+        }
         val androidMain by getting {
             dependencies {
                 implementationCompose()
             }
         }
+        val androidTest by getting {
+            dependencies {
+                implementation(kotlin("test-junit"))
+                implementation("junit:junit:4.12")
+            }
+        }
+        val iOSMain by getting
+        val iOSTest by getting
     }
 }
 
