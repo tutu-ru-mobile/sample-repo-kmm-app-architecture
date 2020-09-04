@@ -9,7 +9,7 @@ target 'SolutionArchitecture' do
   use_frameworks!
   project 'app-ios/SolutionArchitecture.xcodeproj'
   pod 'lib_basic_swift', :path => 'lib-basic/src/iOSMain/swift'
-  pod 'app_di', :path => 'app-di'
+  pod 'ios_kotlin_pod', :path => 'ios-kotlin-pod'
   pod 'app_di_swift', :path => 'app-di/src/iOSMain/swift'
   pod 'solution_ab_api_swift', :path => 'solution-ab-api/src/iOSMain/swift'
   pod 'solution_ab_impl_swift', :path => 'solution-ab-impl/src/iOSMain/swift'
@@ -32,7 +32,7 @@ target 'SolutionArchitecture' do
   pod 'solution_tabs_api_swift', :path => 'solution-tabs-api/src/iOSMain/swift'
   pod 'solution_tabs_impl_swift', :path => 'solution-tabs-impl/src/iOSMain/swift'
   pod 'solution_bonus_api_swift', :path => 'solution-bonus-api/src/iOSMain/swift'
-  pod 'solution_bonus_impl_swift', :path => 'solution-bonus-impl/solution/src/iOSMain/swift'
+  pod 'solution_bonus_impl_swift', :path => 'solution-bonus-impl/src/iOSMain/swift'
   pod 'solution_buy_api_swift', :path => 'solution-buy-api/src/iOSMain/swift'
   pod 'solution_buy_impl_swift', :path => 'solution-buy-impl/src/iOSMain/swift'
   pod 'solution_weather_api_swift', :path => 'solution-weather-api/src/iOSMain/swift'

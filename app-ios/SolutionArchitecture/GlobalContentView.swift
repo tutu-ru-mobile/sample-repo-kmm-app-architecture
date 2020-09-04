@@ -1,5 +1,5 @@
 import SwiftUI
-import app_di
+import ios_kotlin_pod
 import lib_basic_swift
 import app_di_swift
 import Foundation

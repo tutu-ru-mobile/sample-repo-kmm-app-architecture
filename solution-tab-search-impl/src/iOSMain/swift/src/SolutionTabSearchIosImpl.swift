@@ -1,6 +1,6 @@
 import SwiftUI
 import Foundation
-import app_di
+import ios_kotlin_pod
 import lib_basic_swift
 import solution_tab_search_api_swift
 import solution_search_form_api_swift

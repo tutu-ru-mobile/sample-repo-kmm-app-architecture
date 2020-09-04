@@ -22,7 +22,7 @@
 
 rootProject.name = "solution_architecture" //todo rename
 include("app-android")
-include("app-di")//TODO!!!!
+include("app-di")
 include("lib-basic")
 include("entity-ticket")
 include("solution-auth-api")
@@ -30,15 +30,8 @@ include("solution-auth-impl")
 
 include("solution-bonus-api")
 include("solution-bonus-impl")
-project(":solution-bonus-impl").projectDir = file("solution-bonus-impl/solution")
-include("solution-bonus-impl-sample-android")
-project(":solution-bonus-impl-sample-android").projectDir = file("solution-bonus-impl/sample-android")
-
-//TODO!!!!!! change role app-di for iOS to ios-kotlin-pod
-//include("solution-bonus-app-di")
-//project(":solution-bonus-app-di").projectDir = file("solution-bonus-impl/app-di")
-//include("app-di")
-//project(":app-di").projectDir = file("solution-bonus-impl/app-di")
+//include("solution-bonus-impl-sample-android")
+//project(":solution-bonus-impl-sample-android").projectDir = file("solution-bonus-impl/sample-android")
 
 include("solution-order-api")
 include("solution-order-impl")
@@ -63,4 +56,5 @@ include("solution-ab-api")
 include("solution-ab-impl")
 include("solution-buy-api")
 include("solution-buy-impl")
+include("ios-kotlin-pod")
 

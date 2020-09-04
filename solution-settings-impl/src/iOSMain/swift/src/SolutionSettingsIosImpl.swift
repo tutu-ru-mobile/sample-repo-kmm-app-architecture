@@ -1,6 +1,6 @@
 import SwiftUI
 import Foundation
-import app_di
+import ios_kotlin_pod
 import lib_basic_swift
 import solution_settings_api_swift
 import solution_auth_api_swift

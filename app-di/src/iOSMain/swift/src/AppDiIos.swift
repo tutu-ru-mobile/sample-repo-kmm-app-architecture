@@ -1,6 +1,6 @@
 import SwiftUI
 import Foundation
-import app_di
+import ios_kotlin_pod
 import lib_basic_swift
 import solution_ab_api_swift
 import solution_ab_impl_swift
@@ -30,7 +30,7 @@ import solution_weather_api_swift
 import solution_weather_impl_swift
 
 public class AppDiIos {
-    public let common = AppDi()
+    public let common = App_diAppDi()
     lazy public var solutionSearchFormIos = SolutionSearchFormIosImpl(
             common: common.solutionSearchForm,
             attentionIos: solutionAttentionIos
