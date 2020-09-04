@@ -20,7 +20,7 @@
 ////  }
 //}
 
-rootProject.name = "solution_architecture" //todo rename
+rootProject.name = "kmm_app"
 include("app-android")
 include("app-di")
 include("lib-basic")
