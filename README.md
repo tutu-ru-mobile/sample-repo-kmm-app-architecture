@@ -8,6 +8,8 @@
 
 ##Build iOS App
 ```bash
+#todo ssh-add
+./repo.sh update
 sudo gem install cocoapods
 sudo gem install cocoapods-generate
 ./gradlew podImport
