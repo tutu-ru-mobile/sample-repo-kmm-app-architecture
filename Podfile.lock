@@ -4,59 +4,13 @@ PODS:
     - app_di
     - lib_basic_swift
     - solution_ab_api_swift
-    - solution_ab_impl_swift
-    - solution_attention_api_swift
-    - solution_attention_impl_swift
-    - solution_auth_api_swift
-    - solution_auth_impl_swift
     - solution_bonus_api_swift
     - solution_bonus_impl_swift
-    - solution_buy_api_swift
-    - solution_buy_impl_swift
-    - solution_order_api_swift
-    - solution_order_impl_swift
-    - solution_search_form_api_swift
-    - solution_search_form_impl_swift
-    - solution_search_result_api_swift
-    - solution_search_result_impl_swift
-    - solution_search_start_api_swift
-    - solution_search_start_impl_swift
-    - solution_settings_api_swift
-    - solution_settings_impl_swift
-    - solution_tab_search_api_swift
-    - solution_tab_search_impl_swift
-    - solution_tabs_api_swift
-    - solution_tabs_impl_swift
-    - solution_weather_api_swift
-    - solution_weather_impl_swift
   - lib_basic_swift (0.0.1):
     - app_di
   - solution_ab_api_swift (0.0.1):
     - app_di
     - lib_basic_swift
-  - solution_ab_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_ab_api_swift
-  - solution_attention_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_attention_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_ab_api_swift
-    - solution_attention_api_swift
-    - solution_auth_api_swift
-    - solution_bonus_api_swift
-    - solution_order_api_swift
-    - solution_weather_api_swift
-  - solution_auth_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_auth_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_auth_api_swift
   - solution_bonus_api_swift (0.0.1):
     - app_di
     - lib_basic_swift
@@ -64,206 +18,37 @@ PODS:
     - app_di
     - lib_basic_swift
     - solution_bonus_api_swift
-  - solution_buy_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_buy_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_bonus_api_swift
-    - solution_buy_api_swift
-  - solution_order_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_order_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_auth_api_swift
-    - solution_order_api_swift
-  - solution_search_form_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_search_form_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_attention_api_swift
-    - solution_search_form_api_swift
-  - solution_search_result_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_search_result_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_search_result_api_swift
-    - solution_search_start_api_swift
-  - solution_search_start_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_search_start_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_search_start_api_swift
-  - solution_settings_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_settings_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_ab_api_swift
-    - solution_auth_api_swift
-    - solution_bonus_api_swift
-    - solution_settings_api_swift
-  - solution_tab_search_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_tab_search_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_buy_api_swift
-    - solution_search_form_api_swift
-    - solution_search_result_api_swift
-    - solution_search_start_api_swift
-    - solution_tab_search_api_swift
-  - solution_tabs_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_tabs_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_order_api_swift
-    - solution_settings_api_swift
-    - solution_tab_search_api_swift
-    - solution_tabs_api_swift
-  - solution_weather_api_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-  - solution_weather_impl_swift (0.0.1):
-    - app_di
-    - lib_basic_swift
-    - solution_weather_api_swift
 
 DEPENDENCIES:
-  - app_di (from `app-di`)
-  - app_di_swift (from `app-di/src/iOSMain/swift`)
+  - app_di (from `solution-bonus-impl/app-di`)
+  - app_di_swift (from `solution-bonus-impl/app-di/src/iOSMain/swift`)
   - lib_basic_swift (from `lib-basic/src/iOSMain/swift`)
   - solution_ab_api_swift (from `solution-ab-api/src/iOSMain/swift`)
-  - solution_ab_impl_swift (from `solution-ab-impl/src/iOSMain/swift`)
-  - solution_attention_api_swift (from `solution-attention-api/src/iOSMain/swift`)
-  - solution_attention_impl_swift (from `solution-attention-impl/src/iOSMain/swift`)
-  - solution_auth_api_swift (from `solution-auth-api/src/iOSMain/swift`)
-  - solution_auth_impl_swift (from `solution-auth-impl/src/iOSMain/swift`)
   - solution_bonus_api_swift (from `solution-bonus-api/src/iOSMain/swift`)
   - solution_bonus_impl_swift (from `solution-bonus-impl/solution/src/iOSMain/swift`)
-  - solution_buy_api_swift (from `solution-buy-api/src/iOSMain/swift`)
-  - solution_buy_impl_swift (from `solution-buy-impl/src/iOSMain/swift`)
-  - solution_order_api_swift (from `solution-order-api/src/iOSMain/swift`)
-  - solution_order_impl_swift (from `solution-order-impl/src/iOSMain/swift`)
-  - solution_search_form_api_swift (from `solution-search-form-api/src/iOSMain/swift`)
-  - solution_search_form_impl_swift (from `solution-search-form-impl/src/iOSMain/swift`)
-  - solution_search_result_api_swift (from `solution-search-result-api/src/iOSMain/swift`)
-  - solution_search_result_impl_swift (from `solution-search-result-impl/src/iOSMain/swift`)
-  - solution_search_start_api_swift (from `solution-search-start-api/src/iOSMain/swift`)
-  - solution_search_start_impl_swift (from `solution-search-start-impl/src/iOSMain/swift`)
-  - solution_settings_api_swift (from `solution-settings-api/src/iOSMain/swift`)
-  - solution_settings_impl_swift (from `solution-settings-impl/src/iOSMain/swift`)
-  - solution_tab_search_api_swift (from `solution-tab-search-api/src/iOSMain/swift`)
-  - solution_tab_search_impl_swift (from `solution-tab-search-impl/src/iOSMain/swift`)
-  - solution_tabs_api_swift (from `solution-tabs-api/src/iOSMain/swift`)
-  - solution_tabs_impl_swift (from `solution-tabs-impl/src/iOSMain/swift`)
-  - solution_weather_api_swift (from `solution-weather-api/src/iOSMain/swift`)
-  - solution_weather_impl_swift (from `solution-weather-impl/src/iOSMain/swift`)
 
 EXTERNAL SOURCES:
   app_di:
-    :path: app-di
+    :path: solution-bonus-impl/app-di
   app_di_swift:
-    :path: app-di/src/iOSMain/swift
+    :path: solution-bonus-impl/app-di/src/iOSMain/swift
   lib_basic_swift:
     :path: lib-basic/src/iOSMain/swift
   solution_ab_api_swift:
     :path: solution-ab-api/src/iOSMain/swift
-  solution_ab_impl_swift:
-    :path: solution-ab-impl/src/iOSMain/swift
-  solution_attention_api_swift:
-    :path: solution-attention-api/src/iOSMain/swift
-  solution_attention_impl_swift:
-    :path: solution-attention-impl/src/iOSMain/swift
-  solution_auth_api_swift:
-    :path: solution-auth-api/src/iOSMain/swift
-  solution_auth_impl_swift:
-    :path: solution-auth-impl/src/iOSMain/swift
   solution_bonus_api_swift:
     :path: solution-bonus-api/src/iOSMain/swift
   solution_bonus_impl_swift:
     :path: solution-bonus-impl/solution/src/iOSMain/swift
-  solution_buy_api_swift:
-    :path: solution-buy-api/src/iOSMain/swift
-  solution_buy_impl_swift:
-    :path: solution-buy-impl/src/iOSMain/swift
-  solution_order_api_swift:
-    :path: solution-order-api/src/iOSMain/swift
-  solution_order_impl_swift:
-    :path: solution-order-impl/src/iOSMain/swift
-  solution_search_form_api_swift:
-    :path: solution-search-form-api/src/iOSMain/swift
-  solution_search_form_impl_swift:
-    :path: solution-search-form-impl/src/iOSMain/swift
-  solution_search_result_api_swift:
-    :path: solution-search-result-api/src/iOSMain/swift
-  solution_search_result_impl_swift:
-    :path: solution-search-result-impl/src/iOSMain/swift
-  solution_search_start_api_swift:
-    :path: solution-search-start-api/src/iOSMain/swift
-  solution_search_start_impl_swift:
-    :path: solution-search-start-impl/src/iOSMain/swift
-  solution_settings_api_swift:
-    :path: solution-settings-api/src/iOSMain/swift
-  solution_settings_impl_swift:
-    :path: solution-settings-impl/src/iOSMain/swift
-  solution_tab_search_api_swift:
-    :path: solution-tab-search-api/src/iOSMain/swift
-  solution_tab_search_impl_swift:
-    :path: solution-tab-search-impl/src/iOSMain/swift
-  solution_tabs_api_swift:
-    :path: solution-tabs-api/src/iOSMain/swift
-  solution_tabs_impl_swift:
-    :path: solution-tabs-impl/src/iOSMain/swift
-  solution_weather_api_swift:
-    :path: solution-weather-api/src/iOSMain/swift
-  solution_weather_impl_swift:
-    :path: solution-weather-impl/src/iOSMain/swift
 
 SPEC CHECKSUMS:
-  app_di: e664b5c52e3f315e169f8b241ff9df09f7c68804
-  app_di_swift: a2789801945a5e9e790c3d046c4a492bc24fe937
+  app_di: c8c3c8edbde4a41105cc87e72202a627dfa7c956
+  app_di_swift: 547a55384eec1c5bbf13d7a07027bd187d41dbe6
   lib_basic_swift: 32bb76bed6f6b3ad71e3f686e315f8ca16f229f5
   solution_ab_api_swift: dfa15a8597441bb7fd18b80b94fea8ca234abf10
-  solution_ab_impl_swift: 930bfe3ba5a68b513604a76704fbc75db912cdf8
-  solution_attention_api_swift: 635055d3884739040b5a9d8d0e2c34f6aa36af79
-  solution_attention_impl_swift: 182e27924785631d8f59364289be3da8b2d36afd
-  solution_auth_api_swift: 2cce92103e26172edbb6cc342c6126f9547e23b4
-  solution_auth_impl_swift: 49e2acb59936fedd997ebc9819572f5b4f8ab40e
   solution_bonus_api_swift: 1d288f84ceb5ec2d300bbaf07478891bd96ce668
   solution_bonus_impl_swift: 797e365f5c2c2651f6ea6a0442d2fc4d150f4a82
-  solution_buy_api_swift: 7ca3bdefb112e7b94cc2acb50da07b76b3eb98e2
-  solution_buy_impl_swift: 47be51c6eaa5f85d00b21651ca302359663a36f7
-  solution_order_api_swift: 0a99099cc95f9021bd41f1d3dbc40dc47908a928
-  solution_order_impl_swift: 594012a379714b6ec850f7752b09069bead423f7
-  solution_search_form_api_swift: 2e6db9bd847fcb82f771d9034edcd6bf41f43aaf
-  solution_search_form_impl_swift: fcaa56075ccfe8abde18a080a822b9cc1e068abd
-  solution_search_result_api_swift: 340310f9960a33ef229b59a769bccc83cfeedcaf
-  solution_search_result_impl_swift: 25b34a1bd66892621b3d7bc1d84ee6040c8bc44b
-  solution_search_start_api_swift: ec5cf14b5ae7aa68621cd851efc9c3ca1b31ac2c
-  solution_search_start_impl_swift: 97d6fad2c32605e0a2911962b6354e1eef3516f7
-  solution_settings_api_swift: c7273b263c8bcd429520edf551ff11185d4e4cf3
-  solution_settings_impl_swift: dd25bfefbeb628186f07341921943206c96a3af6
-  solution_tab_search_api_swift: 66b9b66e5658eb4daf3102fad584bea5481f2b8c
-  solution_tab_search_impl_swift: 6e5236bf137ca6153938054c4d276763849c5a9a
-  solution_tabs_api_swift: 4d368f3802a1a8a592b6d02afbdd1b9ca5545f19
-  solution_tabs_impl_swift: ed6538a87bf4fed68c93733ffdbc15cb1d798f53
-  solution_weather_api_swift: 27ef2626c3b5cd186a7fd3ed6e78638b7e2283aa
-  solution_weather_impl_swift: a6d89f40fe1457e9f314f61adfea9d234f7b9b7e
 
-PODFILE CHECKSUM: a8b7b508823a39167218eb3d5660faf2751e24a8
+PODFILE CHECKSUM: 1e1a28ed2b2bfa15eca5d932c9b5dfbc6331a20e
 
 COCOAPODS: 1.9.3

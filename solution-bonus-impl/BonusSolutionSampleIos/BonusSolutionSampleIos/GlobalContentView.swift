@@ -1,12 +1,11 @@
 import SwiftUI
-import app_di
-import lib_basic_swift
 import app_di_swift
+import lib_basic_swift
 import Foundation
 
 struct GlobalContentView: View {
 
-    let appDiIos = AppDiIos()
+    let appDiIos = SampleDiIos()
     @ObservedObject var myViewModel:GlobalViewModel
 
     init() {
@@ -16,7 +15,8 @@ struct GlobalContentView: View {
     var body: some View {
         VStack {
             //Text("updateCount: \(myViewModel.myState.updateCount)")
-            appDiIos.solutionTabs.renderScaffold()
+            appDiIos.solutionBonusIos.renderBonusesAndRefillButton()
+            appDiIos.solutionBonusIos.renderBonusToggle()
         }
     }
 

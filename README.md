@@ -10,7 +10,7 @@
 ```bash
 sudo gem install cocoapods
 sudo gem install cocoapods-generate
-./gradlew app-di:podImport
+./gradlew podImport
 cd ios/App
 pod install
 pod update

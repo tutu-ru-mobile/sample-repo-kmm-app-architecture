@@ -4,9 +4,9 @@ import lib_basic_swift
 import Foundation
 
 public class GlobalViewModel: ObservableObject {
-    @Published public var myState: AppDi.GlobalState
+    @Published public var myState: SampleDi.GlobalState
 
-    public init(di:AppDi) {
+    public init(di:SampleDi) {
         myState = di.getLastState()
         di.addListener(listener: {state in
             self.myState = state
