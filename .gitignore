@@ -93,6 +93,7 @@ Pods
 
 buildSrc
 lib-basic
+entity-ticket
 solution-bonus-api
 solution-bonus-impl
 solution-ab-api

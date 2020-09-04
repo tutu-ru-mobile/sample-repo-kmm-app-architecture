@@ -12,6 +12,11 @@
       "ref": "master"
     },
     {
+      "dir": "entity-ticket",
+      "gitUri": "git@github.com:tutu-ru-mobile/solution-repo-kmm-entity-ticket.git",
+      "ref": "master"
+    },
+    {
       "dir": "solution-bonus-api",
       "gitUri": "git@github.com:tutu-ru-mobile/sample-repo-kmm-solution-bonus-api.git",
       "ref": "master"

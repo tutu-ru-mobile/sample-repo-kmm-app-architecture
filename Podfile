@@ -3,7 +3,7 @@
 
 workspace 'app-ios/SolutionArchitecture.xcworkspace'
 
-if false
+if true
 target 'SolutionArchitecture' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -46,33 +46,6 @@ target 'SolutionArchitecture' do
   end
 
   target 'SolutionArchitectureUITests' do
-    # Pods for testing
-  end
-
-end
-end
-
-if true
-# solution bonus sample app
-target 'BonusSolutionSampleIos' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-  project 'solution-bonus-impl/BonusSolutionSampleIos/BonusSolutionSampleIos.xcodeproj' #todo path sample-ios
-  pod 'app_di', :path => 'solution-bonus-impl/app-di'
-  pod 'app_di_swift', :path => 'solution-bonus-impl/app-di/src/iOSMain/swift'
-  pod 'lib_basic_swift', :path => 'lib-basic/src/iOSMain/swift'
-  pod 'solution_ab_api_swift', :path => 'solution-ab-api/src/iOSMain/swift'
-  pod 'solution_bonus_api_swift', :path => 'solution-bonus-api/src/iOSMain/swift'
-  pod 'solution_bonus_impl_swift', :path => 'solution-bonus-impl/solution/src/iOSMain/swift'
-
-  # Pods for BonusSolutionSampleIos
-
-  target 'BonusSolutionSampleIosTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'BonusSolutionSampleIosUITests' do
     # Pods for testing
   end
 

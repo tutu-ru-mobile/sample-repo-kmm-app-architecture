@@ -22,24 +22,23 @@
 
 rootProject.name = "solution_architecture" //todo rename
 include("app-android")
-//include("app-di")//TODO!!!!
+include("app-di")//TODO!!!!
 include("lib-basic")
 include("entity-ticket")
 include("solution-auth-api")
 include("solution-auth-impl")
 
 include("solution-bonus-api")
-//project(":solution-bonus-api").projectDir = file("sample_kmpp_solution_bonus_api")
 include("solution-bonus-impl")
 project(":solution-bonus-impl").projectDir = file("solution-bonus-impl/solution")
 include("solution-bonus-impl-sample-android")
 project(":solution-bonus-impl-sample-android").projectDir = file("solution-bonus-impl/sample-android")
 
-//TODO!!!!!!
+//TODO!!!!!! change role app-di for iOS to ios-kotlin-pod
 //include("solution-bonus-app-di")
 //project(":solution-bonus-app-di").projectDir = file("solution-bonus-impl/app-di")
-include("app-di")
-project(":app-di").projectDir = file("solution-bonus-impl/app-di")
+//include("app-di")
+//project(":app-di").projectDir = file("solution-bonus-impl/app-di")
 
 include("solution-order-api")
 include("solution-order-impl")
