@@ -33,18 +33,19 @@ class SolutionBuyImpl(
             is Action.BuyTicket -> {
                 solutionBonus.spendBonuses(s.ticket)
                 solutionOrder.addTicket(s.ticket)
-                solutionNavigation.navigateSearchForm()
+                solutionNavigation.navigateToRoot()
                 s
             }
             is Action.Back -> {
-                solutionNavigation.navigateSearchForm()
+                solutionNavigation.navigateBack()
                 s
             }
         }
     }
 
-    override fun buy(ticket: Ticket) {
+    override fun navigateBuy(ticket: Ticket) {
         store.send(Action.SetTicket(ticket))
+        solutionNavigation.navigate(SolutionBuyApi.NavBuyEvent(), BackStackBehaviour.Screen)
     }
 
     fun getPrice(): Int {

@@ -19,7 +19,8 @@ kotlin {
             dependencies {
                 api(project(":solution-search-start-api"))
                 implementation(project(":solution-navigation-api"))
-                implementation(project(":solution-order-api"))
+                api(project(":solution-search-result-api"))
+                api(project(":solution-order-api"))
                 implementation(project(":lib-basic"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
@@ -27,6 +28,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementationCompose()
+                implementation(project(":solution-tab-search-api"))
             }
         }
     }

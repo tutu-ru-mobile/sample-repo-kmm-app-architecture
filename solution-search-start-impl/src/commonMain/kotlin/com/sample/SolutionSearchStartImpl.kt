@@ -4,6 +4,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchStartImpl(
+    val solutionSearchResult: SolutionSearchResultApi,
     val solutionNavigation: SolutionNavigationApi
 ) : SolutionSearchStartApi, SolutionWithState {
 
@@ -24,14 +25,16 @@ class SolutionSearchStartImpl(
                 )
             }
             is Action.SearchResult -> {
-                solutionNavigation.navigateSearchResult(a.result)
+                solutionSearchResult.navigateSearchResult(a.result)
                 s
             }
         }
     }
 
-    override fun startSearch(query: String) {
-        store.send(Action.StartSearch(query))
+    override fun startSearch(searchQuery: String) {
+        store.send(Action.StartSearch(searchQuery))
+        solutionNavigation.navigate(SolutionSearchStartApi.NavSearchStart(), BackStackBehaviour.Once)
+
         launchCoroutineDirty {
             //Тут доджен быть запрос в сеть, но для простоты сделал эмитацию сетевой задержки
             delay(500)

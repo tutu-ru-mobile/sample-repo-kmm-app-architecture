@@ -2,80 +2,79 @@ package com.sample
 
 import kotlinx.coroutines.flow.Flow
 
-/**
- * Реализация навигации для первой вкладки  [поисковая форма] -> [поиск] -> [результат поиска (выдача)] -> [покупка]
- */
 class SolutionTabSearchImpl(
-    val solutionStartSearch: SolutionSearchStartApi,
-    val solutionSearchResult: SolutionSearchResultApi,
-    val solutionBuy: SolutionBuyApi
+    initEvent: NavigationEvent
 ) : SolutionTabSearchApi, SolutionWithState {
 
-    sealed class Screen {
-        object SearchForm : Screen()
-        object SearchStart : Screen()
-        object SearchResult : Screen()
-        object Buy : Screen()
-    }
+    class BackStackItem(
+        val event: NavigationEvent,
+        val behaviour: BackStackBehaviour
+    )
 
     data class State(
-        val screen: Screen = Screen.SearchForm
+        val backStack: List<BackStackItem>
     )
 
     sealed class Action {
-        class SetScreen(val screen: Screen) : Action()
+        object NavigateBack : SolutionTabSearchImpl.Action()
+        object NavigateToRoot : SolutionTabSearchImpl.Action()
+        class AddToBackStack(val item: BackStackItem) : Action()
     }
 
-    val store = createStore(State()) { s, a: Action ->
-        when (a) {
-            is Action.SetScreen -> {
-                s.copy(
-                    screen = a.screen
+    val store = createStore(
+        State(backStack = listOf(BackStackItem(initEvent, BackStackBehaviour.Root)))
+    ) { state: State, action: Action ->
+        when (action) {
+            is Action.AddToBackStack -> {
+                state.copy(
+                    backStack = when (action.item.behaviour) {
+                        is BackStackBehaviour.Root -> {
+                            listOf(action.item)
+                        }
+                        is BackStackBehaviour.Screen, BackStackBehaviour.Once -> {
+                            state.backStack.filter { it.behaviour != BackStackBehaviour.Once } + action.item
+                        }
+                    }
+                )
+            }
+            Action.NavigateBack -> {
+                state.copy(
+                    backStack = if(state.backStack.size > 1) {
+                        state.backStack.dropLast(1)
+                    } else {
+                        state.backStack
+                    }
+                )
+            }
+            Action.NavigateToRoot -> {
+                state.copy(
+                    backStack = listOf(state.backStack.first())
                 )
             }
         }
     }
 
-    override fun navigateSearchForm() {
-        store.send(Action.SetScreen(Screen.SearchForm))
+    override fun navigate(
+        event: NavigationEvent,
+        behaviour: BackStackBehaviour
+    ) {
+        store.send(Action.AddToBackStack(BackStackItem(event, behaviour)))
     }
 
-    override fun navigateStartSearch(query: String) {
-        solutionStartSearch.startSearch(query)
-        store.send(Action.SetScreen(Screen.SearchStart))
+    override fun navigateBack() {
+        store.send(Action.NavigateBack)
     }
 
-    override fun navigateSearchResult(tickets: List<Ticket>) {
-        solutionSearchResult.setSearchResult(tickets)
-        store.send(Action.SetScreen(Screen.SearchResult))
-    }
-
-    override fun navigateBuy(ticket: Ticket) {
-        solutionBuy.buy(ticket)
-        store.send(Action.SetScreen(Screen.Buy))
+    override fun navigateToRoot() {
+        store.send(Action.NavigateToRoot)
     }
 
     override fun onStateUpdate(): Flow<*> = store.stateFlow
 
-    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
-    fun isSearchForm(): Boolean {
-        return store.state.screen is Screen.SearchForm
-    }
-
-    fun isSearchStart(): Boolean {
-        return store.state.screen is Screen.SearchStart
-    }
-
-    fun isSearchResult(): Boolean {
-        return store.state.screen is Screen.SearchResult
-    }
-
-    fun isBuy(): Boolean {
-        return store.state.screen is Screen.Buy
-    }
-
     fun getState(): State {
         return store.state
     }
+
+    fun getLastEvent(): NavigationEvent = store.state.backStack.last().event
 
 }

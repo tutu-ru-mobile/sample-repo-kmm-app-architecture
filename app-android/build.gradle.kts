@@ -29,5 +29,8 @@ dependencies {
     implementation(project(":lib-basic"))
     implementation(project(":app-di"))
     implementation(project(":solution-tabs-impl"))
+    implementation(project(":solution-search-form-api"))
+    implementation(project(":solution-navigation-api"))
+    implementation(project(":solution-search-form-impl"))
     implementation("androidx.appcompat:appcompat:$ANDROID_APP_COMPAT")
 }

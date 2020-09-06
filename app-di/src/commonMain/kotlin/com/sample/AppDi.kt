@@ -12,31 +12,36 @@ class AppDi {
     val solutionOrder by lazySolution { SolutionOrderImpl(solutionAuth, solutionBonus) }
     val solutionSettings by lazySolution { SolutionSettingsImpl() }
     val solutionAttention by lazySolution { SolutionAttentionImpl() }
-    val solutionSearchForm by lazySolution { SolutionSearchFormImpl(solutionNavigation) }
-    val solutionSearchStart by lazySolution { SolutionSearchStartImpl(solutionNavigation) }
-    val solutionSearchResult by lazySolution { SolutionSearchResultImpl(solutionNavigation) }
-    val solutionTabSearch by lazySolution { SolutionTabSearchImpl(solutionSearchStart, solutionSearchResult, solutionBuy) }
+    val solutionSearchForm by lazySolution { SolutionSearchFormImpl(solutionSearchStart) }
+    val solutionSearchStart by lazySolution { SolutionSearchStartImpl(solutionSearchResult, solutionNavigation) }
+    val solutionSearchResult by lazySolution { SolutionSearchResultImpl(solutionNavigation, solutionBuy) }
+    val solutionTabSearch by lazySolution {
+        SolutionTabSearchImpl(
+            initEvent = SolutionSearchFormApi.NavSearchForm()
+        )
+    }
     val solutionTabs by lazySolution { SolutionTabsImpl() }
     val solutionWeather by lazySolution {SolutionWeatherImpl()}
     val solutionAb by lazySolution { SolutionAbImpl() }
     val solutionBuy by lazySolution { SolutionBuyImpl(solutionNavigation, solutionOrder, solutionBonus) }
 
-    val solutionNavigation: SolutionNavigationApi by lazy {
+    val solutionNavigation: SolutionNavigationApi =
         object : SolutionNavigationApi {
-            override fun navigateSearchForm() =
-                solutionTabSearch.navigateSearchForm()
+            override fun navigate(
+                event: NavigationEvent,
+                behaviour: BackStackBehaviour
+            ) {
+                solutionTabSearch.navigate(event, behaviour)
+            }
 
-            override fun navigateStartSearch(query: String) =
-                solutionTabSearch.navigateStartSearch(query)
+            override fun navigateBack() {
+                solutionTabSearch.navigateBack()
+            }
 
-            override fun navigateSearchResult(tickets: List<Ticket>) =
-                solutionTabSearch.navigateSearchResult(tickets)
-
-            override fun navigateBuy(ticket: Ticket) =
-                solutionTabSearch.navigateBuy(ticket)
-
+            override fun navigateToRoot() {
+                solutionTabSearch.navigateToRoot()
+            }
         }
-    }
 
     val globalStateFlow = MutableStateFlow(GlobalState(updateCount = 0))
 

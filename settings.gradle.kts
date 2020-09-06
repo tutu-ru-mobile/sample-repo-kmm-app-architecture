@@ -25,6 +25,7 @@ include("app-android")
 include("app-di")
 include("lib-basic")
 include("entity-ticket")
+include("entity-navigation-event")
 include("solution-auth-api")
 include("solution-auth-impl")
 

@@ -3,7 +3,7 @@ package com.sample
 import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchFormImpl(
-    val nav: SolutionNavigationApi
+    private val searchStartApi: SolutionSearchStartApi
 ) : SolutionSearchFormApi, SolutionWithState {
 
     /**
@@ -35,7 +35,9 @@ class SolutionSearchFormImpl(
                 )
             }
             is Action.Search -> {
-                nav.navigateStartSearch(s.run { "$searchFrom - $searchTo" })
+                searchStartApi.startSearch(
+                    searchQuery = "${s.searchFrom} - ${s.searchFrom}"
+                )
                 s
             }
 

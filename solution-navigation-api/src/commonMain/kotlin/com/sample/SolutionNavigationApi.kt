@@ -1,8 +1,13 @@
 package com.sample
 
 interface SolutionNavigationApi {
-    fun navigateSearchForm()
-    fun navigateStartSearch(query: String)
-    fun navigateSearchResult(tickets: List<Ticket>)
-    fun navigateBuy(ticket:Ticket)
+    fun navigate(event: NavigationEvent, behaviour: BackStackBehaviour)
+    fun navigateBack()
+    fun navigateToRoot()
+}
+
+sealed class BackStackBehaviour {
+    object Root : BackStackBehaviour()
+    object Once : BackStackBehaviour()
+    object Screen : BackStackBehaviour()
 }

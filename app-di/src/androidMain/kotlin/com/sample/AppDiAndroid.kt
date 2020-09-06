@@ -4,7 +4,11 @@ class AppDiAndroid(val common: AppDi) {
     val solutionAuthAndroid by lazy { SolutionAuthAndroidImpl(common.solutionAuth) }
     val solutionBonusAndroid by lazy { SolutionBonusAndroidImpl(common.solutionBonus) }
     val solutionOrderAndroid by lazy { SolutionOrderAndroidImpl(common.solutionOrder, solutionAuthAndroid) }
-    val solutionSearchStartAndroid by lazy { SolutionSearchStartAndroidImpl(common.solutionSearchStart) }
+    val solutionSearchStartAndroid by lazy {
+        SolutionSearchStartAndroidImpl(
+            common = common.solutionSearchStart
+        )
+    }
     val solutionSearchResultAndroid by lazy {
         SolutionSearchResultAndroidImpl(
             common.solutionSearchResult,
@@ -32,11 +36,11 @@ class AppDiAndroid(val common: AppDi) {
     }
     val solutionTabSearchAndroid by lazy {
         SolutionTabSearchAndroidImpl(
-            common.solutionTabSearch,
-            solutionSearchFormAndroid,
-            solutionSearchStartAndroid,
-            solutionSearchResultAndroid,
-            solutionBuySolutionSettingsApiAndroid
+            common = common.solutionTabSearch,
+            searchForm = solutionSearchFormAndroid,
+            searchStart = solutionSearchStartAndroid,
+            searchResult = solutionSearchResultAndroid,
+            solutionBuy = solutionBuyAndroid
         )
     }
     val solutionAbAndroid by lazy {
@@ -53,7 +57,8 @@ class AppDiAndroid(val common: AppDi) {
             solutionSettingsAndroid
         )
     }
-    val solutionBuySolutionSettingsApiAndroid by lazy {
+    val solutionBuyAndroid by lazy {
         SolutionBuyAndroidImpl(common.solutionBuy, solutionBonusAndroid, common.solutionBonus)
     }
+
 }

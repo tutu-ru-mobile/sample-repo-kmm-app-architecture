@@ -12,17 +12,18 @@ class SolutionTabSearchAndroidImpl(
 
     @Composable
     override fun renderMainScreen() {
-        when (common.store.state.screen) {
-            is SolutionTabSearchImpl.Screen.SearchForm -> {
+        val last = common.store.state.backStack.last()
+        when (last.event) {
+            is SolutionSearchFormApi.NavSearchForm -> {
                 searchForm.renderSearchForm()
             }
-            is SolutionTabSearchImpl.Screen.SearchStart -> {
+            is SolutionSearchStartApi.NavSearchStart -> {
                 searchStart.renderSearching()
             }
-            is SolutionTabSearchImpl.Screen.SearchResult -> {
+            is SolutionSearchResultApi.NavSearchResultEvent -> {
                 searchResult.renderSearchResult()
             }
-            is SolutionTabSearchImpl.Screen.Buy -> {
+            is SolutionBuyApi.NavBuyEvent -> {
                 solutionBuy.renderBuy()
             }
         }

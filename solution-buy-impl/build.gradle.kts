@@ -19,6 +19,7 @@ kotlin {
             dependencies {
                 api(project(":solution-buy-api"))
                 implementation(project(":solution-navigation-api"))
+                implementation(project(":solution-search-form-api"))
                 implementation(project(":solution-bonus-api"))
                 implementation(project(":lib-basic"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")

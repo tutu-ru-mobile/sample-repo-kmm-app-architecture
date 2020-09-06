@@ -1,5 +1,8 @@
 package com.sample
 
 interface SolutionBuyApi {
-    fun buy(ticket: Ticket)
+    fun navigateBuy(ticket: Ticket)
+
+    fun isNavBuyEvent(event: NavigationEvent?) = event is NavBuyEvent
+    class NavBuyEvent() : NavigationEvent
 }

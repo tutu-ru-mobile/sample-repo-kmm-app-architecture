@@ -47,9 +47,13 @@ public class AppDiIos {
     )
     lazy public var solutionTabSearch = SolutionTabSearchIosImpl(
             common: common.solutionTabSearch,
-            searchForm: solutionSearchFormIos,
-            searchStart: solutionSearchStartIos,
-            searchResult: solutionSearchResultIos,
+            searchForm: common.solutionSearchForm,
+            searchStart: common.solutionSearchStart,
+            searchResult: common.solutionSearchResult,
+            solutionBuy: common.solutionBuy,
+            searchFormIos: solutionSearchFormIos,
+            searchStartIos: solutionSearchStartIos,
+            searchResultIos: solutionSearchResultIos,
             solutionBuyIos: solutionBuyIos
     )
     lazy public var solutionTabs = SolutionTabsIosImpl(

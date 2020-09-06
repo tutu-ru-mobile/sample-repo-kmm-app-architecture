@@ -23,6 +23,7 @@ kotlin {
                 implementation(project(":solution-navigation-api"))
                 implementation(project(":solution-auth-api"))
                 implementation(project(":solution-order-api"))
+                implementation(project(":solution-search-start-api"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
@@ -30,6 +31,7 @@ kotlin {
             dependencies {
                 implementationCompose()
                 implementation(project(":solution-bonus-api"))
+                implementation(project(":solution-tab-search-api"))
             }
         }
     }

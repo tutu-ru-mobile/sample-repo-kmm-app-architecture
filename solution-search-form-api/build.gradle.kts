@@ -19,6 +19,7 @@ kotlin {
             dependencies {
                 implementation(project(":lib-basic"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
+                api(project(":entity-navigation-event"))
             }
         }
         val androidMain by getting {

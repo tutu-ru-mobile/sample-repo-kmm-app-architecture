@@ -3,7 +3,8 @@ package com.sample
 import kotlinx.coroutines.flow.Flow
 
 class SolutionSearchResultImpl(
-    navigationApi: SolutionNavigationApi
+    val navigationApi: SolutionNavigationApi,
+    val solutionBuyApi: SolutionBuyApi
 ) : SolutionSearchResultApi, SolutionWithState {
 
     data class State(
@@ -25,18 +26,22 @@ class SolutionSearchResultImpl(
                 )
             }
             is Action.BuyTicket -> {
-                navigationApi.navigateBuy(a.ticket)
+                solutionBuyApi.navigateBuy(a.ticket)
                 s
             }
             is Action.Back -> {
-                navigationApi.navigateSearchForm()
+                navigationApi.navigateBack()
                 s
             }
         }
     }
 
-    override fun setSearchResult(tickets: List<Ticket>) {
+    override fun navigateSearchResult(tickets: List<Ticket>) {
         store.send(Action.SetResult(tickets))
+        navigationApi.navigate(
+            SolutionSearchResultApi.NavSearchResultEvent(),
+            BackStackBehaviour.Screen
+        )
     }
 
     override fun onStateUpdate(): Flow<*> = store.stateFlow

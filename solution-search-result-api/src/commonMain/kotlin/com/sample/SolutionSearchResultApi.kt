@@ -2,6 +2,9 @@ package com.sample
 
 
 interface SolutionSearchResultApi {
-    fun setSearchResult(tickets: List<Ticket>)
+    fun navigateSearchResult(tickets: List<Ticket>)
+
+    fun isNavSearchResultEvent(event: NavigationEvent?) = event is NavSearchResultEvent
+    class NavSearchResultEvent() : NavigationEvent
 }
 

@@ -18,6 +18,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":lib-basic"))
+                implementation(project(":entity-navigation-event"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
