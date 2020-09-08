@@ -44,12 +44,12 @@ public struct SolutionOrderIosImpl
                 return VStack {
                     Text("Ближайшая поездка:")
                     Text("\(recentOrder.txt)")
-                }
+                }.colorRect(color: self.common.getColor())
             } else {
                 return VStack {
                     Text("")
                     Text("У вас нет билетов")
-                }
+                }.colorRect(color: self.common.getColor())
             }
     }
 
