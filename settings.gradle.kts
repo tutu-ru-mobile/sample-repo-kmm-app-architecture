@@ -51,6 +51,7 @@ pluginManagement {
 
 rootProject.name = "kmm_app"
 include("app-telegram")
+include("lib-telegram-jvm")
 include("app-android")
 include("app-di")
 include("lib-basic")

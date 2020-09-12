@@ -6,4 +6,6 @@ fun todo() {
 
 fun main() {
     println(MyColors.BLUE)
+
+    runBot()
 }
