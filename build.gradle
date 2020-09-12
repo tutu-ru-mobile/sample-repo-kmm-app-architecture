@@ -9,7 +9,7 @@ buildscript {
         String buildJetPackCompose = System.properties["buildJetPackCompose"]
         if (buildJetPackCompose == "true") {
             println("buildJetPackCompose: ${buildJetPackCompose}")
-            classpath("com.android.tools.build:gradle:4.2.0-alpha08")
+            classpath("com.android.tools.build:gradle:4.2.0-alpha10")
         } else {
             classpath("com.android.tools.build:gradle:4.1.0-rc02")
         }
