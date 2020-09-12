@@ -1,3 +1,32 @@
+pluginManagement {
+    repositories {
+        jcenter()
+        google()
+        gradlePluginPortal()
+    }
+
+    plugins {
+        id("com.android.application") version "4.0.1"
+        id("com.android.library") version "4.0.1"
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            when (requested.id.id) {
+                "com.android.application", "com.android.library" -> {
+                    useModule(
+                        if (System.getProperty("buildJetPackCompose") == "true") {
+                            "com.android.tools.build:gradle:4.2.0-alpha10"
+                        } else {
+//                            "com.android.tools.build:gradle:4.0.1"
+                            "com.android.tools.build:gradle:4.1.0-rc02"
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
 //pluginManagement {
 //    repositories {
 //        mavenLocal()
@@ -21,6 +50,7 @@
 //}
 
 rootProject.name = "kmm_app"
+include("app-telegram")
 include("app-android")
 include("app-di")
 include("lib-basic")

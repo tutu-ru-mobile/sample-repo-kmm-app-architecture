@@ -1,26 +1,28 @@
-buildscript {
-    repositories {
-        google()
-        jcenter()
-//        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
-//        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-dev") }
-    }
-    dependencies {
-        String buildJetPackCompose = System.properties["buildJetPackCompose"]
-        if (buildJetPackCompose == "true") {
-            println("buildJetPackCompose: ${buildJetPackCompose}")
-            classpath("com.android.tools.build:gradle:4.2.0-alpha10")
-        } else {
-            classpath("com.android.tools.build:gradle:4.1.0-rc02")
-        }
-//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0")
-    }
-}
+//buildscript {
+//    repositories {
+//        google()
+//        jcenter()
+////        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
+////        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-dev") }
+//    }
+//    dependencies {
+//        String buildJetPackCompose = System.properties["buildJetPackCompose"]
+//        if (buildJetPackCompose == "true") {
+//            println("buildJetPackCompose: ${buildJetPackCompose}")
+//            classpath("com.android.tools.build:gradle:4.2.0-alpha10")
+//        } else {
+//            classpath("com.android.tools.build:gradle:4.1.0-rc02")
+//        }
+////        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0")
+//    }
+//}
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform") version "1.4.0" apply false
 //    kotlin("multiplatform") version "1.4.0" apply false
     id("com.gradleup.auto.manifest") version "1.0.2"
+    id("com.android.application") apply false
+//    id("com.android.library") apply false
 }
 
 
