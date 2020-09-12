@@ -44,5 +44,6 @@ application {
 
 dependencies {
     implementation(project(":lib-basic"))
+    implementation(project(":app-di"))
     implementation(project(":lib-telegram-jvm"))
 }

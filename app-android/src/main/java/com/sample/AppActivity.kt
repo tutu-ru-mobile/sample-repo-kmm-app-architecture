@@ -3,9 +3,6 @@ package com.sample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
-import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
 import androidx.compose.runtime.getValue
@@ -18,7 +15,7 @@ class AppActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val di = AppDi()
-        val diAndroid = AppDiAndroid(di)
+        val diAndroid = AppDiTelegram(di)
         setContent {
             val state by di.globalStateFlow.collectAsState()
             println("actionCount: $state")//не удалять, это костыль чтобы обновлось View при изменениие State

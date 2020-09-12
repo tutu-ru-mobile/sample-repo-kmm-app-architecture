@@ -17,6 +17,7 @@ kotlin {
         browser { }
     }
     android()
+    jvm()
     sourceSets {
         val commonMain by getting {
             dependencies {
