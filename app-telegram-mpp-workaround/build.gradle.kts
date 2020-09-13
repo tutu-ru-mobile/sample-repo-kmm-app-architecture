@@ -12,6 +12,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION") {
 //                    isForce = true
                 }
+                implementation(project(":solution-tabs-api"))
+                implementation(project(":solution-tabs-impl"))
             }
         }
         val jvmMain by getting {

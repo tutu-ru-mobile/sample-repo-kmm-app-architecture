@@ -11,8 +11,6 @@ import com.github.kotlintelegrambot.entities.keyboard.KeyboardButton
 import com.github.kotlintelegrambot.entities.polls.PollType.QUIZ
 import com.github.kotlintelegrambot.logging.LogLevel
 
-val CHAT_ID = 185159406L
-
 fun runBot(telegramBotToken: String) {
 
     val bot = bot {
@@ -61,6 +59,7 @@ fun runBot(telegramBotToken: String) {
 
             callbackQuery("ca") { bot, update ->
                 update.callbackQuery?.let {
+                    it.data
                     val chatId = it.message?.chat?.id ?: return@callbackQuery
                     bot.sendMessage(
                         chatId = chatId,
@@ -93,7 +92,7 @@ fun runBot(telegramBotToken: String) {
                 println("handle channel: update.message?.text: ${update.message?.text}")
             }
 
-            text(/* may specify text */) { bot, update ->
+            text(/* may set text */) { bot, update ->
                 println("handle text: update.message?.text: ${update.message?.text}, chatId: ${update.message?.chat?.id}")
             }
 

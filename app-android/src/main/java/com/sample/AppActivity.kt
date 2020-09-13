@@ -15,7 +15,7 @@ class AppActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val di = AppDi()
-        val diAndroid = AppDiTelegram(di)
+        val diAndroid = AppDiAndroid(di)
         setContent {
             val state by di.globalStateFlow.collectAsState()
             println("actionCount: $state")//не удалять, это костыль чтобы обновилось View при изменениие State
