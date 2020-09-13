@@ -37,10 +37,6 @@ kotlin {
                 implementation(project(":solution-buy-impl"))
                 implementation(project(":solution-navigation-api"))
                 implementation(project(":lib-basic"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION") {
-//                    isForce = true
-                }
-//                implementation("io.ktor:ktor-client-core:$KTOR_VERSION")
             }
         }
         val iOSMain by getting {
