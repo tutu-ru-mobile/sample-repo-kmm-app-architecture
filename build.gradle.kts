@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "1.4.0" apply false
+    id("org.jetbrains.kotlin.multiplatform") version KOTLIN_VERSION apply false
 //    kotlin("multiplatform") version "1.4.0" apply false
     id("com.gradleup.auto.manifest") version "1.0.2"
     id("com.android.application") apply false

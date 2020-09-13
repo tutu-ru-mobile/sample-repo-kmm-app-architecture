@@ -17,7 +17,6 @@ import kotlin.random.Random
 val CHAT_ID = 185159406L
 
 fun runTelegramApp(telegramBotToken: String) {
-    println(MyColors.BLUE)
     val di = AppDi()
     val diTelegram = AppDiTelegram(di)
 
