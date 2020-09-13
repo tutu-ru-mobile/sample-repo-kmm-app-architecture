@@ -53,6 +53,7 @@ rootProject.name = "kmm_app"
 include("app-telegram")
 include("lib-telegram-jvm")
 include("app-android")
+include("app-telegram-mpp-workaround")
 include("app-di")
 include("lib-basic")
 include("entity-ticket")

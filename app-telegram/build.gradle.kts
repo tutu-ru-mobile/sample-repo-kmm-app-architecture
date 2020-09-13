@@ -43,7 +43,6 @@ application {
 }
 
 dependencies {
-    implementation(project(":lib-basic"))
-    implementation(project(":app-di"))
+    implementation(project(":app-telegram-mpp-workaround"))
     implementation(project(":lib-telegram-jvm"))
 }

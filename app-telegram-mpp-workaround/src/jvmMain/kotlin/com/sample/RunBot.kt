@@ -23,11 +23,10 @@ import com.github.kotlintelegrambot.extensions.filters.Filter
 import com.github.kotlintelegrambot.logging.LogLevel
 import com.github.kotlintelegrambot.network.fold
 
-fun runBot() {
+fun runBot(telegramBotToken: String) {
 
     val bot = bot {
-
-        token = BuildConfig.TELEGRAM_TOKEN
+        token = telegramBotToken
         timeout = 30
         logLevel = LogLevel.Network.Body
 
