@@ -60,6 +60,27 @@ fun runTelegramApp(telegramBotToken: String) {
             clearCallbacks()
             val scaffold = diTelegram.solutionTabsTelegram.renderScaffold()
 
+            //Кнопки навигации снизу
+            bot.sendMessage(
+                chatId = CHAT_ID,
+                text = ".......................................",
+                replyMarkup = KeyboardReplyMarkup(
+                    keyboard = listOf(
+                        scaffold.navButtons.map { btn ->
+                            textCallbacks += {
+                                if (it == btn.text) {
+                                    btn.onClick()
+                                }
+                            }
+                            KeyboardButton(
+                                text = btn.text
+                            )
+                        }
+                    ), resizeKeyboard = true
+                )
+            )
+
+            //Контент
             when (val content = scaffold.content) {
                 is Content.Message -> {
                     bot.sendMessage(
@@ -78,24 +99,6 @@ fun runTelegramApp(telegramBotToken: String) {
                 }
             }
 
-            bot.sendMessage(
-                chatId = CHAT_ID,
-                text = "Navigation buttons",
-                replyMarkup = KeyboardReplyMarkup(
-                    keyboard = listOf(
-                        scaffold.navButtons.map { btn ->
-                            textCallbacks += {
-                                if (it == btn.text) {
-                                    btn.onClick()
-                                }
-                            }
-                            KeyboardButton(
-                                text = btn.text
-                            )
-                        }
-                    ), resizeKeyboard = true
-                )
-            )
         }
     }
 //    runBot(telegramBotToken)

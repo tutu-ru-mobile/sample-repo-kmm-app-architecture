@@ -13,6 +13,7 @@ class SolutionTabsTelegramImpl(
         return TelegramScaffold(
             content = Content.Message(Random.nextInt().toString()),
             navButtons = listOf(
+                //todo selection commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main
                 Content.Button("Поиск") {
                     commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
                 },
