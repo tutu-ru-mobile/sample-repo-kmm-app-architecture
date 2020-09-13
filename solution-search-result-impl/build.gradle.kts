@@ -32,6 +32,13 @@ kotlin {
                 implementationCompose()
             }
         }
+        val jvmMain by getting {
+            dependencies {
+                api(project(":solution-search-result-api"))
+                api(project(":lib-telegram-adapter"))
+            }
+        }
+
     }
 }
 
