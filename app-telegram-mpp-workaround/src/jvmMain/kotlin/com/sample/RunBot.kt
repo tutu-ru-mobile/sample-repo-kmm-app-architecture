@@ -23,6 +23,8 @@ import com.github.kotlintelegrambot.extensions.filters.Filter
 import com.github.kotlintelegrambot.logging.LogLevel
 import com.github.kotlintelegrambot.network.fold
 
+val CHAT_ID = 185159406L
+
 fun runBot(telegramBotToken: String) {
 
     val bot = bot {
@@ -31,52 +33,7 @@ fun runBot(telegramBotToken: String) {
         logLevel = LogLevel.Network.Body
 
         dispatch {
-            message(Filter.Sticker) { bot, update ->
-                bot.sendMessage(update.message!!.chat.id, text = "You have received an awesome sticker \\o/")
-            }
-
-            message(Filter.Reply or Filter.Forward) { bot, update ->
-                bot.sendMessage(update.message!!.chat.id, text = "someone is replying or forwarding messages ...")
-            }
-
-            command("start") {
-
-                val result = bot.sendMessage(chatId = update.message!!.chat.id, text = "Bot started")
-
-                result.fold({
-                    // do something here with the response
-                }, {
-                    // do something with the error
-                })
-            }
-
-            command("hello") {
-
-                val result = bot.sendMessage(chatId = update.message!!.chat.id, text = "Hello, world!")
-
-                result.fold({
-                    // do something here with the response
-                }, {
-                    // do something with the error
-                })
-            }
-
-            command("commandWithArgs") {
-                val joinedArgs = args.joinToString()
-                val response = if (joinedArgs.isNotBlank()) joinedArgs else "There is no text apart from command!"
-                bot.sendMessage(chatId = message.chat.id, text = response)
-            }
-
             command("markdown") {
-                val markdownText = "_Cool message_: *Markdown* is `beatiful` :P"
-                bot.sendMessage(
-                    chatId = message.chat.id,
-                    text = markdownText,
-                    parseMode = MARKDOWN
-                )
-            }
-
-            command("markdownV2") {
                 val markdownV2Text = """
                     *bold \*text*
                     _italic \*text_
@@ -99,7 +56,7 @@ fun runBot(telegramBotToken: String) {
                 )
             }
 
-            command("inlineButtons") {//
+            command("start") {//
                 val inlineKeyboardMarkup = InlineKeyboardMarkup(generateButtons())
                 bot.sendMessage(
                     chatId = message.chat.id,
@@ -108,25 +65,13 @@ fun runBot(telegramBotToken: String) {
                 )
             }
 
-            command("userButtons") {
-                val keyboardMarkup = KeyboardReplyMarkup(keyboard = generateUsersButton(), resizeKeyboard = true)
+            command("userButtons") {// todo навигация
+                val keyboardMarkup =
+                    KeyboardReplyMarkup(keyboard = generateUsersButton(), resizeKeyboard = true)
                 bot.sendMessage(
                     chatId = message.chat.id,
                     text = "Hello, users buttons!",
                     replyMarkup = keyboardMarkup
-                )
-            }
-
-            command("mediaGroup") {
-                bot.sendMediaGroup(
-                    chatId = message.chat.id,
-                    mediaGroup = MediaGroup.from(
-                        InputMediaPhoto(
-                            media = ByUrl("https://www.sngular.com/wp-content/uploads/2019/11/Kotlin-Blog-1400x411.png"),
-                            caption = "I come from an url :P"
-                        )
-                    ),
-                    replyToMessageId = message.messageId
                 )
             }
 
@@ -167,69 +112,16 @@ fun runBot(telegramBotToken: String) {
                 }
             }
 
-            callbackQuery(createAlertCallbackQueryHandler { bot, update ->
-                update.callbackQuery?.let {
-                    val chatId = it.message?.chat?.id ?: return@createAlertCallbackQueryHandler
-                    bot.sendMessage(chatId = chatId, text = it.data)
-                }
-            })
-
             text("ping") { bot, update ->
                 bot.sendMessage(chatId = update.message!!.chat.id, text = "Pong")
             }
 
-            location { bot, update, location ->
-                val chatId = update.message?.chat?.id ?: return@location
-                bot.sendMessage(
-                    chatId = chatId,
-                    text = "Your location is (${location.latitude}, ${location.longitude})",
-                    replyMarkup = ReplyKeyboardRemove()
-                )
+            channel { bot, update ->//todo unused?
+                println("handle channel: update.message?.text: ${update.message?.text}")
             }
 
-            contact { bot, update, contact ->
-                val chatId = update.message?.chat?.id ?: return@contact
-                bot.sendMessage(
-                    chatId = chatId,
-                    text = "Hello, ${contact.firstName} ${contact.lastName}",
-                    replyMarkup = ReplyKeyboardRemove()
-                )
-            }
-
-            channel { bot, update ->
-                // Handle channel update
-            }
-
-            inlineQuery { bot, inlineQuery ->
-                val queryText = inlineQuery.query
-
-                if (queryText.isBlank() or queryText.isEmpty()) return@inlineQuery
-
-                val inlineResults = (0 until 5).map {
-                    InlineQueryResult.Article(
-                        id = it.toString(),
-                        title = "$it. $queryText",
-                        inputMessageContent = InputMessageContent.Text("$it. $queryText"),
-                        description = "Add $it. before you word"
-                    )
-                }
-                bot.answerInlineQuery(inlineQuery.id, inlineResults)
-            }
-
-            photos { bot, update, _ ->
-                val chatId = update.message?.chat?.id ?: return@photos
-                bot.sendMessage(
-                    chatId = chatId,
-                    text = "Wowww, awesome photos!!! :P"
-                )
-            }
-
-            command("diceAsDartboard") {
-                bot.sendDice(message.chat.id, DiceEmoji.Dartboard)
-            }
-
-            dice { bot, message, dice ->
-                bot.sendMessage(message.chat.id, "A dice ${dice.emoji.emojiValue} with value ${dice.value} has been received!")
+            text(/* may specify text */) { bot, update ->
+                println("handle text: update.message?.text: ${update.message?.text}, chatId: ${update.message?.chat?.id}")
             }
 
             telegramError { _, telegramError ->
@@ -239,11 +131,20 @@ fun runBot(telegramBotToken: String) {
     }
 
     bot.startPolling()
+    bot.sendMessage(
+        chatId = CHAT_ID,
+        text = "immediately message"
+    )
 }
 
 fun generateUsersButton(): List<List<KeyboardButton>> {//todo навигация
     return listOf(
-        listOf(KeyboardButton("Request location (not supported on desktop)", requestLocation = true)),
+        listOf(
+            KeyboardButton(
+                "Request location (not supported on desktop)",
+                requestLocation = true
+            )
+        ),
         listOf(KeyboardButton("Request contact", requestContact = true))
     )
 }
@@ -261,6 +162,9 @@ fun generateButtons(): List<List<InlineKeyboardButton>> {
     return listOf(
         listOf(InlineKeyboardButton(text = "Test Inline Button", callbackData = "testButton")),
         listOf(InlineKeyboardButton(text = "Show alert", callbackData = "showAlert")),
-        listOf(InlineKeyboardButton(text = "a", callbackData = "ca"), InlineKeyboardButton(text = "b", callbackData = "cb"))
+        listOf(
+            InlineKeyboardButton(text = "a", callbackData = "ca"),
+            InlineKeyboardButton(text = "b", callbackData = "cb")
+        )
     )
 }
