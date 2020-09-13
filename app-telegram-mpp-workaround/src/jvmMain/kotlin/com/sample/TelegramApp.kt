@@ -6,10 +6,13 @@ import com.github.kotlintelegrambot.dispatch
 import com.github.kotlintelegrambot.dispatcher.callbackQuery
 import com.github.kotlintelegrambot.dispatcher.telegramError
 import com.github.kotlintelegrambot.dispatcher.text
+import com.github.kotlintelegrambot.entities.InlineKeyboardMarkup
 import com.github.kotlintelegrambot.entities.KeyboardReplyMarkup
+import com.github.kotlintelegrambot.entities.keyboard.InlineKeyboardButton
 import com.github.kotlintelegrambot.entities.keyboard.KeyboardButton
 import com.github.kotlintelegrambot.logging.LogLevel
 import kotlinx.coroutines.flow.collectLatest
+import kotlin.random.Random
 
 val CHAT_ID = 185159406L
 
@@ -38,13 +41,18 @@ fun runTelegramApp(telegramBotToken: String) {
                 }
             }
 
-            text(/* may set text */) { bot, update ->
-                textCallbacks.forEach { textCallback ->
-                    update.message?.text?.let {
-                        textCallback(it)
-                    }
+            text(/* may set concrete text */) { bot, update ->
+                val text = update.message?.text
+                if (text != null) {
+                    textCallbacks.forEach { it(text) }
                 }
-//                println("handle text: update.message?.text: ${update.message?.text}, chatId: ${update.message?.chat?.id}")
+            }
+
+            callbackQuery(/*  may set concrete data */) { bot, update ->
+                val data = update.callbackQuery?.data
+                if (data != null) {
+                    dataCallbacks.forEach { it(data) }
+                }
             }
 
             telegramError { _, telegramError ->
@@ -60,10 +68,10 @@ fun runTelegramApp(telegramBotToken: String) {
             clearCallbacks()
             val scaffold = diTelegram.solutionTabsTelegram.renderScaffold()
 
-            //Кнопки навигации снизу
+            // Кнопки навигации снизу
             bot.sendMessage(
                 chatId = CHAT_ID,
-                text = ".......................................",
+                text = List(40) { "." }.joinToString("\n"),
                 replyMarkup = KeyboardReplyMarkup(
                     keyboard = listOf(
                         scaffold.navButtons.map { btn ->
@@ -80,25 +88,46 @@ fun runTelegramApp(telegramBotToken: String) {
                 )
             )
 
-            //Контент
-            when (val content = scaffold.content) {
-                is Content.Message -> {
-                    bot.sendMessage(
-                        CHAT_ID, text = content.text
-                    )
-                }
-                is Content.Button -> {
-                    bot.sendMessage(
-                        CHAT_ID, text = "todo buttons"
-                    )
-                }
-                is Content.Container -> {
-                    bot.sendMessage(
-                        CHAT_ID, text = "todo container"
-                    )
+            // Контент старницы
+            fun renderContent(content: Content) {
+                when (content) {
+                    is Content.Message -> {
+                        bot.sendMessage(
+                            CHAT_ID,
+                            text = content.text
+                        )
+                    }
+                    is Content.Button -> {
+                        val rndCallbackData = Random.nextInt().toString()
+                        dataCallbacks += {
+                            if (it == rndCallbackData) {
+                                content.onClick()
+                            }
+                        }
+                        bot.sendMessage(
+                            CHAT_ID,
+                            text = "todo buttons",
+                            replyMarkup = InlineKeyboardMarkup(
+                                listOf(
+                                    listOf(
+                                        InlineKeyboardButton(
+                                            text = content.text,
+                                            callbackData = rndCallbackData
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    }
+                    is Content.Container -> {
+                        content.children.forEach {
+                            renderContent(it)
+                        }
+                    }
                 }
             }
 
+            renderContent(scaffold.content)
         }
     }
 //    runBot(telegramBotToken)
