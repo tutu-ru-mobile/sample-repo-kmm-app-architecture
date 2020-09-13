@@ -18,7 +18,7 @@ class AppActivity : AppCompatActivity() {
         val diAndroid = AppDiTelegram(di)
         setContent {
             val state by di.globalStateFlow.collectAsState()
-            println("actionCount: $state")//не удалять, это костыль чтобы обновлось View при изменениие State
+            println("actionCount: $state")//не удалять, это костыль чтобы обновилось View при изменениие State
 
             val fontStyle = TextStyle(fontSize = 20.sp)
             MaterialTheme(

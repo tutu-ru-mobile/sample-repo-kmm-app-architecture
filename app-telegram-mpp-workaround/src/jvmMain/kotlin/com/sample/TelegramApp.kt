@@ -7,7 +7,7 @@ fun runTelegramApp(telegramBotToken: String) {
     diTelegram.solutionTabsTelegram
 //    setContent {
 //        val state by di.globalStateFlow.collectAsState()
-//        println("actionCount: $state")//не удалять, это костыль чтобы обновлось View при изменениие State
+//        println("actionCount: $state")//не удалять, это костыль чтобы обновилось View при изменениие State
 //        diTelegram.solutionTabsTelegram.renderScaffold()
 //
 //    }

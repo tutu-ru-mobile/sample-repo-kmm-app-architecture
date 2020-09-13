@@ -1,27 +1,15 @@
 package com.sample
 
-import com.github.kotlintelegrambot.HandleUpdate
 import com.github.kotlintelegrambot.bot
 import com.github.kotlintelegrambot.dispatch
 import com.github.kotlintelegrambot.dispatcher.*
-import com.github.kotlintelegrambot.dispatcher.handlers.CallbackQueryHandler
 import com.github.kotlintelegrambot.entities.InlineKeyboardMarkup
 import com.github.kotlintelegrambot.entities.KeyboardReplyMarkup
-import com.github.kotlintelegrambot.entities.ParseMode.MARKDOWN
 import com.github.kotlintelegrambot.entities.ParseMode.MARKDOWN_V2
-import com.github.kotlintelegrambot.entities.ReplyKeyboardRemove
-import com.github.kotlintelegrambot.entities.TelegramFile.ByUrl
-import com.github.kotlintelegrambot.entities.dice.DiceEmoji
-import com.github.kotlintelegrambot.entities.inlinequeryresults.InlineQueryResult
-import com.github.kotlintelegrambot.entities.inlinequeryresults.InputMessageContent
-import com.github.kotlintelegrambot.entities.inputmedia.InputMediaPhoto
-import com.github.kotlintelegrambot.entities.inputmedia.MediaGroup
 import com.github.kotlintelegrambot.entities.keyboard.InlineKeyboardButton
 import com.github.kotlintelegrambot.entities.keyboard.KeyboardButton
 import com.github.kotlintelegrambot.entities.polls.PollType.QUIZ
-import com.github.kotlintelegrambot.extensions.filters.Filter
 import com.github.kotlintelegrambot.logging.LogLevel
-import com.github.kotlintelegrambot.network.fold
 
 val CHAT_ID = 185159406L
 
@@ -56,8 +44,14 @@ fun runBot(telegramBotToken: String) {
                 )
             }
 
-            command("start") {//
-                val inlineKeyboardMarkup = InlineKeyboardMarkup(generateButtons())
+            command("start") {
+                val inlineKeyboardMarkup = InlineKeyboardMarkup(
+                    listOf(
+                        listOf(
+                            InlineKeyboardButton(text = "a", callbackData = "ca")
+                        )
+                    )
+                )
                 bot.sendMessage(
                     chatId = message.chat.id,
                     text = "Hello, inline buttons!",
@@ -95,17 +89,6 @@ fun runBot(telegramBotToken: String) {
                 }
             }
 
-            callbackQuery("testButton") { bot, update ->
-                update.callbackQuery?.let {
-                    val chatId = it.message?.chat?.id ?: return@callbackQuery
-                    bot.sendMessage(chatId = chatId, text = it.data + " more data")
-                }
-            }
-
-            text("ping") { bot, update ->
-                bot.sendMessage(chatId = update.message!!.chat.id, text = "Pong")
-            }
-
             channel { bot, update ->//todo unused?
                 println("handle channel: update.message?.text: ${update.message?.text}")
             }
@@ -133,17 +116,6 @@ fun runBot(telegramBotToken: String) {
                     KeyboardButton("button2")
                 )
             ), resizeKeyboard = true
-        )
-    )
-}
-
-fun generateButtons(): List<List<InlineKeyboardButton>> {
-    return listOf(
-        listOf(InlineKeyboardButton(text = "Test Inline Button", callbackData = "testButton")),
-        listOf(InlineKeyboardButton(text = "Show alert", callbackData = "showAlert")),
-        listOf(
-            InlineKeyboardButton(text = "a", callbackData = "ca"),
-            InlineKeyboardButton(text = "b", callbackData = "cb")
         )
     )
 }
