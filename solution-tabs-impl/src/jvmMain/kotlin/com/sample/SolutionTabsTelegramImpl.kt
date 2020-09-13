@@ -3,15 +3,25 @@ package com.sample
 import kotlin.random.Random
 
 class SolutionTabsTelegramImpl(
-    val commonImpl: SolutionTabsImpl
-//    val searchTabAndroid: SolutionTabSearchAndroidApi,
+    val commonImpl: SolutionTabsImpl,
+    val searchTabTelegram: SolutionTabSearchTelegramApi
 //    val ordersTabAndroid: SolutionOrderAndroidApi,
 //    val settingsTabAndroid: SolutionSettingsApiAndroid
 ) : SolutionTabsTelegramApi {
 
-    override fun renderScaffold():TelegramScaffold {
+    override fun renderScaffold(): TelegramScaffold {
         return TelegramScaffold(
-            content = Content.Message(Random.nextInt().toString()),
+            content = when (commonImpl.store.state.screen) {
+                is SolutionTabsImpl.Screen.Main -> {
+                    searchTabTelegram.renderMainScreen()
+                }
+                is SolutionTabsImpl.Screen.Orders -> {
+                    Content.Message(Random.nextInt().toString())
+                }
+                is SolutionTabsImpl.Screen.Settings -> {
+                    Content.Message(Random.nextInt().toString())
+                }
+            },
             navButtons = listOf(
                 //todo selection commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main
                 Content.Button("Поиск") {

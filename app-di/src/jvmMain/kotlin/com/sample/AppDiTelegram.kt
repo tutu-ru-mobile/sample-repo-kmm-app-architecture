@@ -1,8 +1,12 @@
 package com.sample
 
-class AppDiTelegram(val common: AppDi) {
+class AppDiTelegram(private val common: AppDi) {
     val solutionTabsTelegram by lazy {
-        SolutionTabsTelegramImpl(common.solutionTabs)
+        SolutionTabsTelegramImpl(common.solutionTabs, searchTabTelegram)
+    }
+
+    val searchTabTelegram by lazy {
+        SolutionTabSearchTelegramImpl(common.solutionTabSearch)
     }
 
 }
