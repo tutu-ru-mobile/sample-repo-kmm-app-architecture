@@ -17,10 +17,10 @@ class SolutionTabsTelegramImpl(
                     commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
                 },
                 Content.Button("Мои билеты") {
-                    commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
                 },
                 Content.Button("Настройки") {
-                    commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
                 }
             )
         )
