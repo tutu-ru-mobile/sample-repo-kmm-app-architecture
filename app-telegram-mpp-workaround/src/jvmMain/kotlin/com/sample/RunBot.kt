@@ -65,16 +65,6 @@ fun runBot(telegramBotToken: String) {
                 )
             }
 
-            command("userButtons") {// todo навигация
-                val keyboardMarkup =
-                    KeyboardReplyMarkup(keyboard = generateUsersButton(), resizeKeyboard = true)
-                bot.sendMessage(
-                    chatId = message.chat.id,
-                    text = "Hello, users buttons!",
-                    replyMarkup = keyboardMarkup
-                )
-            }
-
             callbackQuery("ca") { bot, update ->
                 update.callbackQuery?.let {
                     val chatId = it.message?.chat?.id ?: return@callbackQuery
@@ -133,28 +123,17 @@ fun runBot(telegramBotToken: String) {
     bot.startPolling()
     bot.sendMessage(
         chatId = CHAT_ID,
-        text = "immediately message"
-    )
-}
-
-fun generateUsersButton(): List<List<KeyboardButton>> {//todo навигация
-    return listOf(
-        listOf(
-            KeyboardButton(
-                "Request location (not supported on desktop)",
-                requestLocation = true
-            )
-        ),
-        listOf(KeyboardButton("Request contact", requestContact = true))
-    )
-}
-
-fun createAlertCallbackQueryHandler(handler: HandleUpdate): CallbackQueryHandler {
-    return CallbackQueryHandler(
-        callbackData = "showAlert",
-        callbackAnswerText = "HelloText",
-        callbackAnswerShowAlert = true,
-        handler = handler
+        text = "Navigation buttons!",
+        replyMarkup = KeyboardReplyMarkup(
+            keyboard = listOf(
+                listOf(
+                    KeyboardButton(
+                        "/start"
+                    ),
+                    KeyboardButton("button2")
+                )
+            ), resizeKeyboard = true
+        )
     )
 }
 
