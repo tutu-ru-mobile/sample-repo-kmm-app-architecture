@@ -23,7 +23,6 @@ kotlin {
                 implementation(project(":solution-bonus-api"))
                 implementation(project(":solution-auth-api"))
                 implementation(project(":solution-ab-api"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
         val androidMain by getting {

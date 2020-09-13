@@ -20,7 +20,6 @@ kotlin {
             dependencies {
                 implementation(project(":lib-basic"))
                 api(project(":entity-ticket"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
         val androidMain by getting {

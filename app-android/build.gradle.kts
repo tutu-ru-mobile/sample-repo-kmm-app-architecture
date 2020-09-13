@@ -24,7 +24,6 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
     implementationCompose()
     implementation(project(":lib-basic"))
     implementation(project(":app-di"))

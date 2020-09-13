@@ -23,7 +23,6 @@ kotlin {
                 api(project(":solution-search-result-api"))
                 api(project(":solution-order-api"))
                 implementation(project(":lib-basic"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
         val androidMain by getting {

@@ -25,7 +25,6 @@ kotlin {
                 implementation(project(":solution-search-start-api"))
                 implementation(project(":solution-tab-search-api"))
                 implementation(project(":solution-buy-api"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
         val androidMain by getting {

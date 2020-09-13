@@ -20,7 +20,6 @@ kotlin {
             dependencies {
                 api(project(":solution-auth-api"))
                 implementation(project(":lib-basic"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
         val androidMain by getting {

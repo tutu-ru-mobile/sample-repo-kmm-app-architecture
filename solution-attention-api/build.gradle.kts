@@ -19,7 +19,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":lib-basic"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
             }
         }
         val androidMain by getting {
