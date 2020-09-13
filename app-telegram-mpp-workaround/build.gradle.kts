@@ -18,7 +18,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                implementation(project(":lib-telegram-jvm"))
+
             }
         }
     }

@@ -33,8 +33,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                api(project(":solution-tabs-api"))//todo redundant?
-                api(project(":solution-tab-search-api"))
+
             }
         }
     }

@@ -35,7 +35,7 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                api(project(":solution-tab-search-api"))//todo redundat?
+
             }
         }
     }
