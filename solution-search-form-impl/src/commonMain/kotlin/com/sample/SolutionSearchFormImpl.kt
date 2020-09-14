@@ -36,7 +36,7 @@ class SolutionSearchFormImpl(
             }
             is Action.Search -> {
                 searchStartApi.startSearch(
-                    searchQuery = "${s.searchFrom} - ${s.searchFrom}"
+                    searchQuery = "${s.searchFrom} - ${s.searchTo}"
                 )
                 s
             }

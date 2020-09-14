@@ -12,6 +12,7 @@ import com.github.kotlintelegrambot.entities.keyboard.InlineKeyboardButton
 import com.github.kotlintelegrambot.entities.keyboard.KeyboardButton
 import com.github.kotlintelegrambot.logging.LogLevel
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 import kotlin.random.Random
 
 val CHAT_ID = 185159406L
@@ -63,14 +64,14 @@ fun runTelegramApp(telegramBotToken: String) {
     bot.startPolling()
 
     launchCoroutineDirty {
-        di.globalStateFlow.collectLatest { state ->
+        di.globalStateFlow.debounce(50L).collectLatest { state ->
             clearCallbacks()
             val scaffold = diTelegram.solutionTabsTelegram.renderScaffold()
 
             // Кнопки навигации снизу
             bot.sendMessage(
                 chatId = CHAT_ID,
-                text = List(40) { "." }.joinToString("\n"),
+                text = List(45) { "." }.joinToString("\n"),
                 replyMarkup = KeyboardReplyMarkup(
                     keyboard = listOf(
                         scaffold.navButtons.map { btn ->
