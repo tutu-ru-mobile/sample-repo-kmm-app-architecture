@@ -22,7 +22,7 @@ fun runTelegramApp(telegramBotToken: String) {
     val di = AppDi()
 
     var paymentPollHook: () -> Unit = {}
-    val diTelegram = AppDiTelegram(di){ paymentPollHook() }
+    var inputStrHook: (text: String, Callback: (String) -> Unit) -> Unit = { t, c -> }
 
     var textCallbacks: List<(text: String) -> Unit> = emptyList()//todo thread safe
     var dataCallbacks: List<(data: String) -> Unit> = emptyList()
@@ -31,6 +31,16 @@ fun runTelegramApp(telegramBotToken: String) {
         textCallbacks = emptyList()
         dataCallbacks = emptyList()
     }
+
+    val diTelegram = AppDiTelegram(
+        di,
+        paymentPoll = {
+            paymentPollHook()
+        },
+        inputStr = { t, c ->
+            inputStrHook(t, c)
+        }
+    )
 
     val bot = bot {
         token = telegramBotToken
@@ -138,6 +148,15 @@ fun runTelegramApp(telegramBotToken: String) {
             correctOptionId = 0,
             isAnonymous = false
         )
+    }
+    inputStrHook = { text, callback ->
+        bot.sendMessage(
+            CHAT_ID,
+            text
+        )
+        textCallbacks += {
+            callback(it)
+        }
     }
 //    runBot(telegramBotToken)
 }

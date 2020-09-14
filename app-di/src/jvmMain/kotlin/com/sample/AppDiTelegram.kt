@@ -1,13 +1,21 @@
 package com.sample
 
-class AppDiTelegram(val common: AppDi, val paymentPoll: () -> Unit)  {
+class AppDiTelegram(
+    val common: AppDi,
+    val paymentPoll: () -> Unit,
+    val inputStr: (text: String, callback: (String) -> Unit) -> Unit
+) {
     val solutionTabsTelegram by lazy {
         SolutionTabsTelegramImpl(
             commonImpl = common.solutionTabs,
             searchTabTelegram = searchTabTelegram,
-            ordersTabTelegram = SolutionOrderTelegramImpl(
-                common.solutionOrder
-            )
+            ordersTabTelegram = solutionOrder
+        )
+    }
+
+    val solutionOrder by lazy {
+        SolutionOrderTelegramImpl(
+            common.solutionOrder
         )
     }
 
@@ -30,7 +38,10 @@ class AppDiTelegram(val common: AppDi, val paymentPoll: () -> Unit)  {
     }
 
     val searchFrom by lazy {
-        SolutionSearchFormTelegramImpl(SolutionSearchFormImpl(common.solutionSearchStart))
+        SolutionSearchFormTelegramImpl(
+            common.solutionSearchForm,
+            inputStr = inputStr
+        )
     }
 
     val solutionBuy by lazy {
