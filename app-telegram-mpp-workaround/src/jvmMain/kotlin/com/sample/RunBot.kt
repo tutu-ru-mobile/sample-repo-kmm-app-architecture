@@ -88,7 +88,7 @@ fun runBot(telegramBotToken: String) {
                 }
             }
 
-            channel { bot, update ->//todo unused?
+            channel { bot, update ->// unused?
                 println("handle channel: update.message?.text: ${update.message?.text}")
             }
 
