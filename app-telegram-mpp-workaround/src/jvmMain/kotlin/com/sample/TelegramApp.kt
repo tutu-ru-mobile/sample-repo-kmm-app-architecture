@@ -64,7 +64,7 @@ fun runTelegramApp(telegramBotToken: String) {
     bot.startPolling()
 
     launchCoroutineSingleThread {
-        di.globalStateFlow.debounce(50L).collectLatest { state ->
+        di.globalStateFlow.debounce(150L).collectLatest { state ->
             clearCallbacks()
             val scaffold = diTelegram.solutionTabsTelegram.renderScaffold()
 

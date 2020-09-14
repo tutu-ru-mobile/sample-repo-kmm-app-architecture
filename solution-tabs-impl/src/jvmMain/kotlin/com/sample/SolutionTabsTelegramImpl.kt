@@ -4,8 +4,8 @@ import kotlin.random.Random
 
 class SolutionTabsTelegramImpl(
     val commonImpl: SolutionTabsImpl,
-    val searchTabTelegram: SolutionTabSearchTelegramApi
-//    val ordersTabAndroid: SolutionOrderAndroidApi,
+    val searchTabTelegram: SolutionTabSearchTelegramApi,
+    val ordersTabTelegram: SolutionOrderTelegramApi
 //    val settingsTabAndroid: SolutionSettingsApiAndroid
 ) : SolutionTabsTelegramApi {
 
@@ -16,10 +16,15 @@ class SolutionTabsTelegramImpl(
                     searchTabTelegram.renderMainScreen()
                 }
                 is SolutionTabsImpl.Screen.Orders -> {
-                    TelegramView.Message(Random.nextInt().toString())
+                    ordersTabTelegram.renderAllOrders()
                 }
                 is SolutionTabsImpl.Screen.Settings -> {
-                    TelegramView.Message(Random.nextInt().toString())
+                    TelegramView.Message(
+                        """
+                            Экран настроек
+                            Для Телеграма тут пока пусто
+                        """.trimIndent()
+                    )
                 }
             },
             navButtons = listOf(

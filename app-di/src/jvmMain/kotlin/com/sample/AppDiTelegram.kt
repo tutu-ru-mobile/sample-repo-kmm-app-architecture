@@ -2,7 +2,13 @@ package com.sample
 
 class AppDiTelegram(private val common: AppDi) {
     val solutionTabsTelegram by lazy {
-        SolutionTabsTelegramImpl(common.solutionTabs, searchTabTelegram)
+        SolutionTabsTelegramImpl(
+            commonImpl = common.solutionTabs,
+            searchTabTelegram = searchTabTelegram,
+            ordersTabTelegram = SolutionOrderTelegramImpl(
+                common.solutionOrder
+            )
+        )
     }
 
     val searchTabTelegram by lazy {

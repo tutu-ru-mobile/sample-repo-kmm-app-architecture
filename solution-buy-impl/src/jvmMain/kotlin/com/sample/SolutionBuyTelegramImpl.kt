@@ -2,8 +2,6 @@ package com.sample
 
 class SolutionBuyTelegramImpl(
     val commonImpl: SolutionBuyImpl
-//    val solutionBonusTelegram: SolutionBonusTelegramApi,
-//    val solutionBonus: SolutionBonusApi
 ) : SolutionBuyTelegramApi {
 
     override fun renderBuy(): TelegramView {
@@ -11,7 +9,6 @@ class SolutionBuyTelegramImpl(
         return TelegramView.Message(
             """
                 Билет ${ticket.txt}
-                //todo solutionBonusTelegram.renderBonusToggle()
             """.trimIndent(),
             buttons = listOf(
                 listOf(TelegramButton("Купить за ${commonImpl.getPrice()} р.") {
