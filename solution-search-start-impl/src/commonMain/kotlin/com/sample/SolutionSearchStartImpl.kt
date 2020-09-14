@@ -35,7 +35,7 @@ class SolutionSearchStartImpl(
         store.send(Action.StartSearch(searchQuery))
         solutionNavigation.navigate(SolutionSearchStartApi.NavSearchStart(), BackStackBehaviour.Once)
 
-        launchCoroutineDirty {
+        launchCoroutineSingleThread {
             //Тут доджен быть запрос в сеть, но для простоты сделал эмитацию сетевой задержки
             delay(500)
             completeSearch()

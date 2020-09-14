@@ -53,7 +53,7 @@ class AppDi {
     }
 
     private fun addUpdate(f: Flow<*>) {
-        launchCoroutineDirty {
+        launchCoroutineSingleThread {
             f.collect { update() }
         }
     }
@@ -69,7 +69,7 @@ class AppDi {
     fun getLastState() = globalStateFlow.value
 
     fun addListener(listener: (GlobalState) -> Unit) {
-        launchCoroutineDirty {
+        launchCoroutineSingleThread {
             globalStateFlow.collectLatest {
                 listener(it)
             }
