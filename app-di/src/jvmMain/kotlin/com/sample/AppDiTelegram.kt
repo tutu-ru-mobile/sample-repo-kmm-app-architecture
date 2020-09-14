@@ -10,7 +10,8 @@ class AppDiTelegram(private val common: AppDi) {
             common.solutionTabSearch,
             searchForm = searchFrom,
             searchStart = searchStart,
-            searchResult = searchResult
+            searchResult = searchResult,
+            solutionBuy = solutionBuy
         )
     }
 
@@ -24,6 +25,10 @@ class AppDiTelegram(private val common: AppDi) {
 
     val searchFrom by lazy {
         SolutionSearchFormTelegramImpl(SolutionSearchFormImpl(common.solutionSearchStart))
+    }
+
+    val solutionBuy by lazy {
+        SolutionBuyTelegramImpl(common.solutionBuy)
     }
 
 }

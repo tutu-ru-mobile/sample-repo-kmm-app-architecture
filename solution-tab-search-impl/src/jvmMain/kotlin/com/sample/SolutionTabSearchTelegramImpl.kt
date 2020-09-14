@@ -4,8 +4,8 @@ class SolutionTabSearchTelegramImpl(
     val common: SolutionTabSearchImpl,
     val searchForm: SolutionSearchFormTelegramApi,
     val searchStart: SolutionSearchStartTelegramApi,
-    val searchResult: SolutionSearchResultTelegramApi
-//    val solutionBuy: SolutionBuyAndroidApi
+    val searchResult: SolutionSearchResultTelegramApi,
+    val solutionBuy: SolutionBuyTelegramApi
 ) : SolutionTabSearchTelegramApi {
 
     override fun renderMainScreen(): Content {
@@ -21,11 +21,10 @@ class SolutionTabSearchTelegramImpl(
                 searchResult.renderSearchResult()
             }
             is SolutionBuyApi.NavBuyEvent -> {
-                Content.Message("solutionBuy.renderBuy()")
-//                solutionBuy.renderBuy()
+                solutionBuy.renderBuy()
             }
             else -> {
-                Content.Message("renderMainScreen")//todo
+                throw Error("nav event not implements event: ${last.event}")
             }
         }
     }

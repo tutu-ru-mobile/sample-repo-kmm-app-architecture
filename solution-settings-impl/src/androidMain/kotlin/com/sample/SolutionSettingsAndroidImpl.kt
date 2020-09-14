@@ -12,7 +12,7 @@ import com.sample.compose.Central
 class SolutionSettingsAndroidImpl(
     val commonImpl: SolutionSettingsImpl,
     val authAndroid: SolutionAuthAndroidApi,
-    val bonus: SolutionBonusApiAndroid,
+    val bonus: SolutionBonusAndroidApi,
     val ab: SolutionAbAndroidApi
 ) : SolutionSettingsApiAndroid {
 

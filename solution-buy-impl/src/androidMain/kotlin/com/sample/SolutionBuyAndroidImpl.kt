@@ -14,7 +14,7 @@ import com.sample.compose.WrapColorBox
 
 class SolutionBuyAndroidImpl(
     val commonImpl: SolutionBuyImpl,
-    val solutionBonusAndroid: SolutionBonusApiAndroid,
+    val solutionBonusAndroid: SolutionBonusAndroidApi,
     val solutionBonus: SolutionBonusApi
 ) : SolutionBuyAndroidApi {
 

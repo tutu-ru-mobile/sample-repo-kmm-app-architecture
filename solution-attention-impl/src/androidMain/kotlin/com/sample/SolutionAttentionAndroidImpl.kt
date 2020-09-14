@@ -9,7 +9,7 @@ class SolutionAttentionAndroidImpl(
     val solutionAuth: SolutionAuthApi,
     val weatherAndroid: SolutionWeatherAndroidApi,
     val orderAndroid: SolutionOrderAndroidApi,
-    val solutionBonusAndroid: SolutionBonusApiAndroid,
+    val solutionBonusAndroid: SolutionBonusAndroidApi,
     val ab: SolutionAbApi
 ) : SolutionAttentionAndroidApi {
 
