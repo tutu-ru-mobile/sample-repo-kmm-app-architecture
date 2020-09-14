@@ -20,7 +20,7 @@ class AppDiTelegram(private val common: AppDi) {
     }
 
     val searchResult by lazy {
-        SolutionSearchResultTelegramImpl(common.solutionSearchResult)
+        SolutionSearchResultTelegramImpl(common.solutionSearchResult, common.solutionSearchStart)
     }
 
     val searchFrom by lazy {

@@ -6,34 +6,22 @@ class SolutionBuyTelegramImpl(
 //    val solutionBonus: SolutionBonusApi
 ) : SolutionBuyTelegramApi {
 
-    override fun renderBuy():TelegramView {
+    override fun renderBuy(): TelegramView {
         val ticket = commonImpl.getState().ticket
-        return TelegramView.Message("renderBuy ${ticket.txt}, за ${ticket.price} р.")
-//            Column {
-//                Text("Билет ${commonImpl.store.state.ticket.txt}", fontSize = 20.sp)
-//                Spacer(Modifier.preferredHeight(16.dp))
-//                solutionBonusAndroid.renderBonusToggle()
-//                Spacer(Modifier.preferredHeight(16.dp))
-//                Button(onClick = {
-//                    commonImpl.store.send(SolutionBuyImpl.Action.BuyTicket())
-//                }) {
-//                    Column {
-//                        if (solutionBonus.canBuyWithBonus()) {
-//                            Text(
-//                                "${commonImpl.getState().ticket.price} р.",
-//                                textDecoration = TextDecoration.LineThrough
-//                            )
-//                        }
-//                        Text("Купить за ${commonImpl.getPrice()} р.")
-//                    }
-//                }
-//                Spacer(Modifier.preferredHeight(16.dp))
-//                Button(onClick = {
-//                    commonImpl.store.send(SolutionBuyImpl.Action.Back())
-//                }, backgroundColor = HexColor(0x55FF0000).toComposeColor()) {
-//                    Text("Отмена")
-//                }
-//            }
+        return TelegramView.Message(
+            """
+                Билет ${ticket.txt}
+                //todo solutionBonusTelegram.renderBonusToggle()
+            """.trimIndent(),
+            buttons = listOf(
+                listOf(TelegramButton("Купить за ${commonImpl.getPrice()} р.") {
+                    commonImpl.store.send(SolutionBuyImpl.Action.BuyTicket())
+                }),
+                listOf(TelegramButton("Отмена") {
+                    commonImpl.store.send(SolutionBuyImpl.Action.Back())
+                })
+            )
+        )
     }
 
 }

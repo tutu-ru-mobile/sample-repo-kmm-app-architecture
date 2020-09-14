@@ -15,7 +15,7 @@ class SolutionSearchResultImpl(
     sealed class Action {
         class SetResult(val tickets: List<Ticket>) : Action()
         class BuyTicket(val ticket: Ticket) : Action()
-        class Back() : Action()
+        object Back : Action()
     }
 
     val store: Store<State, Action> = createStore(State()) { s, a: Action ->
