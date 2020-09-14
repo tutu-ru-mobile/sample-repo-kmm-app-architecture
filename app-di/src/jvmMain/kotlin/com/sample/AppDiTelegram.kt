@@ -1,6 +1,6 @@
 package com.sample
 
-class AppDiTelegram(private val common: AppDi) {
+class AppDiTelegram(val common: AppDi, val paymentPoll: () -> Unit)  {
     val solutionTabsTelegram by lazy {
         SolutionTabsTelegramImpl(
             commonImpl = common.solutionTabs,
@@ -34,7 +34,7 @@ class AppDiTelegram(private val common: AppDi) {
     }
 
     val solutionBuy by lazy {
-        SolutionBuyTelegramImpl(common.solutionBuy)
+        SolutionBuyTelegramImpl(common.solutionBuy, paymentPoll)
     }
 
 }

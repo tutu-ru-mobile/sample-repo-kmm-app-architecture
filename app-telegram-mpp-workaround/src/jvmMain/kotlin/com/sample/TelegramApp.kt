@@ -10,6 +10,7 @@ import com.github.kotlintelegrambot.entities.InlineKeyboardMarkup
 import com.github.kotlintelegrambot.entities.KeyboardReplyMarkup
 import com.github.kotlintelegrambot.entities.keyboard.InlineKeyboardButton
 import com.github.kotlintelegrambot.entities.keyboard.KeyboardButton
+import com.github.kotlintelegrambot.entities.polls.PollType
 import com.github.kotlintelegrambot.logging.LogLevel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
@@ -19,7 +20,9 @@ val CHAT_ID = 185159406L
 
 fun runTelegramApp(telegramBotToken: String) {
     val di = AppDi()
-    val diTelegram = AppDiTelegram(di)
+
+    var paymentPollHook: () -> Unit = {}
+    val diTelegram = AppDiTelegram(di){ paymentPollHook() }
 
     var textCallbacks: List<(text: String) -> Unit> = emptyList()//todo thread safe
     var dataCallbacks: List<(data: String) -> Unit> = emptyList()
@@ -64,7 +67,7 @@ fun runTelegramApp(telegramBotToken: String) {
     bot.startPolling()
 
     launchCoroutineSingleThread {
-        di.globalStateFlow.debounce(150L).collectLatest { state ->
+        di.globalStateFlow.debounce(50L).collectLatest { state ->
             clearCallbacks()
             val scaffold = diTelegram.solutionTabsTelegram.renderScaffold()
 
@@ -121,6 +124,20 @@ fun runTelegramApp(telegramBotToken: String) {
 
             renderContent(scaffold.content)
         }
+    }
+    paymentPollHook = {
+        bot.sendMessage(
+            CHAT_ID,
+            List(45) { "." }.joinToString("\n")
+        )
+        bot.sendPoll(
+            chatId = CHAT_ID,
+            type = PollType.QUIZ,
+            question = "Ура! Вы приобрели билет. Довольны качеством сервиса?",
+            options = listOf("Да, доволен", "Средне...", "Нет, не доволен"),
+            correctOptionId = 0,
+            isAnonymous = false
+        )
     }
 //    runBot(telegramBotToken)
 }

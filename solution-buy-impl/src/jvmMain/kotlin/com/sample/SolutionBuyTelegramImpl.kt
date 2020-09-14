@@ -1,7 +1,10 @@
 package com.sample
 
+import kotlinx.coroutines.delay
+
 class SolutionBuyTelegramImpl(
-    val commonImpl: SolutionBuyImpl
+    val commonImpl: SolutionBuyImpl,
+    val paymentPoll: () -> Unit
 ) : SolutionBuyTelegramApi {
 
     override fun renderBuy(): TelegramView {
@@ -13,6 +16,10 @@ class SolutionBuyTelegramImpl(
             buttons = listOf(
                 listOf(TelegramButton("Купить за ${commonImpl.getPrice()} р.") {
                     commonImpl.store.send(SolutionBuyImpl.Action.BuyTicket())
+                    launchCoroutineSingleThread {
+                        delay(200)
+                        paymentPoll()
+                    }
                 }),
                 listOf(TelegramButton("Отмена") {
                     commonImpl.store.send(SolutionBuyImpl.Action.Back())
