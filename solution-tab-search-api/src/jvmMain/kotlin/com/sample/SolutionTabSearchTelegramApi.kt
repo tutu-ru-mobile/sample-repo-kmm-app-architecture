@@ -1,5 +1,5 @@
 package com.sample
 
 interface SolutionTabSearchTelegramApi {
-    fun renderMainScreen():Content
+    fun renderMainScreen():TelegramView
 }

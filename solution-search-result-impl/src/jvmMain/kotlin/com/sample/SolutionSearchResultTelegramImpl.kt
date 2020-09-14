@@ -22,8 +22,8 @@ class SolutionSearchResultTelegramImpl(
 ////        }
 //    }
 
-    override fun renderSearchResult():Content {
-        return Content.Message("renderSearchResult")
+    override fun renderSearchResult():TelegramView {
+        return TelegramView.Message("renderSearchResult")
 //        val offset = state { 0f }
 //        Column(modifier = Modifier.scrollable(
 //            orientation = Orientation.Vertical,

@@ -6,9 +6,9 @@ class SolutionBuyTelegramImpl(
 //    val solutionBonus: SolutionBonusApi
 ) : SolutionBuyTelegramApi {
 
-    override fun renderBuy():Content {
+    override fun renderBuy():TelegramView {
         val ticket = commonImpl.getState().ticket
-        return Content.Message("renderBuy ${ticket.txt}, за ${ticket.price} р.")
+        return TelegramView.Message("renderBuy ${ticket.txt}, за ${ticket.price} р.")
 //            Column {
 //                Text("Билет ${commonImpl.store.state.ticket.txt}", fontSize = 20.sp)
 //                Spacer(Modifier.preferredHeight(16.dp))

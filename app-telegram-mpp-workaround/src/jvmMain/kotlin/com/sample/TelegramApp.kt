@@ -89,37 +89,29 @@ fun runTelegramApp(telegramBotToken: String) {
             )
 
             // Контент старницы
-            fun renderContent(content: Content) {
+            fun renderContent(content: TelegramView) {
                 when (content) {
-                    is Content.Message -> {
+                    is TelegramView.Message -> {
                         bot.sendMessage(
                             CHAT_ID,
-                            text = content.text
-                        )
-                    }
-                    is Content.Button -> {
-                        val rndCallbackData = Random.nextInt().toString()
-                        dataCallbacks += {
-                            if (it == rndCallbackData) {
-                                content.onClick()
-                            }
-                        }
-                        bot.sendMessage(
-                            CHAT_ID,
-                            text = "todo buttons",
-                            replyMarkup = InlineKeyboardMarkup(
-                                listOf(
-                                    listOf(
-                                        InlineKeyboardButton(
-                                            text = content.text,
-                                            callbackData = rndCallbackData
-                                        )
+                            text = content.text,
+                            replyMarkup = content.buttons?.map { horizontalGroup ->//todo maybe redundant nullable
+                                horizontalGroup.map { btn ->
+                                    val rand = Random.nextInt().toString()
+                                    dataCallbacks += {
+                                        if (it == rand) {
+                                            btn.onClick()
+                                        }
+                                    }
+                                    InlineKeyboardButton(
+                                        text = btn.text,
+                                        callbackData = rand
                                     )
-                                )
-                            )
+                                }
+                            }?.let { InlineKeyboardMarkup(it) }
                         )
                     }
-                    is Content.Container -> {
+                    is TelegramView.Container -> {
                         content.children.forEach {
                             renderContent(it)
                         }

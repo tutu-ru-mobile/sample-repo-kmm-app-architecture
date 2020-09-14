@@ -16,20 +16,20 @@ class SolutionTabsTelegramImpl(
                     searchTabTelegram.renderMainScreen()
                 }
                 is SolutionTabsImpl.Screen.Orders -> {
-                    Content.Message(Random.nextInt().toString())
+                    TelegramView.Message(Random.nextInt().toString())
                 }
                 is SolutionTabsImpl.Screen.Settings -> {
-                    Content.Message(Random.nextInt().toString())
+                    TelegramView.Message(Random.nextInt().toString())
                 }
             },
             navButtons = listOf(
-                Content.Button("Поиск") {
+                TelegramButton("Поиск") {
                     commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
                 },
-                Content.Button("Мои билеты") {
+                TelegramButton("Мои билеты") {
                     commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
                 },
-                Content.Button("Настройки") {
+                TelegramButton("Настройки") {
                     commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
                 }
             )

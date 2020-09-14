@@ -5,8 +5,8 @@ class SolutionSearchFormTelegramImpl(
 //    val attentionAndroid: SolutionAttentionAndroidApi
 ) : SolutionSearchFormTelegramApi {
 
-    override fun renderSearchForm(): Content {
-        return Content.Button("Начать поиск") {
+    override fun renderSearchForm(): TelegramView {
+        return TelegramView.Button("Начать поиск") {
             commonImpl.store.send(SolutionSearchFormImpl.Action.Search)
         }
 //        WrapColorBox(color = commonImpl.getColor()) {

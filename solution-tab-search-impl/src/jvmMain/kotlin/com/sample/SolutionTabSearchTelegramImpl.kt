@@ -8,7 +8,7 @@ class SolutionTabSearchTelegramImpl(
     val solutionBuy: SolutionBuyTelegramApi
 ) : SolutionTabSearchTelegramApi {
 
-    override fun renderMainScreen(): Content {
+    override fun renderMainScreen(): TelegramView {
         val last = common.store.state.backStack.last()
         return when (last.event) {
             is SolutionSearchFormApi.NavSearchForm -> {
