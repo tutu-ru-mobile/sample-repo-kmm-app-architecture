@@ -65,7 +65,7 @@ class SolutionTabsAndroidImpl(
                         Text("Поиск")
                     },
                     alwaysShowLabels = true,
-                    onSelect = {
+                    onClick = {
                         commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
                     }
                 )
@@ -78,7 +78,7 @@ class SolutionTabsAndroidImpl(
                     },
                     alwaysShowLabels = true,
                     selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Orders,
-                    onSelect = {
+                    onClick = {
                         commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
                     }
                 )
@@ -91,7 +91,7 @@ class SolutionTabsAndroidImpl(
                     },
                     alwaysShowLabels = true,
                     selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Settings,
-                    onSelect = {
+                    onClick = {
                         commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
                     }
                 )
@@ -99,8 +99,4 @@ class SolutionTabsAndroidImpl(
         }
     }
 
-}
-
-fun tempColorPicket() {
-    val c1 = Color(0xFFB5F071)
 }

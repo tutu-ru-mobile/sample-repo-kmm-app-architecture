@@ -91,4 +91,4 @@ include("solution-ab-impl")
 include("solution-buy-api")
 include("solution-buy-impl")
 include("ios-kotlin-pod")
-
+include("app-console")
