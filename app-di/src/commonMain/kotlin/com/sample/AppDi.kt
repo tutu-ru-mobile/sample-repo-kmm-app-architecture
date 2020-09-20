@@ -53,7 +53,7 @@ class AppDi {
     }
 
     private fun addUpdate(f: Flow<*>) {
-        launchCoroutineSingleThread {
+        launchAppScope {
             f.collect { update() }
         }
     }
@@ -69,7 +69,7 @@ class AppDi {
     fun getLastState() = globalStateFlow.value
 
     fun addListener(listener: (GlobalState) -> Unit) {
-        launchCoroutineSingleThread {
+        launchAppScope {
             globalStateFlow.collectLatest {
                 listener(it)
             }

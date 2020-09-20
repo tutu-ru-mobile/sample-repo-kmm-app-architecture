@@ -16,7 +16,7 @@ class SolutionBuyTelegramImpl(
             buttons = listOf(
                 listOf(TelegramButton("Купить за ${commonImpl.getPrice()} р.") {
                     commonImpl.store.send(SolutionBuyImpl.Action.BuyTicket())
-                    launchCoroutineSingleThread {
+                    launchAppScope {
                         delay(200)
                         paymentPoll()
                     }
