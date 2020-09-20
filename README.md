@@ -19,3 +19,4 @@ pod update
 #open [./ios/App/SolutionArchitecture.xcworkspace] in XCode or AppCode and run project on iOS Emulator
 ```
 
+
