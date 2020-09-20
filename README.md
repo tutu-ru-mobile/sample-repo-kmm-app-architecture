@@ -7,13 +7,18 @@
 А потом установить app-android/build/outputs/apk/debug/app-android-debug.apk  
 
 ##Build iOS App
+
+#First time install
 ```bash
-ssh-add
-./repo.sh update
 sudo gem install cocoapods
 sudo gem install cocoapods-generate
+```
+
+#Repeat on code update
+```bash
+ssh-add
+./repo.sh update #if needs to update dependencies
 ./gradlew podImport
-cd ios/App
 pod install
 pod update
 #open [./ios/App/SolutionArchitecture.xcworkspace] in XCode or AppCode and run project on iOS Emulator
