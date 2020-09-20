@@ -53,9 +53,6 @@ class SolutionSearchResultAndroidImpl(
             common.store.state.tickets.forEach {
                 renderTicket(it)
             }
-            if(common.store.state.notEnoughMoney) {
-                Text("Не достаточно денег")//todo redundant
-            }
             Spacer(Modifier.preferredHeight(16.dp))
             Button(onClick = {
                 common.store.send(SolutionSearchResultImpl.Action.Back)

@@ -8,7 +8,7 @@
 
 ##Build iOS App
 ```bash
-#todo ssh-add
+ssh-add
 ./repo.sh update
 sudo gem install cocoapods
 sudo gem install cocoapods-generate

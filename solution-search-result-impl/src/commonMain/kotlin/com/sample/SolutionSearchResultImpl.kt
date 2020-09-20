@@ -8,8 +8,7 @@ class SolutionSearchResultImpl(
 ) : SolutionSearchResultApi, SolutionWithState {
 
     data class State(
-        val tickets: List<Ticket> = emptyList(),
-        val notEnoughMoney: Boolean = false
+        val tickets: List<Ticket> = emptyList()
     )
 
     sealed class Action {
