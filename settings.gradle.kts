@@ -19,7 +19,7 @@ pluginManagement {
                             "com.android.tools.build:gradle:4.2.0-alpha10"
                         } else {
 //                            "com.android.tools.build:gradle:4.0.1"
-                            "com.android.tools.build:gradle:4.1.0-rc02"
+                            "com.android.tools.build:gradle:4.1.0-rc03"
                         }
                     )
                 }

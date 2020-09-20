@@ -4,7 +4,7 @@
     {
       "dir": "buildSrc",
       "gitUri": "git@github.com:tutu-ru-mobile/sample-repo-kmm-build-src.git",
-      "ref": "master"
+      "ref": "v1.0"
     },
     {
       "dir": "lib-basic",
