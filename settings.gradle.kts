@@ -16,7 +16,7 @@ pluginManagement {
                 "com.android.application", "com.android.library" -> {
                     useModule(
                         if (System.getProperty("buildJetPackCompose") == "true") {
-                            "com.android.tools.build:gradle:4.2.0-alpha10"
+                            "com.android.tools.build:gradle:4.2.0-alpha11"
                         } else {
 //                            "com.android.tools.build:gradle:4.0.1"
                             "com.android.tools.build:gradle:4.1.0-rc03"
