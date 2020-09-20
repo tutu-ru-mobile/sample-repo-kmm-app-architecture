@@ -12,4 +12,6 @@ application {
 
 dependencies {
     implementation("com.jakewharton.crossword:crossword:0.1.1")
+    implementation(project(":lib-basic"))
+    implementation(kotlin("stdlib-jdk8"))
 }

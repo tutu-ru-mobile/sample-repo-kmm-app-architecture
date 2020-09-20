@@ -1,2 +1,2 @@
 #!/bin/bash
-./gradlew app-console:run
+./gradlew app-console:installDist && ./app-console/build/install/app/bin/app
