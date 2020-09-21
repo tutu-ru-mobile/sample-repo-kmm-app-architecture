@@ -1,8 +1,5 @@
 package lib
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-
 object Mvi {
     interface Store<State, Intent> {
         fun dispatch(intent: Intent)
@@ -10,31 +7,20 @@ object Mvi {
         val state: State
     }
 
-    sealed class Reduce<State, SideEffect> {
-        class DoNothing<State, SideEffect> : Reduce<State, SideEffect>()
-        class ChangeState<State, SideEffect>(val state: State) : Reduce<State, SideEffect>()
-        class Effect<State, SideEffect>(val effect: SideEffect) : Reduce<State, SideEffect>()
-        class Both<State, SideEffect>(val state: State, val effect: SideEffect) : Reduce<State, SideEffect>()
+    sealed class Reduce<State> {
+        class DoNothing<State> : Reduce<State>()
+        class ChangeState<State>(val state: State) : Reduce<State>()
     }
 
-    interface ReduceContext<State, SideEffect> {
-        fun onlyState(state: State): Reduce<State, SideEffect> = Reduce.ChangeState(state)
-        fun State.onlyState(): Reduce<State, SideEffect> = Reduce.ChangeState(this)
-        fun onlySideEffect(effect: SideEffect): Reduce<State, SideEffect> = Reduce.Effect(effect)
-        fun SideEffect.onlySideEffect(): Reduce<State, SideEffect> = Reduce.Effect(this)
-        infix fun State.andEffect(effect: SideEffect): Reduce<State, SideEffect> =
-            Reduce.Both(this, effect)
-        infix fun SideEffect.andState(state: State): Reduce<State, SideEffect> =
-            Reduce.Both(state, this)
-        fun both(state: State, effect:SideEffect): Reduce<State, SideEffect> =
-            Reduce.Both(state, effect)
-        val doNothing get():Reduce<State, SideEffect> = Reduce.DoNothing()
+    interface ReduceContext<State> {
+        fun onlyState(state: State): Reduce<State> = Reduce.ChangeState(state)
+        fun State.onlyState(): Reduce<State> = Reduce.ChangeState(this)
+        val doNothing get():Reduce<State> = Reduce.DoNothing()
     }
 
-    fun <State, Intent, SideEffect> store(
+    fun <State, Intent> store(
         initialState: State,
-        sideEffectHandler: suspend (Store<State, Intent>, SideEffect) -> Unit,
-        reducer: ReduceContext<State, SideEffect>.(State, Intent) -> Reduce<State, SideEffect>
+        reducer: ReduceContext<State>.(State, Intent) -> Reduce<State>
     ): Store<State, Intent> {
         var state: State = initialState
         val subscriptions: MutableList<(State) -> Unit> = mutableListOf()
@@ -49,24 +35,10 @@ object Mvi {
                     }
                 }
 
-                fun applySideEffect(effect: SideEffect) {
-                    val store = this
-                    GlobalScope.launch {
-                        sideEffectHandler(store, effect)
-                    }
-                }
-
-                val context = object : ReduceContext<State, SideEffect> {}
+                val context = object : ReduceContext<State> {}
                 when (val reduce = context.reducer(state, intent)) {
-                    is Reduce.ChangeState<State, SideEffect> -> {
+                    is Reduce.ChangeState<State> -> {
                         updateState(reduce.state)
-                    }
-                    is Reduce.Effect<State, SideEffect> -> {
-                        applySideEffect(reduce.effect)
-                    }
-                    is Reduce.Both<State, SideEffect> -> {
-                        updateState(reduce.state)
-                        applySideEffect(reduce.effect)
                     }
                 }
 

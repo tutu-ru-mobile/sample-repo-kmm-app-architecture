@@ -9,40 +9,10 @@ import currentUnixTime
 import findNextWord
 import lib.Mvi
 
-val store = Mvi.store<State, Intent, SideEffect>(
-    State(),
-    sideEffectHandler = { store, effect ->
-        when (effect) {
-            is SideEffect.LoadDeployTime -> {
-
-            }
-            is SideEffect.StoreWord -> {
-                val item = BrowserStorage.getItem(effect.key) ?: StoreItem()
-                val result = if (effect.success) {
-                    item.copy(
-                        successCount = item.successCount + 1,
-                        changedUnixTime = currentUnixTime()
-                    )
-                } else {
-                    item.copy(
-                        failCount = item.failCount + 1,
-                        changedUnixTime = currentUnixTime()
-                    )
-                }
-                BrowserStorage.saveItem(effect.key, result)
-            }
-        }.let {}
-    }
+val store = Mvi.store<State, Intent>(
+    State()
 ) { state, intent ->
     when (intent) {
-        is Intent.LoadDeployTime -> {
-            SideEffect.LoadDeployTime.onlySideEffect()
-        }
-        is Intent.SetDeployTime -> {
-            state.copy(
-                deployTime = intent.deployTime
-            ).onlyState()
-        }
         is Intent.ChooseDictionary -> {
             if (state.screen is Screen.Dictionaries) {
                 val contains = state.screen.selected.contains(intent.dictionary)
@@ -107,9 +77,7 @@ val store = Mvi.store<State, Intent, SideEffect>(
                             throw Error("bad variant: is WordState.Fail")
                         }
                     }
-                ).andEffect(
-                    SideEffect.StoreWord(state.screen.word.hint, intent.success)
-                )
+                ).onlyState()
             } else {
                 doNothing
             }

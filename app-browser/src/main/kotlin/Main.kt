@@ -12,5 +12,5 @@ fun main() {
 //        }
 //    }
     document.getElementById("react-app")?.renderReactMviComponent<ApplicationComponent>()
-    store.dispatch(Intent.LoadDeployTime)
+//    store.dispatch(Intent.LoadDeployTime)
 }
