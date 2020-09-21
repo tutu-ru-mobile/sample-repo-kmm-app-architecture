@@ -14,25 +14,15 @@ kotlin {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-js"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$COROUTINES_VERSION")
-
+    implementation(kotlin("stdlib-js"))//todo redundant?
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$COROUTINES_VERSION")//todo redundant?
+    implementationReact()
     implementation(npm("core-js", "2.6.5"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html:0.7.2")
-    implementation("org.jetbrains:kotlin-react:$REACT_VERSION-$KOTLIN_WRAPPER_VERSION")
-    implementation("org.jetbrains:kotlin-react-dom:$REACT_VERSION-$KOTLIN_WRAPPER_VERSION")
-    implementation("org.jetbrains:kotlin-styled:1.0.0-$KOTLIN_WRAPPER_VERSION")
-    implementation("org.jetbrains:kotlin-extensions:1.0.1-$KOTLIN_WRAPPER_VERSION")
-    implementation("org.jetbrains:kotlin-css-js:1.0.0-$KOTLIN_WRAPPER_VERSION")
     implementation(npm("react", "$REACT_VERSION"))
     implementation(npm("react-dom", "$REACT_VERSION"))
     implementation(npm("react-is", "$REACT_VERSION"))
     implementation(npm("inline-style-prefixer", "5.1.0"))
     implementation(npm("styled-components", "4.3.2"))
-
-    testImplementation("org.jetbrains.kotlin:kotlin-test-js")
-    testImplementation(npm("enzyme", "3.9.0"))
-    testImplementation(npm("enzyme-adapter-react-16", "1.12.1"))
 }
 
 tasks {
