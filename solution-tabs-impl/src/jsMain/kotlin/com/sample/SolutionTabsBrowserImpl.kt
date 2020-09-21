@@ -5,15 +5,12 @@ import react.dom.*
 
 class SolutionTabsBrowserImpl(
     val commonImpl: SolutionTabsImpl
-//    val searchTabAndroid: SolutionTabSearchAndroidApi,
-//    val ordersTabAndroid: SolutionOrderAndroidApi,
-//    val settingsTabAndroid: SolutionSettingsApiAndroid
-) /*: SolutionTabsAndroidApi*/ {
+//    val searchTabBrowser: SolutionTabSearchBrowserApi,
+//    val ordersTabBrowser: SolutionOrderBrowserApi,
+//    val settingsTabBrowser: SolutionSettingsApiBrowser
+) /*: SolutionTabsBrowserApi*/ {
 
     /*override*/ fun renderScaffold(react: RBuilder) = react.apply {
-        h1 {
-            +"Hello SolutionTabsBrowserImpl"
-        }
         table {
             tr {
                 td {
@@ -42,16 +39,16 @@ class SolutionTabsBrowserImpl(
 //            DefaultPadding {
 //                when (commonImpl.store.state.screen) {
 //                    is SolutionTabsImpl.Screen.Main -> {
-//                        searchTabAndroid.renderMainScreen()
+//                        searchTabBrowser.renderMainScreen()
 //                    }
 //                    is SolutionTabsImpl.Screen.Orders -> {
 //                        Column(modifier = Modifier.padding(16.dp)) {
-//                            ordersTabAndroid.renderAllOrders()
+//                            ordersTabBrowser.renderAllOrders()
 //                        }
 //                    }
 //                    is SolutionTabsImpl.Screen.Settings -> {
 //                        Column(modifier = Modifier.padding(16.dp)) {
-//                            settingsTabAndroid.renderSettings()
+//                            settingsTabBrowser.renderSettings()
 //                        }
 //                    }
 //                }

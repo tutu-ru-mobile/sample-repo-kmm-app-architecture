@@ -14,7 +14,6 @@ kotlin {
 }
 
 dependencies {
-    implementationReact()
     implementation(npm("core-js", "2.6.5"))
     implementation(npm("react", "$REACT_VERSION"))
     implementation(npm("react-dom", "$REACT_VERSION"))
