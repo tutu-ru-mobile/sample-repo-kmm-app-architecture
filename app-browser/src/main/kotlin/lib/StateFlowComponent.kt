@@ -1,7 +1,6 @@
 package lib
 
 import com.sample.APP_SCOPE
-import com.sample.Store
 import kotlinext.js.jsObject
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -10,26 +9,27 @@ import org.w3c.dom.Element
 import react.*
 import react.dom.render
 
+class WrapState<St>(val state:St):RState
+
 abstract class StateFlowComponent<St>(
     stateFlow:StateFlow<St>,
     val render2: RBuilder.(St) -> Unit
-) : RComponent<RProps, St>()
-        where St : RState {
+) : RComponent<RProps, WrapState<St>>() {
 
     init {
         APP_SCOPE.launch {
             stateFlow.collect { newState ->
-                setState(transformState = { newState })
+                setState(transformState = { WrapState(newState) })
             }
         }
-        state = stateFlow.value
+        state = WrapState(stateFlow.value)
     }
 
     override fun componentDidMount() {
     }
 
     override fun RBuilder.render() {
-        render2(state)
+        render2(state.state)
     }
 }
 

@@ -1,12 +1,11 @@
 package view
 
-import State
+import OldState
 import StoreItem
 import allDictionaries
 import com.sample.AppDi
 import com.sample.AppDiBrowser
 import kotlinx.css.*
-import lib.MviComponent
 import kotlinx.html.js.onClickFunction
 import mvi.Intent
 import mvi.store
@@ -17,14 +16,16 @@ import styled.css
 import styled.styledDiv
 import kotlin.js.Date
 import com.sample.*
+import lib.StateFlowComponent
+import react.RBuilder
 
 val YES_NO_PT = 50.pt
 val WORD_PT = 22.pt
 
 val appDiBrowser = AppDiBrowser(AppDi())
 
-class ApplicationComponent : MviComponent<State, Intent>(
-    store,
+class ApplicationComponent : StateFlowComponent<AppDi.GlobalState>(
+    appDiBrowser.common.globalStateFlow,
     { state ->
         styledDiv {
             css {
@@ -40,231 +41,6 @@ class ApplicationComponent : MviComponent<State, Intent>(
                         textAlign = TextAlign.center
                         fontSize = 20.pt
                     }
-
-                    when (state.screen) {
-                        is Screen.Dictionaries -> {
-                            button {
-                                attrs {
-                                    onClickFunction = {
-                                        BrowserStorage.clear()
-                                    }
-                                }
-                                styledDiv {
-                                    css {
-                                        fontSize = 30.pt
-                                    }
-                                    +"Очистить статистику"
-                                }
-                            }
-                            styledDiv {
-                                css {
-                                    fontSize = 24.pt
-                                }
-                                br {}
-                                +("Обновление словарей: " + state.deployTime)
-                                br {}
-                                br {}
-                            }
-                            allDictionaries.forEach { dictionary ->
-                                styledDiv {
-                                    val selected = state.screen.selected.contains(dictionary)
-                                    checkBox(
-                                        "Словарь ${dictionary.name} (${dictionary.words.size} слов)",
-                                        selected
-                                    ) {
-                                        store.send(Intent.ChooseDictionary(dictionary))
-                                    }
-                                }
-                            }
-                            button {
-                                attrs {
-                                    onClickFunction = {
-                                        store.send(Intent.StartWordScreen)
-                                    }
-                                }
-                                styledDiv {
-                                    css {
-                                        fontSize = YES_NO_PT
-                                    }
-                                    +"Начать"
-                                }
-                            }
-                        }
-                        is Screen.Words -> {
-                            when (state.screen.wordState) {
-                                is WordState.Hidden -> {
-                                    styledDiv {
-                                        +"Знаешь слово ?"
-                                        br {}
-                                        br {}
-                                        button {
-                                            attrs {
-                                                onClickFunction = {
-                                                    store.send(Intent.OpenWord)
-                                                }
-                                                styledDiv {
-                                                    css {
-                                                        fontSize = 30.pt
-                                                    }
-                                                    +"Показать перевод"
-                                                }
-                                            }
-                                        }
-                                        br {}
-                                        br {}
-                                        styledDiv {
-                                            css {
-                                                fontWeight = FontWeight.bold
-                                                fontSize = WORD_PT
-                                            }
-                                            +state.screen.word.hint
-                                        }
-                                        br {}
-                                        button {
-                                            attrs {
-                                                onClickFunction = {
-                                                    store.send(Intent.MarkWord(true))
-                                                }
-                                            }
-                                            styledDiv {
-                                                css {
-                                                    fontSize = YES_NO_PT
-                                                    color = Color.darkGreen
-                                                }
-                                                +"Да"
-                                            }
-                                        }
-                                        +"..."
-                                        button {
-                                            attrs {
-                                                onClickFunction = {
-                                                    store.send(Intent.MarkWord(false))
-                                                }
-                                            }
-                                            styledDiv {
-                                                css {
-                                                    fontSize = YES_NO_PT
-                                                    color = Color.darkRed
-                                                }
-                                                +"Нет"
-                                            }
-                                        }
-                                    }
-                                }
-                                is WordState.Open -> {
-                                    styledDiv {
-                                        +"Знаешь слово ?"
-                                        br {}
-                                        br {}
-                                        styledDiv {
-                                            css {
-//                                                fontWeight = FontWeight.bold
-                                                fontSize = WORD_PT
-                                            }
-                                            +state.screen.word.hint
-                                        }
-                                        br {}
-                                        br {}
-                                        styledDiv {
-                                            css {
-                                                fontWeight = FontWeight.bold
-                                                fontSize = WORD_PT
-                                            }
-                                            +state.screen.word.secret
-                                        }
-                                        br {}
-                                        button {
-                                            attrs {
-                                                onClickFunction = {
-                                                    store.send(Intent.MarkWord(true))
-                                                }
-                                            }
-                                            styledDiv {
-                                                css {
-                                                    fontSize = YES_NO_PT
-                                                    color = Color.darkGreen
-                                                }
-                                                +"Да"
-                                            }
-                                        }
-                                        +"..."
-                                        button {
-                                            attrs {
-                                                onClickFunction = {
-                                                    store.send(Intent.MarkWord(false))
-                                                }
-                                            }
-                                            styledDiv {
-                                                css {
-                                                    fontSize = YES_NO_PT
-                                                    color = Color.darkRed
-                                                }
-                                                +"Нет"
-                                            }
-                                        }
-                                    }
-                                }
-                                is WordState.Fail -> {
-                                    styledDiv {
-                                        +"Вот как правильно:"
-                                        br {}
-                                        br {}
-                                        styledDiv {
-                                            css {
-//                                                fontWeight = FontWeight.bold
-                                                fontSize = WORD_PT
-                                            }
-                                            +state.screen.word.hint
-                                        }
-                                        br {}
-                                        br {}
-                                        styledDiv {
-                                            css {
-                                                fontWeight = FontWeight.bold
-                                                fontSize = WORD_PT
-                                            }
-                                            +state.screen.word.secret
-                                        }
-
-                                        br {}
-                                        button {
-                                            attrs {
-                                                onClickFunction = {
-                                                    store.send(Intent.NextWord)
-                                                }
-                                            }
-                                            styledDiv {
-                                                css {
-                                                    fontSize = YES_NO_PT
-                                                }
-                                                +"Дальше"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            br {}
-                            br {}
-                            styledDiv {
-                                css {
-                                    fontSize = 20.pt
-                                    color = Color.gray
-                                }
-                                val stat =
-                                    BrowserStorage.getItem(state.screen.word.hint) ?: StoreItem()
-                                +"Статистика по этоу слову:"
-                                br {}
-                                br {}
-                                +"успех: ${stat.successCount}, ошибка: ${stat.failCount},"
-                                br {}
-                                br {}
-                                +"изменение: ${if (stat.changedUnixTime == 0) { "новое слово" } else {
-                                        Date(stat.changedUnixTime * 1000L).toLocaleString()
-                                    }}"
-                            }
-                        }
-                    }
-
 //                    gitHubRepoView(
 //                        GitHubRepoProps(
 //                            gitHubRepo = repo,
@@ -283,3 +59,233 @@ class ApplicationComponent : MviComponent<State, Intent>(
         }
     }
 )
+
+fun RBuilder.todo() {//todo delete
+    div {
+        val state = OldState()
+        when (state.screen) {
+            is Screen.Dictionaries -> {
+                button {
+                    attrs {
+                        onClickFunction = {
+                            BrowserStorage.clear()
+                        }
+                    }
+                    styledDiv {
+                        css {
+                            fontSize = 30.pt
+                        }
+                        +"Очистить статистику"
+                    }
+                }
+                styledDiv {
+                    css {
+                        fontSize = 24.pt
+                    }
+                    br {}
+                    +("Обновление словарей: " + state.deployTime)
+                    br {}
+                    br {}
+                }
+                allDictionaries.forEach { dictionary ->
+                    styledDiv {
+                        val selected = state.screen.selected.contains(dictionary)
+                        checkBox(
+                            "Словарь ${dictionary.name} (${dictionary.words.size} слов)",
+                            selected
+                        ) {
+                            store.send(Intent.ChooseDictionary(dictionary))
+                        }
+                    }
+                }
+                button {
+                    attrs {
+                        onClickFunction = {
+                            store.send(Intent.StartWordScreen)
+                        }
+                    }
+                    styledDiv {
+                        css {
+                            fontSize = YES_NO_PT
+                        }
+                        +"Начать"
+                    }
+                }
+            }
+            is Screen.Words -> {
+                when (state.screen.wordState) {
+                    is WordState.Hidden -> {
+                        styledDiv {
+                            +"Знаешь слово ?"
+                            br {}
+                            br {}
+                            button {
+                                attrs {
+                                    onClickFunction = {
+                                        store.send(Intent.OpenWord)
+                                    }
+                                    styledDiv {
+                                        css {
+                                            fontSize = 30.pt
+                                        }
+                                        +"Показать перевод"
+                                    }
+                                }
+                            }
+                            br {}
+                            br {}
+                            styledDiv {
+                                css {
+                                    fontWeight = FontWeight.bold
+                                    fontSize = WORD_PT
+                                }
+                                +state.screen.word.hint
+                            }
+                            br {}
+                            button {
+                                attrs {
+                                    onClickFunction = {
+                                        store.send(Intent.MarkWord(true))
+                                    }
+                                }
+                                styledDiv {
+                                    css {
+                                        fontSize = YES_NO_PT
+                                        color = Color.darkGreen
+                                    }
+                                    +"Да"
+                                }
+                            }
+                            +"..."
+                            button {
+                                attrs {
+                                    onClickFunction = {
+                                        store.send(Intent.MarkWord(false))
+                                    }
+                                }
+                                styledDiv {
+                                    css {
+                                        fontSize = YES_NO_PT
+                                        color = Color.darkRed
+                                    }
+                                    +"Нет"
+                                }
+                            }
+                        }
+                    }
+                    is WordState.Open -> {
+                        styledDiv {
+                            +"Знаешь слово ?"
+                            br {}
+                            br {}
+                            styledDiv {
+                                css {
+//                                                fontWeight = FontWeight.bold
+                                    fontSize = WORD_PT
+                                }
+                                +state.screen.word.hint
+                            }
+                            br {}
+                            br {}
+                            styledDiv {
+                                css {
+                                    fontWeight = FontWeight.bold
+                                    fontSize = WORD_PT
+                                }
+                                +state.screen.word.secret
+                            }
+                            br {}
+                            button {
+                                attrs {
+                                    onClickFunction = {
+                                        store.send(Intent.MarkWord(true))
+                                    }
+                                }
+                                styledDiv {
+                                    css {
+                                        fontSize = YES_NO_PT
+                                        color = Color.darkGreen
+                                    }
+                                    +"Да"
+                                }
+                            }
+                            +"..."
+                            button {
+                                attrs {
+                                    onClickFunction = {
+                                        store.send(Intent.MarkWord(false))
+                                    }
+                                }
+                                styledDiv {
+                                    css {
+                                        fontSize = YES_NO_PT
+                                        color = Color.darkRed
+                                    }
+                                    +"Нет"
+                                }
+                            }
+                        }
+                    }
+                    is WordState.Fail -> {
+                        styledDiv {
+                            +"Вот как правильно:"
+                            br {}
+                            br {}
+                            styledDiv {
+                                css {
+//                                                fontWeight = FontWeight.bold
+                                    fontSize = WORD_PT
+                                }
+                                +state.screen.word.hint
+                            }
+                            br {}
+                            br {}
+                            styledDiv {
+                                css {
+                                    fontWeight = FontWeight.bold
+                                    fontSize = WORD_PT
+                                }
+                                +state.screen.word.secret
+                            }
+
+                            br {}
+                            button {
+                                attrs {
+                                    onClickFunction = {
+                                        store.send(Intent.NextWord)
+                                    }
+                                }
+                                styledDiv {
+                                    css {
+                                        fontSize = YES_NO_PT
+                                    }
+                                    +"Дальше"
+                                }
+                            }
+                        }
+                    }
+                }
+                br {}
+                br {}
+                styledDiv {
+                    css {
+                        fontSize = 20.pt
+                        color = Color.gray
+                    }
+                    val stat =
+                        BrowserStorage.getItem(state.screen.word.hint) ?: StoreItem()
+                    +"Статистика по этоу слову:"
+                    br {}
+                    br {}
+                    +"успех: ${stat.successCount}, ошибка: ${stat.failCount},"
+                    br {}
+                    br {}
+                    +"изменение: ${if (stat.changedUnixTime == 0) { "новое слово" } else {
+                        Date(stat.changedUnixTime * 1000L).toLocaleString()
+                    }}"
+                }
+            }
+        }
+
+    }
+}

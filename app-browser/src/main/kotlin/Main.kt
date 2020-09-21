@@ -1,4 +1,6 @@
+//todo simplify import
 import lib.renderReactMviComponent
+import lib.renderReactStateFlowComponent
 import mvi.Intent
 import mvi.store
 import view.ApplicationComponent
@@ -11,6 +13,6 @@ fun main() {
 //            padding(0.px)
 //        }
 //    }
-    document.getElementById("react-app")?.renderReactMviComponent<ApplicationComponent>()
+    document.getElementById("react-app")?.renderReactStateFlowComponent<ApplicationComponent>()
 //    store.dispatch(Intent.LoadDeployTime)
 }

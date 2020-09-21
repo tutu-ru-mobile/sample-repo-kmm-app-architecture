@@ -2,7 +2,7 @@
 
 import react.RState
 
-data class State(
+data class OldState(
     val deployTime: String = "",
     val screen: Screen = Screen.Dictionaries(allDictionaries.filter { it.useByDefault }.toSet())
 ) : RState

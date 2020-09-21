@@ -29,6 +29,11 @@ class SolutionOrderBrowserImpl(
     }
 
     override fun renderAllOrders(react: RBuilder) {
+        react.apply {
+            h2 {
+                +"renderAllOrders"
+            }
+        }
 //        WrapColorBox(color = commonImpl.getColor()) {
 //            Central {
 //                Column {

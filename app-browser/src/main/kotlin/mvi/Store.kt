@@ -2,12 +2,12 @@ package mvi
 
 import BrowserStorage
 import Screen
-import State
+import OldState
 import WordState
 import com.sample.createStore
 import findNextWord
 
-val store = createStore(State()) { state, intent:Intent ->
+val store = createStore(OldState()) { state, intent:Intent ->
     when (intent) {
         is Intent.ChooseDictionary -> {
             if (state.screen is Screen.Dictionaries) {
