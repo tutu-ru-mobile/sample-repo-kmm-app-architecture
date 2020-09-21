@@ -14,7 +14,7 @@ class SolutionSettingsAndroidImpl(
     val authAndroid: SolutionAuthAndroidApi,
     val bonus: SolutionBonusAndroidApi,
     val ab: SolutionAbAndroidApi
-) : SolutionSettingsApiAndroid {
+) : SolutionSettingsAndroidApi {
 
     @Composable
     override fun renderSettings() {

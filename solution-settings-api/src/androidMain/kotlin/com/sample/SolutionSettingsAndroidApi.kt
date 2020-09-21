@@ -2,7 +2,7 @@ package com.sample
 
 import androidx.compose.runtime.Composable
 
-interface SolutionSettingsApiAndroid {
+interface SolutionSettingsAndroidApi {
     @Composable
     fun renderSettings()
 }

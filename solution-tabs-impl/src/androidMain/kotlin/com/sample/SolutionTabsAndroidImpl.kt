@@ -13,7 +13,6 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.sample.compose.DefaultPadding
 import com.sample.compose.WrapColorBox
@@ -22,7 +21,7 @@ class SolutionTabsAndroidImpl(
     val commonImpl: SolutionTabsImpl,
     val searchTabAndroid: SolutionTabSearchAndroidApi,
     val ordersTabAndroid: SolutionOrderAndroidApi,
-    val settingsTabAndroid: SolutionSettingsApiAndroid
+    val settingsTabAndroid: SolutionSettingsAndroidApi
 ) : SolutionTabsAndroidApi {
 
     @Composable

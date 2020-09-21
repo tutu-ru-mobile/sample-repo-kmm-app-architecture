@@ -4,13 +4,26 @@ import react.RBuilder
 import react.dom.*
 
 class SolutionTabsBrowserImpl(
-    val commonImpl: SolutionTabsImpl
-//    val searchTabBrowser: SolutionTabSearchBrowserApi,
-//    val ordersTabBrowser: SolutionOrderBrowserApi,
-//    val settingsTabBrowser: SolutionSettingsApiBrowser
+    val commonImpl: SolutionTabsImpl,
+    val searchTabBrowser: SolutionTabSearchBrowserApi,
+    val ordersTabBrowser: SolutionOrderBrowserApi,
+    val settingsTabBrowser: SolutionSettingsBrowserApi
 ) /*: SolutionTabsBrowserApi*/ {
 
     /*override*/ fun renderScaffold(react: RBuilder) = react.apply {
+        div {
+            when (commonImpl.store.state.screen) {
+                is SolutionTabsImpl.Screen.Main -> {
+                    searchTabBrowser.renderMainScreen(this)
+                }
+                is SolutionTabsImpl.Screen.Orders -> {
+                    ordersTabBrowser.renderAllOrders(this)
+                }
+                is SolutionTabsImpl.Screen.Settings -> {
+                    settingsTabBrowser.renderSettings(this)
+                }
+            }
+        }
         table {
             tr {
                 td {
@@ -31,29 +44,6 @@ class SolutionTabsBrowserImpl(
                 }
             }
         }
-//        Scaffold(
-//            bottomBar = {
-//                renderBottomNavigation()
-//            }
-//        ) {
-//            DefaultPadding {
-//                when (commonImpl.store.state.screen) {
-//                    is SolutionTabsImpl.Screen.Main -> {
-//                        searchTabBrowser.renderMainScreen()
-//                    }
-//                    is SolutionTabsImpl.Screen.Orders -> {
-//                        Column(modifier = Modifier.padding(16.dp)) {
-//                            ordersTabBrowser.renderAllOrders()
-//                        }
-//                    }
-//                    is SolutionTabsImpl.Screen.Settings -> {
-//                        Column(modifier = Modifier.padding(16.dp)) {
-//                            settingsTabBrowser.renderSettings()
-//                        }
-//                    }
-//                }
-//            }
-//        }
     }
 
 }
