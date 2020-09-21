@@ -65,14 +65,14 @@ class ApplicationComponent : MviComponent<State, Intent>(
                                         "Словарь ${dictionary.name} (${dictionary.words.size} слов)",
                                         selected
                                     ) {
-                                        store.dispatch(Intent.ChooseDictionary(dictionary))
+                                        store.send(Intent.ChooseDictionary(dictionary))
                                     }
                                 }
                             }
                             button {
                                 attrs {
                                     onClickFunction = {
-                                        store.dispatch(Intent.StartWordScreen)
+                                        store.send(Intent.StartWordScreen)
                                     }
                                 }
                                 styledDiv {
@@ -93,7 +93,7 @@ class ApplicationComponent : MviComponent<State, Intent>(
                                         button {
                                             attrs {
                                                 onClickFunction = {
-                                                    store.dispatch(Intent.OpenWord)
+                                                    store.send(Intent.OpenWord)
                                                 }
                                                 styledDiv {
                                                     css {
@@ -116,7 +116,7 @@ class ApplicationComponent : MviComponent<State, Intent>(
                                         button {
                                             attrs {
                                                 onClickFunction = {
-                                                    store.dispatch(Intent.MarkWord(true))
+                                                    store.send(Intent.MarkWord(true))
                                                 }
                                             }
                                             styledDiv {
@@ -131,7 +131,7 @@ class ApplicationComponent : MviComponent<State, Intent>(
                                         button {
                                             attrs {
                                                 onClickFunction = {
-                                                    store.dispatch(Intent.MarkWord(false))
+                                                    store.send(Intent.MarkWord(false))
                                                 }
                                             }
                                             styledDiv {
@@ -169,7 +169,7 @@ class ApplicationComponent : MviComponent<State, Intent>(
                                         button {
                                             attrs {
                                                 onClickFunction = {
-                                                    store.dispatch(Intent.MarkWord(true))
+                                                    store.send(Intent.MarkWord(true))
                                                 }
                                             }
                                             styledDiv {
@@ -184,7 +184,7 @@ class ApplicationComponent : MviComponent<State, Intent>(
                                         button {
                                             attrs {
                                                 onClickFunction = {
-                                                    store.dispatch(Intent.MarkWord(false))
+                                                    store.send(Intent.MarkWord(false))
                                                 }
                                             }
                                             styledDiv {
@@ -223,7 +223,7 @@ class ApplicationComponent : MviComponent<State, Intent>(
                                         button {
                                             attrs {
                                                 onClickFunction = {
-                                                    store.dispatch(Intent.NextWord)
+                                                    store.send(Intent.NextWord)
                                                 }
                                             }
                                             styledDiv {
@@ -262,7 +262,7 @@ class ApplicationComponent : MviComponent<State, Intent>(
 //                        GitHubRepoProps(
 //                            gitHubRepo = repo,
 //                            onClickCommitLogBtn = {
-//                                store.dispatch(
+//                                store.send(
 //                                    AppIntent.LoadCommits(
 //                                        repo.organization,
 //                                        repo.name

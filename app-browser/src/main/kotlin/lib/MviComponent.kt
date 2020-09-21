@@ -1,19 +1,25 @@
 package lib
 
+import com.sample.APP_SCOPE
+import com.sample.Store
 import kotlinext.js.jsObject
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.w3c.dom.Element
 import react.*
 import react.dom.render
 
 abstract class MviComponent<St, In>(
-    store: Mvi.Store<St, In>,
+    store: Store<St, In>,
     val render2: RBuilder.(St) -> Unit
 ) : RComponent<RProps, St>()
         where St : RState {
 
     init {
-        store.subscribeToState { newState ->
-            setState(transformState = { newState })
+        APP_SCOPE.launch {
+            store.stateFlow.collect { newState ->
+                setState(transformState = { newState })
+            }
         }
         state = store.state
     }

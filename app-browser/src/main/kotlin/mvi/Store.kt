@@ -3,15 +3,11 @@ package mvi
 import BrowserStorage
 import Screen
 import State
-import StoreItem
 import WordState
-import currentUnixTime
+import com.sample.createStore
 import findNextWord
-import lib.Mvi
 
-val store = Mvi.store<State, Intent>(
-    State()
-) { state, intent ->
+val store = createStore(State()) { state, intent:Intent ->
     when (intent) {
         is Intent.ChooseDictionary -> {
             if (state.screen is Screen.Dictionaries) {
@@ -24,9 +20,9 @@ val store = Mvi.store<State, Intent>(
                             state.screen.selected + intent.dictionary
                         }
                     )
-                ).onlyState()
+                )
             } else {
-                doNothing
+                state
             }
         }
         is Intent.StartWordScreen -> {
@@ -38,9 +34,9 @@ val store = Mvi.store<State, Intent>(
                         word = findNextWord(null, words, BrowserStorage),
                         wordState = WordState.Hidden
                     )
-                ).onlyState()
+                )
             } else {
-                doNothing
+                state
             }
         }
         is Intent.MarkWord -> {
@@ -77,9 +73,9 @@ val store = Mvi.store<State, Intent>(
                             throw Error("bad variant: is WordState.Fail")
                         }
                     }
-                ).onlyState()
+                )
             } else {
-                doNothing
+                state
             }
         }
         is Intent.OpenWord -> {
@@ -88,9 +84,9 @@ val store = Mvi.store<State, Intent>(
                     screen = state.screen.copy(
                         wordState = WordState.Open
                     )
-                ).onlyState()
+                )
             } else {
-                doNothing
+                state
             }
         }
         is Intent.NextWord -> {
@@ -100,9 +96,9 @@ val store = Mvi.store<State, Intent>(
                         word = findNextWord(state.screen.word, state.screen.words, BrowserStorage),
                         wordState = WordState.Hidden
                     )
-                ).onlyState()
+                )
             } else {
-                doNothing
+                state
             }
         }
     }

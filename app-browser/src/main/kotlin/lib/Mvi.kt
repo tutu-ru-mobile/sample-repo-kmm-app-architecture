@@ -1,6 +1,6 @@
 package lib
 
-object Mvi {
+object Mvi {//todo delete
     interface Store<State, Intent> {
         fun dispatch(intent: Intent)
         fun subscribeToState(subscription: (State) -> Unit)

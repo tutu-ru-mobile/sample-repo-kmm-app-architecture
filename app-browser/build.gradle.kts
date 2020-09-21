@@ -23,6 +23,7 @@ dependencies {
     implementation(npm("react-is", "$REACT_VERSION"))
     implementation(npm("inline-style-prefixer", "5.1.0"))
     implementation(npm("styled-components", "4.3.2"))
+    implementation(project(":lib-basic"))
 }
 
 tasks {
