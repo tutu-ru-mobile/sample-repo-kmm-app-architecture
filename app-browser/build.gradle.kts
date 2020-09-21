@@ -14,8 +14,6 @@ kotlin {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-js"))//todo redundant?
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$COROUTINES_VERSION")//todo redundant?
     implementationReact()
     implementation(npm("core-js", "2.6.5"))
     implementation(npm("react", "$REACT_VERSION"))

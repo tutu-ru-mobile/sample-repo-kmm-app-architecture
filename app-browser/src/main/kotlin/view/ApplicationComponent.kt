@@ -16,6 +16,7 @@ import react.dom.div
 import styled.css
 import styled.styledDiv
 import kotlin.js.Date
+import com.sample.*
 
 val YES_NO_PT = 50.pt
 val WORD_PT = 22.pt
