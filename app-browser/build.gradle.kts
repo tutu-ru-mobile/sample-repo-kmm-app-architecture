@@ -24,6 +24,8 @@ dependencies {
     implementation(npm("inline-style-prefixer", "5.1.0"))
     implementation(npm("styled-components", "4.3.2"))
     implementation(project(":lib-basic"))
+    implementation(project(":app-di"))
+    implementation(project(":solution-tabs-impl"))
 }
 
 tasks {

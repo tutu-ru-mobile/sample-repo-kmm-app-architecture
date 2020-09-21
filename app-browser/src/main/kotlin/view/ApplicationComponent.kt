@@ -3,6 +3,8 @@ package view
 import State
 import StoreItem
 import allDictionaries
+import com.sample.AppDi
+import com.sample.AppDiBrowser
 import kotlinx.css.*
 import lib.MviComponent
 import kotlinx.html.js.onClickFunction
@@ -18,6 +20,8 @@ import kotlin.js.Date
 val YES_NO_PT = 50.pt
 val WORD_PT = 22.pt
 
+val appDiBrowser = AppDiBrowser(AppDi())
+
 class ApplicationComponent : MviComponent<State, Intent>(
     store,
     { state ->
@@ -25,6 +29,8 @@ class ApplicationComponent : MviComponent<State, Intent>(
             css {
                 padding(32.px, 16.px)
             }
+
+            appDiBrowser.solutionTabsBrowser.renderScaffold(this)
 
             div {
                 styledDiv {

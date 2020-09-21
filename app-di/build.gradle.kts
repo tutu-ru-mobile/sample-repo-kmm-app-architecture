@@ -46,7 +46,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementationCompose()
+                implementationCompose()//todo redundant?
             }
         }
     }
