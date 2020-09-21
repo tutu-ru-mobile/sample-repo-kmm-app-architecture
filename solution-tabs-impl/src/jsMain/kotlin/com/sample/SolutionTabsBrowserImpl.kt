@@ -1,7 +1,7 @@
 package com.sample
 
 import react.RBuilder
-import react.dom.h1
+import react.dom.*
 
 class SolutionTabsBrowserImpl(
     val commonImpl: SolutionTabsImpl
@@ -10,9 +10,29 @@ class SolutionTabsBrowserImpl(
 //    val settingsTabAndroid: SolutionSettingsApiAndroid
 ) /*: SolutionTabsAndroidApi*/ {
 
-    /*override*/ fun renderScaffold(rBuilder: RBuilder) {
-        rBuilder.h1 {
+    /*override*/ fun renderScaffold(react: RBuilder) = react.apply {
+        h1 {
             +"Hello SolutionTabsBrowserImpl"
+        }
+        table {
+            tr {
+                td {
+                    //selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main
+                    btn("Поиск") {
+                        commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
+                    }
+                }
+                td {
+                    btn("Мои билеты") {
+                        commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
+                    }
+                }
+                td {
+                    btn("Настройки") {
+                        commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
+                    }
+                }
+            }
         }
 //        Scaffold(
 //            bottomBar = {
@@ -38,52 +58,5 @@ class SolutionTabsBrowserImpl(
 //            }
 //        }
     }
-
-//    @Composable
-//    override fun renderBottomNavigation() {
-//        WrapColorBox(color = commonImpl.getColor()) {
-//            BottomNavigation() {
-//                BottomNavigationItem(
-//                    icon = {
-//                        Icon(asset = Icons.Filled.Search)
-//                    },
-//                    selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main,
-//                    label = {
-//                        Text("Поиск")
-//                    },
-//                    alwaysShowLabels = true,
-//                    onClick = {
-//                        commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
-//                    }
-//                )
-//                BottomNavigationItem(
-//                    icon = {
-//                        Icon(asset = Icons.Filled.AccountBalanceWallet)
-//                    },
-//                    label = {
-//                        Text("Мои билеты")
-//                    },
-//                    alwaysShowLabels = true,
-//                    selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Orders,
-//                    onClick = {
-//                        commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
-//                    }
-//                )
-//                BottomNavigationItem(
-//                    icon = {
-//                        Icon(asset = Icons.Filled.Menu)
-//                    },
-//                    label = {
-//                        Text("Настройки")
-//                    },
-//                    alwaysShowLabels = true,
-//                    selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Settings,
-//                    onClick = {
-//                        commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
-//                    }
-//                )
-//            }
-//        }
-//    }
 
 }
