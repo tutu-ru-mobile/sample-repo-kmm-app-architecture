@@ -33,6 +33,9 @@ kotlin {
                 implementationCompose()//todo move to lib-basic and simplify
             }
         }
+        val jvmMain by getting {
+            addJvmSourceDirs()
+        }
     }
 }
 

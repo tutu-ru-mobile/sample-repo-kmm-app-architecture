@@ -33,9 +33,7 @@ kotlin {
             }
         }
         val jvmMain by getting {
-            dependencies {
-
-            }
+            addJvmSourceDirs()
         }
     }
 }

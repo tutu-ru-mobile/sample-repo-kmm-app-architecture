@@ -27,9 +27,7 @@ kotlin {
             }
         }
         val jvmMain by getting {
-            dependencies {
-                api(project(":lib-telegram-adapter"))
-            }
+            addJvmSourceDirs()
         }
     }
 }

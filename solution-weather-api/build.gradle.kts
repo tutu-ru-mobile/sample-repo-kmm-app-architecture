@@ -26,6 +26,9 @@ kotlin {
                 implementationComposeApi()
             }
         }
+        val jvmMain by getting {
+            addJvmSourceDirs()
+        }
     }
 }
 

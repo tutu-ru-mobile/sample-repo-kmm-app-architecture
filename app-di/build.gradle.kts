@@ -49,6 +49,13 @@ kotlin {
                 implementationCompose()//todo redundant?
             }
         }
+        val jvmMain by getting {
+            addJvmSourceDirs()
+            dependencies {
+                implementation(project(":lib-telegram-jvm"))
+                implementation("com.jakewharton.crossword:crossword:0.1.1")
+            }
+        }
     }
 }
 

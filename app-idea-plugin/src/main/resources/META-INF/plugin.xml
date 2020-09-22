@@ -1,0 +1,19 @@
+<idea-plugin require-restart="false" allow-bundled-update="true" >
+  <id>ru.tutu.idea.file</id>
+  <name>UniCorn</name>
+  <vendor>github.com/avdim</vendor>
+  <description><![CDATA[
+    Solution architecture sample plugin:
+    <ol>
+      <li> Solution architecture inside Intellij IDEA and AndroidStudio</li>
+    </ol>
+    ]]></description>
+
+<!--  <idea-version since-build="201.6668.121" />-->
+  <idea-version since-build="202.5103.13" />
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="solution-architecture" anchor="right" secondary="false"
+        factoryClass="com.sample.SolutionArchitectureToolWindow" icon="/icons/logo.svg"/>
+  </extensions>
+
+</idea-plugin>
