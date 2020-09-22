@@ -10,7 +10,6 @@ import mvi.Intent
 import mvi.store
 import react.RBuilder
 import react.dom.br
-import react.dom.button
 import react.dom.div
 import styled.css
 import styled.styledDiv
@@ -21,19 +20,6 @@ fun RBuilder.todoOldView() {//todo delete
         val state = OldState()
         when (state.screen) {
             is Screen.Dictionaries -> {
-                button {
-                    attrs {
-                        onClickFunction = {
-                            BrowserStorage.clear()
-                        }
-                    }
-                    styledDiv {
-                        css {
-                            fontSize = 30.pt
-                        }
-                        +"Очистить статистику"
-                    }
-                }
                 styledDiv {
                     css {
                         fontSize = 24.pt
