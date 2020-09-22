@@ -17,7 +17,7 @@ class SolutionAbBrowserImpl(
             state.booleanToggles.forEach { toggle ->
                 br {}
                 checkBox(toggle.key, toggle.value) {
-                    SolutionAbImpl.Action.SwitchBooleanAb(toggle.key)
+                    commonImpl.send(SolutionAbImpl.Action.SwitchBooleanAb(toggle.key))
                 }
             }
         }
