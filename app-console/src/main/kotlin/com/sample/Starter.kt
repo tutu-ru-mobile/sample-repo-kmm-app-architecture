@@ -13,7 +13,7 @@ fun main() {
             System.out.print("\u001b[H\u001b[2J");
             System.out.flush()
             val canvas = TextCanvas(40, 8)
-            canvas.write(1, 5, "Hello $userInput")
+            canvas.write(1, 5, "${todoDepJvm()} $userInput")
             canvas.write(6, 10, Random.nextInt().toString())
             canvas.write(4, 7, "Much monospace")
             canvas.write(0, 0, "\u001B[31mX\u001B[0m")
@@ -24,4 +24,7 @@ fun main() {
             delay(300)
         }
     }
+
+    todoDepJvm()
+    todoDepCommon()
 }
