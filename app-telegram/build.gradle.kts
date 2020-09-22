@@ -43,5 +43,5 @@ application {
 }
 
 dependencies {
-    implementation(project(":app-telegram-mpp-workaround"))
+    implementation(project(":apps-jvm-mpp-workaround"))
 }

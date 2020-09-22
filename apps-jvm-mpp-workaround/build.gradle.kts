@@ -14,8 +14,13 @@ kotlin {
             }
         }
         val jvmMain by getting {
+            kotlin.srcDir("src/telegramMain/kotlin")
+            kotlin.srcDir("src/ideaMain/kotlin")
+            kotlin.srcDir("src/consoleMain/kotlin")
+            println("kotlin.srcDirs: ${kotlin.srcDirs}")
             dependencies {
                 implementation(project(":lib-telegram-jvm"))
+                implementation("com.jakewharton.crossword:crossword:0.1.1")
             }
         }
     }
