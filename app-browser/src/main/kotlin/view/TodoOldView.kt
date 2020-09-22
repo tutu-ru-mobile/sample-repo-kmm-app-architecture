@@ -16,6 +16,9 @@ import styled.styledDiv
 import kotlin.js.Date
 
 fun RBuilder.todoOldView() {//todo delete
+    val YES_NO_PT = 50.pt
+    val WORD_PT = 22.pt
+
     div {
         val state = OldState()
         when (state.screen) {

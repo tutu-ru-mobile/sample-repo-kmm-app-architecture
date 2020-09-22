@@ -25,12 +25,12 @@ kotlin {
                 implementation(project(":solution-order-api"))
                 implementation(project(":solution-weather-api"))
                 implementation(project(":solution-ab-api"))
+                implementation(project(":solution-bonus-api"))
             }
         }
         val androidMain by getting {
             dependencies {
-                implementationCompose()
-                implementation(project(":solution-bonus-api"))
+                implementationCompose()//todo move to lib-basic and simplify
             }
         }
     }

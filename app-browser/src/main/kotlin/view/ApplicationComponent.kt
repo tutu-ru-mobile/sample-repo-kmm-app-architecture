@@ -8,9 +8,6 @@ import styled.css
 import styled.styledDiv
 import lib.StateFlowComponent
 
-val YES_NO_PT = 50.pt
-val WORD_PT = 22.pt
-
 val appDiBrowser = AppDiBrowser(AppDi())
 
 class ApplicationComponent : StateFlowComponent<AppDi.GlobalState>(
@@ -29,7 +26,7 @@ class ApplicationComponent : StateFlowComponent<AppDi.GlobalState>(
                         alignContent = Align.center
                         alignItems = Align.center
                         alignSelf = Align.center
-                        fontSize = 20.pt
+                        fontSize = 16.pt
                     }
                     appDiBrowser.solutionTabsBrowser.renderScaffold(this)
                 }
