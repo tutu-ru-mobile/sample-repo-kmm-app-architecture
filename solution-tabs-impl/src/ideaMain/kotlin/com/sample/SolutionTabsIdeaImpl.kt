@@ -1,9 +1,9 @@
 package com.sample
 
 class SolutionTabsIdeaImpl(
-    val commonImpl: SolutionTabsImpl
-//    val searchTabTelegram: SolutionTabSearchTelegramApi,
-//    val ordersTabTelegram: SolutionOrderTelegramApi
+    val commonImpl: SolutionTabsImpl,
+//    val searchTabIdea: SolutionTabSearchIdeaApi,
+    val ordersTabIdea: SolutionOrderIdeaApi
 ////    val settingsTabAndroid: SolutionSettingsApiAndroid
 ) : SolutionTabsIdeaApi {
 
@@ -15,7 +15,7 @@ class SolutionTabsIdeaImpl(
                     label("SolutionTabsImpl.Screen.Main")
                 }
                 is SolutionTabsImpl.Screen.Orders -> {
-                    label("SolutionTabsImpl.Screen.Orders")
+                    ordersTabIdea.renderAllOrders(this)
                 }
                 is SolutionTabsImpl.Screen.Settings -> {
                     label("SolutionTabsImpl.Screen.Settings")
