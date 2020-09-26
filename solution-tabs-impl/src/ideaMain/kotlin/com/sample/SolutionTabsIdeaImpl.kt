@@ -2,9 +2,9 @@ package com.sample
 
 class SolutionTabsIdeaImpl(
     val commonImpl: SolutionTabsImpl,
-//    val searchTabIdea: SolutionTabSearchIdeaApi,
-    val ordersTabIdea: SolutionOrderIdeaApi
-////    val settingsTabAndroid: SolutionSettingsApiAndroid
+    val searchTabIdea: SolutionTabSearchIdeaApi,
+    val ordersTabIdea: SolutionOrderIdeaApi,
+    val settingsTabIdea: SolutionSettingsIdeaApi
 ) : SolutionTabsIdeaApi {
 
     override fun renderScaffold(): IdeaPanel {
@@ -12,16 +12,15 @@ class SolutionTabsIdeaImpl(
             val state = commonImpl.store.state
             when (state.screen) {
                 is SolutionTabsImpl.Screen.Main -> {
-                    label("SolutionTabsImpl.Screen.Main")
+                    searchTabIdea.renderMainScreen(this)
                 }
                 is SolutionTabsImpl.Screen.Orders -> {
                     ordersTabIdea.renderAllOrders(this)
                 }
                 is SolutionTabsImpl.Screen.Settings -> {
-                    label("SolutionTabsImpl.Screen.Settings")
+                    settingsTabIdea.renderSettings(this)
                 }
             }
-            label("todo")
             row {
                 button("Поиск") {
                     commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
