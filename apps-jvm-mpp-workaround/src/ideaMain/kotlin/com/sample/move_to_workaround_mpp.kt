@@ -1,5 +1,5 @@
 package com.sample
-
+//todo rename file
 import kotlinx.coroutines.flow.StateFlow
 
 sealed class Intent {
@@ -19,6 +19,7 @@ data class UniWindowState(
     val githubMail: String? = null
 )
 
+@Suppress("unused")
 fun getStateFlowAndRender(
     getGithubMail: ((String) -> Unit) -> Unit
 ): StateFlowAndRender<UniWindowState> {
@@ -104,24 +105,4 @@ fun getStateFlowAndRender(
             }
 
     }
-}
-
-typealias ReducerSE<S, A, SE> = (S, A) -> ReducerResult<S, SE>
-class ReducerResult<S, SE>(val state:S, val sideEffects:List<SE> = emptyList())
-fun <S, A, SE> createStoreWithSideEffect(
-    init: S,
-    effectHandler: (store: Store<S, A>, sideEffect: SE) -> Unit,
-    reducer: ReducerSE<S, A, SE>
-): Store<S, A> {
-    lateinit var store:Store<S, A>
-    store = createStore(init) { state, action ->
-        val result = reducer(state, action)
-
-        result.sideEffects.forEach {
-            effectHandler(store, it)
-        }
-
-        result.state
-    }
-    return store
 }
