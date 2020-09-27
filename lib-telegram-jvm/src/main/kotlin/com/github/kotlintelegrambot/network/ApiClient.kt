@@ -103,7 +103,7 @@ class ApiClient(
 
     private val service: ApiService
 
-    // TODO check if init is the best approach for this
+    //  check if init is the best approach for this
     init {
         val logging = HttpLoggingInterceptor().apply { level = logLevel.toOkHttpLogLevel() }
 

@@ -30,7 +30,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementationCompose()//todo move to lib-basic and simplify
+                implementationCompose()
             }
         }
         val jvmMain by getting {
