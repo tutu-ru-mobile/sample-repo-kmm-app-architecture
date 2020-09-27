@@ -146,22 +146,15 @@ fun String.color(clr: Int) = "\u001B[${clr}m${this}\u001B[0m"
 fun ConsoleView.render(callbacks: RegisterCallback): String =
     when (this) {
         is ConsoleView.Button -> {
-            if (selected) {
-                label.color(47)
-            } else {
-                val cmd = cmd
-                val cmdStr =
-                    if (cmd != null) {
-                        callbacks.registerStringCallback(cmd) {
-                            onClick()
-                        }
-                    } else {
-                        callbacks.registerNumberCallback {
-                            onClick()
-                        }
-                    }
-                "(${cmdStr.toUpperCase()})".color(44) + label.color(32)
+            val labelColor = if (selected) 47 else 32
+            val cmdStr = cmd?.let {
+                callbacks.registerStringCallback(it) {
+                    onClick()
+                }
+            } ?: callbacks.registerNumberCallback {
+                onClick()
             }
+            "(${cmdStr.toUpperCase()})".color(44) + label.color(labelColor)
         }
         is ConsoleView.Label -> {
             str
