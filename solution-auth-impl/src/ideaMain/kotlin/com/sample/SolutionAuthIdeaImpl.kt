@@ -20,43 +20,84 @@ class SolutionAuthIdeaImpl(
         class EditPassword(val str: String) : Action()
         object SubmitLogin : Action()
         object LogOut : Action()
+        class ReceivedGithubMail(val mail: String) : Action()
+    }
+
+    sealed class SideEffect {
+        object GithubAuth : SideEffect()
     }
 
     override fun isAuthorized(): Boolean = store.state.token != null
     override fun getLogin(): String? = if (isAuthorized()) store.state.login else null
     override fun onStateUpdate(): Flow<*> = store.stateFlow
 
-    val store = createStore(State()) { s, a: Action ->
+    val store = createStoreWithSideEffect(
+        State(),
+        { store, sideEffect: SideEffect ->
+            when (sideEffect) {
+                is SideEffect.GithubAuth -> {
+                    getGithubMail { mail ->
+                        store.send(
+                            Action.ReceivedGithubMail(mail)
+                        )
+                    }
+                }
+            }
+        }
+    ) { s, a: Action ->
         when (a) {
             is Action.ShowLogin -> {
-                s.copy(
-                    enterLogin = true
+                ReducerResult(
+                    s.copy(
+                        enterLogin = true
+                    )
                 )
             }
             is Action.EditLogin -> {
-                s.copy(
-                    login = a.str
+                ReducerResult(
+                    s.copy(
+                        login = a.str
+                    )
                 )
             }
             is Action.EditPassword -> {
-                s.copy(
-                    pass = a.str
+                ReducerResult(
+                    s.copy(
+                        pass = a.str
+                    )
                 )
             }
             is Action.SubmitLogin -> {
-                s.copy(
-                    token = "bearer_secret_token_..."
+                ReducerResult(
+                    s.copy(
+                        token = "bearer_secret_token_..."
+                    )
                 )
             }
             is Action.LogOut -> {
-                s.copy(
-                    token = null,
-                    pass = "",
-                    enterLogin = false
+                ReducerResult(
+                    s.copy(
+                        token = null,
+                        pass = "",
+                        enterLogin = false
+                    )
                 )
             }
             is Action.GithubAuth -> {
-                s.copy()
+                ReducerResult(
+                    s.copy(),
+                    listOf(
+                        SideEffect.GithubAuth
+                    )
+                )
+            }
+            is Action.ReceivedGithubMail -> {
+                ReducerResult(
+                    s.copy(
+                        login = a.mail,
+                        token = "some_token_generated_with_github"
+                    )
+                )
             }
         }
     }
