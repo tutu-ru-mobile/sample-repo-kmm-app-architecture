@@ -28,7 +28,7 @@ class ApplicationComponent : StateFlowComponent<GlobalState>(
                         alignContent = Align.center
                         alignItems = Align.center
                         alignSelf = Align.center
-                        fontSize = 16.pt
+                        fontSize = 12.pt
                     }
                     appDiBrowser.solutionTabsBrowser.renderScaffold(this)
                 }

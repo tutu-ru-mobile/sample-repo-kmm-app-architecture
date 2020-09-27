@@ -13,7 +13,7 @@ class SolutionSearchResultBrowserImpl(
     fun renderTicket(react: RBuilder, ticket: Ticket) {
         react.apply {
             cel {
-                +"${ticket.txt} - ${ticket.price} р."
+                +"${ticket.txt} - ${ticket.price} р.  "
                 btn("Купить") {
                     common.store.send(SolutionSearchResultImpl.Action.BuyTicket(ticket))
                 }

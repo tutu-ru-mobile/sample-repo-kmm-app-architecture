@@ -1,10 +1,14 @@
 package com.sample
 
+import kotlinx.css.Align
+import kotlinx.css.alignContent
+import kotlinx.css.alignItems
+import kotlinx.css.alignSelf
 import react.RBuilder
+import react.dom.*
 import react.dom.div
-import react.dom.table
-import react.dom.td
-import react.dom.tr
+import styled.css
+import styled.styledDiv
 
 class SolutionTabsBrowserImpl(
     val commonImpl: SolutionTabsImpl,
@@ -29,27 +33,20 @@ class SolutionTabsBrowserImpl(
                     }
                 }
             }
-
-            table {
-                tr {
-                    td {
-                        //selected = commonImpl.store.state.screen == SolutionTabsImpl.Screen.Main
-                        btn("Поиск") {
-                            commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
-                        }
-                    }
-                    td {
-                        btn("Мои билеты") {
-                            commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
-                        }
-                    }
-                    td {
-                        btn("Настройки") {
-                            commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
-                        }
-                    }
+            br {}
+            br {}
+            div {
+                btn("Поиск") {
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectMain)
+                }
+                btn("Мои билеты") {
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectOrders)
+                }
+                btn("Настройки") {
+                    commonImpl.store.send(SolutionTabsImpl.Action.SelectSettings)
                 }
             }
+
 
         }
     }

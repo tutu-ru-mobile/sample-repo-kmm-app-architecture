@@ -35,7 +35,7 @@ class SolutionOrderBrowserImpl(
                     }
                     commonImpl.store.state.tickets.forEach { ticket ->
                         cel {
-                            +"${ticket.txt}"
+                            +"${ticket.txt}  "
                             btn("Вернуть") {
                                 commonImpl.refund(ticket)
                             }
