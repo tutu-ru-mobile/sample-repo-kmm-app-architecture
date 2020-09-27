@@ -5,13 +5,20 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlin.random.Random
 
-const val HEIGHT = 20
+const val HEIGHT = 25
 const val WIDTH = 80
 
 @Suppress("unused")
 fun runConsoleApp() {
     val panel: ConsolePanel = consolePanelView {
-        label("hi")
+        title("ЗАГОЛОВОК")
+        label("hi, how are you?")
+        checkBox("выбери меня", true) {
+
+        }
+        button("push me") {
+
+        }
         bottomRow {
             button("Поиск") {
 
@@ -34,8 +41,6 @@ fun runConsoleApp() {
             canvas.write(1, 5, "Hello $userInput")
             canvas.write(6, 10, Random.nextInt().toString())
             canvas.write(4, 7, "Much monospace")
-            canvas.write(0, 0, "\u001B[31mXyz\u001B[0m")
-            canvas.write(0, 2, "\u001B[34mO\u001B[0m")
 
             panel.rows.forEachIndexed { row: Int, rowData: ConsoleRow ->
                 rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
@@ -55,19 +60,23 @@ fun runConsoleApp() {
     }
 }
 
+//Нажатая кнопка 47
+//44 подсветка цифры для кнопки
+//Конпка 32
+fun String.color(clr: Int) = "\u001B[${clr}m${this}\u001B[0m"
 fun ConsoleView.render(): String =
     when (this) {
         is ConsoleView.Button -> {
-            "[${label}]"
+            label.color(32) + " (3)".color(44)
         }
         is ConsoleView.Label -> {
             str
         }
         is ConsoleView.Title -> {
-            "title"
+            str.color(36)
         }
         is ConsoleView.CheckBox -> {
-            "checkbox"
+            "[v]$label".color(32)
         }
         is ConsoleView.TextInput -> {
             "text input"
