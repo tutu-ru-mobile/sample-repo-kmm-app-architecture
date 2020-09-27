@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.StateFlow
 fun getStateFlowAndRender(
     getGithubMail: ((String) -> Unit) -> Unit
 ): StateFlowAndRender<GlobalState> {
-    val di = AppDiIdea()
+    val di = AppDiIdea(getGithubMail)
     return object : StateFlowAndRender<GlobalState> {
         override val stateFlow: StateFlow<GlobalState> =
             di.common.globalStateFlow

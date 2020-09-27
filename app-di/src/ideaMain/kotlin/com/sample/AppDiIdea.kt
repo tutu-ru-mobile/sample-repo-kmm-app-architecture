@@ -1,12 +1,17 @@
 package com.sample
 
-class AppDiIdea {
-    val common = AppDi()
+
+
+class AppDiIdea(getGithubMail: ((String) -> Unit) -> Unit) {
     val authIdea by lazy {
         SolutionAuthIdeaImpl(
-            common = common.solutionAuth
+            getGithubMail
         )
     }
+    val common by lazy {
+        AppDiAbstract(authIdea)
+    }
+
     val ordersTabIdea by lazy {
         SolutionOrderIdeaImpl(common.solutionOrder)
     }
