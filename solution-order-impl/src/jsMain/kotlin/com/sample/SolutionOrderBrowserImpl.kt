@@ -31,7 +31,7 @@ class SolutionOrderBrowserImpl(
             div {
                 if (commonImpl.solutionAuth.isAuthorized()) {
                     h2 {
-                        +"Мои заказы:"
+                        +"Мои билеты:"
                     }
                     commonImpl.store.state.tickets.forEach { ticket ->
                         cel {

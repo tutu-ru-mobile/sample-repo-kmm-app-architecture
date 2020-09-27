@@ -25,7 +25,7 @@ public struct SolutionOrderIosImpl
     public func renderAllOrders() -> some View {
         VStack {
             if(common.solutionAuth.isAuthorized()) {
-                Text("Мои заказы:")
+                Text("Мои билеты:")
                 List(self.common.getState().tickets, id: \.id) { ticket in
                     TicketView(item: ticket) {
                         self.common.send(action: self.common.getActionRefundTicket(ticket: ticket))

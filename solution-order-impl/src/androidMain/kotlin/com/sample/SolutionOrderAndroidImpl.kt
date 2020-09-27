@@ -38,7 +38,7 @@ class SolutionOrderAndroidImpl(
             Central {
                 Column {
                     if (commonImpl.solutionAuth.isAuthorized()) {
-                        Text("Мои заказы:")
+                        Text("Мои билеты:")
                         commonImpl.store.state.tickets.forEach {
                             _renderOrder(it)
                         }

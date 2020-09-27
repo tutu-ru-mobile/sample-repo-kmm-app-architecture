@@ -10,6 +10,7 @@ class SolutionSettingsIdeaImpl(
 
     override fun renderSettings(builder: IdeaPanelBuilder) {
         builder.apply {
+            title("Настройки")
             authIdea.renderLoginForm(this)
             bonus.renderBonusesAndRefillButton(this)
             if (commonImpl.isDeveloperSettingsAvailable()) {

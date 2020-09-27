@@ -22,7 +22,7 @@ class SolutionOrderTelegramImpl(
 
     override fun renderAllOrders(): TelegramView {
         return TelegramView.Message(
-            "Мои заказы:\n\n" +
+            "Мои билеты:\n\n" +
                     commonImpl.getState().tickets
                         .map { it.txt }
                         .joinToString("\n")

@@ -22,6 +22,7 @@ class SolutionOrderIdeaImpl(
 
     override fun renderAllOrders(builder: IdeaPanelBuilder) {
         builder.apply {
+            title("Мои билеты")
             commonImpl.getState().tickets.forEach { ticket ->
                 row {
                     label(ticket.txt)

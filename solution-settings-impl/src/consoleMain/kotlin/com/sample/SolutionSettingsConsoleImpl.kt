@@ -10,6 +10,11 @@ class SolutionSettingsConsoleImpl(
 
     override fun renderSettings(builder: ConsolePanelBuilder) {
         builder.apply {
+            row {
+                spacer()
+                title("Настройки")
+            }
+            spacer()
             authConsole.renderLoginForm(this)
             bonus.renderBonusesAndRefillButton(this)
             if (commonImpl.isDeveloperSettingsAvailable()) {

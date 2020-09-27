@@ -7,7 +7,13 @@ class SolutionSearchFormConsoleImpl(
 
     override fun renderSearchForm(builder: ConsolePanelBuilder) {
         builder.apply {
+            row {
+                spacer()
+                title("Solution architecture sample")
+            }
+            spacer()
             attentionConsole.renderMainScreenAttention(this)
+            spacer()
             val state = commonImpl.store.state
             row {
                 textInput("Откуда", state.searchFrom) {
@@ -19,6 +25,7 @@ class SolutionSearchFormConsoleImpl(
                     commonImpl.store.send(SolutionSearchFormImpl.Action.To(it))
                 }
             }
+            spacer()
             button("Начать поиск") {
                 commonImpl.store.send(SolutionSearchFormImpl.Action.Search)
             }

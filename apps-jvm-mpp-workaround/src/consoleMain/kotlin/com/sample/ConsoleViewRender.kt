@@ -17,7 +17,7 @@ fun ConsoleView.render(callbacks: RegisterCallback): String =
             } ?: callbacks.registerNumberCallback {
                 onClick()
             }
-            "(${cmdStr.toUpperCase()})".color(CMD_COLOR) + label.color(labelColor)
+            "(${cmdStr.toUpperCase()})".color(CMD_COLOR) + " " + label.color(labelColor)
         }
         is ConsoleView.Label -> {
             str
@@ -30,7 +30,7 @@ fun ConsoleView.render(callbacks: RegisterCallback): String =
                 onClick()
             }
             val checkStr = if(value) "[*]" else "[ ]"
-            cmdStr.color(CMD_COLOR) + " $checkStr $label".color(INTERACT_COLOR)
+            "($cmdStr)".color(CMD_COLOR) + " " + "$checkStr $label".color(INTERACT_COLOR)
         }
         is ConsoleView.TextInput -> {
             val cmdStr = callbacks.registerNumberCallback {
@@ -39,7 +39,7 @@ fun ConsoleView.render(callbacks: RegisterCallback): String =
                     onEdit(it)
                 }
             }
-            "($cmdStr)".color(CMD_COLOR) + label.color(INTERACT_COLOR) + ": " + value
+            "($cmdStr)".color(CMD_COLOR) + " " + "$label:".color(INTERACT_COLOR) + " " + value
         }
         is ConsoleView.PasswordInput -> {
             val cmdStr = callbacks.registerNumberCallback {
@@ -48,6 +48,9 @@ fun ConsoleView.render(callbacks: RegisterCallback): String =
                     onEdit(it)
                 }
             }
-            "($cmdStr)".color(CMD_COLOR) + label.color(INTERACT_COLOR) + ": " + "********"
+            "($cmdStr)".color(CMD_COLOR) + " " + "$label:".color(INTERACT_COLOR) + " " + "********"
+        }
+        is ConsoleView.Spacer -> {
+            ""
         }
     }

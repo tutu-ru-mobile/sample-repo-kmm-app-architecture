@@ -8,12 +8,22 @@ data class ConsolePanel(
 data class ConsoleRow(val views: MutableList<ConsoleView> = mutableListOf())
 
 sealed class ConsoleView {
-    class Button(val label: String, val cmd:String?, val selected:Boolean, val onClick: () -> Unit) : ConsoleView()
+    object Spacer : ConsoleView()
+    class Button(
+        val label: String,
+        val cmd: String?,
+        val selected: Boolean,
+        val onClick: () -> Unit
+    ) : ConsoleView()
+
     class Label(val str: String) : ConsoleView()
     class Title(val str: String) : ConsoleView()
     class CheckBox(val label: String, val value: Boolean, val onClick: () -> Unit) : ConsoleView()
-    class TextInput(val label:String, val value: String, val onEdit: (String) -> Unit) : ConsoleView()
-    class PasswordInput(val label:String, val value: String, val onEdit: (String) -> Unit) : ConsoleView()
+    class TextInput(val label: String, val value: String, val onEdit: (String) -> Unit) :
+        ConsoleView()
+
+    class PasswordInput(val label: String, val value: String, val onEdit: (String) -> Unit) :
+        ConsoleView()
 }
 
 interface ConsolePanelBuilder : ConsoleBaseBuilder {
@@ -26,11 +36,12 @@ interface ConsoleRowBuilder : ConsoleBaseBuilder {
 }
 
 interface ConsoleBaseBuilder {
-    fun button(label: String, cmd:String? = null, selected:Boolean = false, onClick: () -> Unit)
+    fun button(label: String, cmd: String? = null, selected: Boolean = false, onClick: () -> Unit)
     fun label(str: String)
     fun title(str: String)
     fun checkBox(label: String, value: Boolean, onClick: () -> Unit)
-    fun textInput(label:String, value: String, onEdit: (String) -> Unit)
+    fun textInput(label: String, value: String, onEdit: (String) -> Unit)
+    fun spacer()
     fun passwordInput(label: String, value: String, onEdit: (String) -> Unit)
 }
 
@@ -41,7 +52,12 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             val row = ConsoleRow()
             result.rows.add(row)
             object : ConsoleRowBuilder {
-                override fun button(label: String, cmd:String?, selected:Boolean, onClick: () -> Unit) {
+                override fun button(
+                    label: String,
+                    cmd: String?,
+                    selected: Boolean,
+                    onClick: () -> Unit
+                ) {
                     row.views.add(ConsoleView.Button(label, cmd, selected, onClick))
                 }
 
@@ -57,8 +73,12 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
                     row.views.add(ConsoleView.CheckBox(label, value, onClick))
                 }
 
-                override fun textInput(label: String, value:String, onEdit: (String) -> Unit) {
+                override fun textInput(label: String, value: String, onEdit: (String) -> Unit) {
                     row.views.add(ConsoleView.TextInput(label, value, onEdit))
+                }
+
+                override fun spacer() {
+                    row.views.add(ConsoleView.Spacer)
                 }
 
                 override fun passwordInput(label: String, value: String, onEdit: (String) -> Unit) {
@@ -72,7 +92,12 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             val row = ConsoleRow()
             result.bottomRows.add(row)
             object : ConsoleRowBuilder {
-                override fun button(label: String, cmd:String?, selected:Boolean, onClick: () -> Unit) {
+                override fun button(
+                    label: String,
+                    cmd: String?,
+                    selected: Boolean,
+                    onClick: () -> Unit
+                ) {
                     row.views.add(ConsoleView.Button(label, cmd, selected, onClick))
                 }
 
@@ -88,8 +113,12 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
                     row.views.add(ConsoleView.CheckBox(label, value, onClick))
                 }
 
-                override fun textInput(label: String, value:String, onEdit: (String) -> Unit) {
+                override fun textInput(label: String, value: String, onEdit: (String) -> Unit) {
                     row.views.add(ConsoleView.TextInput(label, value, onEdit))
+                }
+
+                override fun spacer() {
+                    row.views.add(ConsoleView.Spacer)
                 }
 
                 override fun passwordInput(label: String, value: String, onEdit: (String) -> Unit) {
@@ -99,7 +128,7 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             }.lambda()
         }
 
-        override fun button(label: String, cmd:String?, selected: Boolean, onClick: () -> Unit) {
+        override fun button(label: String, cmd: String?, selected: Boolean, onClick: () -> Unit) {
             row {
                 button(label, cmd, selected, onClick)
             }
@@ -123,9 +152,15 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             }
         }
 
-        override fun textInput(label:String, value: String, onEdit: (String) -> Unit) {
+        override fun textInput(label: String, value: String, onEdit: (String) -> Unit) {
             row {
                 textInput(label, value, onEdit)
+            }
+        }
+
+        override fun spacer() {
+            row {
+                spacer()
             }
         }
 

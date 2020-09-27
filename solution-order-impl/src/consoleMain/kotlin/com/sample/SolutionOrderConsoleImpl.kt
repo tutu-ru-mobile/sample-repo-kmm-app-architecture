@@ -22,6 +22,11 @@ class SolutionOrderConsoleImpl(
 
     override fun renderAllOrders(builder: ConsolePanelBuilder) {
         builder.apply {
+            row {
+                spacer()
+                title("Мои билеты")
+            }
+            spacer()
             commonImpl.getState().tickets.forEach { ticket ->
                 row {
                     label(ticket.txt)

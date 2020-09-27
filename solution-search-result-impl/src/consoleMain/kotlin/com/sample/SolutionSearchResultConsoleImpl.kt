@@ -7,7 +7,11 @@ class SolutionSearchResultConsoleImpl(
 
     override fun renderSearchResult(builder: ConsolePanelBuilder) {
         builder.apply {
-            title("${searchStart.getSearchQuery()}")
+            row {
+                spacer()
+                title("${searchStart.getSearchQuery()}")
+            }
+            spacer()
             label("Результат поиска:")
             common.store.state.tickets.forEach { ticket ->
                 row {
@@ -17,6 +21,7 @@ class SolutionSearchResultConsoleImpl(
                     }
                 }
             }
+            spacer()
             button("Назад") {
                 common.store.send(SolutionSearchResultImpl.Action.Back)
             }

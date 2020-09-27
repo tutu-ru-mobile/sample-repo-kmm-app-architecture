@@ -43,9 +43,8 @@ class SolutionAbImpl() : SolutionAbApi, SolutionWithState {
 
     init {
         // Эти ключи только для примера
-        registerBooleanToggle("facebook_auth", false)
-        registerBooleanToggle("google_pay", false)
-        registerBooleanToggle("apple_pay", false)
+        registerBooleanToggle("toggle1", false)
+        registerBooleanToggle("toggle2", false)
     }
 
     override fun registerBooleanToggle(key: String, defaultValue: Boolean) {
