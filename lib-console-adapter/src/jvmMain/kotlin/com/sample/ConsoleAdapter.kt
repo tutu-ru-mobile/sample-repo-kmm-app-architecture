@@ -1,6 +1,10 @@
 package com.sample
 
-data class ConsolePanel(val rows: MutableList<ConsoleRow> = mutableListOf())
+data class ConsolePanel(
+    val rows: MutableList<ConsoleRow> = mutableListOf(),
+    val bottomRows: MutableList<ConsoleRow> = mutableListOf()
+)
+
 data class ConsoleRow(val views: MutableList<ConsoleView> = mutableListOf())
 
 sealed class ConsoleView {
@@ -14,6 +18,7 @@ sealed class ConsoleView {
 
 interface ConsolePanelBuilder : ConsoleBaseBuilder {
     fun row(lambda: ConsoleRowBuilder.() -> Unit)
+    fun bottomRow(lambda: ConsoleRowBuilder.() -> Unit)
 }
 
 interface ConsoleRowBuilder : ConsoleBaseBuilder {
@@ -35,6 +40,37 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
         override fun row(lambda: ConsoleRowBuilder.() -> Unit) {
             val row = ConsoleRow()
             result.rows.add(row)
+            object : ConsoleRowBuilder {
+                override fun button(label: String, onClick: () -> Unit) {
+                    row.views.add(ConsoleView.Button(label, onClick))
+                }
+
+                override fun label(str: String) {
+                    row.views.add(ConsoleView.Label(str))
+                }
+
+                override fun title(str: String) {
+                    row.views.add(ConsoleView.Title(str))
+                }
+
+                override fun checkBox(label: String, value: Boolean, onClick: () -> Unit) {
+                    row.views.add(ConsoleView.CheckBox(label, value, onClick))
+                }
+
+                override fun textInput(label: String, onEdit: (String) -> Unit) {
+                    row.views.add(ConsoleView.TextInput(label, onEdit))
+                }
+
+                override fun passwordInput(value: String, onEdit: (String) -> Unit) {
+                    row.views.add(ConsoleView.PasswordInput(value, onEdit))
+                }
+
+            }.lambda()
+        }
+
+        override fun bottomRow(lambda: ConsoleRowBuilder.() -> Unit) {
+            val row = ConsoleRow()
+            result.bottomRows.add(row)
             object : ConsoleRowBuilder {
                 override fun button(label: String, onClick: () -> Unit) {
                     row.views.add(ConsoleView.Button(label, onClick))

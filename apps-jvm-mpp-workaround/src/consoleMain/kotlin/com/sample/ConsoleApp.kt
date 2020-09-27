@@ -8,9 +8,21 @@ import kotlin.random.Random
 const val HEIGHT = 20
 const val WIDTH = 80
 
+@Suppress("unused")
 fun runConsoleApp() {
     val panel: ConsolePanel = consolePanelView {
         label("hi")
+        bottomRow {
+            button("Поиск") {
+
+            }
+            button("Мои заказы") {
+
+            }
+            button("Настройки") {
+
+            }
+        }
     }
     //thanks to: https://github.com/JakeWharton/crossword
     var userInput: String? = null
@@ -27,7 +39,12 @@ fun runConsoleApp() {
 
             panel.rows.forEachIndexed { row: Int, rowData: ConsoleRow ->
                 rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
-                    canvas.write(10 + row * 2, col * 20, view.render())
+                    canvas.write(10 + row * 2, 1 + col * 20, view.render())
+                }
+            }
+            panel.bottomRows.forEachIndexed { row: Int, rowData: ConsoleRow ->
+                rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
+                    canvas.write(HEIGHT - 2 - row * 2, 1 + col * 20, view.render())
                 }
             }
             println(canvas)
@@ -41,7 +58,7 @@ fun runConsoleApp() {
 fun ConsoleView.render(): String =
     when (this) {
         is ConsoleView.Button -> {
-            "button"
+            "[${label}]"
         }
         is ConsoleView.Label -> {
             str
