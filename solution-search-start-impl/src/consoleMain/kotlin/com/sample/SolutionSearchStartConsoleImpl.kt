@@ -6,9 +6,9 @@ class SolutionSearchStartConsoleImpl(
 
     override fun renderSearching(builder: ConsolePanelBuilder) {
         builder.apply {
-            title("Searching ${common.store.state.searchQuery}...")
-            button("Complete search") {
-                common.completeSearch()
+            row {
+                spacer()
+                title("Searching ${common.store.state.searchQuery}...")
             }
         }
     }

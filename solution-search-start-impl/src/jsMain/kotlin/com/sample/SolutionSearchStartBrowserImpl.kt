@@ -12,9 +12,6 @@ class SolutionSearchStartBrowserImpl(
             h2 {
                 +"Searching ${common.store.state.searchQuery}..."
             }
-            btn("Complete search") {
-                common.completeSearch()
-            }
         }
     }
 

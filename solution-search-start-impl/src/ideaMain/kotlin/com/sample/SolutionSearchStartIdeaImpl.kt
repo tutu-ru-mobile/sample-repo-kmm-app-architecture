@@ -7,9 +7,6 @@ class SolutionSearchStartIdeaImpl(
     override fun renderSearching(builder: IdeaPanelBuilder) {
         builder.apply {
             title("Searching ${common.store.state.searchQuery}...")
-            button("Complete search") {
-                common.completeSearch()
-            }
         }
     }
 

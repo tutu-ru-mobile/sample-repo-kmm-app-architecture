@@ -17,46 +17,61 @@ class SolutionSearchStartImpl(
         class SearchResult(val result: List<Ticket>) : Action()
     }
 
-    val store = createStore(State()) { s, a: Action ->
-        when (a) {
+    sealed class SideEffect {
+        class SearchNetworkRequest(val query: String) : SideEffect()
+    }
+
+    val store = createStoreWithSideEffect(
+        State(),
+        { store, sideEffect: SideEffect ->
+            when (sideEffect) {
+                is SideEffect.SearchNetworkRequest -> {
+                    launchAppScope {
+                        //Тут доджен быть запрос в сеть, но для простоты сделал эмитацию сетевой задержки
+                        delay(500)
+                        //Фальшивый ответ от сервера:
+                        store.send(
+                            Action.SearchResult(
+                                listOf(
+                                    Ticket(5000, "Сапсан"),
+                                    Ticket(3000, "Невский эксп."),
+                                    Ticket(1000, "Плацкарт")
+                                )
+                            )
+                        )
+                    }
+                }
+            }
+        }
+    ) { state, action: Action ->
+        when (action) {
             is Action.StartSearch -> {
-                s.copy(
-                    searchQuery = a.query
+                ReducerResult(
+                    state.copy(
+                        searchQuery = action.query
+                    ),
+                    listOf(
+                        SideEffect.SearchNetworkRequest(action.query)
+                    )
                 )
             }
             is Action.SearchResult -> {
-                solutionSearchResult.navigateSearchResult(a.result)
-                s
+                solutionSearchResult.navigateSearchResult(action.result)
+                ReducerResult(state)
             }
         }
     }
 
     override fun startSearch(searchQuery: String) {
         store.send(Action.StartSearch(searchQuery))
-        solutionNavigation.navigate(SolutionSearchStartApi.NavSearchStart(), BackStackBehaviour.Once)
-
-        launchAppScope {
-            //Тут доджен быть запрос в сеть, но для простоты сделал эмитацию сетевой задержки
-            delay(500)
-            completeSearch()
-        }
+        solutionNavigation.navigate(
+            SolutionSearchStartApi.NavSearchStart(),
+            BackStackBehaviour.Once
+        )
     }
 
     override fun getSearchQuery(): String = store.state.searchQuery
 
     override fun onStateUpdate(): Flow<*> = store.stateFlow
-
-    // Для iOS проще пользоваться не State-ом, а специальной прослойкой из helper-функий
-
-    fun completeSearch() {
-        //Фальшивый ответ от сервера для простоты
-        store.send(
-            Action.SearchResult(
-                listOf(
-                    Ticket(5000, "Сапсан"), Ticket(3000, "Невский эксп."), Ticket(1000, "Плацкарт")
-                )
-            )
-        )
-    }
 
 }

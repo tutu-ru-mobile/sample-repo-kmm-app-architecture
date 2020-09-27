@@ -13,11 +13,6 @@ class SolutionSearchStartAndroidImpl(
     override fun renderSearching() {
         Column {
             Text("Searching ${common.store.state.searchQuery}...")
-            Button(onClick = {
-                common.completeSearch()
-            }) {
-                Text("Complete search")
-            }
         }
     }
 
