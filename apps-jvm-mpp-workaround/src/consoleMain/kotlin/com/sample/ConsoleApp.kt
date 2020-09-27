@@ -19,6 +19,9 @@ sealed class Intent {
 
 @Suppress("unused")
 fun runConsoleApp() {
+    val di = AppDiConsole()
+    val stateFlow = di.common.globalStateFlow
+
     val store = createStore(State(0)) { state, intent: Intent ->
         when (intent) {
             is Intent.UpdateCounter -> {
@@ -59,7 +62,7 @@ fun runConsoleApp() {
             button("Поиск") {
 
             }
-            button("Мои заказы", true) {
+            button("Мои заказы") {
 
             }
             button("Настройки") {
@@ -68,7 +71,7 @@ fun runConsoleApp() {
         }
     }
 
-    val stateFlow = store.stateFlow
+//    val stateFlow = store.stateFlow
     GlobalScope.launch {
         while (true) {
             delay(3000)
@@ -79,7 +82,8 @@ fun runConsoleApp() {
     val mutableCallbackList: MutableList<(String) -> Unit> = CopyOnWriteArrayList()
     GlobalScope.launch {
         stateFlow.collectLatest { state ->
-            val panel = renderState(state)
+//            val panel = renderState(state)
+            val panel = di.solutionTabsConsole.renderScaffold()
             System.out.print("\u001b[H\u001b[2J")
             System.out.flush()
             val canvas = TextCanvas(WIDTH, HEIGHT)
@@ -138,9 +142,6 @@ interface RegisterCallback {
     fun registerAllCallback(callback: (String) -> Unit)
 }
 
-//Нажатая кнопка 47
-//44 подсветка цифры для кнопки
-//Конпка 32
 fun String.color(clr: Int) = "\u001B[${clr}m${this}\u001B[0m"
 fun ConsoleView.render(callbacks: RegisterCallback): String =
     when (this) {
@@ -148,10 +149,18 @@ fun ConsoleView.render(callbacks: RegisterCallback): String =
             if (selected) {
                 label.color(47)
             } else {
-                val cmdStr = callbacks.registerNumberCallback {
-                    onClick()
-                }
-                "($cmdStr)".color(44) + label.color(32)
+                val cmd = cmd
+                val cmdStr =
+                    if (cmd != null) {
+                        callbacks.registerStringCallback(cmd) {
+                            onClick()
+                        }
+                    } else {
+                        callbacks.registerNumberCallback {
+                            onClick()
+                        }
+                    }
+                "(${cmdStr.toUpperCase()})".color(44) + label.color(32)
             }
         }
         is ConsoleView.Label -> {

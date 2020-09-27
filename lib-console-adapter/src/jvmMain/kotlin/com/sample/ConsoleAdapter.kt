@@ -8,7 +8,7 @@ data class ConsolePanel(
 data class ConsoleRow(val views: MutableList<ConsoleView> = mutableListOf())
 
 sealed class ConsoleView {
-    class Button(val label: String, val selected:Boolean, val onClick: () -> Unit) : ConsoleView()
+    class Button(val label: String, val cmd:String?, val selected:Boolean, val onClick: () -> Unit) : ConsoleView()
     class Label(val str: String) : ConsoleView()
     class Title(val str: String) : ConsoleView()
     class CheckBox(val label: String, val value: Boolean, val onClick: () -> Unit) : ConsoleView()
@@ -26,7 +26,7 @@ interface ConsoleRowBuilder : ConsoleBaseBuilder {
 }
 
 interface ConsoleBaseBuilder {
-    fun button(label: String, selected:Boolean = false, onClick: () -> Unit)
+    fun button(label: String, cmd:String? = null, selected:Boolean = false, onClick: () -> Unit)
     fun label(str: String)
     fun title(str: String)
     fun checkBox(label: String, value: Boolean, onClick: () -> Unit)
@@ -41,8 +41,8 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             val row = ConsoleRow()
             result.rows.add(row)
             object : ConsoleRowBuilder {
-                override fun button(label: String, selected:Boolean, onClick: () -> Unit) {
-                    row.views.add(ConsoleView.Button(label, selected, onClick))
+                override fun button(label: String, cmd:String?, selected:Boolean, onClick: () -> Unit) {
+                    row.views.add(ConsoleView.Button(label, cmd, selected, onClick))
                 }
 
                 override fun label(str: String) {
@@ -72,8 +72,8 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             val row = ConsoleRow()
             result.bottomRows.add(row)
             object : ConsoleRowBuilder {
-                override fun button(label: String, selected:Boolean, onClick: () -> Unit) {
-                    row.views.add(ConsoleView.Button(label, selected, onClick))
+                override fun button(label: String, cmd:String?, selected:Boolean, onClick: () -> Unit) {
+                    row.views.add(ConsoleView.Button(label, cmd, selected, onClick))
                 }
 
                 override fun label(str: String) {
@@ -99,9 +99,9 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             }.lambda()
         }
 
-        override fun button(label: String, selected: Boolean, onClick: () -> Unit) {
+        override fun button(label: String, cmd:String?, selected: Boolean, onClick: () -> Unit) {
             row {
-                button(label, selected, onClick)
+                button(label, cmd, selected, onClick)
             }
         }
 
