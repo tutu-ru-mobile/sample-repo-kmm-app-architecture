@@ -29,7 +29,7 @@ fun openBrowserJBCeffOrDefault(url: String): IClosable {
         }
 
         if (safeJBCeffSupported()) {
-            val activeFrame = IdeFrameImpl.getActiveFrame() ?: TODO("missing frame")
+            val activeFrame = IdeFrameImpl.getActiveFrame() ?: throw Error("missing frame")
             val bounds = activeFrame.graphicsConfiguration.bounds
             val frame: JFrame = IdeFrameImpl()
             frame.title = "Web Browser - JCEF"
