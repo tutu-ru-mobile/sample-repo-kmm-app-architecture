@@ -1,10 +1,10 @@
 package com.sample
 
 class SolutionTabsConsoleImpl(
-    val commonImpl: SolutionTabsImpl/*,
+    val commonImpl: SolutionTabsImpl,
     val searchTabConsole: SolutionTabSearchConsoleApi,
     val ordersTabConsole: SolutionOrderConsoleApi,
-    val settingsTabConsole: SolutionSettingsConsoleApi*/
+    val settingsTabConsole: SolutionSettingsConsoleApi
 ) : SolutionTabsConsoleApi {
 
     override fun renderScaffold(): ConsolePanel {
@@ -12,16 +12,13 @@ class SolutionTabsConsoleImpl(
             val state = commonImpl.store.state
             when (state.screen) {
                 is SolutionTabsImpl.Screen.Main -> {
-                    label("searchTabConsole.renderMainScreen(this)")
-//                    searchTabConsole.renderMainScreen(this)
+                    searchTabConsole.renderMainScreen(this)
                 }
                 is SolutionTabsImpl.Screen.Orders -> {
-                    label("ordersTabConsole.renderAllOrders(this)")
-//                    ordersTabConsole.renderAllOrders(this)
+                    ordersTabConsole.renderAllOrders(this)
                 }
                 is SolutionTabsImpl.Screen.Settings -> {
-                    label("settingsTabConsole.renderSettings(this)")
-//                    settingsTabConsole.renderSettings(this)
+                    settingsTabConsole.renderSettings(this)
                 }
             }
             bottomRow {

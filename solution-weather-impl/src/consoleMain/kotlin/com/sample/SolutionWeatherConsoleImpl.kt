@@ -1,10 +1,10 @@
 package com.sample
 
-class SolutionWeatherIdeaImpl(
+class SolutionWeatherConsoleImpl(
     val commonImpl: SolutionWeatherImpl
-) : SolutionWeatherIdeaApi {
+) : SolutionWeatherConsoleApi {
 
-    override fun renderWeather(builder: IdeaPanelBuilder) {
+    override fun renderWeather(builder: ConsolePanelBuilder) {
         builder.apply {
             label(commonImpl.getWeatherString())
         }
