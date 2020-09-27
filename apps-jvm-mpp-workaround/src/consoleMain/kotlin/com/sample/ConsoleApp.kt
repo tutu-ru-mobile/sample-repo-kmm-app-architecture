@@ -3,18 +3,18 @@ package com.sample
 import com.jakewharton.crossword.TextCanvas
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.concurrent.thread
-import kotlin.random.Random
 
 const val HEIGHT = 25
 const val WIDTH = 80
 
 sealed class Intent {
     object UpdateCounter : Intent()
-    class Input(val str: String) : Intent()
+    class ButtonClick(val buttonStr: String) : Intent()
+    class From(val txt: String) : Intent()
 }
 
 @Suppress("unused")
@@ -26,37 +26,97 @@ fun runConsoleApp() {
                     counter = state.counter + 1
                 )
             }
-            is Intent.Input -> {
+            is Intent.ButtonClick -> {
                 state.copy(
-                    input = intent.str
+                    input = intent.buttonStr
+                )
+            }
+            is Intent.From -> {
+                state.copy(
+                    from = intent.txt
                 )
             }
         }
     }
+
+    fun renderState(state: State) = consolePanelView {
+        title("ЗАГОЛОВОК")
+        label("hi, how are you?")
+        checkBox("выбери меня", true) {
+
+        }
+        button("button1") {
+            store.send(Intent.ButtonClick("btn1"))
+        }
+        button("button2") {
+            store.send(Intent.ButtonClick("btn2"))
+        }
+        textInput("Откуда", state.from) {
+            store.send(Intent.From(it))
+        }
+        label(state.toString())
+        bottomRow {
+            button("Поиск") {
+
+            }
+            button("Мои заказы", true) {
+
+            }
+            button("Настройки") {
+
+            }
+        }
+    }
+
     val stateFlow = store.stateFlow
     GlobalScope.launch {
         while (true) {
-            delay(500)
+            delay(3000)
             store.send(Intent.UpdateCounter)
         }
     }
     //thanks to: https://github.com/JakeWharton/crossword
+    val mutableCallbackList: MutableList<(String) -> Unit> = CopyOnWriteArrayList()
     GlobalScope.launch {
         stateFlow.collectLatest { state ->
             val panel = renderState(state)
-            System.out.print("\u001b[H\u001b[2J");
+            System.out.print("\u001b[H\u001b[2J")
             System.out.flush()
             val canvas = TextCanvas(WIDTH, HEIGHT)
+
+            var nextNumberCallback = 1
+            mutableCallbackList.clear()
+            val registerCallbacks: RegisterCallback = object : RegisterCallback {
+                override fun registerNumberCallback(callback: () -> Unit): String {
+                    val result = registerStringCallback(nextNumberCallback.toString(), callback)
+                    nextNumberCallback++
+                    return result
+                }
+
+                override fun registerStringCallback(str: String, callback: () -> Unit): String {
+                    registerAllCallback {
+                        if (it == str) {
+                            callback()
+                        }
+                    }
+                    return str
+                }
+
+                override fun registerAllCallback(callback: (String) -> Unit) {
+                    mutableCallbackList.add(callback)
+                }
+            }
             panel.rows.forEachIndexed { row: Int, rowData: ConsoleRow ->
                 rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
-                    canvas.write(1 + row * 2, 1 + col * 20, view.render())
+                    canvas.write(1 + row * 2, 1 + col * 20, view.render(registerCallbacks))
                 }
             }
             panel.bottomRows.forEachIndexed { row: Int, rowData: ConsoleRow ->
                 rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
-                    canvas.write(HEIGHT - 2 - row * 2, 1 + col * 20, view.render())
+                    canvas.write(HEIGHT - 2 - row * 2, 1 + col * 20, view.render(registerCallbacks))
                 }
             }
+
             println(canvas)
         }
     }
@@ -64,22 +124,35 @@ fun runConsoleApp() {
         while (true) {
             val userInput = readLine()
             if (userInput != null) {
-                store.send(
-                    Intent.Input(userInput)
-                )
+                mutableCallbackList.forEach { callback ->
+                    callback(userInput)
+                }
             }
         }
     }
+}
+
+interface RegisterCallback {
+    fun registerNumberCallback(callback: () -> Unit): String
+    fun registerStringCallback(str: String, callback: () -> Unit): String
+    fun registerAllCallback(callback: (String) -> Unit)
 }
 
 //Нажатая кнопка 47
 //44 подсветка цифры для кнопки
 //Конпка 32
 fun String.color(clr: Int) = "\u001B[${clr}m${this}\u001B[0m"
-fun ConsoleView.render(): String =
+fun ConsoleView.render(callbacks: RegisterCallback): String =
     when (this) {
         is ConsoleView.Button -> {
-            label.color(32) + " (3)".color(44)
+            if (selected) {
+                label.color(47)
+            } else {
+                val cmdStr = callbacks.registerNumberCallback {
+                    onClick()
+                }
+                "($cmdStr)".color(44) + label.color(32)
+            }
         }
         is ConsoleView.Label -> {
             str
@@ -91,7 +164,13 @@ fun ConsoleView.render(): String =
             "[v]$label".color(32)
         }
         is ConsoleView.TextInput -> {
-            "text input"
+            val cmdStr = callbacks.registerNumberCallback {
+                println("Напишите $label?")
+                callbacks.registerAllCallback {
+                    onEdit(it)
+                }
+            }
+            "($cmdStr)".color(44) + label.color(32) + ": " + value
         }
         is ConsoleView.PasswordInput -> {
             "password"
@@ -100,28 +179,6 @@ fun ConsoleView.render(): String =
 
 data class State(
     val counter: Int,
-    val input: String = ""
+    val input: String = "",
+    val from: String = "Мск"
 )
-
-fun renderState(state: State) = consolePanelView {
-    title("ЗАГОЛОВОК")
-    label("hi, how are you?")
-    checkBox("выбери меня", true) {
-
-    }
-    button("push me") {
-
-    }
-    label(state.toString())
-    bottomRow {
-        button("Поиск") {
-
-        }
-        button("Мои заказы") {
-
-        }
-        button("Настройки") {
-
-        }
-    }
-}
