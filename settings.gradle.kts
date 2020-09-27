@@ -97,3 +97,4 @@ if (!LIB_IDEA_ADAPTER) {
 }
 include("app-idea-plugin")
 include("lib-idea-adapter")
+include("lib-console-adapter")
