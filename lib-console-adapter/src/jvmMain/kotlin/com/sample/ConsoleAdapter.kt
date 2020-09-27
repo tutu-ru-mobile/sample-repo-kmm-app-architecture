@@ -13,7 +13,7 @@ sealed class ConsoleView {
     class Title(val str: String) : ConsoleView()
     class CheckBox(val label: String, val value: Boolean, val onClick: () -> Unit) : ConsoleView()
     class TextInput(val label:String, val value: String, val onEdit: (String) -> Unit) : ConsoleView()
-    class PasswordInput(val value: String, val onEdit: (String) -> Unit) : ConsoleView()
+    class PasswordInput(val label:String, val value: String, val onEdit: (String) -> Unit) : ConsoleView()
 }
 
 interface ConsolePanelBuilder : ConsoleBaseBuilder {
@@ -31,7 +31,7 @@ interface ConsoleBaseBuilder {
     fun title(str: String)
     fun checkBox(label: String, value: Boolean, onClick: () -> Unit)
     fun textInput(label:String, value: String, onEdit: (String) -> Unit)
-    fun passwordInput(value: String, onEdit: (String) -> Unit)
+    fun passwordInput(label: String, value: String, onEdit: (String) -> Unit)
 }
 
 fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
@@ -61,8 +61,8 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
                     row.views.add(ConsoleView.TextInput(label, value, onEdit))
                 }
 
-                override fun passwordInput(value: String, onEdit: (String) -> Unit) {
-                    row.views.add(ConsoleView.PasswordInput(value, onEdit))
+                override fun passwordInput(label: String, value: String, onEdit: (String) -> Unit) {
+                    row.views.add(ConsoleView.PasswordInput(label, value, onEdit))
                 }
 
             }.lambda()
@@ -92,8 +92,8 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
                     row.views.add(ConsoleView.TextInput(label, value, onEdit))
                 }
 
-                override fun passwordInput(value: String, onEdit: (String) -> Unit) {
-                    row.views.add(ConsoleView.PasswordInput(value, onEdit))
+                override fun passwordInput(label: String, value: String, onEdit: (String) -> Unit) {
+                    row.views.add(ConsoleView.PasswordInput(label, value, onEdit))
                 }
 
             }.lambda()
@@ -129,9 +129,9 @@ fun consolePanelView(lambda: ConsolePanelBuilder.() -> Unit): ConsolePanel {
             }
         }
 
-        override fun passwordInput(value: String, onEdit: (String) -> Unit) {
+        override fun passwordInput(label: String, value: String, onEdit: (String) -> Unit) {
             row {
-                passwordInput(value, onEdit)
+                passwordInput(label, value, onEdit)
             }
         }
 

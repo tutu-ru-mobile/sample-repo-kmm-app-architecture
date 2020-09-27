@@ -9,75 +9,14 @@ import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.concurrent.thread
 
 const val HEIGHT = 25
-const val WIDTH = 80
-
-sealed class Intent {
-    object UpdateCounter : Intent()
-    class ButtonClick(val buttonStr: String) : Intent()
-    class From(val txt: String) : Intent()
-}
+const val CELL_WIDTH = 25
+const val WIDTH = CELL_WIDTH*4
 
 @Suppress("unused")
 fun runConsoleApp() {
     val di = AppDiConsole()
     val stateFlow = di.common.globalStateFlow
 
-    val store = createStore(State(0)) { state, intent: Intent ->
-        when (intent) {
-            is Intent.UpdateCounter -> {
-                state.copy(
-                    counter = state.counter + 1
-                )
-            }
-            is Intent.ButtonClick -> {
-                state.copy(
-                    input = intent.buttonStr
-                )
-            }
-            is Intent.From -> {
-                state.copy(
-                    from = intent.txt
-                )
-            }
-        }
-    }
-
-    fun renderState(state: State) = consolePanelView {
-        title("ЗАГОЛОВОК")
-        label("hi, how are you?")
-        checkBox("выбери меня", true) {
-
-        }
-        button("button1") {
-            store.send(Intent.ButtonClick("btn1"))
-        }
-        button("button2") {
-            store.send(Intent.ButtonClick("btn2"))
-        }
-        textInput("Откуда", state.from) {
-            store.send(Intent.From(it))
-        }
-        label(state.toString())
-        bottomRow {
-            button("Поиск") {
-
-            }
-            button("Мои заказы") {
-
-            }
-            button("Настройки") {
-
-            }
-        }
-    }
-
-//    val stateFlow = store.stateFlow
-    GlobalScope.launch {
-        while (true) {
-            delay(3000)
-            store.send(Intent.UpdateCounter)
-        }
-    }
     //thanks to: https://github.com/JakeWharton/crossword
     val mutableCallbackList: MutableList<(String) -> Unit> = CopyOnWriteArrayList()
     GlobalScope.launch {
@@ -112,12 +51,12 @@ fun runConsoleApp() {
             }
             panel.rows.forEachIndexed { row: Int, rowData: ConsoleRow ->
                 rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
-                    canvas.write(1 + row * 2, 1 + col * 20, view.render(registerCallbacks))
+                    canvas.write(1 + row * 2, 1 + col * CELL_WIDTH, view.render(registerCallbacks))
                 }
             }
             panel.bottomRows.forEachIndexed { row: Int, rowData: ConsoleRow ->
                 rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
-                    canvas.write(HEIGHT - 2 - row * 2, 1 + col * 20, view.render(registerCallbacks))
+                    canvas.write(HEIGHT - 2 - row * 2, 1 + col * CELL_WIDTH, view.render(registerCallbacks))
                 }
             }
 
@@ -142,45 +81,3 @@ interface RegisterCallback {
     fun registerAllCallback(callback: (String) -> Unit)
 }
 
-fun String.color(clr: Int) = "\u001B[${clr}m${this}\u001B[0m"
-fun ConsoleView.render(callbacks: RegisterCallback): String =
-    when (this) {
-        is ConsoleView.Button -> {
-            val labelColor = if (selected) 47 else 32
-            val cmdStr = cmd?.let {
-                callbacks.registerStringCallback(it) {
-                    onClick()
-                }
-            } ?: callbacks.registerNumberCallback {
-                onClick()
-            }
-            "(${cmdStr.toUpperCase()})".color(44) + label.color(labelColor)
-        }
-        is ConsoleView.Label -> {
-            str
-        }
-        is ConsoleView.Title -> {
-            str.color(36)
-        }
-        is ConsoleView.CheckBox -> {
-            "[v]$label".color(32)
-        }
-        is ConsoleView.TextInput -> {
-            val cmdStr = callbacks.registerNumberCallback {
-                println("Напишите $label?")
-                callbacks.registerAllCallback {
-                    onEdit(it)
-                }
-            }
-            "($cmdStr)".color(44) + label.color(32) + ": " + value
-        }
-        is ConsoleView.PasswordInput -> {
-            "password"
-        }
-    }
-
-data class State(
-    val counter: Int,
-    val input: String = "",
-    val from: String = "Мск"
-)

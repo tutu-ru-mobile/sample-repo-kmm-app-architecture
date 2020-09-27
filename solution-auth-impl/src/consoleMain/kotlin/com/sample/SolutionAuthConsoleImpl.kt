@@ -19,8 +19,7 @@ class SolutionAuthConsoleImpl(
                     }
                 }
                 row {
-                    label("Enter password")
-                    passwordInput(state.login) {
+                    passwordInput("Enter password", state.login) {
                         common.store.send(SolutionAuthImpl.Action.EditPassword(it))
                     }
                 }
