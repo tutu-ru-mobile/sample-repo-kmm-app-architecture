@@ -1,8 +1,12 @@
 package com.sample
 
 import com.jakewharton.crossword.TextCanvas
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlin.concurrent.thread
 import kotlin.random.Random
 
 const val HEIGHT = 25
@@ -10,41 +14,23 @@ const val WIDTH = 80
 
 @Suppress("unused")
 fun runConsoleApp() {
-    val panel: ConsolePanel = consolePanelView {
-        title("ЗАГОЛОВОК")
-        label("hi, how are you?")
-        checkBox("выбери меня", true) {
-
-        }
-        button("push me") {
-
-        }
-        bottomRow {
-            button("Поиск") {
-
-            }
-            button("Мои заказы") {
-
-            }
-            button("Настройки") {
-
-            }
+    val stateFlow = MutableStateFlow(State(counter = Random.nextInt()))
+    GlobalScope.launch {
+        while (true) {
+            delay(500)
+            stateFlow.value = State(counter = Random.nextInt())
         }
     }
     //thanks to: https://github.com/JakeWharton/crossword
-    var userInput: String? = null
-    runBlocking {
-        while (true) {
+    GlobalScope.launch {
+        stateFlow.collectLatest { state ->
+            val panel = renderState(state)
             System.out.print("\u001b[H\u001b[2J");
             System.out.flush()
             val canvas = TextCanvas(WIDTH, HEIGHT)
-            canvas.write(1, 5, "Hello $userInput")
-            canvas.write(6, 10, Random.nextInt().toString())
-            canvas.write(4, 7, "Much monospace")
-
             panel.rows.forEachIndexed { row: Int, rowData: ConsoleRow ->
                 rowData.views.forEachIndexed { col: Int, view: ConsoleView ->
-                    canvas.write(10 + row * 2, 1 + col * 20, view.render())
+                    canvas.write(1 + row * 2, 1 + col * 20, view.render())
                 }
             }
             panel.bottomRows.forEachIndexed { row: Int, rowData: ConsoleRow ->
@@ -53,9 +39,14 @@ fun runConsoleApp() {
                 }
             }
             println(canvas)
-//            System.in.readLine
-            userInput = readLine()
-            delay(300)
+        }
+    }
+    thread {
+        while(true) {
+            val userInput = readLine()
+            if (userInput != null) {
+                stateFlow.value = State(counter = 0, input = userInput)
+            }
         }
     }
 }
@@ -85,3 +76,31 @@ fun ConsoleView.render(): String =
             "password"
         }
     }
+
+data class State(
+    val counter: Int,
+    val input: String = ""
+)
+
+fun renderState(state: State) = consolePanelView {
+    title("ЗАГОЛОВОК")
+    label("hi, how are you?")
+    checkBox("выбери меня", true) {
+
+    }
+    button("push me") {
+
+    }
+    label(state.toString())
+    bottomRow {
+        button("Поиск") {
+
+        }
+        button("Мои заказы") {
+
+        }
+        button("Настройки") {
+
+        }
+    }
+}
