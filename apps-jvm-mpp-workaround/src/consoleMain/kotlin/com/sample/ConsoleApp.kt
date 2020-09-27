@@ -12,13 +12,32 @@ import kotlin.random.Random
 const val HEIGHT = 25
 const val WIDTH = 80
 
+sealed class Intent {
+    object UpdateCounter : Intent()
+    class Input(val str: String) : Intent()
+}
+
 @Suppress("unused")
 fun runConsoleApp() {
-    val stateFlow = MutableStateFlow(State(counter = Random.nextInt()))
+    val store = createStore(State(0)) { state, intent: Intent ->
+        when (intent) {
+            is Intent.UpdateCounter -> {
+                state.copy(
+                    counter = state.counter + 1
+                )
+            }
+            is Intent.Input -> {
+                state.copy(
+                    input = intent.str
+                )
+            }
+        }
+    }
+    val stateFlow = store.stateFlow
     GlobalScope.launch {
         while (true) {
             delay(500)
-            stateFlow.value = State(counter = Random.nextInt())
+            store.send(Intent.UpdateCounter)
         }
     }
     //thanks to: https://github.com/JakeWharton/crossword
@@ -42,10 +61,12 @@ fun runConsoleApp() {
         }
     }
     thread {
-        while(true) {
+        while (true) {
             val userInput = readLine()
             if (userInput != null) {
-                stateFlow.value = State(counter = 0, input = userInput)
+                store.send(
+                    Intent.Input(userInput)
+                )
             }
         }
     }
