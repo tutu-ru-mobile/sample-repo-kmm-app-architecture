@@ -4,7 +4,7 @@ import lib_basic_swift
 import Foundation
 
 public class GlobalViewModel: ObservableObject {
-    @Published public var myState: App_diAppDi.GlobalState
+    @Published public var myState: App_diGlobalState
 
     public init(di:App_diAppDi) {
         myState = di.getLastState()

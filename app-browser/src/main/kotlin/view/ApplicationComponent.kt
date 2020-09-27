@@ -1,7 +1,9 @@
 package view
 
 import com.sample.AppDi
+import com.sample.AppDiAbstract
 import com.sample.AppDiBrowser
+import com.sample.GlobalState
 import kotlinx.css.*
 import react.dom.div
 import styled.css
@@ -10,7 +12,7 @@ import lib.StateFlowComponent
 
 val appDiBrowser = AppDiBrowser(AppDi())
 
-class ApplicationComponent : StateFlowComponent<AppDi.GlobalState>(
+class ApplicationComponent : StateFlowComponent<GlobalState>(
     appDiBrowser.common.globalStateFlow,
     { state ->
         styledDiv {

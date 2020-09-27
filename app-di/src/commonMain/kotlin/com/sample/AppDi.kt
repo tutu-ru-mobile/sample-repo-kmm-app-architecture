@@ -5,25 +5,62 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 
-class AppDi {
-    data class GlobalState(val updateCount: Int)
-    val solutionBonus by lazySolution { SolutionBonusImpl(solutionAb) }
-    val solutionAuth by lazySolution { SolutionAuthImpl() }
-    val solutionOrder by lazySolution { SolutionOrderImpl(solutionAuth, solutionBonus) }
-    val solutionSettings by lazySolution { SolutionSettingsImpl() }
-    val solutionAttention by lazySolution { SolutionAttentionImpl() }
-    val solutionSearchForm by lazySolution { SolutionSearchFormImpl(solutionSearchStart) }
-    val solutionSearchStart by lazySolution { SolutionSearchStartImpl(solutionSearchResult, solutionNavigation) }
-    val solutionSearchResult by lazySolution { SolutionSearchResultImpl(solutionNavigation, solutionBuy) }
+data class GlobalState(val updateCount: Int)
+
+class AppDi() : AppDiAbstract<SolutionAuthImpl>(
+    auth = SolutionAuthImpl()
+)
+
+open class AppDiAbstract<SolutionAuth>(
+    auth: SolutionAuth
+) where SolutionAuth : SolutionWithState,
+        SolutionAuth : SolutionAuthApi {
+
+    val solutionAuth: SolutionAuth by lazySolution {
+        auth
+    }
+    val solutionBonus by lazySolution {
+        SolutionBonusImpl(solutionAb)
+    }
+    val solutionOrder by lazySolution {
+        SolutionOrderImpl(solutionAuth, solutionBonus)
+    }
+    val solutionSettings by lazySolution {
+        SolutionSettingsImpl()
+    }
+    val solutionAttention by lazySolution {
+        SolutionAttentionImpl()
+    }
+    val solutionSearchForm by lazySolution {
+        SolutionSearchFormImpl(solutionSearchStart)
+    }
+    val solutionSearchStart by lazySolution {
+        SolutionSearchStartImpl(
+            solutionSearchResult,
+            solutionNavigation
+        )
+    }
+    val solutionSearchResult by lazySolution {
+        SolutionSearchResultImpl(
+            solutionNavigation,
+            solutionBuy
+        )
+    }
     val solutionTabSearch by lazySolution {
         SolutionTabSearchImpl(
             initEvent = SolutionSearchFormApi.NavSearchForm()
         )
     }
     val solutionTabs by lazySolution { SolutionTabsImpl() }
-    val solutionWeather by lazySolution {SolutionWeatherImpl()}
+    val solutionWeather by lazySolution { SolutionWeatherImpl() }
     val solutionAb by lazySolution { SolutionAbImpl() }
-    val solutionBuy by lazySolution { SolutionBuyImpl(solutionNavigation, solutionOrder, solutionBonus) }
+    val solutionBuy by lazySolution {
+        SolutionBuyImpl(
+            solutionNavigation,
+            solutionOrder,
+            solutionBonus
+        )
+    }
 
     val solutionNavigation: SolutionNavigationApi =
         object : SolutionNavigationApi {
@@ -58,7 +95,7 @@ class AppDi {
         }
     }
 
-    private fun <T:SolutionWithState>lazySolution(lambda:()->T): Lazy<T> =
+    private fun <T : SolutionWithState> lazySolution(lambda: () -> T): Lazy<T> =
         lazy {
             lambda().also {
                 addUpdate(it.onStateUpdate())

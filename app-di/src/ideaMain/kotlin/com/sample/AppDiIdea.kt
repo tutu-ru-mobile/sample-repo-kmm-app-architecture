@@ -2,6 +2,11 @@ package com.sample
 
 class AppDiIdea {
     val common = AppDi()
+    val authIdea by lazy {
+        SolutionAuthIdeaImpl(
+            common = common.solutionAuth
+        )
+    }
     val ordersTabIdea by lazy {
         SolutionOrderIdeaImpl(common.solutionOrder)
     }
@@ -54,11 +59,6 @@ class AppDiIdea {
             searchResult = searchResult,
             searchStart = searchStart,
             solutionBuy = solutionBuy
-        )
-    }
-    val authIdea by lazy {
-        SolutionAuthIdeaImpl(
-            common = common.solutionAuth
         )
     }
     val ab by lazy {
