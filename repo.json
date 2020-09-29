@@ -19,12 +19,12 @@
     {
       "dir": "solution-bonus-api",
       "gitUri": "git@github.com:tutu-ru-mobile/sample-repo-kmm-solution-bonus-api.git",
-      "ref": "master"
+      "ref": "v1.0"
     },
     {
       "dir": "solution-bonus-impl",
       "gitUri": "git@github.com:tutu-ru-mobile/sample-repo-kmm-solution-bonus-impl.git",
-      "ref": "master"
+      "ref": "v1.0"
     },
     {
       "dir": "solution-ab-api",
