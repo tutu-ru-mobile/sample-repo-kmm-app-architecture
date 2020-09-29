@@ -4,17 +4,17 @@
     {
       "dir": "buildSrc",
       "gitUri": "git@github.com:tutu-ru-mobile/sample-repo-kmm-build-src.git",
-      "ref": "master"
+      "ref": "v2.0"
     },
     {
       "dir": "lib-basic",
       "gitUri": "git@github.com:tutu-ru-mobile/sample-repo-kmm-lib-basic.git",
-      "ref": "master"
+      "ref": "v2.0"
     },
     {
       "dir": "entity-ticket",
       "gitUri": "git@github.com:tutu-ru-mobile/solution-repo-kmm-entity-ticket.git",
-      "ref": "master"
+      "ref": "v2.0"
     },
     {
       "dir": "solution-bonus-api",
@@ -29,7 +29,7 @@
     {
       "dir": "solution-ab-api",
       "gitUri": "git@github.com:tutu-ru-mobile/sample-repo-kmm-solution-ab-api.git",
-      "ref": "master"
+      "ref": "v2.0"
     }
   ]
 }
