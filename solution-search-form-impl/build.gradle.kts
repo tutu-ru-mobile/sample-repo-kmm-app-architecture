@@ -30,7 +30,6 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementationCompose()
-                implementation(project(":solution-bonus-api"))
                 implementation(project(":solution-tab-search-api"))
             }
         }
