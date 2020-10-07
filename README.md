@@ -13,7 +13,7 @@ ssh-add
 Для запуска Android выбираем run конфигурацию android_jetpack_compose  
 ![image_run_config](misc/android_run_configuration.png)
   
-Но также можно просто собирать из консоли ./android_install.sh
+Но также можно просто собирать из консоли ./android_install.sh  
 А потом установить app-android/build/outputs/apk/debug/app-android-debug.apk  
 
 ## 3. Build iOS App
